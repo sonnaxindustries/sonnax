@@ -1,0 +1,7 @@
+.DS_Store
+log/*.log
+tmp/**/*
+db/database.yml
+public/cache/**/*
+public/system/**/*
+*.tmproj
