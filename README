@@ -1,6 +1,6 @@
 This is the documentation for the Sonnax website re-build.
 
-GEMS
+GEMS:
 - Capistrano
 - Paperclip
 - Rspec
@@ -49,3 +49,9 @@ DATABASE:
 - Catalog
 - Catalog Parts
 - Distributors
+
+DELIVERABLES:
+- Scenarios
+- Feature Cards
+- Personas and Segments
+- Wireframes

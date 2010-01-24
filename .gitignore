@@ -5,3 +5,7 @@ db/database.yml
 public/cache/**/*
 public/system/**/*
 *.tmproj
+vendor/bundler_gems/gems
+vendor/bundler_gems/specifications
+vendor/bundler_gems/doc
+vendor/bundler_gems/environment.rb
