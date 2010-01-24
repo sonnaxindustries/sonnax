@@ -1,15 +1,15 @@
 This is the documentation for the Sonnax website re-build.
 
 GEMS:
-- Capistrano
-- Paperclip
-- Rspec
-- Rspec Rails
-- Factory Girl
-- Will Paginate
-- Authlogic
-- Email Spec
-- Thinking Sphinx
+- Capistrano [DONE]
+- Paperclip [DONE]
+- Rspec [DONE]
+- Rspec Rails [DONE]
+- Factory Girl [DONE]
+- Will Paginate [DONE]
+- Authlogic [DONE]
+- Email Spec [DONE]
+- Thinking Sphinx [DONE]
 
 MAILERS:
 - Catalog Request

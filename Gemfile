@@ -1,5 +1,4 @@
 clear_sources
-
 bundle_path "vendor/bundler_gems"
 source "http://gemcutter.org"
 
@@ -7,6 +6,9 @@ gem "rails",                  "2.3.3"
 gem "capistrano",             "2.3.0"
 gem "paperclip",              ">= 2.2.9"
 gem "email_spec"
+gem "will_paginate",          "2.3.12"
+gem "authlogic",              "2.1.3"
+gem "thinking-sphinx",        "1.3.14"
 
 only :test do
   gem "rspec",                "1.2.9"
