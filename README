@@ -61,3 +61,13 @@ SEO:
 - Target Phrases
 - Demographics (Geo)
 - Segment (Visitor, URL, Email, Social Sites, Etc)
+- Google Analytics
+  - Track PDF downloads
+  - Track Image views
+  - Track external links
+  - Track JS menus (if any)
+  - Custom Segments
+- Google Webmaster Tools
+- Custom Sitemap Database
+- sitemap.xml
+- sitemap.html

@@ -1,18 +1,25 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+require 'config/recipes/passenger'
+require 'config/recipes/shared_assets'
+require 'config/recipes/bundler'
 
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-# set :deploy_to, "/var/www/#{application}"
+set :application, "sonnax"
+set :repository, 'git@github.com:nateklaiber/sonnax.git'
+set :branch, "master"
+set :runner, :passenger
 
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
-# set :scm, :subversion
+set :deploy_to, "/var/www/rails/#{application}"
 
-role :app, "your app-server here"
-role :web, "your web-server here"
-role :db,  "your db-server here", :primary => true
+set :scm, :git
+set :scm_verbose, :true
+set :user, 'root'
+set :use_sudo, false
+set :deploy_via, :remote_cache
+
+set :shared_host, '74.50.59.43'
+
+role :app, '74.50.59.43'
+role :web, '74.50.59.43'
+role :db, '74.50.59.43', :primary => true
 
 desc "deploy to the theklaibers subdomain"
 task :theklaibers do
@@ -29,3 +36,24 @@ task :production do
   set :app, "theklaibers.com"
   set :db, "theklaibers.com"  
 end
+
+namespace(:deploy) do
+  desc 'Move the database.yml file'
+  task(:copy_db_config) do
+    run("cp #{shared_path}/database.yml #{current_path}/config/database.yml")
+  end
+  
+  desc 'Set the proper permissions for the system folder for uploads'
+  task(:fix_paperclip_permissions) do
+    run("chmod -R 777 #{current_path}/public/system/")
+  end
+end
+
+
+#NOTE: This only needs to be run once, then we will pull down from production on subsequent calls
+desc 'Copy local images to shared folder on the server'
+task(:copy_shared) do
+  run_locally("scp -r /users/nateklaiber/sites/camp_club_girls/public/system/* root@74.50.59.43:#{shared_path}/system/")
+end
+
+after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions'
