@@ -1,1 +1,51 @@
 This is the documentation for the Sonnax website re-build.
+
+GEMS
+- Capistrano
+- Paperclip
+- Rspec
+- Rspec Rails
+- Factory Girl
+- Will Paginate
+- Authlogic
+- Email Spec
+- Thinking Sphinx
+
+MAILERS:
+- Catalog Request
+- Contact Us (contextual to section being initiated from)
+- Subscribe to Sonnax Insider
+- Product Quotes
+
+EMAIL ADDRESSES:
+- info@sonnax.com
+- internationalsalesteam@sonnax.com
+- webrg@sonnax.com (Ring Gear Information)
+- webmc@sonnax.com (Email for Quote and Information)
+
+INTEGRATION:
+- Constant Contact
+- Twitter
+- Facebook
+
+SEARCH:
+- Catalog by Part Number
+- Catalog by Part Name
+- Catalog by Keyword
+- Publications by Keyword
+
+IMAGES:
+- Part images (thumb, medium, large, original)
+- Catalog cover images (thumb, medium, large, original)
+- Distributor profile Flag Images (thumb, original)
+
+DATABASE:
+- Testimonials
+- Frequently Asked Questions
+- Assets (photos, videos, PDF)
+- Job Openings
+- News
+- Events
+- Catalog
+- Catalog Parts
+- Distributors
