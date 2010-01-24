@@ -13,3 +13,19 @@ set :repository,  "set your repository location here"
 role :app, "your app-server here"
 role :web, "your web-server here"
 role :db,  "your db-server here", :primary => true
+
+desc "deploy to the theklaibers subdomain"
+task :theklaibers do
+  set :deploy_to, "/var/www/rails/sonnax"
+  set :application, "sonnax"
+  set :app, "theklaibers.com"
+  set :db, "theklaibers.com"  
+end
+
+desc "deploy to the production domain"
+task :production do
+  set :deploy_to, "/var/www/rails/sonnax"
+  set :application, "sonnax"
+  set :app, "theklaibers.com"
+  set :db, "theklaibers.com"  
+end
