@@ -3,6 +3,7 @@ This is the documentation for the Sonnax website re-build.
 GEMS:
 - Capistrano [DONE]
 - Paperclip [DONE]
+  - Custom interpolations for images
 - Rspec [DONE]
 - Rspec Rails [DONE]
 - Factory Girl [DONE]
