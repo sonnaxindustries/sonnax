@@ -1,5 +1,7 @@
 This is the documentation for the Sonnax website re-build.
 
+
+
 SFTP:
 user: sonnax
 pass: s0nn4x
@@ -129,3 +131,53 @@ Email List Management (Constant Contact)
 URL ROUTES:
 - /careers
 - /careers/openings
+
+MEETING NOTES (2010-01-25 9:00AM with David McGee)
+There is an ERP system, but it is not connected to the website in any fashion. (NK: What about simply retrieving a database of products?)
+
+Product Market Segments
+* Transmission Parts
+* Torque Converter Parts
+* Power Train Savers / Driveline Parts
+  - This is a different market than the first 2 sections
+  - Fleet and driveline shops
+* High performance parts
+  - This is a subset of the first 2 sections
+  - The market for this is different than the first 2
+    - "A guy building a transmission for a friend"
+    - "A guy building a transmission for a trailer"
+  - These parts are sold directly to the consumer, not through a distributor
+  
+Distributors
+- Not always educated on all of Sonnax's catalog
+- They do not promote Sonnax's products 
+
+Main Markets: The market is very specific and very niche. If someone has worked with transmissions, they have heard of Sonnax. The parts are very need specific.
+- Automatic Transmission Repair Shops
+- Quick Lube would be at the bottom of this chain
+- There are a select group of 'Fanboys' who help to promote their products.
+
+Torque Converter Group: This is the link between the engine and transmission. They share the fluid from the transmission.
+- Many are re-built in factories
+- Re-builders range in size, from small shops to big names.
+- Sonnax will sell to these people directly
+- Online catalog is very important for this set of people, as they can order via email on the website.
+- They can place quick orders, as well as maintain a cart. (NK: Could this be confusing to a user, who can add some items to their cart, while others are for distributors?)
+
+Sharing of Technical Information: This section is about disseminating technical knowledge and information. It suffers in that it lacks context of the rest of the site, and assumes knowledge of the contents of the PDF documents
+- Products in the catalog have instructions for installation.
+- Reamers
+- Vacuum testing guidelines
+- Kits
+
+Events
+- These are primarily used and geared towards the distributors who will also be at many of the events they will be attending
+
+News
+- This gets updated about once a month, and in many cases will mirror the press releases that they send to trade magazines
+
+Weaknesses of the current site
+- The product catalog is structured for sales. It is too fragmented in the wrong places.
+  - EX: Someone coming to look for transmissions many not realized it's in 'High Performance Parts', and therefore not find what they are looking for. 
+- The language may sometimes carry a myopic view of the company
+- There are many ways to contact Sonnax, but this is seen as a symptom of a bigger problem: people can't find what they are looking for on the current website.
