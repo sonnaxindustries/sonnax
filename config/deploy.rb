@@ -15,11 +15,11 @@ set :user, 'root'
 set :use_sudo, false
 set :deploy_via, :remote_cache
 
-set :shared_host, '74.50.59.43'
+set :shared_host, 'theklaibers.com'
 
-role :app, '74.50.59.43'
-role :web, '74.50.59.43'
-role :db, '74.50.59.43', :primary => true
+role :app, 'theklaibers.com'
+role :web, 'theklaibers.com'
+role :db, 'theklaibers.com', :primary => true
 
 desc "deploy to the theklaibers subdomain"
 task :theklaibers do
