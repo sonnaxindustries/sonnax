@@ -1,5 +1,10 @@
 This is the documentation for the Sonnax website re-build.
 
+SFTP:
+user: sonnax
+pass: s0nn4x
+host: theklaibers.com
+
 GEMS:
 - Capistrano [DONE]
 - Paperclip [DONE]
@@ -23,6 +28,8 @@ EMAIL ADDRESSES:
 - internationalsalesteam@sonnax.com
 - webrg@sonnax.com (Ring Gear Information)
 - webmc@sonnax.com (Email for Quote and Information)
+- tcnew@sonnax.com
+- opportunities@sonnax.com
 
 INTEGRATION:
 - Constant Contact
@@ -72,3 +79,53 @@ SEO:
 - Custom Sitemap Database
 - sitemap.xml
 - sitemap.html
+
+SITE NOTES:
+- SEO is somewhat low on priorities, as they have the exposure and audience. Let's just get this cleaned up and more organized to view and make sense of.
+- Internal search is high priority, as they want to be able to search the entire internal site. Currently using Google Search for this, but that takes people out of context. 
+- Product Catalog is high priority
+- Per discussion with David, he wants to put the emphasis on creating a better experience so people don't have to contact, versus relying on contact methods
+
+**
+- Get the Part Summary outside of a PDF, and into the website. This would be a long term task
+  - This assumes people can view PDF's, or have permission to view PDF's
+
+UX:
+- Different Layouts and options for main sections. This can be confusing for users who want to scan or find parts. IE: Once section has a part finder, the other is a PDF of a catalog.
+- Email for Quote should be in page (JS) that can bind down when they want to receive a quote. Get their name, phone number, email?
+- Find a distributor. This should be attached to all products that are not sold directly to the end user. **
+- Part summary and instructions could be separate tabs for people to get the information.
+- PDF downloads as a secondary action
+- Speed order available for only a subset??
+  - Can we show a cart icon? how can someone view their cart if they want to jump from page to page?
+- Search and search results are inconsistent between each section. There should be a 'search' - which is a plain text, and then an advanced search.
+- Ordering options should be on the part detail page when ordering is available. If it's not available, then show the distributor finder
+  - Distributor
+  - Speed Order
+  - Email for Quote
+- Navigation naming
+- Videos using a standard video player to stream, not requiring a plugin.
+- Catalog request. Could this be on every page? 
+  - Full page to catalog order
+  - Email sign up, checkbox versus a second page
+- Inconsistency of news/events. Can we move these off of wordpress, and give a quick custom admin for this?
+- Contact us, checkbox for the email insider to automatically subscribe them in the background?
+
+- Using Blog 'Pages' versus actual items, which means links are not linking directly to the article. Current homepage is an example.
+- Inconsistent Navigation
+  
+  
+ASSETS FOR PARTS:
+- Installation Instructions
+- Catalog
+- Demonstration Videos
+- Images
+
+DATABASE:
+Frequently Asked Questions
+Testimonies
+Email List Management (Constant Contact)
+
+URL ROUTES:
+- /careers
+- /careers/openings
