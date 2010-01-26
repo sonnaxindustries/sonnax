@@ -1,0 +1,21 @@
+body {
+  font: normal 62.5%/1.8 "Helvetica Neue",Helvetica,sans-serif;
+  text-align: center;
+  color: #000;
+}
+#wrapper {
+  font-size: 1.2em;
+  width: 80em;
+  margin: 0 auto;
+  text-align: left;
+}
+h3 {
+  font: bold 1.5em/1.8 "Georgia",serif;
+  margin-top: 1.5em;
+}
+/* -- =EXTRA -- */
+div#extra p.disclaimer {
+  font-size: 0.8em;
+  color: #666;
+  line-height: 1.4em;
+}

@@ -2,6 +2,12 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace(:admin) do |admin|
   end
   
+  map.with_options(:controller => 'pages') do |page|
+    page.history_mission '/history-and-mission', :action => 'history_and_mission'
+    page.international_info '/international-info', :action => 'international_info'
+    page.international_shipping_and_payment '/international-shipping-and-payment-options', :action => 'international_shipping_and_payment'
+  end
+  
   map.resource :users
   map.resource :user_session
   map.resource :account, :controller => "users"
