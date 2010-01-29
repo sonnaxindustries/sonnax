@@ -106,9 +106,6 @@ module Rails
   end
 end
 
-# All that for this:
-Rails.boot!
-
 class Rails::Boot
   def run
     load_initializer
@@ -126,3 +123,6 @@ class Rails::Boot
     end
   end
 end
+
+# All that for this:
+Rails.boot!
