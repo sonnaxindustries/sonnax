@@ -1,5 +1,20 @@
 This is the documentation for the Sonnax website re-build.
 
+CONSTANT CONTACT:
+Key Display Name: Sonnax	
+Key: fa7d24bf-7f27-4706-bf2e-4c8f33d1d602	
+Consumer Secret: 45f303163b39489fa7e445b3e20d37b1	
+Status: Active
+
+ORPHANED QUERIES:
+1. Remove orphaned parts from the assemblies
+SELECT * FROM assembly_parts
+LEFT JOIN parts ON assembly_parts.part_id = parts.id
+WHERE parts.id IS NULL
+
+Login:
+Username: sonnaxvt
+Password: obladee
 
 
 SFTP:
@@ -43,6 +58,8 @@ SEARCH:
 - Catalog by Part Name
 - Catalog by Keyword
 - Publications by Keyword
+- Frequently Asked Questions by Keyword
+- Frequently Asked Questions by Related Part
 
 IMAGES:
 - Part images (thumb, medium, large, original)
