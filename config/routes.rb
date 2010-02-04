@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
     page.history_mission '/history-and-mission', :action => 'history_and_mission'
     page.international_info '/international-info', :action => 'international_info'
     page.international_shipping_and_payment '/international-shipping-and-payment-options', :action => 'international_shipping_and_payment'
+    page.sonnax_insider '/sonnax-insider', :action => 'sonnax_insider'
+    page.request_catalogs '/request-catalogs', :action => 'request_catalogs'
   end
   
   map.resource :users
@@ -16,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
   map.register '/register', :controller => 'users', :action => 'new'
   
-  map.root :controller => 'application', :action => 'home'
+  map.root :controller => 'pages', :action => 'home'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

@@ -123,14 +123,388 @@ ASSETS FOR PARTS:
 - Demonstration Videos
 - Images
 
+FIND A DISTRIBUTOR
+- Geolocation search
+- Distributor list page (Grid)
+  - List by Country
+  - List by State
+  - Sort by alphabetical, then order (then most parts?)
+- Distributor detail page
+  - Title
+  - Url
+  - Address
+  - Phone Number
+  - CTA to contact the distributor
+  - Parts listing??
+  - Google Maps API integration
+- Search index for distributors
+- Enter postal code and then search?
+- Select Country from drop down?
+
+SPEED ORDER (Login?)
+
+API DATABASE:
+- twitter
+- flickr?
+- constant_contact (use this to properly segment data, as well as tie this into a login system for users)
+  - subscription queue in a background job? 
+  - Process directly to CC and also add into the system? 
+  - Process directly to CC, and then sync with CC?
+  - How can users integrate?
+  
+- Should be able to get a catalog without registering. If registered, then information is prefilled.
+
+TODO (2010-02-03)
+** A PART HAS MANY UNITS!
+** Assemblies:  http://sonnax.com/admin/part_finder.php?pl=10&make=3&unit=433&show_only_tt=false&show_only_sc=false
+- jQuery and AJAX adding of makes and such before saving
+- publications
+
 DATABASE:
-Frequently Asked Questions
-Testimonies
-Email List Management (Constant Contact)
+users
+- id
+- login
+- first_name
+- last_name
+- created_at
+- updated_at
+
+user_profiles
+- id
+- user_id
+- description
+- avatar
+
+user_addresses
+- id
+- user_id
+- address_id
+- is_primary
+- type (Home, Work, Etc)
+
+user_phone_numbers
+- id
+- user_id
+- phone_number
+- is_primary
+- type (Home, Work, Etc)
+
+user_email_addresses
+- id
+- user_id
+- email_address_id
+- is_primary
+- type (Home, Work, Etc)
+
+frequently_asked_questions
+- id
+- question
+- answer
+
+part_frequently_asked_questions
+- id
+- part_id
+- question
+- answer
+
+email_addresses
+- id
+- email_address
+- is_confirmed
+- created_at
+- updated_at
+
+newsletter_lists
+- id
+- title
+- description
+
+newsletter_list_email_addresses
+- id
+- newsletter_list_id
+- email_address_id
+
+testimonies
+- id
+- quotation
+- citation
+- created_at
+- updated_at
+
+homepage_testimonies
+- id
+- testimony_id
+- order
+
+orders
+- id
+- session_id
+- product_id
+
+units
+- id
+- product_line_id
+- reference_figure_id
+- name
+- description
+
+unit_components
+- id
+- unit_id
+- component_type
+- assembly_or_part_id (does this need 2 tables? polymorphic?)
+- order
+- code_on_reference_figure
+- description
+
+unit_component_notes
+- id
+- unit_component_id
+- note
+
+unit_component_attributes
+- id
+- unit_component_id
+- attribute_key
+- attribute_value
+
+unit_makes
+- id
+- unit_id
+- make_id
+
+product_lines
+- id
+- title
+- description
+
+product_lines_products
+- id
+- product_id
+- product_line_id
+- description (descriptions per the product line)
+- order
+
+products
+- id
+- parent_id
+- title
+- url_friendly
+- oem_number
+- part_number
+- is_featured
+- is_published
+- released_at
+- created_at
+- updated_at
+
+asset_types
+- id
+- title (announcement, instructions, tech)
+
+product_assets
+- id
+- product_id
+- asset_type_id
+
+product_notes
+- id
+- product_id
+- note
+
+product_attributes
+- id
+- product_id
+- attribute_type
+- attribute_value
+
+product_profiles
+- id
+- product_id
+- product_line_id
+- summary
+- description
+
+product_photos
+- id
+- product_id
+- photo
+- version
+- type (specific type of the photo)
+
+product_pricings
+- id
+- product_id
+- price
+
+product_categories
+- id
+- product_id
+- category_id
+- description
+
+categories
+- id
+- parent_id
+- title
+- url_friendly
+- description
+
+assemblies
+- id
+- title
+- description
+
+assembly_products
+- id
+- assembly_id
+- part_id
+- code_on_reference_figure (this is the number, letter, etc that maps to an image. see reference_figures)
+- display_order
+
+makes
+- id
+- title
+- url_friendly
+- description
+
+catalogs
+- id
+- title
+- url_friendly
+- description
+
+catalog_types
+- id
+- title (DVD, PDV, CD)
+
+catalog_versions (this stores the assets for the catalogs themselves)
+- id
+- purchase_method (download, mail)
+- catalog_type_id
+- catalog_id
+- cover_photo (image for paperclip)
+- catalog_file (PDF file)
+- version
+
+job_departments
+- id
+- title
+
+careers
+- id
+- job_department_id
+- title
+- description
+- created_at
+- updated_at
+
+events
+- id
+- title
+- url_friendly
+- description
+- url
+- phone_number
+- address_id
+- start_datetime
+- end_datetime
+- created_at
+- updated_at
+
+event_sponsor
+- id
+- event_id
+- name
+- url
+
+press_releases
+- id
+- title
+- url_friendly
+- summary
+- body
+- publish_at
+- publish_until
+- created_at
+- updated_at
+
+products_press_releases
+- id
+- product_id
+- press_release_id
+- order
+
+products_events
+- id
+- product_id
+- event_id
+- order
+
+distributors
+- id
+- name
+- url_friendly
+- description
+- website
+
+distributor_phone_numbers (STI)
+- id
+- distributor_id
+- phone_number
+- type
+
+distributor_addresses (STI)
+- id
+- distributor_id
+- address_id
+- type
+
+addresses
+- id
+- street_address
+- postal_code_id
+
+postal_codes
+- id
+- postal_code
+- state_id
+- country_id
+
+states
+- id
+- name
+- code
+
+countries
+- id
+- name
+- code
+
+contacts
+- id
+- first_name
+- last_name
+- company_name
+- phone_number
+- subject
+- body
+- created_at
+- updated_at
+
+reference_figures
+- id
+- title
+- description
+- figure_photo
+- figure_pdf
+
+
 
 URL ROUTES:
 - /careers
 - /careers/openings
+- /sonnax-insider
 
 MEETING NOTES (2010-01-25 9:00AM with David McGee)
 There is an ERP system, but it is not connected to the website in any fashion. (NK: What about simply retrieving a database of products?)

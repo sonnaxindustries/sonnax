@@ -23,7 +23,7 @@
         <h1>Sonnax</h1>
         <ul>
           <li><%= link_to 'Home', '#' %></li>
-          <li><%= link_to 'Product Lines', '#' %></li>
+          <li><%= link_to 'Products', '#' %></li>
           <li><%= link_to 'Quick Search', '#' %></li>
           <li><%= link_to 'How to Order', '#' %>
             <ul>
@@ -34,6 +34,7 @@
           <li><%= link_to 'About Us', '#' %>
             <ul>
               <li><%= link_to "History &amp; Mission", history_mission_path %></li>
+              <li><%= link_to "Careers", '#' %></li>
               <li><%= link_to "International", international_info_path %></li>
             </ul>
           </li>
@@ -44,7 +45,27 @@
         <%= yield %>
       </div>
       
+      <div class="find-distributor">
+        <h3>Find your closest distributor</h3>
+      </div>
+      
+      <div class="how-to-order">
+        <h3>How do I order?</h3>
+        <ol>
+          <li>
+            <h4>Contact Sonnax Directly</h4>
+            <p>You can call us or e-mail us to place an order directly.</p>
+          </li>
+          
+          <li>
+            <h4>Browse our Parts</h4>
+            <p>You can browse our parts and find more ordering options.</p>
+          </li>
+        </ol>
+      </div>
+      
       <div class="search-box simple">
+        <h3>Search</h3>
         <form method="post" action="#">
           <fieldset>
             <legend>Search</legend>
@@ -63,10 +84,29 @@
       
       
       <div id="extra">
+        <p>&copy; <%= Time.now.year %> Sonnax Industries, Inc. Sonnax Transmission, Torque Converter, Performance, Driveline, Allison&reg; Replacement Parts for automotive aftermarket rebuilders.</p>
+        <div class="vcard">
+          <div class="org"><a href="http://www.sonnax.com" class="url fn n">Sonnax</a></div>
+          <div class="adr">
+            <div class="street-address">1 Automatic Drive</div>
+            <span class="locality">Bellow Falls</span>, 
+            <span class="region">Vermont</span>, 
+            <span class="postal-code">05101-0440</span>
+            <span class="country-name">United States</span>
+          </div>
+          <div class="tel">
+            <span class="type">Toll-Free</span>:
+            <span class="value">800-843-2600</span>
+          </div>
+          <div class="tel">
+            <span class="type">Local</span>:
+            <span class="value">802-463-9722</span>
+          </div>
+          <a class="email" href="mailto:info@sonnax.com">info@sonnax.com</a>
+        </div>
         <ul>
           <li><%= link_to "Terms &amp; Conditions", '#' %></li>
-          <li><%= link_to "Shipping Options", '#' %></li>
-          <li><%= link_to "Payment Options", '#' %></li>
+          <li><%= link_to "International Payment &amp; Shipping Options", international_shipping_and_payment_path %></li>
         </ul>
         <p class="disclaimer">This website and all of its contents are the intellectual property of Sonnax Industries, Inc.  No portion of this work may be reproduced or transmitted in any form or by any means, mechanical or electronic, including photocopying and/or recording, or by any other information storage and/or retrieval system without the prior written consent of Sonnax Industries, Inc.  Sonnax customers may use the part numbers only for the limited purpose of placing orders with Sonnax or otherwise operating their business, but in no case is permission granted to any customer, business entity, or individual to utilize the part numbers in order to compete with Sonnax. &copy; 2008 Sonnax Industries, Inc. Sonnax Transmission, Torque Converter, Performance, Driveline, Allison&reg; Replacement Parts for automotive aftermarket rebuilders.</p>
       </div>

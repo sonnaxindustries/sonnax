@@ -7,10 +7,6 @@ class ApplicationController < ActionController::Base
   before_filter :get_current_controller_info
   helper_method :current_user_session, :current_user, :production?, :development?, :maintenance_mode?
   
-  def home
-    render :text => 'Homepage', :layout => 'application'
-  end
-  
   def development?
     'development' == RAILS_ENV
   end
