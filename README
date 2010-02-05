@@ -1,21 +1,38 @@
+------------------------------------- DATA EXPORTER -------------------------------------
+Exporting the DB for Sonnax. Once we have this object, we can define formatters and she can export in whatever format she would like.
+
+DataExporter object
+- reads from filesystem directory
+- created_at
+- updated_at
+- filename
+------------------------------------- /DATA EXPORTER -------------------------------------
+
+------------------------------------- FILE CONVERSIONS -------------------------------------
+ROOT_CONVERSIONS            = File.join(RAILS_ROOT, 'public', 'file_conversions')
+PHOTOS_DIRECTORY            = File.join(ROOT_CONVERSIONS, 'part-images')
+ANNOUNCEMENTS_DIRECTORY     = File.join(ROOT_CONVERSIONS, 'announcements')
+INSTRUCTIONS_DIRECTORY      = File.join(ROOT_CONVERSIONS, 'instructions')
+TECH_DIRECTORY              = File.join(ROOT_CONVERSIONS, 'tech')
+VBFIX_DIRECTORY             = File.join(ROOT_CONVERSIONS, 'vbfix')
+TECH_ARTICLES_DIRECTORY     = File.join(ROOT_CONVERSIONS, 'tech-articles')
+SONNAFLOW_CHARTS_DIRECTORY  = File.join(ROOT_CONVERSIONS, 'sonnaflow-charts')
+------------------------------------- /FILE CONVERSIONS -------------------------------------
+
+
 This is the documentation for the Sonnax website re-build.
 
+------------------------------------- API -------------------------------------
 CONSTANT CONTACT:
 Key Display Name: Sonnax	
 Key: fa7d24bf-7f27-4706-bf2e-4c8f33d1d602	
 Consumer Secret: 45f303163b39489fa7e445b3e20d37b1	
 Status: Active
 
-ORPHANED QUERIES:
-1. Remove orphaned parts from the assemblies
-SELECT * FROM assembly_parts
-LEFT JOIN parts ON assembly_parts.part_id = parts.id
-WHERE parts.id IS NULL
-
 Login:
 Username: sonnaxvt
 Password: obladee
-
+------------------------------------- /API -------------------------------------
 
 SFTP:
 user: sonnax
@@ -64,7 +81,7 @@ SEARCH:
 IMAGES:
 - Part images (thumb, medium, large, original)
 - Catalog cover images (thumb, medium, large, original)
-- Distributor profile Flag Images (thumb, original)
+- Distributor profile Flag Images (thumb, original) - OR - These flags are associated with countries
 
 DATABASE:
 - Testimonials
@@ -469,12 +486,14 @@ distributor_phone_numbers (STI)
 - id
 - distributor_id
 - phone_number
+- is_primary
 - type
 
 distributor_addresses (STI)
 - id
 - distributor_id
 - address_id
+- is_primary
 - type
 
 addresses
@@ -492,11 +511,18 @@ states
 - id
 - name
 - code
+- created_at
+- updated_at
 
-countries
+countries (find the images by the url_friendly name, in the images directory - check to see if it exists, then import)
 - id
 - name
+- url_friendly
 - code
+- flag_file_name
+- flag_content_type
+- flag_file_size
+- flag_updated_at
 
 contacts
 - id
