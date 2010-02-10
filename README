@@ -7,6 +7,25 @@ DataExporter object
 - updated_at
 - filename
 ------------------------------------- /DATA EXPORTER -------------------------------------
+use default_scope on these models
+Distributors have addresses
+- For those with international, then they are international distributors
+- For those without, then they are US
+
+[Map the polymorphic part]
+distributor.addresses = hash of both types of addresses
+
+distributor_us_addresses
+distributor_int_addresses
+
+us_addresses
+us_states
+us_cities
+us_postal_codes
+
+int_addresses
+int_cities
+int_postal_codes
 
 ------------------------------------- FILE CONVERSIONS -------------------------------------
 ROOT_CONVERSIONS            = File.join(RAILS_ROOT, 'public', 'file_conversions')
@@ -122,6 +141,8 @@ SITE NOTES:
 - Product Catalog is high priority
 - Per discussion with David, he wants to put the emphasis on creating a better experience so people don't have to contact, versus relying on contact methods
 
+- parts should be made available by default, then use search/filter to refine the parts. There needs to be a 'browse'
+
 **
 - Get the Part Summary outside of a PDF, and into the website. This would be a long term task
   - This assumes people can view PDF's, or have permission to view PDF's
@@ -189,12 +210,68 @@ API DATABASE:
 - Should be able to get a catalog without registering. If registered, then information is prefilled.
 
 TODO (2010-02-03)
-** A PART HAS MANY UNITS!
-** Assemblies:  http://sonnax.com/admin/part_finder.php?pl=10&make=3&unit=433&show_only_tt=false&show_only_sc=false
 - jQuery and AJAX adding of makes and such before saving
-- publications
 
 DATABASE:
+product_line_publications
+- id
+- product_line_id
+- publication_id
+
+product_line_distributors
+- id
+- product_line
+- distributor_id
+
+part_distributors (NOT needed now, but could be used as a child indicator)
+- id
+- part_id
+- distributor_id
+
+languages
+- id
+- title
+
+publication_languages
+- id
+- publication_id
+- language_id
+
+publications
+- id
+- title
+- url_friendly
+- summary
+- description
+- pdf_file_name
+- pdf_content_type
+- pdf_file_size
+- pdf_updated_at
+- published_date
+- created_at
+- updated_at
+
+publication_volumes
+- id
+- publication_id
+- volume
+
+publication_categories (RETHINK Structure)
+- id
+- parent_id
+- title
+- url_friendly
+- description
+- is_active
+- is_primary
+- order
+
+publication_categories_publications
+- id
+- publication_id
+- publication_category_id
+- order
+
 users
 - id
 - login
@@ -273,7 +350,30 @@ homepage_testimonies
 orders
 - id
 - session_id
-- product_id
+- name (hashed key of browser + session)
+(REMOVE: TC)
+
+order_parts
+- id 
+- order_id
+- part_id
+- quantity
+(REMOVE: product_line and description)
+
+speed_orders
+- id
+- session_id
+- part_id
+- quantity
+- created_at
+- updated_at
+
+REMOVE: speed_order_temp
+
+units_product_lines (proposed)
+- id
+- unit_id
+- product_line_id
 
 units
 - id
@@ -282,18 +382,19 @@ units
 - name
 - description
 
-unit_components
+unit_parts
 - id
 - unit_id
-- component_type
-- assembly_or_part_id (does this need 2 tables? polymorphic?)
-- order
-- code_on_reference_figure
+- part_id
+- reference_figure_code
+- summary
 - description
+- order
+(REMOVE: component_type, assembly_or_part_id)
 
-unit_component_notes
+unit_part_notes
 - id
-- unit_component_id
+- unit_part_id
 - note
 
 unit_component_attributes
@@ -312,14 +413,18 @@ product_lines
 - title
 - description
 
-product_lines_products
+product_line_parts
 - id
-- product_id
+- part_id
 - product_line_id
+- title
 - description (descriptions per the product line)
+- is_featured
+- is_active
+- can_sell_direct (does this need to be here or the part itself? Both?)
 - order
 
-products
+parts
 - id
 - parent_id
 - title
@@ -332,21 +437,90 @@ products
 - created_at
 - updated_at
 
+photos
+- id
+- title
+- description
+- photo_file_name
+- photo_content_type
+- photo_file_size
+- photo_updated_at
+- created_at
+- updated_at
+
+videos
+- id
+- title
+- description
+- video_file_name
+- video_content_type
+- video_file_size
+- video_updated_at
+- created_at
+- updated_at
+
+assets
+- id
+- title
+- description
+- asset_file_name
+- asset_content_type
+- asset_file_size
+- asset_updated_at
+- created_at
+- updated_at
+
 asset_types
 - id
 - title (announcement, instructions, tech)
+- is_primary
 
-product_assets
+photo_types
 - id
-- product_id
+- title (product shot, group shot, etc)
+- is_primary
+
+video_types
+- id
+- title (instructions, promo)
+- is_primary
+
+part_photos
+- id
+- part_id
+- photo_id
+- title
+- description
+- is_primary
+- order
+- photo_type_id
+
+part_videos
+- id
+- part_id
+- video_id
+- title
+- description
+- is_primary
+- order
+- video_type_id
+
+part_assets
+- id
+- part_id
+- asset_id
+- title
+- description
+- is_primary
+- order
 - asset_type_id
 
-product_notes
+part_notes
 - id
-- product_id
+- part_id
 - note
 
-product_attributes
+part_attributes
 - id
 - product_id
 - attribute_type
@@ -401,24 +575,54 @@ makes
 - title
 - url_friendly
 - description
+- logo_file_name
+- logo_content_type
+- logo_file_size
+- logo_updated_at
+
+product_line_catalogs (in case they want to link to the online product line catalog - this needs to take into consideration the published status)
+- id
+- product_line_id
+- catalog_id
+
+distributor_catalogs (in case they have to contact a distributor to get a catalog. This tells us which distributors have the catalog)
+- id
+- distributor_id
+- catalog_id
 
 catalogs
 - id
 - title
 - url_friendly
+- online_catalog_url (The internal URL to the online catalog) - OR - Do we simply attach a product_line to a catalog
 - description
+- cover_file_name
+- cover_file_size
+- cover_content_type
+- cover_updated_at
 
-catalog_types
+catalog_formats
 - id
-- title (DVD, PDV, CD)
+- title (DVD, PDF, CD)
+
+catalogs_formats
+- id
+- catalog_id
+- format_id
 
 catalog_versions (this stores the assets for the catalogs themselves)
 - id
-- purchase_method (download, mail)
-- catalog_type_id
 - catalog_id
 - cover_photo (image for paperclip)
-- catalog_file (PDF file)
+- cover_file_name
+- cover_file_size
+- cover_content_type
+- cover_updated_at
+- pdf_file_name
+- pdf_file_size
+- pdf_content_type
+- pdf_updated_at
+- is_primary
 - version
 
 job_departments
@@ -481,6 +685,10 @@ distributors
 - url_friendly
 - description
 - website
+- logo_file_name
+- logo_content_type
+- logo_file_size
+- logo_updated_at
 
 distributor_phone_numbers (STI)
 - id
@@ -495,6 +703,10 @@ distributor_addresses (STI)
 - address_id
 - is_primary
 - type
+
+communication_types
+- id
+- title (home, work, main office, fax, mobile)
 
 addresses
 - id
@@ -539,15 +751,48 @@ reference_figures
 - id
 - title
 - description
-- figure_photo
-- figure_pdf
+- image_file_name
+- image_content_type
+- image_file_size
+- image_updated_at
+- pdf_file_name
+- pdf_content_type
+- pdf_file_size
+- pdf_updated_at
+
+redirects
+- id
+- old_url
+- new_url (or the new sitemap)
+
+
++++++++++++++++++++++++
+What is the difference between good and poor publications?
+What is TC in the order table?
+
+REMOVE:
+- hub_identification from ref_figures
+- assemblies
+- assembly_parts
+
+++++++++++++++++++++++++++
 
 
 
 URL ROUTES:
 - /careers
-- /careers/openings
+- /career-openings
 - /sonnax-insider
+- /parts
+- /this-is-the-full-part-name-part
+- /product-lines
+- /this-is-the-name-product-line
+- /makes
+- /this-is-the-name-make
+- /this-is-the-name-country
+- /distributors
+- /this-is-the-name-distributor
+- /this-is-the-name-state
 
 MEETING NOTES (2010-01-25 9:00AM with David McGee)
 There is an ERP system, but it is not connected to the website in any fashion. (NK: What about simply retrieving a database of products?)
