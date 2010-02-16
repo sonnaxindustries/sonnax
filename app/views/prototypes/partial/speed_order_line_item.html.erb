@@ -1,0 +1,19 @@
+<tr id="line_item_<%= row_number %>">
+  <td class="product-line">
+    <label for="product_line_<%= nextNum %>">Product Line</label>
+    <select name="product_line" id="product_line_<%= row_number %>">
+      <option name="transmission">Transmission</option>
+      <option name="transmission">Torque Converter</option>
+    </select>
+  </td>
+  
+  <td class="part-number">
+    <label for="part_number_<%= row_number %>">Part Number</label>
+    <input type="text" name="part_number[]" id="part_number_<%= row_number %>">
+  </td>
+  
+  <td class="quantity">
+    <label for="quantity_<%= row_number %>">Quantity</label>
+    <input type="text" name="quantity[]" id="quantity_<%= row_number %>" size="2">
+  </td>
+</tr>

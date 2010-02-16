@@ -2,6 +2,9 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace(:admin) do |admin|
   end
   
+  map.prototypes_list '/prototypes', :controller => 'prototypes', :action => 'index'
+  map.prototype_detail '/prototype/:name', :controller => 'prototypes', :action => 'show'
+  
   map.with_options(:controller => 'pages') do |page|
     page.history_mission '/history-and-mission', :action => 'history_and_mission'
     page.international_info '/international-info', :action => 'international_info'
