@@ -16,7 +16,7 @@
       </thead>
       <tfoot></tfoot>
       <tbody>
-    <% (1).upto(5).each do |row| %>
+    <% (1...5).each do |row| %>
     <tr id="line_item_<%= row %>">
       <td class="product-line">
         <label for="product_line_<%= row %>">Product Line</label>
