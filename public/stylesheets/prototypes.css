@@ -49,3 +49,18 @@ form#speed-order-form fieldset.submit {
 form#speed-order-form fieldset.submit button {
   margin-right: 3.5em;
 }
+tr.valid td.quantity {
+  background: transparent url(/images/icons/tick.png) 50% 50% no-repeat;
+}
+tr.valid {
+  background-color: #ffffcc;
+}
+tr.invalid td.quantity {
+  background: transparent url(/images/icons/cross.png) 50% 50% no-repeat;
+}
+tr.invalid {
+  background-color: #ffd5d5;
+}
+input[type="text"] {
+  font-weight: bold;
+}

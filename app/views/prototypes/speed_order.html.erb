@@ -16,8 +16,16 @@
       </thead>
       <tfoot></tfoot>
       <tbody>
-    <% (1...5).each do |row| %>
-    <tr id="line_item_<%= row %>">
+    <% (1...6).each do |row| %>
+    <% class_name = '' %>
+    <% 
+    class_name = if row == 4
+      'valid'
+      elsif row == 2
+        'invalid'
+        end %>
+
+    <tr id="line_item_<%= row %>" class="<%= class_name %>">
       <td class="product-line">
         <label for="product_line_<%= row %>">Product Line</label>
         <select name="product_line" id="product_line_<%= row %>">
