@@ -68,3 +68,33 @@ tr.invalid {
 input[type="text"] {
   font-weight: bold;
 }
+/* =CATALOGS */
+ul.catalogs,
+ul.catalogs li {
+  float: left;
+}
+ul.catalogs li {
+  width: 33%;
+  margin-bottom: 2em;
+}
+ul.catalogs li h3 {
+  font-size: 1.3em;
+  padding-top: 0;
+  margin-top: 0;
+}
+ul.catalogs li p {
+  margin-bottom: 0;
+}
+ul.catalogs li div.details {
+  float: right;
+  width: 50%;
+}
+ul.catalogs li span.cover {
+  border: 2px solid #ddd;
+  line-height: 0;
+  float: left;
+  width: 148px;
+}
+ul.catalogs li span.cover img {
+  padding: 2px;
+}

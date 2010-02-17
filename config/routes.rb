@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.prototypes_list '/prototypes', :controller => 'prototypes', :action => 'index'
   map.prototype_detail '/prototype/:name', :controller => 'prototypes', :action => 'show'
+  map.prototype_validation '/prototype/validation/:part_number', :controller => 'prototypes', :action => 'validation'
   
   map.with_options(:controller => 'pages') do |page|
     page.history_mission '/history-and-mission', :action => 'history_and_mission'

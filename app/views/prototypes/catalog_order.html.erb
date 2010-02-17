@@ -1,0 +1,14 @@
+<h2>Request Catalogs</h2>
+<p>Just a click away, you will find online versions of some of these catalogs. For any printed catalog, CD or DVD we have available to send, please select, then fill in all the fields below.</p>
+<ul class="catalogs">
+  <% (1..15).each do |item| %>
+  <li>
+    <div class="details">
+      <h3>The Catalog Title</h3>
+      <p><em>Format:</em> Soft Cover</p>
+      <p><label><input type="checkbox" name="catalog"> Add to Cart</label></p>
+    </div>
+    <span class="cover"><%= image_tag 'sample/catalog-cover.jpg', :class => 'cover' %></span>
+  </li>
+  <% end %>
+</ul>
