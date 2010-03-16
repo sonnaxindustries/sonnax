@@ -51,17 +51,41 @@ div#extra p.disclaimer {
   border-right: 1px solid #000;
 }
 #branding ul li a {
-  width: 151px;
+  width: 131px;
   line-height: 1.2;
   height: 34px;
   display: block;
   color: #fff;
   text-decoration: none;
-  font-weight: bold;
+  padding-left: 20px;
 }
 #branding ul ul {
   display: none;
 }
 #content {
   clear: both;
+}
+/*-- =LINKS --*/
+a {
+  color: #024368;
+}
+a.twitter, a.facebook {
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 40px;
+  display: block;
+  height: 32px;
+  line-height: 1.8;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  margin: 10px;
+}
+a.twitter:hover, a.facebook:hover {
+  color: #000;
+}
+a.twitter {
+  background-image: url(/file_conversions/images/twitter-32x32.png);
+}
+a.facebook {
+  background-image: url(/file_conversions/images/facebook-32x32.png);
 }
