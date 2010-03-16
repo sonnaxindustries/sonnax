@@ -5,9 +5,10 @@ body {
 }
 #wrapper {
   font-size: 1.2em;
-  width: 80em;
-  margin: 0 auto;
+  width: 76em;
+  margin: 10px auto 0 auto;
   text-align: left;
+  border: 1px solid #133d8d;
 }
 h3 {
   font: bold 1.5em/1.8 "Georgia",serif;
@@ -18,4 +19,49 @@ div#extra p.disclaimer {
   font-size: 0.8em;
   color: #666;
   line-height: 1.4em;
+}
+#branding h1 a {
+  display: block;
+  width: 254px;
+  height: 38px;
+  text-indent: -99999px;
+  margin: 40px 0 0 50px;
+  background: transparent url(/images/sonnax-logo.png) 0 0 no-repeat;
+}
+#branding {
+  float: left;
+  height: 156px;
+  width: 76em;
+  background: transparent url(/images/header-home.jpg) 100% 0 no-repeat;
+}
+#branding ul {
+  margin-top: 42px;
+  float: left;
+  width: 76em;
+  background-color: #024368;
+  height: 34px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+#branding ul li {
+  float: left;
+  display: inline;
+  color: #fff;
+  text-transform: uppercase;
+  border-right: 1px solid #000;
+}
+#branding ul li a {
+  width: 151px;
+  line-height: 1.2;
+  height: 34px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+#branding ul ul {
+  display: none;
+}
+#content {
+  clear: both;
 }
