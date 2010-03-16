@@ -53,11 +53,13 @@ div#extra p.disclaimer {
 #branding ul li a {
   width: 131px;
   line-height: 1.2;
-  height: 34px;
+  padding-top: 6px;
+  height: 28px;
   display: block;
   color: #fff;
   text-decoration: none;
   padding-left: 20px;
+  text-align: center;
 }
 #branding ul ul {
   display: none;
