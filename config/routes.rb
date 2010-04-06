@@ -23,6 +23,8 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'new'
   
   map.root :controller => 'pages', :action => 'home'
+  
+  map.connect '*path' , :controller => 'redirects' , :action => 'check'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

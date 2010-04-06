@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  old_url: MyString
+  new_url: MyString
+  http_code: MyString
+
+two:
+  old_url: MyString
+  new_url: MyString
+  http_code: MyString

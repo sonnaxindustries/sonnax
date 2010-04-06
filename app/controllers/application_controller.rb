@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
   end
   
   def render_404
-    render :template => 'pages/404', :status => 404, :layout => "inside"
+    render :template => 'pages/404', :status => 404#, :layout => "inside"
   end
   
   def render_edit
