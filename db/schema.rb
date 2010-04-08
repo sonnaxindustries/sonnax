@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100406014345) do
+ActiveRecord::Schema.define(:version => 20100407172612) do
+
+  create_table "makes", :force => true do |t|
+    t.string   "name",         :limit => 150, :null => false
+    t.string   "key_name",     :limit => 150, :null => false
+    t.string   "url_friendly", :limit => 150, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "makes", ["key_name"], :name => "index_makes_on_key_name", :unique => true
+  add_index "makes", ["url_friendly"], :name => "index_makes_on_url_friendly", :unique => true
 
   create_table "redirects", :force => true do |t|
     t.string   "old_url",    :null => false
