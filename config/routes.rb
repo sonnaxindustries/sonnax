@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.namespace(:admin) do |admin|
+    admin.resources :distributors
   end
   
   map.prototypes_list '/prototypes', :controller => 'prototypes', :action => 'index'
@@ -17,6 +18,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :users
   map.resource :user_session
   map.resource :account, :controller => "users"
+  
+  map.resources :distributors
   
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'

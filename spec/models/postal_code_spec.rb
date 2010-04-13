@@ -1,18 +1,11 @@
-require 'spec_helper'
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe PostalCode do
   before(:each) do
-    @valid_attributes = {
-      :code => "value for code",
-      :city_id => 1,
-      :state_id => 1,
-      :postal_code_type_id => 1,
-      :latitude => 1.5,
-      :longitude => 1.5
-    }
+    @postal_code = Factory.build(:postal_code)
   end
 
   it "should create a new instance given valid attributes" do
-    PostalCode.create!(@valid_attributes)
+    @postal_code.should be_valid
   end
 end

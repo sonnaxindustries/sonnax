@@ -1,16 +1,11 @@
-require 'spec_helper'
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe State do
   before(:each) do
-    @valid_attributes = {
-      :name => "value for name",
-      :url_friendly => "value for url_friendly",
-      :code => "value for code",
-      :code => "value for code"
-    }
+    @state = Factory.build(:state)
   end
 
   it "should create a new instance given valid attributes" do
-    State.create!(@valid_attributes)
+    @state.should be_valid
   end
 end
