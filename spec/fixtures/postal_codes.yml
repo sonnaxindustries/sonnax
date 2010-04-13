@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  city_id: 1
+  state_id: 1
+  postal_code_type_id: 1
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  code: MyString
+  city_id: 1
+  state_id: 1
+  postal_code_type_id: 1
+  latitude: 1.5
+  longitude: 1.5

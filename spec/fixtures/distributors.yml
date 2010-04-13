@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  url_friendly: MyString
+  postal_code_id: 1
+  country_id: 1
+  phone_number: MyString
+  website_url: MyString
+
+two:
+  name: MyString
+  url_friendly: MyString
+  postal_code_id: 1
+  country_id: 1
+  phone_number: MyString
+  website_url: MyString

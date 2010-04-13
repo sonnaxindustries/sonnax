@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  url_friendly: MyString
+  code: MyString
+  flag_file_name: MyString
+  flag_file_size: 1
+  flag_content_type: MyString
+  flag_updated_at: 2010-04-13 17:17:35
+
+two:
+  name: MyString
+  url_friendly: MyString
+  code: MyString
+  flag_file_name: MyString
+  flag_file_size: 1
+  flag_content_type: MyString
+  flag_updated_at: 2010-04-13 17:17:35
