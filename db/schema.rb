@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100413220109) do
+ActiveRecord::Schema.define(:version => 20100413221634) do
+
+  create_table "assets", :force => true do |t|
+    t.string   "asset_file_name",    :null => false
+    t.integer  "asset_file_size"
+    t.string   "asset_content_type"
+    t.datetime "asset_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assets", ["asset_content_type"], :name => "index_assets_on_asset_content_type"
 
   create_table "cities", :force => true do |t|
     t.string   "name",         :limit => 100, :null => false

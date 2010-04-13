@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe UsersRole do
+describe Asset do
   before(:each) do
-    @users_role = Factory.build(:users_role)
+    @asset = Factory.build(:asset)
   end
 
   it "should create a new instance given valid attributes" do
-    @users_role.should be_valid
+    @asset.should be_valid
   end
 end
