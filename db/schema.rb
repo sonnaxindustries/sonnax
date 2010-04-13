@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100413212749) do
+ActiveRecord::Schema.define(:version => 20100413220109) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",         :limit => 100, :null => false
@@ -95,6 +95,16 @@ ActiveRecord::Schema.define(:version => 20100413212749) do
 
   add_index "redirects", ["old_url"], :name => "index_redirects_on_old_url", :unique => true
 
+  create_table "roles", :force => true do |t|
+    t.string   "name",        :limit => 100, :null => false
+    t.string   "key_name",    :limit => 100, :null => false
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["key_name"], :name => "index_roles_on_key_name", :unique => true
+
   create_table "states", :force => true do |t|
     t.string   "name",                        :null => false
     t.string   "url_friendly", :limit => 100, :null => false
@@ -105,5 +115,14 @@ ActiveRecord::Schema.define(:version => 20100413212749) do
 
   add_index "states", ["code"], :name => "index_states_on_code"
   add_index "states", ["url_friendly"], :name => "index_states_on_url_friendly", :unique => true
+
+  create_table "users_roles", :force => true do |t|
+    t.integer "user_id", :null => false
+    t.integer "role_id", :null => false
+  end
+
+  add_index "users_roles", ["role_id"], :name => "index_users_roles_on_role_id"
+  add_index "users_roles", ["user_id", "role_id"], :name => "by_role", :unique => true
+  add_index "users_roles", ["user_id"], :name => "index_users_roles_on_user_id"
 
 end
