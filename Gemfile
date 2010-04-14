@@ -1,5 +1,6 @@
 source "http://gemcutter.org"
 
+gem "mysql",                  "2.8.1"
 gem "rails",                  "2.3.5"
 gem "capistrano",             "2.5.18"
 gem "paperclip",              "2.3.1.1"
