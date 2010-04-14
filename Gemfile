@@ -7,7 +7,7 @@ gem "will_paginate",          "2.3.12"
 gem "authlogic",              "2.1.3"
 gem "thinking-sphinx",        "1.3.14"
 
-only :test do
+group :test do
   gem "rspec",                "1.2.9"
   gem "rspec-rails",          "1.2.9"
   gem "factory_girl",         "1.2.3"
