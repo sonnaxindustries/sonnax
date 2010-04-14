@@ -2,7 +2,7 @@ RAILS_GEM_VERSION = '2.3.3' unless defined? RAILS_GEM_VERSION
 
 require File.join(File.dirname(__FILE__), 'boot')
 require 'rubygems'
-#require File.join(File.dirname(__FILE__), '..', 'vendor', 'bundler_gems', 'environment')
+require File.join(File.dirname(__FILE__), '..', 'vendor', 'bundler_gems', 'environment')
 
 Rails::Initializer.run do |config|
   config.load_paths += %W( #{RAILS_ROOT}/app/presenters #{RAILS_ROOT}/app/observers #{RAILS_ROOT}/app/mailer #{RAILS_ROOT}/app/sweepers #{RAILS_ROOT}/app/builders )
