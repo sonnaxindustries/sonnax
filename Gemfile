@@ -6,6 +6,7 @@ gem "paperclip",              "2.3.1.1"
 gem "will_paginate",          "2.3.12"
 gem "authlogic",              "2.1.3"
 gem "thinking-sphinx",        "1.3.16"
+gem "liquid",                 "2.0.0"
 
 group :test do
   gem "rspec",                "1.3.0"

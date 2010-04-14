@@ -24,6 +24,5 @@ Capistrano::Configuration.instance.load do
   # HOOKS
   after "deploy:update_code" do
     bundler.bundle_new_release
-    # ...
   end
 end
