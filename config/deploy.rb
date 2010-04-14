@@ -49,11 +49,10 @@ namespace(:deploy) do
   end
 end
 
-
 #NOTE: This only needs to be run once, then we will pull down from production on subsequent calls
 desc 'Copy local images to shared folder on the server'
 task(:copy_shared) do
-  run_locally("scp -r /users/nateklaiber/sites/camp_club_girls/public/system/* root@74.50.59.43:#{shared_path}/system/")
+  run_locally("scp -r /users/nateklaiber/sites/sonnax/public/system/* root@74.50.59.43:#{shared_path}/system/")
 end
 
 after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions'
