@@ -5,7 +5,6 @@ class CreatePublicationCategoriesTitles < ActiveRecord::Migration
       t.integer :publication_title_id, :null => false
       t.text :description
       t.integer :sort_order
-      t.timestamps
     end
     
     add_index :publication_categories_titles, :publication_category_id

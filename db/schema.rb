@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100415145756) do
+ActiveRecord::Schema.define(:version => 20100415150311) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -144,6 +144,15 @@ ActiveRecord::Schema.define(:version => 20100415145756) do
   end
 
   add_index "publication_titles", ["url_friendly"], :name => "index_publication_titles_on_url_friendly", :unique => true
+
+  create_table "publication_titles_authors", :force => true do |t|
+    t.integer "publication_title_id",  :null => false
+    t.integer "publication_author_id", :null => false
+  end
+
+  add_index "publication_titles_authors", ["publication_author_id"], :name => "index_publication_titles_authors_on_publication_author_id"
+  add_index "publication_titles_authors", ["publication_title_id", "publication_author_id"], :name => "by_author", :unique => true
+  add_index "publication_titles_authors", ["publication_title_id"], :name => "index_publication_titles_authors_on_publication_title_id"
 
   create_table "redirects", :force => true do |t|
     t.string   "old_url",    :null => false
