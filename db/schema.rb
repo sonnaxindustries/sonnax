@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100415140221) do
+ActiveRecord::Schema.define(:version => 20100415145756) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(:version => 20100415140221) do
   add_index "postal_codes", ["code"], :name => "index_postal_codes_on_code", :unique => true
   add_index "postal_codes", ["postal_code_type_id"], :name => "index_postal_codes_on_postal_code_type_id"
   add_index "postal_codes", ["state_id"], :name => "index_postal_codes_on_state_id"
+
+  create_table "publication_authors", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "full_name",  :null => false
+    t.text     "bio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "publication_categories", :force => true do |t|
     t.integer  "parent_id"
