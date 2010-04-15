@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100413221634) do
+ActiveRecord::Schema.define(:version => 20100415015743) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20100413221634) do
   create_table "countries", :force => true do |t|
     t.string   "name",              :limit => 100, :null => false
     t.string   "url_friendly",      :limit => 100, :null => false
-    t.string   "code"
+    t.string   "code",              :limit => 50
     t.string   "flag_file_name"
     t.integer  "flag_file_size"
     t.string   "flag_content_type"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20100413221634) do
     t.datetime "updated_at"
   end
 
+  add_index "countries", ["code"], :name => "index_countries_on_code", :unique => true
   add_index "countries", ["url_friendly"], :name => "index_countries_on_url_friendly", :unique => true
 
   create_table "distributors", :force => true do |t|
@@ -72,13 +73,10 @@ ActiveRecord::Schema.define(:version => 20100413221634) do
   add_index "makes", ["url_friendly"], :name => "index_makes_on_url_friendly", :unique => true
 
   create_table "postal_code_types", :force => true do |t|
-    t.string   "name",         :null => false
-    t.string   "url_friendly", :null => false
+    t.string   "name",       :limit => 100, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "postal_code_types", ["url_friendly"], :name => "index_postal_code_types_on_url_friendly", :unique => true
 
   create_table "postal_codes", :force => true do |t|
     t.string   "code",                :limit => 25, :null => false
@@ -91,8 +89,9 @@ ActiveRecord::Schema.define(:version => 20100413221634) do
     t.datetime "updated_at"
   end
 
-  add_index "postal_codes", ["city_id", "state_id"], :name => "by_state_and_city", :unique => true
   add_index "postal_codes", ["city_id"], :name => "index_postal_codes_on_city_id"
+  add_index "postal_codes", ["code", "city_id", "state_id"], :name => "by_code", :unique => true
+  add_index "postal_codes", ["code"], :name => "index_postal_codes_on_code", :unique => true
   add_index "postal_codes", ["postal_code_type_id"], :name => "index_postal_codes_on_postal_code_type_id"
   add_index "postal_codes", ["state_id"], :name => "index_postal_codes_on_state_id"
 
@@ -117,7 +116,7 @@ ActiveRecord::Schema.define(:version => 20100413221634) do
   add_index "roles", ["key_name"], :name => "index_roles_on_key_name", :unique => true
 
   create_table "states", :force => true do |t|
-    t.string   "name",                        :null => false
+    t.string   "name",         :limit => 100, :null => false
     t.string   "url_friendly", :limit => 100, :null => false
     t.string   "code",         :limit => 50
     t.datetime "created_at"
@@ -126,6 +125,24 @@ ActiveRecord::Schema.define(:version => 20100413221634) do
 
   add_index "states", ["code"], :name => "index_states_on_code"
   add_index "states", ["url_friendly"], :name => "index_states_on_url_friendly", :unique => true
+
+  create_table "users", :force => true do |t|
+    t.string   "login",                             :null => false
+    t.string   "crypted_password",                  :null => false
+    t.string   "password_salt",                     :null => false
+    t.string   "persistence_token",                 :null => false
+    t.integer  "login_count",        :default => 0, :null => false
+    t.integer  "failed_login_count", :default => 0, :null => false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
   create_table "users_roles", :force => true do |t|
     t.integer "user_id", :null => false

@@ -1,4 +1,4 @@
-ActionController::Routing::Routes.draw do |map|
+ActionController::Routing::Routes.draw do |map|  
   map.namespace(:admin) do |admin|
     admin.resources :distributors
   end
@@ -15,7 +15,6 @@ ActionController::Routing::Routes.draw do |map|
     page.request_catalogs '/request-catalogs', :action => 'request_catalogs'
   end
   
-  map.resource :users
   map.resource :user_session
   map.resource :account, :controller => "users"
   
