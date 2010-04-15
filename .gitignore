@@ -9,7 +9,7 @@ vendor/bundler_gems/gems
 vendor/bundler_gems/specifications
 vendor/bundler_gems/doc
 vendor/bundler_gems/environment.rb
-vendoe/bundler_gems/**/*
+vendor/bundler_gems/**/*
 public/file_conversions
 Gemfile.lock
 .bundle/environment.rb
