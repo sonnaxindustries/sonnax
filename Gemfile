@@ -8,6 +8,7 @@ gem "will_paginate",          "2.3.12"
 gem "authlogic",              "2.1.3"
 gem "thinking-sphinx",        "1.3.16"
 gem "liquid",                 "2.0.0"
+gem "acts_as_tree",           "0.1.1"
 
 group :test do
   gem "rspec",                "1.3.0"
