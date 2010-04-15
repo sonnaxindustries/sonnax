@@ -1,124 +1,14 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
-  <head>    
+  <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="content-language" content="en-us">
-    <meta http-equiv="X-UA-Compatible" content="IE=7">
-    <title>Sonnax - Aftermarket replacement transmission, torque converter, and high performance automotive parts</title>
-    <meta name= "MSSmartTagsPreventParsing" content="true">
-    <meta name="description" content="Sonnax Transmissions.">
-    <meta name="keywords" content="sonnax, transmissions">
-    <meta name="author" content="Sonnax">
-    <meta name="reply-to" content="info@sonnax.com">
-    <meta name="copyright" content="<%= Time.now.year %> Sonnax">
-    <meta name="google-site-verification" content="#">
-    <meta name="y_key" content="#">
-    <meta http-equiv="imagetoolbar" content="false">
-    <%= stylesheet_link_tag 'reset', 'application', '960' %>
+    <title>Sonnax</title>
+    
   </head>
   
   <body id="home">
-    <div id="wrapper">
-      <div id="branding">
-        <h1><%= link_to 'Sonnax', root_path %></h1>
-        <ul>
-          <li><%= link_to 'Home', '#' %></li>
-          <li><%= link_to 'Product Lines', '#' %></li>
-          <li><%= link_to 'Quick Search', '#' %></li>
-          <li><%= link_to 'How to Order', '#' %>
-            <ul>
-              <li><%= link_to "International Shipping &amp; Payment Options", international_shipping_and_payment_path %></li>
-            </ul>
-          </li>
-          <li><%= link_to 'Technical Information', '#' %></li>
-          <li><%= link_to 'About Us', '#' %>
-            <ul>
-              <li><%= link_to "History &amp; Mission", history_mission_path %></li>
-              <li><%= link_to "Careers", '#' %></li>
-              <li><%= link_to "International", international_info_path %></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      
-      <div id="content">
-        <%= yield %>
-      </div>
-      
-      <div id="general">
-        <%= link_to 'Follow Sonnax on Twitter', '#', :class => 'twitter' %>
-        <%= link_to 'Become a Sonnax fan on Facebook', '#', :class => 'facebook' %>
-      </div>
-      
-      <div class="find-distributor">
-        <h3>Find your closest distributor</h3>
-      </div>
-      
-      <div class="how-to-order">
-        <h3>How do I order?</h3>
-        <ol>
-          <li>
-            <h4>Contact Sonnax Directly</h4>
-            <p>You can call us or e-mail us to place an order directly.</p>
-          </li>
-          
-          <li>
-            <h4>Browse our Parts</h4>
-            <p>You can browse our parts and find more ordering options.</p>
-          </li>
-        </ol>
-      </div>
-      
-      <div class="search-box simple">
-        <h3>Search</h3>
-        <form method="post" action="#">
-          <fieldset>
-            <legend>Search</legend>
-
-            <div class="search text">
-              <input type="text" name="q">
-            </div>
-            <a href="#" class="more">More Options &rarr;</a>
-          </fieldset>
-          
-          <fieldset class="submit">
-            <input type="submit" name="submit" value="Search &rarr;">
-          </fieldset>
-        </form>
-      </div>
-      
-      
-      <div id="extra">
-        <p>&copy; <%= Time.now.year %> Sonnax Industries, Inc. Sonnax Transmission, Torque Converter, Performance, Driveline, Allison&reg; Replacement Parts for automotive aftermarket rebuilders.</p>
-        <div class="vcard">
-          <div class="org"><a href="http://www.sonnax.com" class="url fn n">Sonnax</a></div>
-          <div class="adr">
-            <div class="street-address">1 Automatic Drive</div>
-            <span class="locality">Bellow Falls</span>, 
-            <span class="region">Vermont</span>, 
-            <span class="postal-code">05101-0440</span>
-            <span class="country-name">United States</span>
-          </div>
-          <div class="tel">
-            <span class="type">Toll-Free</span>:
-            <span class="value">800-843-2600</span>
-          </div>
-          <div class="tel">
-            <span class="type">Local</span>:
-            <span class="value">802-463-9722</span>
-          </div>
-          <a class="email" href="mailto:info@sonnax.com">info@sonnax.com</a>
-        </div>
-        <ul>
-          <li><%= link_to "Terms &amp; Conditions", '#' %></li>
-          <li><%= link_to "International Payment &amp; Shipping Options", international_shipping_and_payment_path %></li>
-        </ul>
-        <p class="disclaimer">This website and all of its contents are the intellectual property of Sonnax Industries, Inc.  No portion of this work may be reproduced or transmitted in any form or by any means, mechanical or electronic, including photocopying and/or recording, or by any other information storage and/or retrieval system without the prior written consent of Sonnax Industries, Inc.  Sonnax customers may use the part numbers only for the limited purpose of placing orders with Sonnax or otherwise operating their business, but in no case is permission granted to any customer, business entity, or individual to utilize the part numbers in order to compete with Sonnax. &copy; 2008 Sonnax Industries, Inc. Sonnax Transmission, Torque Converter, Performance, Driveline, Allison&reg; Replacement Parts for automotive aftermarket rebuilders.</p>
-      </div>
-    </div>
-    
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
-    <%= javascript_include_tag 'application' %>
+    <h1>Sonnax</h1>
+    <%= yield %>
   </body>
 </html>

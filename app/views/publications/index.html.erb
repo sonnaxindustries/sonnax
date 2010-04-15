@@ -1,0 +1,18 @@
+<h2>Publications</h2>
+<% if @publication_categories.any? %>
+  <% @publication_categories.each do |category| %>
+    <h3><%= category.name %></h3>
+    <% if category.children? %>
+      <% category.children.each do |subcategory| %>
+      <h4><%= subcategory.name %></h4>
+        <% if subcategory.titles? %>
+          <% subcategory.titles.each do |title| %>
+          <p><%= link_to title.title, '#' %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end -%>
+<% else %>
+<p>There are no Publications at this time.</p>
+<% end %>
