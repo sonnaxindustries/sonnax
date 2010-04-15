@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100415015743) do
+ActiveRecord::Schema.define(:version => 20100415140221) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -94,6 +94,47 @@ ActiveRecord::Schema.define(:version => 20100415015743) do
   add_index "postal_codes", ["code"], :name => "index_postal_codes_on_code", :unique => true
   add_index "postal_codes", ["postal_code_type_id"], :name => "index_postal_codes_on_postal_code_type_id"
   add_index "postal_codes", ["state_id"], :name => "index_postal_codes_on_state_id"
+
+  create_table "publication_categories", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "name",         :limit => 150, :null => false
+    t.string   "url_friendly", :limit => 150, :null => false
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_categories", ["parent_id"], :name => "index_publication_categories_on_parent_id"
+  add_index "publication_categories", ["url_friendly"], :name => "index_publication_categories_on_url_friendly", :unique => true
+
+  create_table "publication_categories_titles", :force => true do |t|
+    t.integer  "publication_category_id", :null => false
+    t.integer  "publication_title_id",    :null => false
+    t.text     "description"
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_categories_titles", ["publication_category_id", "publication_title_id"], :name => "by_category", :unique => true
+  add_index "publication_categories_titles", ["publication_category_id"], :name => "index_publication_categories_titles_on_publication_category_id"
+  add_index "publication_categories_titles", ["publication_title_id"], :name => "index_publication_categories_titles_on_publication_title_id"
+
+  create_table "publication_titles", :force => true do |t|
+    t.string   "title",            :null => false
+    t.string   "url_friendly",     :null => false
+    t.text     "description"
+    t.string   "pdf_file_name"
+    t.integer  "pdf_file_size"
+    t.string   "pdf_content_type"
+    t.datetime "pdf_updated_at"
+    t.string   "volume_number"
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_titles", ["url_friendly"], :name => "index_publication_titles_on_url_friendly", :unique => true
 
   create_table "redirects", :force => true do |t|
     t.string   "old_url",    :null => false

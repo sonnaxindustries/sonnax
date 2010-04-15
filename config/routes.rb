@@ -19,9 +19,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   
   map.resources :distributors
+  map.publications '/publications', :controller => 'publications', :action => 'index'
   
-  map.login '/login', :controller => 'user_sessions', :action => 'new'
-  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+  map.with_options(:controller => 'user_sessions') do |us|
+    us.login '/login', :action => 'new'
+    us.logout '/logout', :action => 'destroy'
+  end
+  
   map.register '/register', :controller => 'users', :action => 'new'
   
   map.root :controller => 'pages', :action => 'home'

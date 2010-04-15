@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe PostalCodeType do
+describe PublicationCategory do
   before(:each) do
-    @postal_code_type = Factory.build(:postal_code_type)
+    @publication_category = Factory.build(:publication_category)
   end
 
   it "should create a new instance given valid attributes" do
-    @postal_code_type.should be_valid
+    @publication_category.should be_valid
   end
 end
