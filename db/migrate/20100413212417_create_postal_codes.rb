@@ -10,9 +10,10 @@ class CreatePostalCodes < ActiveRecord::Migration
       t.timestamps
     end
     
+    add_index :postal_codes, :code, :unique => true
     add_index :postal_codes, :city_id
     add_index :postal_codes, :state_id
-    add_index :postal_codes, [:city_id, :state_id], :unique => true, :name => 'by_state_and_city'
+    add_index :postal_codes, [:code, :city_id, :state_id], :unique => true, :name => 'by_code'
     add_index :postal_codes, :postal_code_type_id
   end
 

@@ -12,7 +12,7 @@ class CreateCountries < ActiveRecord::Migration
     end
     
     add_index :countries, :url_friendly, :unique => true
-    add_index :countries, :code
+    add_index :countries, :code, :unique => true
   end
 
   def self.down
