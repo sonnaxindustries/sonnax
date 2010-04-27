@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|  
   map.namespace(:admin) do |admin|
     admin.resources :distributors
+    admin.resources :makes
   end
   
   map.prototypes_list '/prototypes', :controller => 'prototypes', :action => 'index'
@@ -15,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
     page.request_catalogs '/request-catalogs', :action => 'request_catalogs'
   end
   
+  map.resources :makes
   map.resource :user_session
   map.resource :account, :controller => "users"
   
@@ -30,7 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => 'pages', :action => 'home'
   
-  map.connect '*path' , :controller => 'redirects' , :action => 'check'
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  #map.connect '*path' , :controller => 'redirects' , :action => 'check'
+  #map.connect ':controller/:action/:id'
+  #map.connect ':controller/:action/:id.:format'
 end

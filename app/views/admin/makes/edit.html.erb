@@ -1,0 +1,4 @@
+<h1>Edit <%= @make.name %></h1>
+<% form_for :make, @make, :url => admin_make_path(@make), :html => { :method => :put } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+<% end %>

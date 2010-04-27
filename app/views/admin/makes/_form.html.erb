@@ -1,0 +1,12 @@
+<fieldset id="make_detail" class="manage">
+  <legend>Make Detail</legend>
+  
+  <div class="text">
+    <%= f.error_message_on :name %>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name %>
+  </div>
+</fieldset>
+<div class="submit">
+  <%= f.submit 'Save' %> or <%= link_to 'cancel', admin_makes_path, :class => 'cancel' %>
+</div>

@@ -1,0 +1,22 @@
+<h1>Makes</h1>
+<div class="actions">
+  <ul>
+    <li><%= link_to 'Add a new Make', new_admin_make_path, :class => 'create' %></li>
+  </ul>
+</div>
+<% if @makes.any? %>
+  <table cellpadding="0" cellspacing="0" summary="Listing of Makes">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @makes.each do |make| %>
+      <tr>
+        <td><%= link_to make.name, edit_admin_make_path(make) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
