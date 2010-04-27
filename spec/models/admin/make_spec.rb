@@ -9,6 +9,11 @@ describe Admin::Make do
     @make.should be_valid
   end
   
+  it "should ensure a name is provided" do
+    @make.name = nil
+    @make.should_not be_valid
+  end
+  
   it "should ensure the name is unique" do
     @old_make = Factory.create(:admin_make, :name => 'Testing')
     @make.name = 'Testing'

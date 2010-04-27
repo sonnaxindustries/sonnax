@@ -2,6 +2,7 @@ class Admin::Make < Make
   named_scope :list, :order => 'id ASC'
     
   def validate
+    self.errors.add(:name, 'Please provide a name') unless self.name?
     self.errors.add(:name, 'There is already a make with that name') if self.existing_name?
   end
   
