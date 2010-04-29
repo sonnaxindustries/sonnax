@@ -1,0 +1,2 @@
+module PublicationSubcategoriesHelper
+end

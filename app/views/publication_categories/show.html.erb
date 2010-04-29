@@ -1,0 +1,13 @@
+<h1><%= @publication_category.name %></h1>
+
+
+<% if @publication_category.children? %>
+  <% @publication_category.children.each do |subcategory| %>
+  <h4><%= link_to subcategory.name, publication_category_publication_subcategory_path(@publication_category.url_friendly, subcategory.url_friendly) %></h4>
+    <% if subcategory.titles? %>
+      <% subcategory.titles.each do |title| %>
+      <p><%= link_to title.title, '#' %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

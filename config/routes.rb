@@ -21,7 +21,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   
   map.resources :distributors
-  map.publications '/publications', :controller => 'publications', :action => 'index'
+  map.resources :publication_categories, :as => 'publications' do |ppub|
+    ppub.resources :publication_subcategories, :as => 'subcategories' do |scat|
+      scat.resources :publication_titles, :as => 'titles'
+    end
+  end
   
   map.with_options(:controller => 'user_sessions') do |us|
     us.login '/login', :action => 'new'

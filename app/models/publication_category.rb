@@ -6,11 +6,29 @@ class PublicationCategory < ActiveRecord::Base
   
   named_scope :root_nodes, :conditions => { :parent_id => nil }, :order => 'name ASC'
   
+  class << self
+    def detail!(id)
+      self.find_by_url_friendly!(id)
+    end
+  end
+  
   def titles?
     self.titles.any?
   end
   
   def children?
     self.children.any?
+  end
+  
+  def generate_url_friendly!
+    formatted_friendly = self.name.extend(Helper::String).to_url_friendly
+    return formatted_friendly if !self.class.exists?(:url_friendly => formatted_friendly)
+    n = 1
+    n += 1 while self.class.exists?(:url_friendly => ("%s-%s" % [formatted_friendly, n.to_s]))
+    return "%s-%s" % [formatted_friendly, n.to_s]
+  end
+  
+  def before_save
+    self.url_friendly = self.generate_url_friendly!
   end
 end

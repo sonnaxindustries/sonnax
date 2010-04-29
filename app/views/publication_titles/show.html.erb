@@ -1,0 +1,12 @@
+<h1><%= @title.title %></h1>
+<% if @title.published_at? %>
+  <p class="published">Published on <%= @title.published_at.to_s(:month_day_year) %></p>
+<% end %>
+
+<p><strong>Description:</strong> <%= @title.description %></p>
+<p><strong>Volume:</strong> <%= @title.volume_number %></p>
+
+<% if @title.pdf? %>
+  <h2>Download</h2>
+  <p><%= link_to @title.pdf_file_name, @title.pdf.url, :class => 'download' %></p>
+<% end %>
