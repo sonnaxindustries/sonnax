@@ -1,4 +1,16 @@
 class ProductLine < ActiveRecord::Base
+  named_scope :sorted, :order => 'sort_order DESC'
+  named_scope :active, :conditions => { :is_active => true }
+  
+  class << self
+    def detail!(id)
+      self.find_by_url_friendly!(id, :conditions => { :is_active => true })
+    end
+    
+    def list
+      self.active.sorted
+    end
+  end
   
   def generate_url_friendly!
     formatted_friendly = self.name.extend(Helper::String).to_url_friendly

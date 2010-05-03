@@ -1,0 +1,10 @@
+<h1>Product Lines</h1>
+<% if @product_lines.any? %>
+  <ul class="product-lines">
+  <% @product_lines.each do |product_line| %>
+    <li><%= link_to product_line.name, product_line_path(product_line.url_friendly) %></li>
+  <% end %>
+  </ul>
+<% else %>
+<p>There are currently no product lines available.</p>
+<% end %>
