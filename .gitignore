@@ -13,3 +13,6 @@ vendor/bundler_gems/**/*
 public/file_conversions
 Gemfile.lock
 .bundle/environment.rb
+config/*.sphinx.conf
+db/sphinx/**/*
+log/*.pid

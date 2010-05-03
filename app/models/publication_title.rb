@@ -4,6 +4,13 @@ class PublicationTitle < ActiveRecord::Base
   
   has_attached_file :pdf
   
+  define_index do
+    indexes title, :sortable => true
+    indexes description
+    
+    has created_at, updated_at
+  end
+  
   class << self
     def detail!(id)
       self.find_by_url_friendly!(id)
