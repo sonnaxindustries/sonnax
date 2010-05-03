@@ -4,10 +4,10 @@
     <h3><%= link_to category.name, publication_category_path(category.url_friendly) %></h3>
     <% if category.children? %>
       <% category.children.each do |subcategory| %>
-      <h4><%= link_to subcategory.name, publication_category_publication_subcategory_path(category, subcategory) %></h4>
+      <h4><%= link_to subcategory.name, publication_category_publication_subcategory_path(category.url_friendly, subcategory.url_friendly) %></h4>
         <% if subcategory.titles? %>
           <% subcategory.titles.each do |title| %>
-          <p><%= link_to title.title, '#' %></p>
+          <p><%= link_to title.title, publication_category_publication_subcategory_publication_title_path(category.url_friendly, subcategory.url_friendly, title.url_friendly) %></p>
           <% end %>
         <% end %>
       <% end %>
