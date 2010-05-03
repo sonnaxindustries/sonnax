@@ -19,56 +19,14 @@
       <div id="wrapper-inner">
         <div id="col-1">
           <ul>
-            <li>
-              <h3>Product Lines</h3>
-              <ul>
-                <li><%= link_to 'Add Product Line', '#' %></li>
-              </ul>
-            </li>
-            <li>
-              <h3>Parts &amp; Units</h3>
-              <ul>
-                <li><%= link_to 'Featured Parts', '#' %></li>
-                <li><%= link_to 'Add Part', '#' %></li>
-                <li><%= link_to 'Add Unit', '#' %></li>
-              </ul>
-            </li>
-            
-            <li>
-              <h3>Makes</h3>
-              <ul>
-                <li><%= link_to 'Edit Makes', '#' %></li>
-              </ul>
-            </li>
-            
-            <li>
-              <h3>Reference Figures</h3>
-              <ul>
-                <li><%= link_to 'Edit Reference Figures', '#' %></li>
-              </ul>
-            </li>
-            
-            <li>
-              <h3>Distributors</h3>
-              <ul>
-                <li><%= link_to 'Edit Distributors', '#' %></li>
-              </ul>
-            </li>
-            
-            <li>
-              <h3>Publications</h3>
-              <ul>
-                <li><%= link_to 'Edit Categories', '#' %></li>
-                <li><%= link_to 'Edit Titles', '#' %></li>
-              </ul>
-            </li>
-            
-            <li>
-              <h3>Users</h3>
-              <ul>
-                <li><%= link_to 'Edit Users', '#' %></li>
-              </ul>
-            </li>
+            <li><%= link_to 'Product Lines', admin_product_lines_path %></li>
+            <li><%= link_to 'Parts', admin_parts_path %></li>
+            <li><%= link_to 'Units', admin_units_path %></li>
+            <li><%= link_to 'Makes', admin_makes_path %></li>
+            <li><%= link_to 'Reference Figures', admin_reference_figures_path %></li>
+            <li><%= link_to 'Distributors', admin_distributors_path %></li>
+            <li><%= link_to 'Publications', admin_publication_titles_path %></li>
+            <li><%= link_to 'Users', admin_users_path %></li>
           </ul>
         </div>
         <%= yield %>

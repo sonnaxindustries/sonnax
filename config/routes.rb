@@ -1,7 +1,14 @@
 ActionController::Routing::Routes.draw do |map|  
   map.namespace(:admin) do |admin|
-    admin.resources :distributors
+    admin.resources :product_lines, :as => 'product-lines'
+    admin.resources :parts
+    admin.resources :units
     admin.resources :makes
+    admin.resources :reference_figures, :as => 'reference-figures'
+    admin.resources :distributors
+    admin.resources :publication_titles, :as => 'publications'
+    admin.resources :publication_categories, :as => 'publication-categories'
+    admin.resources :users
   end
   
   map.prototypes_list '/prototypes', :controller => 'prototypes', :action => 'index'
@@ -26,11 +33,12 @@ ActionController::Routing::Routes.draw do |map|
     page.technical_information '/technical-information', :action => 'technical_information'
   end
   
-  map.resources :makes
   map.resource :user_session
   map.resource :account, :controller => "users"
   map.resource :contact, :as => 'contact-us'
+  map.register '/register', :controller => 'users', :action => 'new'
   
+  map.resources :makes
   map.resources :distributors
   map.resources :publication_categories, :as => 'publications' do |ppub|
     ppub.resources :publication_subcategories, :as => 'subcategories' do |scat|
@@ -43,11 +51,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.with_options(:controller => 'user_sessions') do |us|
     us.login '/login', :action => 'new'
-    us.logout '/logout', :action => 'destroy'
+    us.sign_in '/sign-in', :action => 'new'
     us.sign_out '/sign-out', :action => 'destroy'
   end
-  
-  map.register '/register', :controller => 'users', :action => 'new'
   
   map.root :controller => 'pages', :action => 'home'
   
