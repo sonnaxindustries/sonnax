@@ -26,7 +26,9 @@ ActionController::Routing::Routes.draw do |map|
       scat.resources :publication_titles, :as => 'titles'
     end
   end
-  map.resources :product_lines, :as => 'product-lines'
+  map.resources :product_lines, :as => 'product-lines' do |pl|
+    pl.resources :parts
+  end
   
   map.with_options(:controller => 'user_sessions') do |us|
     us.login '/login', :action => 'new'
