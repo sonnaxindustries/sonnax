@@ -88,7 +88,7 @@ private
   def require_user
     unless current_user
       store_location
-      flash_and_redirect(new_admin_user_session_url, 'You must be logged in to access this page')
+      flash_and_redirect(new_user_session_url, 'You must be logged in to access this page')
       return false
     end
   end
@@ -96,7 +96,6 @@ private
   def require_no_user
     if current_user
       store_location
-      #flash_and_redirect(admin_account_url, 'You must be logged out to access this page')
       flash_and_redirect(account_url, 'You must be logged out to access this page')
       return false
     end

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Sonnax Administration</title>
+    
+  </head>
+  
+  <body id="home">
+    <div id="masthead">
+      <h1><%= link_to 'Sonnax Administration', '#' %></h1>       
+      <div class="user-options">
+        <p>You are logged in as <strong><%= current_user.login %></strong>, <%= link_to 'view your profile', account_path %> or <%= link_to 'sign out', sign_out_path %></p>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="wrapper-inner">
+        <div id="col-1">
+          <ul>
+            <li>
+              <h3>Product Lines</h3>
+              <ul>
+                <li><%= link_to 'Add Product Line', '#' %></li>
+              </ul>
+            </li>
+            <li>
+              <h3>Parts &amp; Units</h3>
+              <ul>
+                <li><%= link_to 'Featured Parts', '#' %></li>
+                <li><%= link_to 'Add Part', '#' %></li>
+                <li><%= link_to 'Add Unit', '#' %></li>
+              </ul>
+            </li>
+            
+            <li>
+              <h3>Makes</h3>
+              <ul>
+                <li><%= link_to 'Edit Makes', '#' %></li>
+              </ul>
+            </li>
+            
+            <li>
+              <h3>Reference Figures</h3>
+              <ul>
+                <li><%= link_to 'Edit Reference Figures', '#' %></li>
+              </ul>
+            </li>
+            
+            <li>
+              <h3>Distributors</h3>
+              <ul>
+                <li><%= link_to 'Edit Distributors', '#' %></li>
+              </ul>
+            </li>
+            
+            <li>
+              <h3>Publications</h3>
+              <ul>
+                <li><%= link_to 'Edit Categories', '#' %></li>
+                <li><%= link_to 'Edit Titles', '#' %></li>
+              </ul>
+            </li>
+            
+            <li>
+              <h3>Users</h3>
+              <ul>
+                <li><%= link_to 'Edit Users', '#' %></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <%= yield %>
+      </div>
+    </div>
+    
+    <div id="extra">
+      <p>&copy; <%= Date.today.year %> Sonnax Industries, Inc.</p>
+    </div>
+  </body>
+</html>
