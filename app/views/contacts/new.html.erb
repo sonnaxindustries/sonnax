@@ -1,0 +1,50 @@
+<h1>Contact Sonnax with questions or comments</h1>
+<dl>
+  <dt>Phone</dt>
+  <dd>For telephone assistance with any Sonnax product related technical questions, during regular business hours
+  (8:30 am – 5:00 pm, Mon – Fri. ET) call: (800) 843-2600 or (802) 463-9722 and ask for Tech Support.</dd>
+  
+  <dt>Email</dt>
+  <dd>For email assistance with any Sonnax product related technical issues or other concerns, submit your 
+  questions or comments below.</dd>
+</dl>
+
+<% form_for :contact, @contact do |f| %>
+  <fieldset>
+    <legend>Your Information</legend>
+    
+    <div class="text name">
+      <%= f.error_message_on :name %>
+      <%= f.label :name, 'Your Name' %>
+      <%= f.text_field :name %>
+    </div>
+    
+    <div class="text email">
+      <%= f.error_message_on :email %>
+      <%= f.label :email, 'Your E-Mail Address' %>
+      <%= f.text_field :email %>
+    </div>
+    
+    <div class="text company">
+      <%= f.error_message_on :company %>
+      <%= f.label :company, 'Company Name' %>
+      <%= f.text_field :company %>
+    </div>
+    
+    <div class="text phone-number">
+      <%= f.error_message_on :phone_number %>
+      <%= f.label :phone_number, 'Phone Number' %>
+      <%= f.text_field :phone_number %>
+    </div>
+    
+    <div class="textarea message">
+      <%= f.error_message_on :message %>
+      <%= f.label :message, 'Your Message' %>
+      <%= f.text_area :message, :rows => 10, :cols => 30 %>
+    </div>
+    
+    <div class="submit">
+      <p><%= f.submit 'Send' %></p>
+    </div>
+  </fieldset>
+<% end %>

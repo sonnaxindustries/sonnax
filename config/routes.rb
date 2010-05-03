@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :makes
   map.resource :user_session
   map.resource :account, :controller => "users"
+  map.resource :contact, :as => 'contact-us'
   
   map.resources :distributors
   map.resources :publication_categories, :as => 'publications' do |ppub|

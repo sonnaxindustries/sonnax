@@ -6,6 +6,7 @@ class PartsController < ApplicationController
   end
 
   def show
+    # NOTE: The rendered view will be a partial based on the product_line 
     begin
       @part = @product_lines.parts.find_by_id!(params[:id])
     rescue ActiveRecord::RecordNotFound

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100503112328) do
+ActiveRecord::Schema.define(:version => 20100503120539) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(:version => 20100503112328) do
   end
 
   add_index "cities", ["url_friendly"], :name => "index_cities_on_url_friendly", :unique => true
+
+  create_table "contacts", :force => true do |t|
+    t.string   "name",         :null => false
+    t.string   "email",        :null => false
+    t.string   "company",      :null => false
+    t.string   "phone_number", :null => false
+    t.text     "message",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts", ["email"], :name => "index_contacts_on_email"
 
   create_table "countries", :force => true do |t|
     t.string   "name",              :limit => 100, :null => false
