@@ -1,0 +1,51 @@
+<h1>How to Order</h1>
+
+<h2>Ordering Options for Sonnax Product Lines</h2>
+
+<ol>
+  <li>
+    <h3>Transmission Specialties&reg; products</h3>
+    <p>Contact a <strong>Sonnax Transmission Specialties&reg; Distributor</strong>. Authorized customers can place orders using the Speed Order form and selecting <strong>Transmission Specialties&reg;</strong> from the drop-down menu.</p>
+    
+    <div class="locate-a-distributor">
+      <p>Locate a Transmission Specialties&reg; Distributor</p>
+      <select name="locate">
+        <option value="0">USA</option>
+      </select>
+      
+      <p class="submit"><input type="submit" value="Go"></p>
+    </div>
+  </li>
+  
+  <li>
+    <h3>Torque Converter and High Performance Torque Converter products</h3>
+    <p>Authorized customers can place an order using the online Torque Converter Catalog or Speed Order form. New converter parts buyers: Contact Sonnax for account requirements.</p>
+  </li>
+  
+  <li>
+    <h3>High Performance Transmission products</h3>
+    <p>New High Performance Transmission parts buyers can contact a <%= link_to 'High Performance Transmission Distributor', distributors_path %> or contact Sonnax for account requirements.</p>
+  </li>
+  
+  <li>
+    <h3>Allison&reg; Transmission Replacement products</h3>
+    <p>Authorized customers can place an order using the Speed Order form and selecting Allison from the drop-down menu. New Allison parts buyers: Contact Sonnax for account requirements.</p>
+  </li>
+  
+  <li>
+    <h3>Harley Davidson&reg; Replacement products</h3>
+    <p><%= link_to 'Contact a distributor of Sonnax Harley Davidson&reg; Replacement Products.', harley_distributors_path %></p>
+  </li>
+  
+  <li>
+    <h3>Ring Gear Products</h3>
+    <p><%= mail_to 'webrg@sonnax.com', 'E-Mail us' %> for quotes and other information.</p>
+  </li>
+  
+  <li>
+    <h3>Power Train Savers&reg; and Driveline Products</h3>
+    <p><%= mail_to 'info@sonnax.com', 'E-Mail us' %> for quotes and other information.</p>
+  </li>
+</ol>
+
+<p><%= link_to 'Payment and shipping options for international customers.', international_shipping_and_payment_path %></p>

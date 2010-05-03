@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
 
   filter_parameter_logging :password, :password_confirmation
   
-  before_filter :get_current_controller_info
+  before_filter :retrieve_current_controller_info
+  before_filter :retrieve_product_line_nav
   helper_method :current_user_session, :current_user, :production?, :development?, :maintenance_mode?
   
   def development?
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
   
   def production?
     'production' == RAILS_ENV
+  end
+  
+  def retrieve_product_line_nav
+    @product_lines_nav = ProductLine.list
   end
   
   def force_www
@@ -35,7 +40,7 @@ class ApplicationController < ActionController::Base
     return
   end
   
-  def get_current_controller_info
+  def retrieve_current_controller_info
     @current_controller = controller_name
     @current_action = action_name
   end
