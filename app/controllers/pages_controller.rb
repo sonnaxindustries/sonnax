@@ -11,4 +11,7 @@ class PagesController < ApplicationController
   
   def sonnax_insider
   end
+  
+  def subscribe_to_email_newsletter
+  end
 end

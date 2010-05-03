@@ -4,6 +4,10 @@ class PartsController < ApplicationController
   def index
     #@parts = @product_line.parts
   end
+  
+  def recent
+    #ordered by most recent
+  end
 
   def show
     # NOTE: The rendered view will be a partial based on the product_line 

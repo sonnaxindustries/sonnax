@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
     page.international_shipping_and_payment '/international-shipping-and-payment-options', :action => 'international_shipping_and_payment'
     page.sonnax_insider '/sonnax-insider', :action => 'sonnax_insider'
     page.request_catalogs '/request-catalogs', :action => 'request_catalogs'
+    page.subscribe_to_email_newsletter '/subscribe-to-email-newsletter', :action => 'subscribe_to_email_newsletter' 
   end
   
   map.resources :makes
@@ -28,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
   map.resources :product_lines, :as => 'product-lines' do |pl|
-    pl.resources :parts
+    pl.resources :parts, :collection => { :recent => :get }
   end
   
   map.with_options(:controller => 'user_sessions') do |us|
