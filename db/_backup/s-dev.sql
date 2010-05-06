@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: sonnax_development
 -- ------------------------------------------------------
--- Server version	5.1.40
+-- Server version	5.0.67
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,6 +16,10 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
+--
+
+--
 -- Table structure for table `assets`
 --
 
@@ -23,14 +27,14 @@ DROP TABLE IF EXISTS `assets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `assets` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `asset_file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `asset_file_size` int(11) DEFAULT NULL,
-  `asset_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `asset_updated_at` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `asset_file_name` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `asset_file_size` int(11) default NULL,
+  `asset_content_type` varchar(255) collate utf8_unicode_ci default NULL,
+  `asset_updated_at` datetime default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   KEY `index_assets_on_asset_content_type` (`asset_content_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -52,12 +56,12 @@ DROP TABLE IF EXISTS `cities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cities` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_cities_on_url_friendly` (`url_friendly`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -79,15 +83,15 @@ DROP TABLE IF EXISTS `contacts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contacts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `company` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `phone_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `message` text COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `email` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `company` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `phone_number` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `message` text collate utf8_unicode_ci NOT NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   KEY `index_contacts_on_email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -110,17 +114,17 @@ DROP TABLE IF EXISTS `countries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `countries` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `flag_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `flag_file_size` int(11) DEFAULT NULL,
-  `flag_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `flag_updated_at` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `code` varchar(50) collate utf8_unicode_ci default NULL,
+  `flag_file_name` varchar(255) collate utf8_unicode_ci default NULL,
+  `flag_file_size` int(11) default NULL,
+  `flag_content_type` varchar(255) collate utf8_unicode_ci default NULL,
+  `flag_updated_at` datetime default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_countries_on_url_friendly` (`url_friendly`),
   UNIQUE KEY `index_countries_on_code` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -143,16 +147,16 @@ DROP TABLE IF EXISTS `distributors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `distributors` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `postal_code_id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `postal_code_id` int(11) default NULL,
   `country_id` int(11) NOT NULL,
-  `phone_number` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `website_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `phone_number` varchar(255) collate utf8_unicode_ci default NULL,
+  `website_url` varchar(255) collate utf8_unicode_ci default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_distributors_on_url_friendly` (`url_friendly`),
   KEY `index_distributors_on_postal_code_id` (`postal_code_id`),
   KEY `index_distributors_on_country_id` (`country_id`)
@@ -176,13 +180,13 @@ DROP TABLE IF EXISTS `makes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `makes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `key_name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(150) collate utf8_unicode_ci NOT NULL,
+  `key_name` varchar(150) collate utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(150) collate utf8_unicode_ci NOT NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_makes_on_key_name` (`key_name`),
   UNIQUE KEY `index_makes_on_url_friendly` (`url_friendly`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -194,8 +198,36 @@ CREATE TABLE `makes` (
 
 LOCK TABLES `makes` WRITE;
 /*!40000 ALTER TABLE `makes` DISABLE KEYS */;
-INSERT INTO `makes` VALUES (1,'General Motors','general_motors','general-motors','2010-04-27 01:40:50','2010-04-27 01:40:50'),(2,'Ford','ford','ford','2010-04-27 01:40:50','2010-04-27 01:40:50'),(3,'Chrysler','chrysler','chrysler','2010-04-27 01:40:50','2010-04-27 01:40:50'),(4,'ZF','zf','zf','2010-04-27 01:40:50','2010-04-27 01:40:50'),(5,'Volkswagen','volkswagen','volkswagen','2010-04-27 01:40:50','2010-04-27 01:40:50'),(6,'Borg Warner','borg_warner','borg-warner','2010-04-27 01:40:50','2010-04-27 03:06:08'),(7,'Honda, Acura','honda_acura','honda-acura','2010-04-27 01:40:50','2010-04-27 01:40:50'),(8,'Jatco','jatco','jatco','2010-04-27 01:40:50','2010-04-27 01:40:50'),(9,'Multiple Applications','multiple_applications','multiple-applications','2010-04-27 01:40:50','2010-04-27 01:40:50'),(10,'Mazda','mazda','mazda','2010-04-27 01:40:50','2010-04-27 01:40:50'),(11,'Mercedes','mercedes','mercedes','2010-04-27 01:40:50','2010-04-27 01:40:50'),(12,'Mitsubishi','mitsubishi','mitsubishi','2010-04-27 01:40:50','2010-04-27 01:40:50'),(13,'Renault','renault','renault','2010-04-27 01:40:50','2010-04-27 01:40:50'),(14,'Subarus','subaru','subaru','2010-04-27 01:40:50','2010-04-27 03:05:50'),(15,'Toyota','toyota','toyota','2010-04-27 01:40:50','2010-04-27 01:40:50'),(16,'Audi','audi','audi','2010-04-27 01:40:50','2010-04-27 01:40:50'),(17,'Nissan','nissan','nissan','2010-04-27 01:40:50','2010-04-27 01:40:50'),(18,'Saturn','saturn','saturn','2010-04-27 01:40:50','2010-04-27 01:40:50'),(19,'Transfer Case Parts','transfer_case_parts','transfer-case-parts','2010-04-27 01:40:50','2010-04-27 01:40:50'),(20,'Allison','allison','allison','2010-04-27 01:40:50','2010-04-27 01:40:50'),(21,'ZF','zf_1','zf-1','2010-04-27 01:40:50','2010-04-27 01:40:50'),(22,'Miscellaneous','miscellaneous','miscellaneous','2010-04-27 01:40:50','2010-04-27 01:40:50'),(23,'Aisin AW','aisin_aw','aisin-aw','2010-04-27 01:40:50','2010-04-27 01:40:50'),(24,'High Performance','high_performance','high-performance','2010-04-27 01:40:50','2010-04-27 01:40:50'),(25,'Powerglide','powerglide','powerglide','2010-04-27 01:40:50','2010-04-27 01:40:50'),(26,'Sure Cure','sure_cure','sure-cure','2010-04-27 01:40:50','2010-04-27 01:40:50'),(27,'Fichtel & Sachs (see ZF)','fichtel_sachs_see_zf','fichtel-sachs-see-zf','2010-04-27 01:40:50','2010-04-27 01:40:50'),(28,'Industrial Units','industrial_units','industrial-units','2010-04-27 01:40:50','2010-04-27 01:40:50');
+INSERT INTO `makes` VALUES (1,'General Motors','general_motors','general-motors','2010-04-27 01:40:50','2010-04-27 01:40:50'),(2,'Ford','ford','ford','2010-04-27 01:40:50','2010-04-27 01:40:50'),(3,'Chrysler','chrysler','chrysler','2010-04-27 01:40:50','2010-04-27 01:40:50'),(4,'ZF','zf','zf','2010-04-27 01:40:50','2010-04-27 01:40:50'),(5,'Volkswagen','volkswagen','volkswagen','2010-04-27 01:40:50','2010-04-27 01:40:50'),(6,'Borg Warner','borg_warner','borg-warner','2010-04-27 01:40:50','2010-04-27 03:06:08'),(7,'Honda, Acura','honda_acura','honda-acura','2010-04-27 01:40:50','2010-04-27 01:40:50'),(8,'Jatco','jatco','jatco','2010-04-27 01:40:50','2010-04-27 01:40:50'),(9,'Multiple Applications','multiple_applications','multiple-applications','2010-04-27 01:40:50','2010-04-27 01:40:50'),(10,'Mazda','mazda','mazda','2010-04-27 01:40:50','2010-04-27 01:40:50'),(11,'Mercedes','mercedes','mercedes','2010-04-27 01:40:50','2010-04-27 01:40:50'),(12,'Mitsubishi','mitsubishi','mitsubishi','2010-04-27 01:40:50','2010-04-27 01:40:50'),(13,'Renault','renault','renault','2010-04-27 01:40:50','2010-04-27 01:40:50'),(14,'Subarus','subaru','subaru','2010-04-27 01:40:50','2010-04-27 03:05:50'),(15,'Toyota','toyota','toyota','2010-04-27 01:40:50','2010-04-27 01:40:50'),(16,'Audi','audi','audi','2010-04-27 01:40:50','2010-04-27 01:40:50'),(17,'Nissan','nissan','nissan','2010-04-27 01:40:50','2010-04-27 01:40:50'),(18,'Saturn','saturn','saturn','2010-04-27 01:40:50','2010-04-27 01:40:50'),(19,'Transfer Case Parts','transfer_case_parts','transfer-case-parts','2010-04-27 01:40:50','2010-04-27 01:40:50'),(20,'Allison','allison','allison','2010-04-27 01:40:50','2010-04-27 01:40:50'),(22,'Miscellaneous','miscellaneous','miscellaneous','2010-04-27 01:40:50','2010-04-27 01:40:50'),(23,'Aisin AW','aisin_aw','aisin-aw','2010-04-27 01:40:50','2010-04-27 01:40:50'),(24,'High Performance','high_performance','high-performance','2010-04-27 01:40:50','2010-04-27 01:40:50'),(25,'Powerglide','powerglide','powerglide','2010-04-27 01:40:50','2010-04-27 01:40:50'),(26,'Sure Cure','sure_cure','sure-cure','2010-04-27 01:40:50','2010-04-27 01:40:50'),(27,'Fichtel & Sachs (see ZF)','fichtel_sachs_see_zf','fichtel-sachs-see-zf','2010-04-27 01:40:50','2010-04-27 01:40:50'),(28,'Industrial Units','industrial_units','industrial-units','2010-04-27 01:40:50','2010-04-27 01:40:50');
 /*!40000 ALTER TABLE `makes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `part_attribute_types`
+--
+
+DROP TABLE IF EXISTS `part_attribute_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `part_attribute_types` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `key_name` varchar(255) NOT NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `index_part_attribute_types_on_key_name` (`key_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `part_attribute_types`
+--
+
+LOCK TABLES `part_attribute_types` WRITE;
+/*!40000 ALTER TABLE `part_attribute_types` DISABLE KEYS */;
+INSERT INTO `part_attribute_types` VALUES (1,'Thick','thick','2010-05-06 18:55:35','2010-05-06 18:55:35'),(2,'Pitch','pitch','2010-05-06 18:55:35','2010-05-06 18:55:35'),(3,'No of teeth','no_of_teeth','2010-05-06 18:55:35','2010-05-06 18:55:35'),(4,'Inner diameter','inner_diameter','2010-05-06 18:55:35','2010-05-06 18:55:35'),(5,'Chamfer','chamfer','2010-05-06 18:55:35','2010-05-06 18:55:35'),(6,'Steel driveshaft tube od','steel_driveshaft_tube_od','2010-05-06 18:55:35','2010-05-06 18:55:35'),(7,'Outer diameter','outer_diameter','2010-05-06 18:55:35','2010-05-06 18:55:35'),(8,'Tube diameter','tube_diameter','2010-05-06 18:55:35','2010-05-06 18:55:35'),(9,'Torque fuse options','torque_fuse_options','2010-05-06 18:55:35','2010-05-06 18:55:35');
+/*!40000 ALTER TABLE `part_attribute_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -206,11 +238,11 @@ DROP TABLE IF EXISTS `postal_code_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `postal_code_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -231,16 +263,16 @@ DROP TABLE IF EXISTS `postal_codes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `postal_codes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL auto_increment,
+  `code` varchar(25) collate utf8_unicode_ci NOT NULL,
   `city_id` int(11) NOT NULL,
   `state_id` int(11) NOT NULL,
   `postal_code_type_id` int(11) NOT NULL,
-  `latitude` float DEFAULT NULL,
-  `longitude` float DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `latitude` float default NULL,
+  `longitude` float default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_postal_codes_on_code` (`code`),
   UNIQUE KEY `by_code` (`code`,`city_id`,`state_id`),
   KEY `index_postal_codes_on_city_id` (`city_id`),
@@ -266,14 +298,14 @@ DROP TABLE IF EXISTS `product_lines`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_lines` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `is_active` tinyint(1) DEFAULT '1',
-  `sort_order` int(11) DEFAULT '0',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `is_active` tinyint(1) default '1',
+  `sort_order` int(11) default '0',
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_product_lines_on_url_friendly` (`url_friendly`),
   KEY `index_product_lines_on_is_active` (`is_active`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -297,14 +329,14 @@ DROP TABLE IF EXISTS `publication_authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_authors` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `full_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `bio` text COLLATE utf8_unicode_ci,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL auto_increment,
+  `first_name` varchar(255) collate utf8_unicode_ci default NULL,
+  `last_name` varchar(255) collate utf8_unicode_ci default NULL,
+  `full_name` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `bio` text collate utf8_unicode_ci,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -325,14 +357,14 @@ DROP TABLE IF EXISTS `publication_categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL,
-  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `parent_id` int(11) default NULL,
+  `name` varchar(150) collate utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(150) collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_publication_categories_on_url_friendly` (`url_friendly`),
   KEY `index_publication_categories_on_parent_id` (`parent_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -356,14 +388,14 @@ DROP TABLE IF EXISTS `publication_categories_titles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_categories_titles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL auto_increment,
   `publication_category_id` int(11) NOT NULL,
   `publication_title_id` int(11) NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `sort_order` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `description` text collate utf8_unicode_ci,
+  `sort_order` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `by_category` (`publication_category_id`,`publication_title_id`),
   KEY `index_publication_categories_titles_on_publication_category_id` (`publication_category_id`),
   KEY `index_publication_categories_titles_on_publication_title_id` (`publication_title_id`)
@@ -388,19 +420,19 @@ DROP TABLE IF EXISTS `publication_titles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_titles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `pdf_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `pdf_file_size` int(11) DEFAULT NULL,
-  `pdf_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `pdf_updated_at` datetime DEFAULT NULL,
-  `volume_number` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `published_at` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci,
+  `pdf_file_name` varchar(255) collate utf8_unicode_ci default NULL,
+  `pdf_file_size` int(11) default NULL,
+  `pdf_content_type` varchar(255) collate utf8_unicode_ci default NULL,
+  `pdf_updated_at` datetime default NULL,
+  `volume_number` varchar(255) collate utf8_unicode_ci default NULL,
+  `published_at` datetime default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_publication_titles_on_url_friendly` (`url_friendly`)
 ) ENGINE=InnoDB AUTO_INCREMENT=361 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -423,10 +455,10 @@ DROP TABLE IF EXISTS `publication_titles_authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_titles_authors` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL auto_increment,
   `publication_title_id` int(11) NOT NULL,
   `publication_author_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `by_author` (`publication_title_id`,`publication_author_id`),
   KEY `index_publication_titles_authors_on_publication_title_id` (`publication_title_id`),
   KEY `index_publication_titles_authors_on_publication_author_id` (`publication_author_id`)
@@ -450,13 +482,13 @@ DROP TABLE IF EXISTS `redirects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `redirects` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `old_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `new_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `http_code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `old_url` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `new_url` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `http_code` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_redirects_on_old_url` (`old_url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -478,19 +510,19 @@ DROP TABLE IF EXISTS `reference_figures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reference_figures` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `avatar_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `avatar_file_size` int(11) DEFAULT NULL,
-  `avatar_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `avatar_updated_at` datetime DEFAULT NULL,
-  `exploded_view_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `exploded_view_file_size` int(11) DEFAULT NULL,
-  `exploded_view_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `exploded_view_updated_at` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `avatar_file_name` varchar(255) collate utf8_unicode_ci default NULL,
+  `avatar_file_size` int(11) default NULL,
+  `avatar_content_type` varchar(255) collate utf8_unicode_ci default NULL,
+  `avatar_updated_at` datetime default NULL,
+  `exploded_view_file_name` varchar(255) collate utf8_unicode_ci default NULL,
+  `exploded_view_file_size` int(11) default NULL,
+  `exploded_view_content_type` varchar(255) collate utf8_unicode_ci default NULL,
+  `exploded_view_updated_at` datetime default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -512,13 +544,13 @@ DROP TABLE IF EXISTS `roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `roles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `key_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `key_name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_roles_on_key_name` (`key_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -541,7 +573,7 @@ DROP TABLE IF EXISTS `schema_migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `schema_migrations` (
-  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `version` varchar(255) collate utf8_unicode_ci NOT NULL,
   UNIQUE KEY `unique_schema_migrations` (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -552,7 +584,7 @@ CREATE TABLE `schema_migrations` (
 
 LOCK TABLES `schema_migrations` WRITE;
 /*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
-INSERT INTO `schema_migrations` VALUES ('20100406014345'),('20100407172612'),('20100413210910'),('20100413211735'),('20100413211959'),('20100413212200'),('20100413212417'),('20100413212749'),('20100413215418'),('20100413220109'),('20100413221634'),('20100415015743'),('20100415125308'),('20100415132445'),('20100415140221'),('20100415145756'),('20100415150311'),('20100503112328'),('20100503120539'),('20100506034304'),('20100506040838');
+INSERT INTO `schema_migrations` VALUES ('20100406014345'),('20100407172612'),('20100413210910'),('20100413211735'),('20100413211959'),('20100413212200'),('20100413212417'),('20100413212749'),('20100413215418'),('20100413220109'),('20100413221634'),('20100415015743'),('20100415125308'),('20100415132445'),('20100415140221'),('20100415145756'),('20100415150311'),('20100503112328'),('20100503120539'),('20100506034304'),('20100506040838'),('20100506130258'),('20100506185254');
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -564,13 +596,13 @@ DROP TABLE IF EXISTS `states`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `states` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `code` varchar(50) collate utf8_unicode_ci default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_states_on_url_friendly` (`url_friendly`),
   KEY `index_states_on_code` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -593,14 +625,14 @@ DROP TABLE IF EXISTS `units`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `units` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL auto_increment,
   `product_line_id` int(11) NOT NULL,
-  `reference_figure_id` int(11) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `reference_figure_id` int(11) default NULL,
+  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   KEY `index_units_on_product_line_id` (`product_line_id`),
   KEY `index_units_on_reference_figure_id` (`reference_figure_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=485 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -617,6 +649,38 @@ INSERT INTO `units` VALUES (1,2,104,'096 LU (01M)','','2010-05-06 04:15:24','201
 UNLOCK TABLES;
 
 --
+-- Table structure for table `units_makes`
+--
+
+DROP TABLE IF EXISTS `units_makes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `units_makes` (
+  `id` int(11) NOT NULL auto_increment,
+  `unit_id` int(11) NOT NULL,
+  `make_id` int(11) NOT NULL,
+  `description` text,
+  `sort_order` int(11) default '0',
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `by_unit` (`unit_id`,`make_id`),
+  KEY `index_units_makes_on_unit_id` (`unit_id`),
+  KEY `index_units_makes_on_make_id` (`make_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `units_makes`
+--
+
+LOCK TABLES `units_makes` WRITE;
+/*!40000 ALTER TABLE `units_makes` DISABLE KEYS */;
+INSERT INTO `units_makes` VALUES (1,1,5,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(2,2,5,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(3,3,3,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(4,4,3,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(5,5,3,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(6,6,3,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(7,7,3,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(8,8,6,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(9,9,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(10,10,12,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(11,11,12,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(12,12,12,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(13,13,12,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(14,14,12,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(15,15,12,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(16,16,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(17,17,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(18,18,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(19,19,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(20,20,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(21,22,6,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(22,23,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(23,24,3,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(24,25,10,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(25,26,10,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(26,27,10,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(27,28,2,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(28,29,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(29,30,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(30,31,1,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(31,32,2,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(32,34,2,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(33,35,2,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(34,36,6,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(35,37,2,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(36,38,2,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(37,39,11,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(38,40,11,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(39,41,6,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(40,42,3,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(41,43,3,NULL,0,'2010-05-06 18:15:01','2010-05-06 18:15:01'),(42,44,5,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(43,46,15,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(44,47,15,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(45,48,15,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(46,49,15,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(47,50,15,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(48,51,15,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(49,52,15,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(50,53,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(51,54,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(52,55,15,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(53,127,22,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(54,425,18,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(55,58,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(56,59,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(57,60,7,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(58,61,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(59,62,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(60,64,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(61,65,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(62,66,7,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(63,67,6,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(64,68,3,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(65,69,3,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(66,70,1,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(67,71,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(68,72,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(69,73,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(70,74,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(71,75,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(72,76,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(73,77,1,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(74,78,13,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(75,79,2,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(76,80,8,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(77,81,8,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(78,82,7,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(79,83,12,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(80,84,12,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(81,85,12,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(82,86,10,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(83,87,10,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(84,88,10,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(85,89,10,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(86,90,8,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(87,92,8,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(88,93,8,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(89,94,8,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(90,95,7,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(91,96,1,NULL,0,'2010-05-06 18:15:02','2010-05-06 18:15:02'),(92,97,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(93,100,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(94,101,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(95,103,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(96,104,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(97,105,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(98,106,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(99,107,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(100,108,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(101,109,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(102,110,1,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(103,111,4,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(104,112,4,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(105,113,4,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(106,114,4,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(107,134,23,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(108,116,4,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(109,117,4,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(110,159,7,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(111,194,7,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(112,442,19,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(113,477,12,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(114,470,12,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(115,205,1,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(116,206,1,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(117,158,17,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(118,472,17,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(119,158,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(120,472,8,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(121,207,1,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(122,470,23,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(123,242,2,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(124,230,2,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(125,203,2,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03'),(126,231,2,NULL,0,'2010-05-06 18:15:03','2010-05-06 18:15:03');
+/*!40000 ALTER TABLE `units_makes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -624,21 +688,21 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `crypted_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password_salt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `persistence_token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `login_count` int(11) NOT NULL DEFAULT '0',
-  `failed_login_count` int(11) NOT NULL DEFAULT '0',
-  `last_request_at` datetime DEFAULT NULL,
-  `current_login_at` datetime DEFAULT NULL,
-  `last_login_at` datetime DEFAULT NULL,
-  `current_login_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `last_login_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `login` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `crypted_password` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `password_salt` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `persistence_token` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `login_count` int(11) NOT NULL default '0',
+  `failed_login_count` int(11) NOT NULL default '0',
+  `last_request_at` datetime default NULL,
+  `current_login_at` datetime default NULL,
+  `last_login_at` datetime default NULL,
+  `current_login_ip` varchar(255) collate utf8_unicode_ci default NULL,
+  `last_login_ip` varchar(255) collate utf8_unicode_ci default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `index_users_on_login` (`login`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -661,10 +725,10 @@ DROP TABLE IF EXISTS `users_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users_roles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL auto_increment,
   `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `by_role` (`user_id`,`role_id`),
   KEY `index_users_roles_on_user_id` (`user_id`),
   KEY `index_users_roles_on_role_id` (`role_id`)
@@ -690,4 +754,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-05-06  4:25:36
+-- Dump completed on 2010-05-06 18:56:26

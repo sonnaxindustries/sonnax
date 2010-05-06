@@ -5,7 +5,12 @@ class Legacy::UnitMake < Legacy::Connection
   belongs_to :make, :class_name => 'Legacy::Make', :foreign_key => 'make_id'
   
   def create_record?
-    self.unit? && self.make? && self.unit._model_record? && self.make._model_record?
+    self.unit? && self.make? && self.unit._model_record? && self.make._model_record? && !self.duplicate?
+  end
+  
+  def duplicate?
+    total = self.class.count(:conditions => ["make_id = ? AND unit_id = ? AND id <> ?", self.make_id, self.unit_id, self.id])
+    total > 1
   end
   
   def make?
