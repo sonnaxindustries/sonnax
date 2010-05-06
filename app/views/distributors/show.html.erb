@@ -5,6 +5,6 @@
 <p><strong>Country:</strong> <%= @distributor.country %></p>
 
 <p><strong>Phone Number:</strong> <%= @distributor.phone_number %></p>
-<p><strong>Website URL:</strong> <%= link_to @distributor.website_url, @distributor.website_url, :rel => 'external' %></p>
+<p><strong>Website URL:</strong> <%= link_to @distributor.formatted_website_url, @distributor.formatted_website_url, :rel => 'external' %></p>
 
 <p><%= link_to 'View all Distributors', distributors_path %></p>

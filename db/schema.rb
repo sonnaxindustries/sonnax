@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(:version => 20100506190934) do
   add_index "countries", ["url_friendly"], :name => "index_countries_on_url_friendly", :unique => true
 
   create_table "distributors", :force => true do |t|
-    t.string   "name",         :null => false
-    t.string   "url_friendly", :null => false
+    t.string   "name",                   :null => false
+    t.string   "url_friendly",           :null => false
     t.string   "phone_number"
     t.string   "website_url"
     t.datetime "created_at"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20100506190934) do
     t.string   "city"
     t.string   "state"
     t.string   "country"
+    t.string   "email"
+    t.boolean  "has_multiple_locations"
   end
 
   add_index "distributors", ["url_friendly"], :name => "index_distributors_on_url_friendly", :unique => true
