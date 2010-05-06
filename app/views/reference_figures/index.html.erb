@@ -1,0 +1,10 @@
+<h1>Reference Figures</h1>
+<% if @reference_figures.any? %>
+  <ul>
+  <% @reference_figures.each do |r| %>
+    <li><%= link_to r.name, reference_figure_path(r) %></li>
+  <% end %>
+  </ul>
+<% else %>
+<p>There are no reference figures</p>
+<% end %>
