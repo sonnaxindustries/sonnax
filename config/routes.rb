@@ -40,6 +40,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :makes
   map.resources :distributors
+  map.resources :reference_figures, :as => 'reference-figures'
+  map.resources :units
   map.resources :publication_categories, :as => 'publications' do |ppub|
     ppub.resources :publication_subcategories, :as => 'subcategories' do |scat|
       scat.resources :publication_titles, :as => 'titles'

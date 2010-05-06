@@ -1,0 +1,11 @@
+<h1>Reference Figure: <%= @reference_figure.name %></h1>
+
+<% if @reference_figure.avatar? %>
+  <%= image_tag @reference_figure.avatar.url %>
+<% end %>
+
+<% if @reference_figure.exploded_view? %>
+  <p><%= link_to 'Download Exploded View', @reference_figure.exploded_view.url %></p>
+<% end %>
+
+<p><%= link_to 'View all Reference Figures', reference_figures_path %></p>

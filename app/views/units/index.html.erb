@@ -1,0 +1,10 @@
+<h1>Units</h1>
+<% if @units.any? %>
+  <ul>
+  <% @units.each do |u| %>
+    <li><%= link_to u.name, unit_path(u) %></li>
+  <% end %>
+  </ul>
+<% else %>
+<p>There are no units.</p>
+<% end %>
