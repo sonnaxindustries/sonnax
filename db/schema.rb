@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100503120539) do
+ActiveRecord::Schema.define(:version => 20100506034304) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -141,10 +141,12 @@ ActiveRecord::Schema.define(:version => 20100503120539) do
   add_index "publication_categories", ["url_friendly"], :name => "index_publication_categories_on_url_friendly", :unique => true
 
   create_table "publication_categories_titles", :force => true do |t|
-    t.integer "publication_category_id", :null => false
-    t.integer "publication_title_id",    :null => false
-    t.text    "description"
-    t.integer "sort_order"
+    t.integer  "publication_category_id", :null => false
+    t.integer  "publication_title_id",    :null => false
+    t.text     "description"
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "publication_categories_titles", ["publication_category_id", "publication_title_id"], :name => "by_category", :unique => true
@@ -185,6 +187,20 @@ ActiveRecord::Schema.define(:version => 20100503120539) do
   end
 
   add_index "redirects", ["old_url"], :name => "index_redirects_on_old_url", :unique => true
+
+  create_table "reference_figures", :force => true do |t|
+    t.string   "name",                       :null => false
+    t.string   "avatar_file_name"
+    t.integer  "avatar_file_size"
+    t.string   "avatar_content_type"
+    t.datetime "avatar_updated_at"
+    t.string   "exploded_view_file_name"
+    t.integer  "exploded_view_file_size"
+    t.string   "exploded_view_content_type"
+    t.datetime "exploded_view_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name",        :limit => 100, :null => false

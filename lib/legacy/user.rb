@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class Legacy::User < Legacy::Connection
   set_table_name 'users'
   

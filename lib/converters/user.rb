@@ -1,5 +1,3 @@
-require 'digest/sha1'
-
 class Converters::User < User
   class << self
     def run!
