@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100506040838) do
+ActiveRecord::Schema.define(:version => 20100506130258) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -234,6 +234,19 @@ ActiveRecord::Schema.define(:version => 20100506040838) do
 
   add_index "units", ["product_line_id"], :name => "index_units_on_product_line_id"
   add_index "units", ["reference_figure_id"], :name => "index_units_on_reference_figure_id"
+
+  create_table "units_makes", :force => true do |t|
+    t.integer  "unit_id",                    :null => false
+    t.integer  "make_id",                    :null => false
+    t.text     "description"
+    t.integer  "sort_order",  :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "units_makes", ["make_id"], :name => "index_units_makes_on_make_id"
+  add_index "units_makes", ["unit_id", "make_id"], :name => "by_unit", :unique => true
+  add_index "units_makes", ["unit_id"], :name => "index_units_makes_on_unit_id"
 
   create_table "users", :force => true do |t|
     t.string   "login",                             :null => false
