@@ -32,12 +32,12 @@ class Converters::PublicationCategory < PublicationCategory
                 }
                 
                 if title.pdf_file?
-                  title_params.merge!(:pdf => title.pdf_file)
+                  #title_params.merge!(:pdf => title.pdf_file)
                 end
                 
                 subcategory.titles.create!(title_params)
                 puts "Title creates for the subcategory...."
-                sleep(2)
+                #sleep(2)
               end
             end
           end
