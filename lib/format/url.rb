@@ -1,5 +1,5 @@
 class Format::Url
-  #VALID_FORMAT = /^(https?|ftp|gopher|telnet|file|notes|ms-help):((//)|(\\\\))+[\w\d:#@%/;$()~_?\+-=\\\.&]*$/
+  VALID_FORMAT = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix
   
   def initialize(options = {})
     options.symbolize_keys!

@@ -19,7 +19,7 @@
         <td><%= distributor.state %></td>
         <td><%= distributor.country %></td>
         <td><%= distributor.phone_number %></td>
-        <td><%= link_to distributor.formatted_website_url, distributor.formatted_website_url, :rel => 'external' %></td>
+        <td><%= link_to distributor.website_url, distributor.website_url.to_s, :rel => 'external' %></td>
       </tr>
       <% end %>
     </tbody>

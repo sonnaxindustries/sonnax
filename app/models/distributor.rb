@@ -24,18 +24,6 @@ class Distributor < ActiveRecord::Base
     self.url_friendly
   end
   
-  def website_url_protocol?
-    (self.website_url =~ /^https?:\/\//) == 0
-  end
-  
-  def website_url_with_protocol
-    "http://%s" % [self.website_url]
-  end
-  
-  def formatted_website_url
-    if self.website_url_protocol? then self.website_url else self.website_url_with_protocol end
-  end
-  
   def generate_url_friendly!
     formatted_friendly = self.name.extend(Helper::String).to_url_friendly
     return formatted_friendly if !self.class.exists?(:url_friendly => formatted_friendly)
