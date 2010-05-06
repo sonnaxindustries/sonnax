@@ -1,4 +1,6 @@
 class ProductLine < ActiveRecord::Base
+  has_many :units, :dependent => :nullify
+  
   named_scope :sorted, :order => 'sort_order DESC'
   named_scope :active, :conditions => { :is_active => true }
   
@@ -18,6 +20,10 @@ class ProductLine < ActiveRecord::Base
     def list
       self.active.sorted
     end
+  end
+  
+  def units?
+    self.units.any?
   end
   
   def generate_url_friendly!

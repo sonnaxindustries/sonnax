@@ -1,0 +1,12 @@
+<h1><%= @unit.name %></h1>
+
+<% if @unit.product_line? %>
+<p><strong>Product Line:</strong> <%= link_to @unit.product_line.name, product_line_path(@unit.product_line.url_friendly) %></p>
+<% end %>
+
+<% if @unit.reference_figure? %>
+  <%= image_tag @unit.reference_figure.avatar.url %>
+  <p><%= link_to @unit.reference_figure.name, reference_figure_path(@unit.reference_figure) %></p>
+<% end %>
+
+<p><%= link_to 'View all Units', units_path %></p>
