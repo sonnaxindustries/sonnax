@@ -1,7 +1,7 @@
 require 'config/recipes/passenger'
 require 'config/recipes/shared_assets'
 require 'config/recipes/bundler'
-require 'thinking_sphinx/deploy/capistrano'
+#require 'thinking_sphinx/deploy/capistrano'
 
 set :application, "sonnax"
 set :repository, 'git@github.com:nateklaiber/sonnax.git'
@@ -57,4 +57,4 @@ task(:copy_shared) do
 end
 
 after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions'
-after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
+#after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
