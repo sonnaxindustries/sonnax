@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100506190612) do
+ActiveRecord::Schema.define(:version => 20100506190934) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -59,18 +59,17 @@ ActiveRecord::Schema.define(:version => 20100506190612) do
   add_index "countries", ["url_friendly"], :name => "index_countries_on_url_friendly", :unique => true
 
   create_table "distributors", :force => true do |t|
-    t.string   "name",           :null => false
-    t.string   "url_friendly",   :null => false
-    t.integer  "postal_code_id"
-    t.integer  "country_id",     :null => false
+    t.string   "name",         :null => false
+    t.string   "url_friendly", :null => false
     t.string   "phone_number"
     t.string   "website_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
   end
 
-  add_index "distributors", ["country_id"], :name => "index_distributors_on_country_id"
-  add_index "distributors", ["postal_code_id"], :name => "index_distributors_on_postal_code_id"
   add_index "distributors", ["url_friendly"], :name => "index_distributors_on_url_friendly", :unique => true
 
   create_table "makes", :force => true do |t|
