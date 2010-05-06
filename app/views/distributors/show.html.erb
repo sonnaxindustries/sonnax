@@ -1,2 +1,10 @@
-<h1>Distributors#show</h1>
-<p>Find me in app/views/distributors/show.html.erb</p>
+<h1><%= @distributor.name %></h1>
+
+<p><strong>City:</strong> <%= @distributor.city %></p>
+<p><strong>State:</strong> <%= @distributor.state %></p>
+<p><strong>Country:</strong> <%= @distributor.country %></p>
+
+<p><strong>Phone Number:</strong> <%= @distributor.phone_number %></p>
+<p><strong>Website URL:</strong> <%= link_to @distributor.website_url, @distributor.website_url, :rel => 'external' %></p>
+
+<p><%= link_to 'View all Distributors', distributors_path %></p>

@@ -1,4 +1,24 @@
 class Distributor < ActiveRecord::Base
+  named_scope :list
+  named_scope :by_state, lambda { |name| { :conditions => ["state = ?", name] }}
+  named_scope :by_country, lambda { |name| { :conditions => ["country = ?", name] }}
+  named_scope :by_city, lambda { |name| { :conditions => ["city = ?", name] }}
+  
+  define_index do
+    indexes :name, :sortable => true
+    indexes country, :sortable => true
+    indexes state, :sortable => true
+    indexes city, :sortable => true
+    indexes website_url
+    
+    has created_at, updated_at
+  end
+  
+  class << self
+    def detail!(id)
+      self.find_by_url_friendly!(id)
+    end
+  end
   
   def to_param
     self.url_friendly
