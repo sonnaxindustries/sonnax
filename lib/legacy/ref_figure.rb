@@ -3,6 +3,14 @@ class Legacy::RefFigure < Legacy::Connection
   
   has_many :units, :class_name => 'Legacy::Unit', :foreign_key => 'ref_figure_id'
   
+  def _model_record
+    ReferenceFigure.find_by_name(self.name)
+  end
+  
+  def _model_record?
+    !self._model_record.blank?
+  end
+  
   def avatar_filename
     @avatar_filename ||= if self.exploded_view_file?
       File.join(Rails.root, 'public', 'file_conversions', 'exploded-views', self.exploded_view_file) 
