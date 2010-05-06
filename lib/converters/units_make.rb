@@ -2,13 +2,16 @@ class Converters::UnitsMake < UnitsMake
   class << self
     def run!
       Legacy::UnitMake.all.each do |u|
-        params = {
-          :login => u.un,
-          :password => u.retrieve_password!,
-          :password_confirmation => u.retrieve_password! 
-        }
         
-        self.create!(params)
+        if u.create_record?
+          puts "Importing for Unit: %s and Make: $s" % [u.unit.name, u.make.make]
+          params = {
+            :unit => u.unit._model_record,
+            :make => u.make._model_record
+          }
+          
+          self.create!(params)
+        end
       end
     end
   end
