@@ -22,7 +22,7 @@
 <% if @roles.any? %>
 <fieldset>
 	<legend>Role Information</legend>
-	<p>The roles that this user will play.</p>
+	<p>The roles that this user will have.</p>
 	<%= hidden_field_tag "user[role_ids][]", '' %>
 	<% content_tag :div, :class => 'users' do -%>
 		<% @roles.each do |s| -%>
