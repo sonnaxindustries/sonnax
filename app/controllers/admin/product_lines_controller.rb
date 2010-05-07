@@ -8,9 +8,6 @@ class Admin::ProductLinesController < Admin::BaseController
   def new
     @product_line = Admin::ProductLine.new
   end
-
-  def edit
-  end
   
   def create
     begin
