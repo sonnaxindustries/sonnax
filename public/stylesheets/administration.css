@@ -49,6 +49,24 @@ table tbody td {
   padding: 3px 2px;
   border-bottom: 1px solid #ddd;
 }
+/* -- =SEARCH -- */
+div.search-box {
+  float: right;
+  width: 40%;
+}
+div.search-box label {
+  height: 0;
+  position: absolute;
+  left: -9999px;
+}
+div.search-box div.search input {
+  float: left;
+  margin-right: 10px;
+}
+div.search-box div.submit input {
+  float: left;
+}
+div.sear
 /* -- =PAGINATION --*/
 .digg_pagination {
   margin-top: 10px;

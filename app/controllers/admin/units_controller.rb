@@ -5,6 +5,11 @@ class Admin::UnitsController < Admin::BaseController
   def index
     @units = Admin::Unit.list(params)
   end
+  
+  def search
+    @units = Admin::Unit.search(params[:q], :page => params[:page])
+    render :action => :index
+  end
 
   def new
     @unit = Admin::Unit.new

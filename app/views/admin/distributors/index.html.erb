@@ -1,5 +1,21 @@
 <div id="distributors">
   <h1>Distributors</h1>
+  <div class="search-box group">
+    <% form_tag admin_search_distributors_path, :method => :post do %>
+      <fieldset>
+        <legend>Search</legend>
+        
+        <div class="text search-distributors search">
+          <%= label_tag :q, 'Search Term' %>
+          <%= text_field_tag :q, params[:q] %>
+        </div>
+        
+        <div class="submit">
+          <%= submit_tag 'Search' %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
   <div class="add-new"><%= link_to 'Add New Distributor', new_admin_distributor_path, :class => 'create' %></div>
   <% if @distributors.any? %>
     <table cellpadding="0" cellspacing="0" summary="Listing of Distributors" width="100%">

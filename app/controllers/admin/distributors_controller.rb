@@ -4,6 +4,11 @@ class Admin::DistributorsController < Admin::BaseController
   def index
     @distributors = Admin::Distributor.list
   end
+  
+  def search
+    @distributors = Admin::Distributor.search(params[:q], :page => params[:page])
+    render :action => :index
+  end
 
   def new
     @distributor = Admin::Distributor.new

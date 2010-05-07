@@ -9,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :publication_titles, :as => 'publications'
     admin.resources :publication_categories, :as => 'publication-categories'
     admin.resources :users
+    
+    admin.search_units '/search/units/', :controller => 'units', :action => 'search'
+    admin.search_distributors '/search/distributors/', :controller => 'distributors', :action => 'search'
   end
   
   map.prototypes_list '/prototypes', :controller => 'prototypes', :action => 'index'

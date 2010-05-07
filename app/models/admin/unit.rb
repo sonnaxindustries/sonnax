@@ -1,6 +1,15 @@
 class Admin::Unit < Unit
-  #named_scope :list, :order => 'created_at DESC'
   belongs_to :product_line, :class_name => 'Admin::ProductLine'
+  
+  define_index do
+    indexes :name, :sortable => true
+    indexes description
+    indexes product_line.name, :as => :product_line
+    
+    has product_line_id
+    
+    has created_at, updated_at
+  end
   
   class << self
     def detail!(id)

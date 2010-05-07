@@ -1,5 +1,22 @@
 <div id="units">
   <h1>Units</h1>
+  <div class="search-box group">
+    <% form_tag admin_search_units_path, :method => :post do %>
+      <fieldset>
+        <legend>Search</legend>
+        
+        <div class="text search-units search">
+          <%= label_tag :q, 'Search Term' %>
+          <%= text_field_tag :q, params[:q] %>
+        </div>
+        
+        <div class="submit">
+          <%= submit_tag 'Search' %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+  
   <div class="add-new"><%= link_to 'Add New Unit', new_admin_unit_path, :class => 'create' %></div>
   <% if @units.any? %>
     <table cellpadding="0" cellspacing="0" summary="Listing of Units" width="100%">
