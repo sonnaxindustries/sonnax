@@ -7,7 +7,8 @@ class Admin::Make < Make
   end
   
   def existing_name?
-    self.name? && self.class.exists?(:name => self.name)
+    self.new_record? && self.name? && self.class.exists?(:name => self.name)
+    #self.name? && (self.class.count(:conditions => ["LOWER(`name`) = ? AND (id IS NULL OR id <> ?)", self.name.downcase, self.id]) > 0)
   end
   
   def before_create
