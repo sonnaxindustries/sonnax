@@ -37,7 +37,7 @@ class Admin::UnitsController < Admin::BaseController
     
     respond_to do |wants|
       wants.html do
-        flash_and_redirect(admin_units_path, 'Distributor has been removed')
+        flash_and_redirect(admin_units_path, 'Unit has been removed')
       end
       wants.json do
         render :json => {

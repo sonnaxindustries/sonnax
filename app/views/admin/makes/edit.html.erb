@@ -1,4 +1,8 @@
-<h1>Edit <%= @make.name %></h1>
+<h1>Edit: <%= @make.name %></h1>
 <% form_for :make, @make, :url => admin_make_path(@make), :html => { :method => :put } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_makes_path, :class => 'cancel' %>
+  </div>
 <% end %>

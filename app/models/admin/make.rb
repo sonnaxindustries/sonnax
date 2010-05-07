@@ -1,5 +1,5 @@
 class Admin::Make < Make
-  named_scope :list, :order => 'id ASC'
+  named_scope :list, :order => 'created_at DESC'
     
   def validate
     self.errors.add(:name, 'Please provide a name') unless self.name?
