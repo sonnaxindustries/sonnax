@@ -72,4 +72,8 @@ private
       render_404
     end
   end
+  
+  def retrieve_page_details
+    @page_details ||= PageDetail.new(:title => 'Reference Figures', :body_class => 'reference-figures-home')
+  end
 end

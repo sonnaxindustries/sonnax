@@ -73,4 +73,8 @@ private
       render_404
     end
   end
+  
+  def retrieve_page_details
+    @page_details ||= PageDetail.new(:title => 'Publication Titles', :body_class => 'publication-titles-home')
+  end
 end

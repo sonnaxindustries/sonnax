@@ -59,4 +59,8 @@ private
   def retrieve_roles
     @roles = Admin::Role.list
   end
+  
+  def retrieve_page_details
+    @page_details ||= PageDetail.new(:title => 'Users', :body_class => 'users-home')
+  end
 end

@@ -101,6 +101,19 @@ table.reference-figures td.name img {
 div.flash-notice p {
   padding: 8px 10px;
 }
+/* -- =NAVIGATION -- */
+.active,
+body#product-lines-home ul li#product-line-nav,
+body#parts-home ul li#part-nav,
+body#units-home ul li#unit-nav,
+body#makes-home ul li#make-nav,
+body#reference-figures-home ul li#reference-figure-nav,
+body#distributors-home ul li#distributor-nav,
+body#publication-titles-home ul li#publication-title-nav,
+body#publication-categories-home ul li#publication-category-nav,
+body#users-home ul li#user-nav {
+  background-color: #ddd;
+}
 /* -- =PAGINATION --*/
 .digg_pagination {
   margin-top: 10px;

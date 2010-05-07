@@ -54,4 +54,8 @@ private
       render_404
     end
   end
+  
+  def retrieve_page_details
+    @page_details ||= PageDetail.new(:title => 'Makes', :body_class => 'makes-home')
+  end
 end

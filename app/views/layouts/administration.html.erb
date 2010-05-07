@@ -19,7 +19,7 @@
     
   </head>
   
-  <body id="home">
+  <body id="<%= @page_details.body_class %>" >
     <div id="container" class="group">
       <div id="container-inner">
         <div id="masthead">
@@ -42,15 +42,15 @@
             
             <div id="col-1" class="group">
               <ul>
-                <li><%= link_to 'Product Lines', admin_product_lines_path %></li>
-                <li><%= link_to 'Parts', admin_parts_path %></li>
-                <li><%= link_to 'Units', admin_units_path %></li>
-                <li><%= link_to 'Makes', admin_makes_path %></li>
-                <li><%= link_to 'Reference Figures', admin_reference_figures_path %></li>
-                <li><%= link_to 'Distributors', admin_distributors_path %></li>
-                <li><%= link_to 'Publications', admin_publication_titles_path %></li>
-                <li><%= link_to 'Publication Categories', admin_publication_categories_path %></li>
-                <li><%= link_to 'Users', admin_users_path %></li>
+                <li id="product-line-nav"><%= link_to 'Product Lines', admin_product_lines_path %></li>
+                <li id="part-nav"><%= link_to 'Parts', admin_parts_path %></li>
+                <li id="unit-nav"><%= link_to 'Units', admin_units_path %></li>
+                <li id="make-nav"><%= link_to 'Makes', admin_makes_path %></li>
+                <li id="reference-figure-nav"><%= link_to 'Reference Figures', admin_reference_figures_path %></li>
+                <li id="distributor-nav"><%= link_to 'Distributors', admin_distributors_path %></li>
+                <li id="publication-title-nav"><%= link_to 'Publications', admin_publication_titles_path %></li>
+                <li id="publication-category-nav"><%= link_to 'Publication Categories', admin_publication_categories_path %></li>
+                <li id="user-nav"><%= link_to 'Users', admin_users_path %></li>
               </ul>
             </div>
             

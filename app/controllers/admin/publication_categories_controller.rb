@@ -60,4 +60,8 @@ private
   def retrieve_parent_category_options
     @parent_category_options = Admin::PublicationCategory.options
   end
+  
+  def retrieve_page_details
+    @page_details ||= PageDetail.new(:title => 'Publication Categories', :body_class => 'publication-categories-home')
+  end
 end

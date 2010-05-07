@@ -62,4 +62,8 @@ private
     true
     #current_user && current_user.edit_distributors?
   end
+  
+  def retrieve_page_details
+    @page_details ||= PageDetail.new(:title => 'Distributors', :body_class => 'distributors-home')
+  end
 end

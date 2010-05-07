@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :retrieve_current_controller_info
   before_filter :retrieve_product_line_nav
+  before_filter :retrieve_page_details
   helper_method :current_user_session, :current_user, :production?, :development?, :maintenance_mode?
   
   def development?
@@ -43,6 +44,10 @@ class ApplicationController < ActionController::Base
   def retrieve_current_controller_info
     @current_controller = controller_name
     @current_action = action_name
+  end
+  
+  def retrieve_page_details
+    @page_details ||= PageDetail.new(:title => 'Home', :body_class => 'home')
   end
   
   def get_body_class

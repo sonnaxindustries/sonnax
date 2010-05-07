@@ -68,4 +68,8 @@ private
   def retrieve_make_options
     @make_options = Admin::Make.options
   end
+  
+  def retrieve_page_details
+    @page_details ||= PageDetail.new(:title => 'Units', :body_class => 'units-home')
+  end
 end
