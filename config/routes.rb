@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|  
   map.namespace(:admin) do |admin|
+    admin.dashboard '/', :controller => 'base', :action => 'dashboard'
     admin.resources :product_lines, :as => 'product-lines'
     admin.resources :parts
     admin.resources :units
