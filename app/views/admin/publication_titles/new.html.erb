@@ -1,2 +1,8 @@
-<h1>Admin::PublicationTitles#new</h1>
-<p>Find me in app/views/admin/publication_titles/new.html.erb</p>
+<h1>Add a new Title</h1>
+<% form_for :publication_title, @publication_title, :url => admin_publication_titles_path, :html => { :multipart => true } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_publication_titles_path, :class => 'cancel' %>
+  </div>
+<% end %>

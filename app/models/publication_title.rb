@@ -21,6 +21,11 @@ class PublicationTitle < ActiveRecord::Base
     self.categories.any?
   end
   
+  def remove_pdf!
+    self.pdf = nil
+    self.save(false)
+  end
+  
   def to_param
     self.url_friendly
   end

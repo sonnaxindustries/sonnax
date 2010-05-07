@@ -91,7 +91,9 @@ form fieldset legend {
 }
 form div.text label,
 form div.textarea label,
-form div.select label {
+form div.select label,
+form div.date label,
+form div.datetime label {
   display: block;
   font-weight: bold;
 }

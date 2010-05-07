@@ -1,2 +1,49 @@
-<h1>Admin::PublicationTitles#index</h1>
-<p>Find me in app/views/admin/publication_titles/index.html.erb</p>
+<div id="publication-titles">
+  <h1>Publication Titles</h1>
+  <div class="search-box group">
+    <% form_tag admin_search_publication_titles_path, :method => :post do %>
+      <fieldset>
+        <legend>Search</legend>
+        
+        <div class="text search-publication-titles search">
+          <%= label_tag :q, 'Search Term' %>
+          <%= text_field_tag :q, params[:q] %>
+        </div>
+        
+        <div class="submit">
+          <%= submit_tag 'Search' %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+  
+  <div class="add-new"><%= link_to 'Add New Title', new_admin_publication_title_path, :class => 'create' %></div>
+  <% if @publication_titles.any? %>
+    <table cellpadding="0" cellspacing="0" summary="Listing of Publication Titles" width="100%">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date Published</th>
+          <th class="options"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @publication_titles.each do |publication_title| %>
+        <tr id="<%= dom_id(publication_title) %>">
+          <td><%= publication_title.title %></td>
+          <td><%= date_published_at(publication_title) %></td>
+          <td class="options">
+            <ul>
+              <li><%= link_to 'Edit', edit_admin_publication_title_path(publication_title), :class => 'edit' %></li>
+              <li><%= link_to 'Delete', admin_publication_title_path(publication_title), :class => 'destroy' %></li>
+            </ul>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate(@publication_titles, :class => 'digg_pagination') %>
+  <% else %>
+  <p>There are no Titles.</p>
+  <% end %>
+</div>

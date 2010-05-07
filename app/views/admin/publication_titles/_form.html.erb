@@ -1,0 +1,39 @@
+<fieldset>
+  <legend>Title Information</legend>
+  
+  <div class="text title">
+    <%= f.error_message_on :title %>
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="textarea description">
+    <%= f.error_message_on :description %>
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, :cols => 30, :rows => 10 %>
+  </div>
+  
+  <div class="text volume-number">
+    <%= f.error_message_on :volume_number %>
+    <%= f.label :volume_number, 'Volume Number' %>
+    <%= f.text_field :volume_number %>
+  </div>
+  
+  <div class="date published-at">
+    <%= f.error_message_on :published_at %>
+    <%= f.label :published_at, 'Date Published' %>
+    <%= f.date_select :published_at, :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' } %>
+  </div>
+  
+  <div class="file-upload text pdf">
+    <% if @publication_title.pdf? %>
+    <div id="<%= dom_id(@publication_title, :pdf) %>">
+      <p><strong>Current PDF Attachment</strong></p>
+      <%= link_to 'View Current PDF', @publication_title.pdf.url %> (<%= link_to 'Remove', remove_pdf_admin_publication_title_path(@publication_title), :class => 'destroy' %>)
+    </div>
+    <% end %>
+    <%= f.error_message_on :pdf %>
+    <%= f.label :pdf, 'Attached PDF' %>
+    <%= f.file_field :pdf %>
+  </div>
+</fieldset>
