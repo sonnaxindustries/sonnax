@@ -19,15 +19,22 @@ body {
   font-size: 12px;
 }
 #extra {
+  float: left;
+  width: 100%;
   font-size: 12px;
-  padding: 10px;
-  1background-color: #024368;
+  color: #fff;
+  background-color: #024368;
   border-top: 1px solid #000000;
+}
+#extra p {
+  padding: 3px 10px;
 }
 #wrapper {
   float: left;
-  padding: 45px 10px 10px 10px;
   width: 100%;
+}
+#wrapper-inner {
+  padding: 45px 10px 10px 10px;
 }
 #masthead ul {
   width: 100%;
@@ -69,6 +76,20 @@ body {
 }
 #masthead ul ul {
   display: none;
+}
+h1 {
+  font-size: 28px;
+}
+/* -- =DISTRIBUTORS -- */
+#distributors table thead th {
+  font-weight: bold;
+  border-bottom: 2px solid #666;
+  border-collapse: collapse;
+}
+#distributors table tbody td {
+  font-size: 12px;
+  padding: 3px 0px;
+  border-bottom: 1px solid #ddd;
 }
 /* -- =LINKS -- */
 a {

@@ -1,5 +1,5 @@
 class Distributor < ActiveRecord::Base
-  named_scope :list
+  named_scope :list, :order => 'name ASC'
   named_scope :by_state, lambda { |name| { :conditions => ["state = ?", name] }}
   named_scope :by_country, lambda { |name| { :conditions => ["country = ?", name] }}
   named_scope :by_city, lambda { |name| { :conditions => ["city = ?", name] }}
@@ -15,6 +15,14 @@ class Distributor < ActiveRecord::Base
   end
   
   class << self
+    def countries
+      self.find(:all, :select => 'DISTINCT(country)', :order => 'country ASC')
+    end
+    
+    def states
+      self.find(:all, :select => 'DISTINCT(state)', :order => 'state ASC').reject { |s| s.state.blank? }
+    end
+    
     def detail!(id)
       self.find_by_url_friendly!(id)
     end
