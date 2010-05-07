@@ -2,6 +2,7 @@ class Admin::Role < Role
   has_many :users_roles, :class_name => 'Admin::UsersRole', :dependent => :destroy
   has_many :users, :through => :users_roles
   
+  named_scope :list, :order => 'created_at DESC'
   named_scope :by_key_name, lambda { |name| { :conditions => { :key_name => name.to_s }}}
   
   class << self

@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   before_filter :retrieve_user, :only => [:edit, :update, :destroy]
+  before_filter :retrieve_roles, :only => [:new, :edit, :update, :create]
   
   def index
     @users = Admin::User.list
@@ -53,5 +54,9 @@ private
     rescue ActiveRecord::RecordNotFound
       render_404
     end
+  end
+  
+  def retrieve_roles
+    @roles = Admin::Role.list
   end
 end

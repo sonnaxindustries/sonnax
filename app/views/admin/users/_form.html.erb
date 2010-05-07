@@ -19,3 +19,20 @@
     <%= f.password_field :password_confirmation %>
   </div>
 </fieldset>
+<% if @roles.any? %>
+<fieldset>
+	<legend>Role Information</legend>
+	<p>The roles that this user will play.</p>
+	<%= hidden_field_tag "user[role_ids][]", '' %>
+	<% content_tag :div, :class => 'users' do -%>
+		<% @roles.each do |s| -%>
+			<% div_for s do %>
+				<label>
+					<%= check_box_tag "user[role_ids][]", s.id, @user.roles.include?(s) %>
+					<%= s.name %>
+				</label>
+			<% end -%>
+		<% end -%>
+	<% end -%>
+</fieldset>
+<% end %>
