@@ -87,9 +87,16 @@ div.flash-notice {
 body.js-enabled div.flash-notice {
   1display: none;
 }
-img.photo {
+img.photo,
+img.tiny-reference-figure {
   border: 2px solid #eee;
   padding: 1px;
+}
+img.tiny-reference-figure {
+  margin-right: 7px;
+}
+table.reference-figures td.name img {
+  float: left;
 }
 div.flash-notice p {
   padding: 8px 10px;

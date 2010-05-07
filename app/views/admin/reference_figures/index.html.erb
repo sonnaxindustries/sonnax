@@ -19,7 +19,7 @@
   
   <div class="add-new"><%= link_to 'Add New Reference Figure', new_admin_reference_figure_path, :class => 'create' %></div>
   <% if @reference_figures.any? %>
-    <table cellpadding="0" cellspacing="0" summary="Listing of Units" width="100%">
+    <table cellpadding="0" cellspacing="0" summary="Listing of Units" width="100%" class="reference-figures">
       <thead>
         <tr>
           <th>Name</th>
@@ -29,7 +29,7 @@
       <tbody>
         <% @reference_figures.each do |reference_figure| %>
         <tr id="<%= dom_id(reference_figure) %>">
-          <td><%= reference_figure.name %></td>
+          <td class="name"><%= photo_for(reference_figure) %><%= reference_figure.name %></td>
           <td class="options">
             <ul>
               <li><%= link_to 'Edit', edit_admin_reference_figure_path(reference_figure), :class => 'edit' %></li>
