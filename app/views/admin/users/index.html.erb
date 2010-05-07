@@ -6,7 +6,8 @@
       <thead>
         <tr>
           <th>Login</th>
-
+          <th>Total Logins</th>
+          <th>Last Login</th>
           <th class="options"></th>
         </tr>
       </thead>
@@ -14,6 +15,8 @@
         <% @users.each do |user| %>
         <tr id="<%= dom_id(user) %>">
           <td><%= user.login %></td>
+          <td><%= login_count(user) %></td>
+          <td><%= last_login_at(user) %></td>
           <td class="options">
             <ul>
               <li><%= link_to 'Edit', edit_admin_user_path(user), :class => 'edit' %></li>
