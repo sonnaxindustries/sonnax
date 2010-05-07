@@ -1,0 +1,21 @@
+<fieldset>
+  <legend>Account Information</legend>
+  
+  <div class="login text">
+    <%= f.error_message_on :login %>
+    <%= f.label :login, 'Username' %>
+    <%= f.text_field :login %>
+  </div>
+  
+  <div class="password text">
+    <%= f.error_message_on :password %>
+    <%= f.label :password, f.object.new_record? ? nil : "Change Password" %>
+    <%= f.password_field :password %>
+  </div>
+  
+  <div class="password text confirm">
+    <%= f.error_message_on :password_confirmation %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+</fieldset>

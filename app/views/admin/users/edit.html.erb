@@ -1,2 +1,8 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<h1>Edit: <%= @user.login %></h1>
+<% form_for :user, @user, :url => admin_user_path(@user), :html => { :method => :put } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_users_path, :class => 'cancel' %>
+  </div>
+<% end %>

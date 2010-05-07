@@ -1,2 +1,8 @@
-<h1>Admin::Users#new</h1>
-<p>Find me in app/views/admin/users/new.html.erb</p>
+<h1>Add a new User</h1>
+<% form_for :user, @user, :url => admin_users_path do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_users_path, :class => 'cancel' %>
+  </div>
+<% end %>

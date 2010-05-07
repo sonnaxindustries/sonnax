@@ -1,2 +1,30 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div id="users">
+  <h1>Users</h1>
+  <div class="add-new"><%= link_to 'Add New User', new_admin_user_path, :class => 'create' %></div>
+  <% if @users.any? %>
+    <table cellpadding="0" cellspacing="0" summary="Listing of Users" width="100%">
+      <thead>
+        <tr>
+          <th>Login</th>
+
+          <th class="options"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr id="<%= dom_id(user) %>">
+          <td><%= user.login %></td>
+          <td class="options">
+            <ul>
+              <li><%= link_to 'Edit', edit_admin_user_path(user), :class => 'edit' %></li>
+              <li><%= link_to 'Delete', admin_user_path(user), :class => 'destroy' %></li>
+            </ul>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+  <p>There are no users.</p>
+  <% end %>
+</div>
