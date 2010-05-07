@@ -89,11 +89,14 @@ form fieldset legend {
   position: absolute;
   left: -9999px;
 }
-form div.text label {
+form div.text label,
+form div.textarea label,
+form div.select label {
   display: block;
   font-weight: bold;
 }
-form div.text input {
+form div.text input,
+form div.textarea textarea {
   padding: 2px;
   font-weight: bold;
   color: #666;

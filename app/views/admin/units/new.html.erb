@@ -1,2 +1,8 @@
-<h1>Admin::Units#new</h1>
-<p>Find me in app/views/admin/units/new.html.erb</p>
+<h1>Add a new Unit</h1>
+<% form_for :unit, @unit, :url => admin_units_path do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', units_path, :class => 'cancel' %>
+  </div>
+<% end %>

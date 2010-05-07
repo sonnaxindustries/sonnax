@@ -1,0 +1,21 @@
+<fieldset>
+  <legend>Unit Information</legend>
+  
+  <div class="text name">
+    <%= f.error_message_on :name %>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="select product-line">
+    <%= f.error_message_on :product_line_id %>
+    <%= f.label :product_line_id, 'Product Line' %>
+    <%= f.select :product_line_id, @product_line_options %>
+  </div>
+  
+  <div class="textarea description">
+    <%= f.error_message_on :description %>
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, :cols => 30, :rows => 10 %>
+  </div>
+</fieldset>

@@ -1,2 +1,32 @@
-<h1>Admin::Units#index</h1>
-<p>Find me in app/views/admin/units/index.html.erb</p>
+<div id="units">
+  <h1>Units</h1>
+  <div class="add-new"><%= link_to 'Add New Unit', new_admin_unit_path, :class => 'create' %></div>
+  <% if @units.any? %>
+    <table cellpadding="0" cellspacing="0" summary="Listing of Units" width="100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Product Line</th>
+          <th class="options"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @units.each do |unit| %>
+        <tr id="<%= dom_id(unit) %>">
+          <td><%= unit.name %></td>
+          <td><%= unit.product_line.name %></td>
+          <td class="options">
+            <ul>
+              <li><%= link_to 'Edit', edit_admin_unit_path(unit), :class => 'edit' %></li>
+              <li><%= link_to 'Delete', admin_unit_path(unit), :class => 'destroy' %></li>
+            </ul>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate(@units, :class => 'digg_pagination') %>
+  <% else %>
+  <p>There are no Units.</p>
+  <% end %>
+</div>
