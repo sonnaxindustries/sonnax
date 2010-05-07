@@ -33,6 +33,9 @@
 
         <div id="wrapper" class="group">
           <div id="wrapper-inner" class="group">
+            <div class="flash-notice group">
+              <p><%= flash[:notice] if flash[:notice] %></p>
+            </div>
             <div class="user-options group">
               <p>You are logged in as <strong><%= current_user.login %></strong>, <%= link_to 'view your profile', account_path %> or <%= link_to 'sign out', sign_out_path %></p>
             </div>

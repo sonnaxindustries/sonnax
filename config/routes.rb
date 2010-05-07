@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :parts
     admin.resources :units
     admin.resources :makes
-    admin.resources :reference_figures, :as => 'reference-figures'
+    admin.resources :reference_figures, :as => 'reference-figures', :member => { :remove_avatar => :delete }
     admin.resources :distributors
     admin.resources :publication_titles, :as => 'publications'
     admin.resources :publication_categories, :as => 'publication-categories'
@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
     
     admin.search_units '/search/units/', :controller => 'units', :action => 'search'
     admin.search_distributors '/search/distributors/', :controller => 'distributors', :action => 'search'
+    admin.search_reference_figures '/search/reference_figures/', :controller => 'reference_figures', :action => 'search'
   end
   
   map.prototypes_list '/prototypes', :controller => 'prototypes', :action => 'index'

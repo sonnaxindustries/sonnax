@@ -71,6 +71,29 @@ div.search-box div.submit input {
   font-size: 10px;
   text-transform: uppercase;
 }
+table tbody tr.hover-row td {
+  background-color: #eee;
+}
+/* -- =FLASH -- */
+div.flash-notice {
+  float: left;
+  width: 100%;
+  background-color: #eee;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+body.js-enabled div.flash-notice {
+  1display: none;
+}
+img.photo {
+  border: 2px solid #eee;
+  padding: 1px;
+}
+div.flash-notice p {
+  padding: 8px 10px;
+}
 /* -- =PAGINATION --*/
 .digg_pagination {
   margin-top: 10px;

@@ -1,5 +1,6 @@
 class ReferenceFigure < ActiveRecord::Base
-  has_attached_file :avatar
+  has_attached_file :avatar,
+                    :styles => { :thumbnail => '100x100', :medium => '300x300' }
   has_attached_file :exploded_view
   
   named_scope :list

@@ -1,2 +1,8 @@
-<h1>Admin::ReferenceFigures#new</h1>
-<p>Find me in app/views/admin/reference_figures/new.html.erb</p>
+<h1>Add a new Reference Figure</h1>
+<% form_for :reference_figure, @reference_figure, :url => admin_reference_figures_path, :html => { :multipart => true } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_reference_figures_path, :class => 'cancel' %>
+  </div>
+<% end %>

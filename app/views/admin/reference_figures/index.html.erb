@@ -1,2 +1,47 @@
-<h1>Admin::ReferenceFigures#index</h1>
-<p>Find me in app/views/admin/reference_figures/index.html.erb</p>
+<div id="reference-figures">
+  <h1>Reference Figures</h1>
+  <div class="search-box group">
+    <% form_tag admin_search_reference_figures_path, :method => :post do %>
+      <fieldset>
+        <legend>Search</legend>
+        
+        <div class="text search-reference-figures search">
+          <%= label_tag :q, 'Search Term' %>
+          <%= text_field_tag :q, params[:q] %>
+        </div>
+        
+        <div class="submit">
+          <%= submit_tag 'Search' %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+  
+  <div class="add-new"><%= link_to 'Add New Reference Figure', new_admin_reference_figure_path, :class => 'create' %></div>
+  <% if @reference_figures.any? %>
+    <table cellpadding="0" cellspacing="0" summary="Listing of Units" width="100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th class="options"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reference_figures.each do |reference_figure| %>
+        <tr id="<%= dom_id(reference_figure) %>">
+          <td><%= reference_figure.name %></td>
+          <td class="options">
+            <ul>
+              <li><%= link_to 'Edit', edit_admin_reference_figure_path(reference_figure), :class => 'edit' %></li>
+              <li><%= link_to 'Delete', admin_reference_figure_path(reference_figure), :class => 'destroy' %></li>
+            </ul>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate(@reference_figures, :class => 'digg_pagination') %>
+  <% else %>
+  <p>There are no Reference Figures.</p>
+  <% end %>
+</div>

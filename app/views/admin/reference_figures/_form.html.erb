@@ -1,0 +1,22 @@
+<fieldset>
+  <legend>Reference Figure Information</legend>
+  
+  <div class="text name">
+    <%= f.error_message_on :name %>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="text avatar file-upload">
+    <% if @reference_figure.avatar? %>
+    <p><strong>Current Photo of the Reference Figure</strong></p>
+    <div class="avatar" id="<%= dom_id(@reference_figure, :avatar) %>">
+      <%= image_tag @reference_figure.avatar.url(:medium), :class => 'photo' %>
+      <p class="remove-photo"><%= link_to 'Remove Photo', remove_avatar_admin_reference_figure_path(@reference_figure), :class => 'destroy' %></p>
+    </div>
+    <% end %>
+    <%= f.error_message_on :avatar %>
+    <%= f.label :avatar, 'Photo' %>
+    <%= f.file_field :avatar %>
+  </div>
+</fieldset>
