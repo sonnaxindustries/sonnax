@@ -1,0 +1,53 @@
+<fieldset>
+  <legend>Profile Information</legend>
+  
+  <div class="text name">
+    <%= f.error_message_on :name %>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="text phone-number">
+    <%= f.error_message_on :phone_number %>
+    <%= f.label :phone_number, 'Phone Number' %>
+    <%= f.text_field :phone_number %>
+  </div>
+  
+  <div class="text email">
+    <%= f.error_message_on :email %>
+    <%= f.label :email, 'E-Mail' %>
+    <%= f.text_field :email %>
+  </div>
+  
+  <div class="text website-url">
+    <%= f.error_message_on :website_url %>
+    <%= f.label :website_url, 'Company URL' %>
+    <%= f.text_field :website_url %>
+  </div>
+  
+  <div class="multiple-locations">
+    <%= f.check_box :has_multiple_locations %> <%= f.label :has_multiple_locations, 'Does this distributor have multiple locations?' %>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Address Information</legend>
+  
+  <div class="text city">
+    <%= f.error_message_on :city %>
+    <%= f.label :city, 'City' %>
+    <%= f.text_field :city %>
+  </div>
+  
+  <div class="text state">
+    <%= f.error_message_on :state %>
+    <%= f.label :state, 'State' %>
+    <%= f.text_field :state %>
+  </div>
+  
+  <div class="text country">
+    <%= f.error_message_on :country %>
+    <%= f.label :country, 'Country' %>
+    <%= f.text_field :country %>
+  </div>
+</fieldset>

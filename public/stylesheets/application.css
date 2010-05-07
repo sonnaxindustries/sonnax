@@ -61,6 +61,7 @@ body {
 }
 #masthead ul li {
   float: left;
+  display: inline;
   height: 36px;
   border-right: 1px solid #000;
 }

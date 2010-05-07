@@ -1,2 +1,32 @@
-<h1>Admin::Distributors#index</h1>
-<p>Find me in app/views/admin/distributors/index.html.erb</p>
+<div id="distributors">
+  <h1>Distributors</h1>
+  <div class="add-new"><%= link_to 'Add New Distributor', new_admin_distributor_path, :class => 'create' %></div>
+  <% if @distributors.any? %>
+    <table cellpadding="0" cellspacing="0" summary="Listing of Distributors" width="100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Telephone</th>
+          <th class="options"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @distributors.each do |distributor| %>
+        <tr id="<%= dom_id(distributor) %>">
+          <td><%= distributor.name %><% if distributor.has_multiple_locations? %> *<% end %></td>
+          <td><%= distributor.phone_number %></td>
+          <td class="options">
+            <ul>
+              <li><%= link_to 'Edit', edit_admin_distributor_path(distributor), :class => 'edit' %></li>
+              <li><%= link_to 'Delete', admin_distributor_path(distributor), :class => 'destroy' %></li>
+            </ul>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <p class="notice">* Stocking distributors with multiple locations. Please call for more information.</p>
+  <% else %>
+  <p>There are no distributors.</p>
+  <% end %>
+</div>

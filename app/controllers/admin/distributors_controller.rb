@@ -2,7 +2,7 @@ class Admin::DistributorsController < Admin::BaseController
   before_filter :retrieve_distributor, :only => [:show, :edit, :update, :destroy]
   
   def index
-    @distributors = Admin::Distributor.all
+    @distributors = Admin::Distributor.list
   end
 
   def new
@@ -30,7 +30,17 @@ class Admin::DistributorsController < Admin::BaseController
   
   def destroy
     @distributor.destroy
-    flash_and_redirect(admin_distributors_path, 'Distributor has been removed')
+    
+    respond_to do |wants|
+      wants.html do
+        flash_and_redirect(admin_distributors_path, 'Distributor has been removed')
+      end
+      wants.json do
+        render :json => {
+          :id_to_remove => dom_id(@distributor)
+        }
+      end
+    end
   end
 
 private

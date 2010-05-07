@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: sonnax_development
 -- ------------------------------------------------------
--- Server version	5.0.67
+-- Server version	5.1.40
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,10 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
---
-
---
 -- Table structure for table `assets`
 --
 
@@ -27,14 +23,14 @@ DROP TABLE IF EXISTS `assets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `assets` (
-  `id` int(11) NOT NULL auto_increment,
-  `asset_file_name` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `asset_file_size` int(11) default NULL,
-  `asset_content_type` varchar(255) collate utf8_unicode_ci default NULL,
-  `asset_updated_at` datetime default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `asset_file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `asset_file_size` int(11) DEFAULT NULL,
+  `asset_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `asset_updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `index_assets_on_asset_content_type` (`asset_content_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -56,12 +52,12 @@ DROP TABLE IF EXISTS `cities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cities` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_cities_on_url_friendly` (`url_friendly`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -83,15 +79,15 @@ DROP TABLE IF EXISTS `contacts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contacts` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `email` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `company` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `phone_number` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `message` text collate utf8_unicode_ci NOT NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `company` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phone_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `index_contacts_on_email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -114,17 +110,17 @@ DROP TABLE IF EXISTS `countries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `countries` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `code` varchar(50) collate utf8_unicode_ci default NULL,
-  `flag_file_name` varchar(255) collate utf8_unicode_ci default NULL,
-  `flag_file_size` int(11) default NULL,
-  `flag_content_type` varchar(255) collate utf8_unicode_ci default NULL,
-  `flag_updated_at` datetime default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `flag_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `flag_file_size` int(11) DEFAULT NULL,
+  `flag_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `flag_updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_countries_on_url_friendly` (`url_friendly`),
   UNIQUE KEY `index_countries_on_code` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -147,19 +143,19 @@ DROP TABLE IF EXISTS `distributors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `distributors` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `phone_number` varchar(255) collate utf8_unicode_ci default NULL,
-  `website_url` varchar(255) collate utf8_unicode_ci default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  `city` varchar(255) collate utf8_unicode_ci default NULL,
-  `state` varchar(255) collate utf8_unicode_ci default NULL,
-  `country` varchar(255) collate utf8_unicode_ci default NULL,
-  `email` varchar(255) collate utf8_unicode_ci default NULL,
-  `has_multiple_locations` tinyint(1) default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phone_number` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `website_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `has_multiple_locations` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_distributors_on_url_friendly` (`url_friendly`)
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -170,7 +166,7 @@ CREATE TABLE `distributors` (
 
 LOCK TABLES `distributors` WRITE;
 /*!40000 ALTER TABLE `distributors` DISABLE KEYS */;
-INSERT INTO `distributors` VALUES (1,'A& Reds Transmission Parts','a-reds-transmission-parts','800-835-1007','http://www.areds.com','2010-05-06 22:40:53','2010-05-06 22:40:53','Wichita','KS','USA',NULL,1),(2,'Guangzhou Juyuan  AT Co., Ltd.','guangzhou-juyuan-at-co-ltd','86-20-37366461','http://www.transmissionnet.com/','2010-05-06 22:40:53','2010-05-06 22:40:53','Guangzhou','','China',NULL,0),(3,'All-O-Matic Transmissions','allomatic-transmissions','493-7590',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Johannesburg','','South Africa',NULL,0),(4,'Idaho Transmission Warehouse','idaho-transmission-warehouse','208-523-1718',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Idaho Falls','ID','USA',NULL,0),(5,'BRH Transmission Parts','brh-transmission-parts','888-219-0161',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Harvey','LA','USA',NULL,0),(6,'Bruce & Bill Enterprises Inc.','bruce-bill-enterprises-inc','631-491-8400',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Wyandanch','NY','USA',NULL,0),(7,'Capital Core Inc.','capital-core-inc','800-223-1884',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Dublin','OH','USA',NULL,1),(8,'D&E Automotive Products Inc.','de-automotive-products-inc','800-245-9754','http://deautomotiveproducts.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Hazel Park','MI','USA',NULL,0),(9,'Dacco Transmission Parts','dacco-transmission-parts','800-443-2226','http://www.daccoinc.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Cookeville','TN','USA',NULL,1),(10,'Dean Transmission Parts','dean-transmission-parts','800-666-8726','http://www.deantransmission.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Agawam','MA','USA',NULL,0),(11,'Dexol Trading Co.','dexol-trading-co','','http://www.dexol.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Beirut','','Lebanon',NULL,0),(12,'Fatsco Transmission Parts','fatsco-transmission-parts','800-524-0485','http://www.fatsco.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Pine Brook','NJ','USA',NULL,0),(13,'Franklin Transmission Parts','franklin-transmission-parts','888-847-8388',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Richmond Hill','NY','USA',NULL,0),(14,'Gordon Automotive Automatic Trans Parts','gordon-automotive-automatic-trans-parts','800-589-8868','http://www.gordontransparts.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Pontiac','MI','USA',NULL,0),(15,'Jerry\'s Transmission Parts','jerrys-transmission-parts','800-846-1384',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Austin','TX','USA',NULL,0),(16,'KC Trans Parts','kc-trans-parts','800-738-7267',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Independence','MO','USA',NULL,0),(17,'Midwest Hardparts, Inc.','midwest-hardparts-inc','877-799-4783',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Hamlin','IA','USA',NULL,0),(18,'Mid States Transmission Parts','mid-states-transmission-parts','800-325-6772','http://www.mstp.net','2010-05-06 22:40:54','2010-05-06 22:40:54','Davenport','IA','USA',NULL,0),(19,'Mitchell Transmission Supply Inc.','mitchell-transmission-supply-inc','904-353-5561',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Jacksonville','FL','USA',NULL,0),(20,'Midwest Transmission Supply','midwest-transmission-supply','800-731-4510',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Omaha','NE','USA',NULL,0),(21,'Natpro','natpro','800-540-5356','http://www.natpronet.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Los Angeles','CA','USA',NULL,1),(22,'Oklahoma Transmission Supply','oklahoma-transmission-supply','800-288-3668','http://www.otsparts.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Oklahoma City','OK','USA',NULL,1),(23,'Part-Rite Inc.','partrite-inc','732-269-5000',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Bayville','NJ','USA',NULL,0),(24,'PDQ Automatic Transmission Parts Inc.','pdq-automatic-transmission-parts-inc','800-852-3351','http://www.pdqparts.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Sacramento','CA','USA',NULL,0),(25,'Portland Transmission','portland-transmission','800-444-4556',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Portland','OR','USA',NULL,0),(26,'Poteats Automatic Trans Parts','poteats-automatic-trans-parts','800-633-8443',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Kannapolis','NC','USA',NULL,0),(27,'PRNDDL Transmission Parts','prnddl-transmission-parts','888-500-5458',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Dearborn','MI','USA',NULL,0),(28,'The Emirates American Auto Transmission Co','the-emirates-american-auto-transmission-co','971-6-5420800','http://www.dexol.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Sharjah','','U.A.E.',NULL,0),(29,'Seatac Parts Warehouse Inc.','seatac-parts-warehouse-inc','800-331-2090',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Kent','WA','USA',NULL,0),(30,'Slauson Transmission Parts','slauson-transmission-parts','800-421-5580','http://www.slauson.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Gardena','CA','USA',NULL,0),(31,'Sun State Transmission Parts','sun-state-transmission-parts','800-486-8713','http://www.transmissionpartsusa.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Ft. Myers','FL','USA',NULL,0),(32,'Trans-Parts Plus','transparts-plus','877-566-2200',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Garden City','MI','USA',NULL,0),(33,'Dexol Trading Co.','dexol-trading-co-1','965-492-4031','http://www.dexol.com','2010-05-06 22:40:54','2010-05-06 22:40:54','','','Kuwait',NULL,0),(34,'TPS Auto Parts','tps-auto-parts','800-527-8782','http://www.tpsautoparts.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Texarkana','TX','USA',NULL,1),(35,'Transmission Parts Unlimited Inc.','transmission-parts-unlimited-inc','800-241-3880',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Ellenwood','GA','USA',NULL,0),(36,'Transtar Industries Inc.','transtar-industries-inc','800-321-8830','http://www.transtar1.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Cleveland','OH','USA',NULL,1),(37,'TW Products, Inc.','tw-products-inc','623-877-8101',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Phoenix','AZ','USA',NULL,0),(38,'VTP Transmission Parts','vtp-transmission-parts','877-604-8726',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Brooklyn','NY','USA',NULL,1),(39,'Whatever It Takes Transmission Parts Inc.','whatever-it-takes-transmission-parts-inc','800-940-0197','http://www.wittrans.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Louisville','KY','USA',NULL,1),(40,'Transtar Industries Inc.','transtar-industries-inc-1','787-995-1500','http://www.transtarindustries.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Bayamon','','Puerto Rico',NULL,0),(41,'Wesco Automatic Transmission Parts','wesco-automatic-transmission-parts','787-785-4329',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Bayamon','','Puerto Rico',NULL,0),(42,'Auto Stan Transmission Parts Ltd.','auto-stan-transmission-parts-ltd','800-387-5880',NULL,'2010-05-06 22:40:54','2010-05-06 22:40:54','Rexdale','Ontario','Canada',NULL,1),(43,'King-o-Matic Industries Ltd.','kingomatic-industries-ltd','800-268-2368','http://www.kingomatic.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Mississauga','Ontario','Canada',NULL,1),(44,'Matech BTA Inc.','matech-bta-inc','800-567-0929','http://www.matechbta.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Drummondville','Quebec','Canada',NULL,1),(45,'TCS','tcs','800-960-1177','http://www.tcsproducts.com','2010-05-06 22:40:54','2010-05-06 22:40:54','Langley','BC','Canada',NULL,0),(46,'Transmatic Guatemala','transmatic-guatemala','502-2470-2180',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Guatemala City','','Guatemala',NULL,0),(47,'Casanova Trans Inc.','casanova-trans-inc','01-818-313-2415','http://www.casanova-trans.com','2010-05-06 22:40:55','2010-05-06 22:40:55','San Nicolas de la Garza','NL','Mexico',NULL,1),(48,'Central De Transmisiones','central-de-transmisiones','01-686-566-6404',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Mexicali','BC','Mexico',NULL,0),(49,'Importadora Isao','importadora-isao','01-555-530-5928',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','México','DF','Mexico',NULL,0),(50,'Refacciones Auto Plex','refacciones-auto-plex','01-818-354-4288','http://www.autoplex.com.mx','2010-05-06 22:40:55','2010-05-06 22:40:55','Monterrey','NL','Mexico',NULL,0),(51,'Refacciones y Servicios de Trans. Automaticas','refacciones-y-servicios-de-trans-automaticas','01-625-584-1096',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Cd. Cuauhtemoc','CHIH','Mexico',NULL,1),(52,'Trans. Auto de la Pena','trans-auto-de-la-pena','01-61-88-189318','http://www.transdelapena.com','2010-05-06 22:40:55','2010-05-06 22:40:55','Durango','DGO','Mexico',NULL,1),(53,'Trans. Automaticas Pronto','trans-automaticas-pronto','01-555-578-9017',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Mexico','DF','Mexico',NULL,0),(54,'Trans. Automaticas Ruiz','trans-automaticas-ruiz','01-333-637-3793',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Guadalajara','JAL','Mexico',NULL,0),(55,'Turbinas de Juarez','turbinas-de-juarez','01-656-616-7408',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Cd. Juarez','CHIH','Mexico',NULL,0),(56,'JN Trading Oy','jn-trading-oy','02-253-4606',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Piispanristi','','Finland',NULL,0),(57,'DB Automobile','db-automobile','030-4987-1407','http://www.automatic-transmission.com','2010-05-06 22:40:55','2010-05-06 22:40:55','Berlin','','Germany',NULL,0),(58,'Ice. Inn Ehf','ice-inn-ehf','354-4822858',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Selfoss','','Iceland',NULL,0),(59,'Samko P.U.H.','samko-puh','22-636-69-88',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Warsaw','','Poland',NULL,0),(60,'Automatic Choice Spain','automatic-choice-spain','902-503277',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Malaga','','Spain',NULL,0),(61,'Norrorts Bil & Van Service','norrorts-bil-van-service','08-564-72010',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Jarfalla','','Sweden',NULL,0),(62,'Automaten-Meyer AG.','automatenmeyer-ag','041-250-3914',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Littau','','Switzerland',NULL,0),(63,'Automatic Choice Holland','automatic-choice-holland','031-318-590-591',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','H.N. Veenendaal','','Netherlands',NULL,0),(64,'Autrans','autrans','031-848-4144',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Pt. Lunteren','','Netherlands',NULL,0),(65,'Ganzeboom Tranmissies','ganzeboom-tranmissies','031-546-819510','http://www.ganzeboom.net','2010-05-06 22:40:55','2010-05-06 22:40:55','Almelo','','Netherlands',NULL,0),(66,'Automatic Choice England','automatic-choice-england','01761-436688',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Radstock','Bath','UK',NULL,0),(67,'JP Automatic','jp-automatic','01934-852772','http://www.jpat.co.uk/','2010-05-06 22:40:55','2010-05-06 22:40:55','Upper Langford','North Somerset','UK',NULL,0),(68,'Sussex Auto Parts Ltd.','sussex-auto-parts-ltd','01323-848886',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Hailsham','East Sussex','UK',NULL,0),(69,'VM Transmission Products Ltd.','vm-transmission-products-ltd','0208-848-9911',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Hayes','Middlesex','UK',NULL,0),(70,'Approved Transmission Parts','approved-transmission-parts','03-9388 0944',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','East Brunswick','','Australia',NULL,0),(71,'ATP (New Zealand) Ltd','atp-new-zealand-ltd','0-800-658-899','http://www.atpnz.co.nz','2010-05-06 22:40:55','2010-05-06 22:40:55','Onehunga','','New Zealand',NULL,1),(72,'Automatic Parts Supply','automatic-parts-supply','03-9465-6622',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Thomastown','','Australia',NULL,0),(73,'Driveline','driveline','08-9443-2211','http://www.drivelineap.com.au','2010-05-06 22:40:55','2010-05-06 22:40:55','Osborne Park','','Australia',NULL,1),(74,'Motospecs','motospecs','02-9847-5777','http://www.motospecs.com.au','2010-05-06 22:40:55','2010-05-06 22:40:55','Asquith','','Australia',NULL,1),(75,'Motospecs','motospecs-1','09-622-0200',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Tepapapa','Penrose','New Zealand',NULL,0),(76,'Teo Motors','teo-motors','48-616636565',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Poznan','','Poland',NULL,0),(77,'B & I Torque Converter','b-i-torque-converter','405-557-0026',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Oklahoma City','OK','USA',NULL,0),(78,'Automatic Transparts','automatic-transparts','09-2620913','http://www.automaticnz.co.nz','2010-05-06 22:40:55','2010-05-06 22:40:55','Manukau City','','New Zealand',NULL,0),(79,'Tradex','tradex','961-1240180',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Beirut','','Lebanon',NULL,0),(80,'Tri Star National Spare Parts Co.','tri-star-national-spare-parts-co','966-1-204-3452',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Riyadh','','Saudi Arabia',NULL,0),(81,'RECRO LTD.','recro-ltd','37129266009',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Cesis','','Latvia',NULL,0),(82,'UAB Daivanta','uab-daivanta','370 37 552579','http://www.daivanta.lt','2010-05-06 22:40:55','2010-05-06 22:40:55','Garliava','','Lithuania',NULL,0),(83,'PR Transmatic','pr-transmatic','787-785-4003',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Bayamon','','Puerto Rico',NULL,0),(84,'North Caribbean Transmission','north-caribbean-transmission','787-878-2553',NULL,'2010-05-06 22:40:55','2010-05-06 22:40:55','Arecibo','','Puerto Rico',NULL,0),(85,'Guangzhou Huaji AT Co., Ltd.','guangzhou-huaji-at-co-ltd','86-20-37223750','http://www.gz-zf.com.cn/','2010-05-06 22:40:55','2010-05-06 22:40:55','Guangzhou','','China',NULL,0),(86,'Beijing Sihuifa Auto Tech Service Center','beijing-sihuifa-auto-tech-service-center','86-10-64393500',NULL,'2010-05-06 22:40:56','2010-05-06 22:40:56','Beijing','','China',NULL,0),(87,'Caloca Transmission Parts','caloca-transmission-parts','01-899-925-2218',NULL,'2010-05-06 22:40:56','2010-05-06 22:40:56','Cd. Reynosa','TAM','Mexico',NULL,0),(88,'Shanghai Derbin','shanghai-derbin','86 20 87631450',NULL,'2010-05-06 22:40:56','2010-05-06 22:40:56','Guangzhou','','China',NULL,0),(89,'Ultra Enterprise Co., LTD','ultra-enterprise-co-ltd','2 8531 2288',NULL,'2010-05-06 22:40:56','2010-05-06 22:40:56','Wugu Shiang','Taipei County','Taiwan',NULL,0),(90,'Trans. Products Europe B.V.','trans-products-europe-bv','3130 298 0898',NULL,'2010-05-06 22:40:56','2010-05-06 22:40:56','Utrecht','','Netherlands','info@transmission-products.nl',0);
+INSERT INTO `distributors` VALUES (1,'A& Reds Transmission Parts','a-reds-transmission-parts','800-835-1007','http://www.areds.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Wichita','KS','USA',NULL,1),(2,'Guangzhou Juyuan  AT Co., Ltd.','guangzhou-juyuan-at-co-ltd','86-20-37366461','http://www.transmissionnet.com/','2010-05-07 04:50:00','2010-05-07 04:50:00','Guangzhou','','China',NULL,0),(3,'All-O-Matic Transmissions','allomatic-transmissions','493-7590',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Johannesburg','','South Africa',NULL,0),(4,'Idaho Transmission Warehouse','idaho-transmission-warehouse','208-523-1718',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Idaho Falls','ID','USA',NULL,0),(5,'BRH Transmission Parts','brh-transmission-parts','888-219-0161',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Harvey','LA','USA',NULL,0),(6,'Bruce & Bill Enterprises Inc.','bruce-bill-enterprises-inc','631-491-8400',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Wyandanch','NY','USA',NULL,0),(7,'Capital Core Inc.','capital-core-inc','800-223-1884',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Dublin','OH','USA',NULL,1),(8,'D&E Automotive Products Inc.','de-automotive-products-inc','800-245-9754','http://deautomotiveproducts.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Hazel Park','MI','USA',NULL,0),(9,'Dacco Transmission Parts','dacco-transmission-parts','800-443-2226','http://www.daccoinc.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Cookeville','TN','USA',NULL,1),(10,'Dean Transmission Parts','dean-transmission-parts','800-666-8726','http://www.deantransmission.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Agawam','MA','USA',NULL,0),(11,'Dexol Trading Co.','dexol-trading-co','','http://www.dexol.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Beirut','','Lebanon',NULL,0),(12,'Fatsco Transmission Parts','fatsco-transmission-parts','800-524-0485','http://www.fatsco.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Pine Brook','NJ','USA',NULL,0),(13,'Franklin Transmission Parts','franklin-transmission-parts','888-847-8388',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Richmond Hill','NY','USA',NULL,0),(14,'Gordon Automotive Automatic Trans Parts','gordon-automotive-automatic-trans-parts','800-589-8868','http://www.gordontransparts.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Pontiac','MI','USA',NULL,0),(15,'Jerry\'s Transmission Parts','jerrys-transmission-parts','800-846-1384',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Austin','TX','USA',NULL,0),(16,'KC Trans Parts','kc-trans-parts','800-738-7267',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Independence','MO','USA',NULL,0),(17,'Midwest Hardparts, Inc.','midwest-hardparts-inc','877-799-4783',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Hamlin','IA','USA',NULL,0),(18,'Mid States Transmission Parts','mid-states-transmission-parts','800-325-6772','http://www.mstp.net','2010-05-07 04:50:00','2010-05-07 04:50:00','Davenport','IA','USA',NULL,0),(19,'Mitchell Transmission Supply Inc.','mitchell-transmission-supply-inc','904-353-5561',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Jacksonville','FL','USA',NULL,0),(20,'Midwest Transmission Supply','midwest-transmission-supply','800-731-4510',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Omaha','NE','USA',NULL,0),(21,'Natpro','natpro','800-540-5356','http://www.natpronet.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Los Angeles','CA','USA',NULL,1),(22,'Oklahoma Transmission Supply','oklahoma-transmission-supply','800-288-3668','http://www.otsparts.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Oklahoma City','OK','USA',NULL,1),(23,'Part-Rite Inc.','partrite-inc','732-269-5000',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Bayville','NJ','USA',NULL,0),(24,'PDQ Automatic Transmission Parts Inc.','pdq-automatic-transmission-parts-inc','800-852-3351','http://www.pdqparts.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Sacramento','CA','USA',NULL,0),(25,'Portland Transmission','portland-transmission','800-444-4556',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Portland','OR','USA',NULL,0),(26,'Poteats Automatic Trans Parts','poteats-automatic-trans-parts','800-633-8443',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Kannapolis','NC','USA',NULL,0),(27,'PRNDDL Transmission Parts','prnddl-transmission-parts','888-500-5458',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Dearborn','MI','USA',NULL,0),(28,'The Emirates American Auto Transmission Co','the-emirates-american-auto-transmission-co','971-6-5420800','http://www.dexol.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Sharjah','','U.A.E.',NULL,0),(29,'Seatac Parts Warehouse Inc.','seatac-parts-warehouse-inc','800-331-2090',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Kent','WA','USA',NULL,0),(30,'Slauson Transmission Parts','slauson-transmission-parts','800-421-5580','http://www.slauson.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Gardena','CA','USA',NULL,0),(31,'Sun State Transmission Parts','sun-state-transmission-parts','800-486-8713','http://www.transmissionpartsusa.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Ft. Myers','FL','USA',NULL,0),(32,'Trans-Parts Plus','transparts-plus','877-566-2200',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Garden City','MI','USA',NULL,0),(33,'Dexol Trading Co.','dexol-trading-co-1','965-492-4031','http://www.dexol.com','2010-05-07 04:50:00','2010-05-07 04:50:00','','','Kuwait',NULL,0),(34,'TPS Auto Parts','tps-auto-parts','800-527-8782','http://www.tpsautoparts.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Texarkana','TX','USA',NULL,1),(35,'Transmission Parts Unlimited Inc.','transmission-parts-unlimited-inc','800-241-3880',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Ellenwood','GA','USA',NULL,0),(36,'Transtar Industries Inc.','transtar-industries-inc','800-321-8830','http://www.transtar1.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Cleveland','OH','USA',NULL,1),(37,'TW Products, Inc.','tw-products-inc','623-877-8101',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Phoenix','AZ','USA',NULL,0),(38,'VTP Transmission Parts','vtp-transmission-parts','877-604-8726',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Brooklyn','NY','USA',NULL,1),(39,'Whatever It Takes Transmission Parts Inc.','whatever-it-takes-transmission-parts-inc','800-940-0197','http://www.wittrans.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Louisville','KY','USA',NULL,1),(40,'Transtar Industries Inc.','transtar-industries-inc-1','787-995-1500','http://www.transtarindustries.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Bayamon','','Puerto Rico',NULL,0),(41,'Wesco Automatic Transmission Parts','wesco-automatic-transmission-parts','787-785-4329',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Bayamon','','Puerto Rico',NULL,0),(42,'Auto Stan Transmission Parts Ltd.','auto-stan-transmission-parts-ltd','800-387-5880',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Rexdale','Ontario','Canada',NULL,1),(43,'King-o-Matic Industries Ltd.','kingomatic-industries-ltd','800-268-2368','http://www.kingomatic.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Mississauga','Ontario','Canada',NULL,1),(44,'Matech BTA Inc.','matech-bta-inc','800-567-0929','http://www.matechbta.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Drummondville','Quebec','Canada',NULL,1),(45,'TCS','tcs','800-960-1177','http://www.tcsproducts.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Langley','BC','Canada',NULL,0),(46,'Transmatic Guatemala','transmatic-guatemala','502-2470-2180',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Guatemala City','','Guatemala',NULL,0),(47,'Casanova Trans Inc.','casanova-trans-inc','01-818-313-2415','http://www.casanova-trans.com','2010-05-07 04:50:00','2010-05-07 04:50:00','San Nicolas de la Garza','NL','Mexico',NULL,1),(48,'Central De Transmisiones','central-de-transmisiones','01-686-566-6404',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Mexicali','BC','Mexico',NULL,0),(49,'Importadora Isao','importadora-isao','01-555-530-5928',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','México','DF','Mexico',NULL,0),(50,'Refacciones Auto Plex','refacciones-auto-plex','01-818-354-4288','http://www.autoplex.com.mx','2010-05-07 04:50:00','2010-05-07 04:50:00','Monterrey','NL','Mexico',NULL,0),(51,'Refacciones y Servicios de Trans. Automaticas','refacciones-y-servicios-de-trans-automaticas','01-625-584-1096',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Cd. Cuauhtemoc','CHIH','Mexico',NULL,1),(52,'Trans. Auto de la Pena','trans-auto-de-la-pena','01-61-88-189318','http://www.transdelapena.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Durango','DGO','Mexico',NULL,1),(53,'Trans. Automaticas Pronto','trans-automaticas-pronto','01-555-578-9017',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Mexico','DF','Mexico',NULL,0),(54,'Trans. Automaticas Ruiz','trans-automaticas-ruiz','01-333-637-3793',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Guadalajara','JAL','Mexico',NULL,0),(55,'Turbinas de Juarez','turbinas-de-juarez','01-656-616-7408',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Cd. Juarez','CHIH','Mexico',NULL,0),(56,'JN Trading Oy','jn-trading-oy','02-253-4606',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Piispanristi','','Finland',NULL,0),(57,'DB Automobile','db-automobile','030-4987-1407','http://www.automatic-transmission.com','2010-05-07 04:50:00','2010-05-07 04:50:00','Berlin','','Germany',NULL,0),(58,'Ice. Inn Ehf','ice-inn-ehf','354-4822858',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Selfoss','','Iceland',NULL,0),(59,'Samko P.U.H.','samko-puh','22-636-69-88',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Warsaw','','Poland',NULL,0),(60,'Automatic Choice Spain','automatic-choice-spain','902-503277',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Malaga','','Spain',NULL,0),(61,'Norrorts Bil & Van Service','norrorts-bil-van-service','08-564-72010',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Jarfalla','','Sweden',NULL,0),(62,'Automaten-Meyer AG.','automatenmeyer-ag','041-250-3914',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Littau','','Switzerland',NULL,0),(63,'Automatic Choice Holland','automatic-choice-holland','031-318-590-591',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','H.N. Veenendaal','','Netherlands',NULL,0),(64,'Autrans','autrans','031-848-4144',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Pt. Lunteren','','Netherlands',NULL,0),(65,'Ganzeboom Tranmissies','ganzeboom-tranmissies','031-546-819510','http://www.ganzeboom.net','2010-05-07 04:50:00','2010-05-07 04:50:00','Almelo','','Netherlands',NULL,0),(66,'Automatic Choice England','automatic-choice-england','01761-436688',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Radstock','Bath','UK',NULL,0),(67,'JP Automatic','jp-automatic','01934-852772','http://www.jpat.co.uk/','2010-05-07 04:50:00','2010-05-07 04:50:00','Upper Langford','North Somerset','UK',NULL,0),(68,'Sussex Auto Parts Ltd.','sussex-auto-parts-ltd','01323-848886',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Hailsham','East Sussex','UK',NULL,0),(69,'VM Transmission Products Ltd.','vm-transmission-products-ltd','0208-848-9911',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Hayes','Middlesex','UK',NULL,0),(70,'Approved Transmission Parts','approved-transmission-parts','03-9388 0944',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','East Brunswick','','Australia',NULL,0),(71,'ATP (New Zealand) Ltd','atp-new-zealand-ltd','0-800-658-899','http://www.atpnz.co.nz','2010-05-07 04:50:00','2010-05-07 04:50:00','Onehunga','','New Zealand',NULL,1),(72,'Automatic Parts Supply','automatic-parts-supply','03-9465-6622',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Thomastown','','Australia',NULL,0),(73,'Driveline','driveline','08-9443-2211','http://www.drivelineap.com.au','2010-05-07 04:50:00','2010-05-07 04:50:00','Osborne Park','','Australia',NULL,1),(74,'Motospecs','motospecs','02-9847-5777','http://www.motospecs.com.au','2010-05-07 04:50:00','2010-05-07 04:50:00','Asquith','','Australia',NULL,1),(75,'Motospecs','motospecs-1','09-622-0200',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Tepapapa','Penrose','New Zealand',NULL,0),(76,'Teo Motors','teo-motors','48-616636565',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Poznan','','Poland',NULL,0),(77,'B & I Torque Converter','b-i-torque-converter','405-557-0026',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Oklahoma City','OK','USA',NULL,0),(78,'Automatic Transparts','automatic-transparts','09-2620913','http://www.automaticnz.co.nz','2010-05-07 04:50:00','2010-05-07 04:50:00','Manukau City','','New Zealand',NULL,0),(79,'Tradex','tradex','961-1240180',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Beirut','','Lebanon',NULL,0),(80,'Tri Star National Spare Parts Co.','tri-star-national-spare-parts-co','966-1-204-3452',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Riyadh','','Saudi Arabia',NULL,0),(81,'RECRO LTD.','recro-ltd','37129266009',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Cesis','','Latvia',NULL,0),(82,'UAB Daivanta','uab-daivanta','370 37 552579','http://www.daivanta.lt','2010-05-07 04:50:00','2010-05-07 04:50:00','Garliava','','Lithuania',NULL,0),(83,'PR Transmatic','pr-transmatic','787-785-4003',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Bayamon','','Puerto Rico',NULL,0),(84,'North Caribbean Transmission','north-caribbean-transmission','787-878-2553',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Arecibo','','Puerto Rico',NULL,0),(85,'Guangzhou Huaji AT Co., Ltd.','guangzhou-huaji-at-co-ltd','86-20-37223750','http://www.gz-zf.com.cn/','2010-05-07 04:50:00','2010-05-07 04:50:00','Guangzhou','','China',NULL,0),(86,'Beijing Sihuifa Auto Tech Service Center','beijing-sihuifa-auto-tech-service-center','86-10-64393500',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Beijing','','China',NULL,0),(87,'Caloca Transmission Parts','caloca-transmission-parts','01-899-925-2218',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Cd. Reynosa','TAM','Mexico',NULL,0),(88,'Shanghai Derbin','shanghai-derbin','86 20 87631450',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Guangzhou','','China',NULL,0),(89,'Ultra Enterprise Co., LTD','ultra-enterprise-co-ltd','2 8531 2288',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Wugu Shiang','Taipei County','Taiwan',NULL,0),(90,'Trans. Products Europe B.V.','trans-products-europe-bv','3130 298 0898',NULL,'2010-05-07 04:50:00','2010-05-07 04:50:00','Utrecht','','Netherlands','info@transmission-products.nl',0);
 /*!40000 ALTER TABLE `distributors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,13 +178,13 @@ DROP TABLE IF EXISTS `makes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `makes` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(150) collate utf8_unicode_ci NOT NULL,
-  `key_name` varchar(150) collate utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(150) collate utf8_unicode_ci NOT NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `key_name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_makes_on_key_name` (`key_name`),
   UNIQUE KEY `index_makes_on_url_friendly` (`url_friendly`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -212,12 +208,12 @@ DROP TABLE IF EXISTS `part_attribute_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `part_attribute_types` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(255) default NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
   `key_name` varchar(255) NOT NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_part_attribute_types_on_key_name` (`key_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -240,13 +236,13 @@ DROP TABLE IF EXISTS `part_attributes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `part_attributes` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `part_id` int(11) NOT NULL,
   `part_attribute_type_id` int(11) NOT NULL,
-  `attr_value` varchar(255) default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `attr_value` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `index_part_attributes_on_part_id` (`part_id`),
   KEY `index_part_attributes_on_part_attribute_type_id` (`part_attribute_type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -269,11 +265,11 @@ DROP TABLE IF EXISTS `postal_code_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `postal_code_types` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -294,16 +290,16 @@ DROP TABLE IF EXISTS `postal_codes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `postal_codes` (
-  `id` int(11) NOT NULL auto_increment,
-  `code` varchar(25) collate utf8_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `city_id` int(11) NOT NULL,
   `state_id` int(11) NOT NULL,
   `postal_code_type_id` int(11) NOT NULL,
-  `latitude` float default NULL,
-  `longitude` float default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `latitude` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_postal_codes_on_code` (`code`),
   UNIQUE KEY `by_code` (`code`,`city_id`,`state_id`),
   KEY `index_postal_codes_on_city_id` (`city_id`),
@@ -329,14 +325,14 @@ DROP TABLE IF EXISTS `product_lines`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_lines` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `is_active` tinyint(1) default '1',
-  `sort_order` int(11) default '0',
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `sort_order` int(11) DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_product_lines_on_url_friendly` (`url_friendly`),
   KEY `index_product_lines_on_is_active` (`is_active`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -360,14 +356,14 @@ DROP TABLE IF EXISTS `publication_authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_authors` (
-  `id` int(11) NOT NULL auto_increment,
-  `first_name` varchar(255) collate utf8_unicode_ci default NULL,
-  `last_name` varchar(255) collate utf8_unicode_ci default NULL,
-  `full_name` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `bio` text collate utf8_unicode_ci,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `full_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `bio` text COLLATE utf8_unicode_ci,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -388,14 +384,14 @@ DROP TABLE IF EXISTS `publication_categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_categories` (
-  `id` int(11) NOT NULL auto_increment,
-  `parent_id` int(11) default NULL,
-  `name` varchar(150) collate utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(150) collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_publication_categories_on_url_friendly` (`url_friendly`),
   KEY `index_publication_categories_on_parent_id` (`parent_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -419,14 +415,14 @@ DROP TABLE IF EXISTS `publication_categories_titles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_categories_titles` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `publication_category_id` int(11) NOT NULL,
   `publication_title_id` int(11) NOT NULL,
-  `description` text collate utf8_unicode_ci,
-  `sort_order` int(11) default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `description` text COLLATE utf8_unicode_ci,
+  `sort_order` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `by_category` (`publication_category_id`,`publication_title_id`),
   KEY `index_publication_categories_titles_on_publication_category_id` (`publication_category_id`),
   KEY `index_publication_categories_titles_on_publication_title_id` (`publication_title_id`)
@@ -451,19 +447,19 @@ DROP TABLE IF EXISTS `publication_titles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_titles` (
-  `id` int(11) NOT NULL auto_increment,
-  `title` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci,
-  `pdf_file_name` varchar(255) collate utf8_unicode_ci default NULL,
-  `pdf_file_size` int(11) default NULL,
-  `pdf_content_type` varchar(255) collate utf8_unicode_ci default NULL,
-  `pdf_updated_at` datetime default NULL,
-  `volume_number` varchar(255) collate utf8_unicode_ci default NULL,
-  `published_at` datetime default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `pdf_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pdf_file_size` int(11) DEFAULT NULL,
+  `pdf_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pdf_updated_at` datetime DEFAULT NULL,
+  `volume_number` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `published_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_publication_titles_on_url_friendly` (`url_friendly`)
 ) ENGINE=InnoDB AUTO_INCREMENT=361 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -486,10 +482,10 @@ DROP TABLE IF EXISTS `publication_titles_authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication_titles_authors` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `publication_title_id` int(11) NOT NULL,
   `publication_author_id` int(11) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `by_author` (`publication_title_id`,`publication_author_id`),
   KEY `index_publication_titles_authors_on_publication_title_id` (`publication_title_id`),
   KEY `index_publication_titles_authors_on_publication_author_id` (`publication_author_id`)
@@ -513,13 +509,13 @@ DROP TABLE IF EXISTS `redirects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `redirects` (
-  `id` int(11) NOT NULL auto_increment,
-  `old_url` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `new_url` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `http_code` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `old_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `new_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `http_code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_redirects_on_old_url` (`old_url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -541,19 +537,19 @@ DROP TABLE IF EXISTS `reference_figures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reference_figures` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `avatar_file_name` varchar(255) collate utf8_unicode_ci default NULL,
-  `avatar_file_size` int(11) default NULL,
-  `avatar_content_type` varchar(255) collate utf8_unicode_ci default NULL,
-  `avatar_updated_at` datetime default NULL,
-  `exploded_view_file_name` varchar(255) collate utf8_unicode_ci default NULL,
-  `exploded_view_file_size` int(11) default NULL,
-  `exploded_view_content_type` varchar(255) collate utf8_unicode_ci default NULL,
-  `exploded_view_updated_at` datetime default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar_file_size` int(11) DEFAULT NULL,
+  `avatar_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar_updated_at` datetime DEFAULT NULL,
+  `exploded_view_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `exploded_view_file_size` int(11) DEFAULT NULL,
+  `exploded_view_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `exploded_view_updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -575,13 +571,13 @@ DROP TABLE IF EXISTS `roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `roles` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `key_name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `key_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_roles_on_key_name` (`key_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -604,7 +600,7 @@ DROP TABLE IF EXISTS `schema_migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `schema_migrations` (
-  `version` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   UNIQUE KEY `unique_schema_migrations` (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -627,13 +623,13 @@ DROP TABLE IF EXISTS `states`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `states` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `url_friendly` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `code` varchar(50) collate utf8_unicode_ci default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `url_friendly` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_states_on_url_friendly` (`url_friendly`),
   KEY `index_states_on_code` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -656,14 +652,14 @@ DROP TABLE IF EXISTS `units`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `units` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_line_id` int(11) NOT NULL,
-  `reference_figure_id` int(11) default NULL,
-  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `reference_figure_id` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `index_units_on_product_line_id` (`product_line_id`),
   KEY `index_units_on_reference_figure_id` (`reference_figure_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=485 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -687,14 +683,14 @@ DROP TABLE IF EXISTS `units_makes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `units_makes` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `unit_id` int(11) NOT NULL,
   `make_id` int(11) NOT NULL,
   `description` text,
-  `sort_order` int(11) default '0',
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `sort_order` int(11) DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `by_unit` (`unit_id`,`make_id`),
   KEY `index_units_makes_on_unit_id` (`unit_id`),
   KEY `index_units_makes_on_make_id` (`make_id`)
@@ -719,21 +715,21 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL auto_increment,
-  `login` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `crypted_password` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `password_salt` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `persistence_token` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `login_count` int(11) NOT NULL default '0',
-  `failed_login_count` int(11) NOT NULL default '0',
-  `last_request_at` datetime default NULL,
-  `current_login_at` datetime default NULL,
-  `last_login_at` datetime default NULL,
-  `current_login_ip` varchar(255) collate utf8_unicode_ci default NULL,
-  `last_login_ip` varchar(255) collate utf8_unicode_ci default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `crypted_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password_salt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `persistence_token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `login_count` int(11) NOT NULL DEFAULT '0',
+  `failed_login_count` int(11) NOT NULL DEFAULT '0',
+  `last_request_at` datetime DEFAULT NULL,
+  `current_login_at` datetime DEFAULT NULL,
+  `last_login_at` datetime DEFAULT NULL,
+  `current_login_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_login_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_login` (`login`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -744,7 +740,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'terry','f9f8c52502b7283b937a31f8aa5ffc7b7a7db060c12afafd3509411e42a85d245d6db86b98ab2d437fc63081cdadb2db1e3aec55cfd91aba95b4bcd2dec2422d','x7FxABAxdbiTKNgm7SyN','c2c6d06027314caa8fe66182c4d475f8eb0f7c775af9a41d003324d3a63c2bc813c462ea1b215a16bae4f0eeffdefb75589317a1a1ba4ade13c337acd61a63ab',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(2,'ep','19bbd22b77d40f1d3fbd857fec18a605a8984632770e9be5fc2324545b470ec8a5e0701191b6bfa562dd9b577331d7d7959f61d99fb424e80ab4f4e7ebcf85f7','E_i-gJVDUywW4QWwOgh5','4dd8d92ee6447977f188cdab69fa5ec6070edf51b82db257c7ba93193903cdb0d6958ee46709b4825e6b8ef40a449163025d3281241f75140bc15c63d539fdeb',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(3,'sjg','07f184ae8c45bb3b0e3ffcb83130b0f104a4a3e5f3550a5cf04ee932a6e7a8a2c2e65ba76682ee02cae134e1943ff201483f1331833f2ccc865751fdac0f5c72','xbFX-Mdde9NeK0nY8mD9','c223353b4a4e11e62a56ab44da1103cbc1946e92f0fbaa1ec52ebe9736536aea9c247c50b9c61323935fed90263787b52eaf703a013e14e5fe6dd6fa01d50bac',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(4,'admin','b6dd242dd09545691ccb20883f4bd3ec4282defab5d1d0a38bfed9c792cc6b307cfa3c290f996267e8eabce538a9e11a13f5a8e640e9f073b9689c31885f8937','ZzZ60GXdxcUgeNYHOJfH','c99c304b38776feff32286b9ba9ad2d1f3268222177ec504b9f19101194f2ee1623fa5cceaf57b2c55172306f428d417d2e9ee4d39cb125e8b0c9f2921e87cf3',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(5,'mll','5d96a29aa2505fcc2ce3b08bfcf0e3e869d6b0f01c40cf751b72134a62c4242b1e8f792537698125f7568bd3500ec25147e422f21568edda0c849b032f730fca','iAavaWlkgWo-HekDGuHS','7c71751af6553f437352b80628860b968f3a1a3699df6dcd463c2db471279d1a0725f56d009e94ced359511a120450a6dd1346ab23d489b791402a4402324d8a',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(6,'kag','a8208a77dc8f7ef9702fae9acaa6600c913a3b5eb82cf64d7dbad1274dcd9c632f84b8e16cda6637723d27c07932b9adba5c037ea0dae67fe0a06569509c5453','D25Wm8sWa3HDfL2KM_gv','0f405ab2e69a6f4869f0a045fbbaf2c62bfcbd13a21315173f0bb8b9fdab9da711804b9cb78f617c515a183284076f6293f7969a6bbc081fc49c07855da2c7e0',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43');
+INSERT INTO `users` VALUES (1,'terry','f9f8c52502b7283b937a31f8aa5ffc7b7a7db060c12afafd3509411e42a85d245d6db86b98ab2d437fc63081cdadb2db1e3aec55cfd91aba95b4bcd2dec2422d','x7FxABAxdbiTKNgm7SyN','c2c6d06027314caa8fe66182c4d475f8eb0f7c775af9a41d003324d3a63c2bc813c462ea1b215a16bae4f0eeffdefb75589317a1a1ba4ade13c337acd61a63ab',1,0,'2010-05-07 04:50:47','2010-05-07 04:06:07',NULL,'127.0.0.1',NULL,'2010-05-06 03:38:43','2010-05-07 04:50:47'),(2,'ep','19bbd22b77d40f1d3fbd857fec18a605a8984632770e9be5fc2324545b470ec8a5e0701191b6bfa562dd9b577331d7d7959f61d99fb424e80ab4f4e7ebcf85f7','E_i-gJVDUywW4QWwOgh5','4dd8d92ee6447977f188cdab69fa5ec6070edf51b82db257c7ba93193903cdb0d6958ee46709b4825e6b8ef40a449163025d3281241f75140bc15c63d539fdeb',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(3,'sjg','07f184ae8c45bb3b0e3ffcb83130b0f104a4a3e5f3550a5cf04ee932a6e7a8a2c2e65ba76682ee02cae134e1943ff201483f1331833f2ccc865751fdac0f5c72','xbFX-Mdde9NeK0nY8mD9','c223353b4a4e11e62a56ab44da1103cbc1946e92f0fbaa1ec52ebe9736536aea9c247c50b9c61323935fed90263787b52eaf703a013e14e5fe6dd6fa01d50bac',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(4,'admin','b6dd242dd09545691ccb20883f4bd3ec4282defab5d1d0a38bfed9c792cc6b307cfa3c290f996267e8eabce538a9e11a13f5a8e640e9f073b9689c31885f8937','ZzZ60GXdxcUgeNYHOJfH','c99c304b38776feff32286b9ba9ad2d1f3268222177ec504b9f19101194f2ee1623fa5cceaf57b2c55172306f428d417d2e9ee4d39cb125e8b0c9f2921e87cf3',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(5,'mll','5d96a29aa2505fcc2ce3b08bfcf0e3e869d6b0f01c40cf751b72134a62c4242b1e8f792537698125f7568bd3500ec25147e422f21568edda0c849b032f730fca','iAavaWlkgWo-HekDGuHS','7c71751af6553f437352b80628860b968f3a1a3699df6dcd463c2db471279d1a0725f56d009e94ced359511a120450a6dd1346ab23d489b791402a4402324d8a',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(6,'kag','a8208a77dc8f7ef9702fae9acaa6600c913a3b5eb82cf64d7dbad1274dcd9c632f84b8e16cda6637723d27c07932b9adba5c037ea0dae67fe0a06569509c5453','D25Wm8sWa3HDfL2KM_gv','0f405ab2e69a6f4869f0a045fbbaf2c62bfcbd13a21315173f0bb8b9fdab9da711804b9cb78f617c515a183284076f6293f7969a6bbc081fc49c07855da2c7e0',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -756,10 +752,10 @@ DROP TABLE IF EXISTS `users_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users_roles` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `by_role` (`user_id`,`role_id`),
   KEY `index_users_roles_on_user_id` (`user_id`),
   KEY `index_users_roles_on_role_id` (`role_id`)
@@ -785,4 +781,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-05-06 22:41:21
+-- Dump completed on 2010-05-07  4:51:09

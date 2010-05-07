@@ -1,2 +1,8 @@
-<h1>Admin::Distributors#edit</h1>
-<p>Find me in app/views/admin/distributors/edit.html.erb</p>
+<h1>Edit: <%= @distributor.name %></h1>
+<% form_for :distributor, @distributor, :url => admin_distributor_path(@distributor), :html => { :method => :put } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_distributors_path, :class => 'cancel' %>
+  </div>
+<% end %>
