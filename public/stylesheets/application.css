@@ -69,7 +69,6 @@ body {
   padding: 0px 22px;
   height: 36px;
   line-height: 3;
-  width: 20%;
 }
 #masthead ul li a:hover {
   background-color: #cc9933;
@@ -84,8 +83,10 @@ body {
 h1 {
   font-size: 28px;
 }
-form legend {
-  text-indent: -9999px;
+/* -- =FORMS -- */
+form fieldset legend {
+  position: absolute;
+  left: -9999px;
 }
 form div.text label {
   display: block;
