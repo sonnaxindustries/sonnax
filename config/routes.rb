@@ -38,6 +38,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :contact, :as => 'contact-us'
   map.register '/register', :controller => 'users', :action => 'new'
   
+  map.distributor_by_state '/distributors/:id/country/:country_code', :controller => 'distributors', :action => 'filter_by_country'
+  map.distributor_by_state '/distributors/:id/state/:state_code', :controller => 'distributors', :action => 'filter_by_state'
+  map.distributor_by_state '/distributors/:id/city/:city_name', :controller => 'distributors', :action => 'filter_by_city'
   map.resources :makes
   map.resources :distributors
   map.resources :reference_figures, :as => 'reference-figures'

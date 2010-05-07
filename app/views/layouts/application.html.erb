@@ -3,52 +3,75 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>Sonnax</title>
+    <meta http-equiv="content-language" content="en-us">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <title>Sonnax - Aftermarket replacement transmission, torque converter, and high performance automotive parts</title>
+    <meta name= "MSSmartTagsPreventParsing" content="true">
+    <meta name="description" content="Sonnax Transmissions.">
+    <meta name="keywords" content="sonnax, transmissions">
+    <meta name="author" content="Sonnax">
+    <meta name="reply-to" content="info@sonnax.com">
+    <meta name="copyright" content="<%= Time.now.year %> Sonnax">
+    <meta name="google-site-verification" content="#">
+    <meta name="y_key" content="#">
+    <meta http-equiv="imagetoolbar" content="false">
+    <%= stylesheet_link_tag 'reset', 'application' %>
     
   </head>
   
   <body id="home">
-    <div id="masthead">
-      <h1>Sonnax</h1>
-      <ul>
-        <li><%= link_to 'Home', root_path %></li>
-        <li>
-          <%= link_to 'Product Lines', product_lines_path %>
-          <% if @product_lines_nav.any? %>
-          <ul>
-            <% @product_lines_nav.each do |nav| %>
-            <li><%= link_to nav.name, product_line_path(nav.url_friendly) %></li>
-            <% end %>
+    <div id="container" class="group">
+      <div id="container-inner">
+        <div id="masthead">
+          <h1><%= link_to 'Sonnax', root_path %></h1>
+          <ul class="group">
+            <li><%= link_to 'Home', root_path %></li>
+            <li>
+              <%= link_to 'Product Lines', product_lines_path %>
+              <% if @product_lines_nav.any? %>
+              <ul>
+                <% @product_lines_nav.each do |nav| %>
+                <li><%= link_to nav.name, product_line_path(nav.url_friendly) %></li>
+                <% end %>
+              </ul>
+              <% end %>
+            </li>
+            <li><%= link_to 'Quick Search', quick_search_path %></li>
+            <li><%= link_to 'How to Order', how_to_order_path %></li>
+            <li><%= link_to 'Technical Information', technical_information_path %></li>
+            <li class="last">
+              <%= link_to 'About Us', about_us_path %>
+              <ul>
+                <li><%= link_to 'History/Mission', history_mission_path %></li>
+                <li><%= link_to 'Sonnax International', international_info_path %></li>
+                <li><%= link_to 'TASC Force &trade;', tasc_force_path %></li>
+                <li><%= link_to 'Catalog Request', catalog_request_path %></li>
+                <li><%= link_to 'Career Opportunities', career_opportunities_path %></li>
+                <li><%= link_to 'Schedule of Events', events_list_path %></li>
+                <li><%= link_to 'Sonnax News', news_list_path %></li>
+                <li><%= link_to 'Contact Us', new_contact_path %></li>
+              </ul>
+            </li>
           </ul>
-          <% end %>
-        </li>
-        <li><%= link_to 'Quick Search', quick_search_path %></li>
-        <li><%= link_to 'How to Order', how_to_order_path %></li>
-        <li><%= link_to 'Technical Information', technical_information_path %></li>
-        <li>
-          <%= link_to 'About Us', about_us_path %>
-          <ul>
-            <li><%= link_to 'History/Mission', history_mission_path %></li>
-            <li><%= link_to 'Sonnax International', international_info_path %></li>
-            <li><%= link_to 'TASC Force &trade;', tasc_force_path %></li>
-            <li><%= link_to 'Catalog Request', catalog_request_path %></li>
-            <li><%= link_to 'Career Opportunities', career_opportunities_path %></li>
-            <li><%= link_to 'Schedule of Events', events_list_path %></li>
-            <li><%= link_to 'Sonnax News', news_list_path %></li>
-            <li><%= link_to 'Contact Us', new_contact_path %></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    
-    <div id="wrapper">
-      <div id="wrapper-inner">
-        <%= yield %>
+        </div>
+
+        <div id="wrapper" class="group">
+          <div id="wrapper-inner" class="group">
+            <%= yield %>
+          </div>
+        </div>
+
+        <div id="extra" class="group">
+          <p>Sonnax Group</p>
+        </div>
       </div>
     </div>
     
-    <div id="extra">
+    <div id="disclaimer">
       <p>&copy; <%= Date.today.year %> Sonnax Industries, Inc. Sonnax Transmission, Torque Converter, Performance, Driveline, Allison &reg; Replacement Parts for automotive aftermarket rebuilders.</p>
     </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
