@@ -332,6 +332,7 @@ CREATE TABLE `product_lines` (
   `sort_order` int(11) DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_product_lines_on_url_friendly` (`url_friendly`),
   KEY `index_product_lines_on_is_active` (`is_active`)
@@ -344,7 +345,7 @@ CREATE TABLE `product_lines` (
 
 LOCK TABLES `product_lines` WRITE;
 /*!40000 ALTER TABLE `product_lines` DISABLE KEYS */;
-INSERT INTO `product_lines` VALUES (1,'High Performance Transmission','high-performance-transmission',1,4,'2010-05-03 11:27:30','2010-05-03 11:27:30'),(2,'Torque Converter &amp; HP Converter','torque-converter-amp-hp-converter',1,9,'2010-05-03 11:27:30','2010-05-03 11:27:30'),(3,'Transmission','transmission',1,11,'2010-05-03 11:27:30','2010-05-03 11:27:30'),(4,'Allison&reg;','allisonreg',1,1,'2010-05-03 11:27:30','2010-05-03 11:27:30'),(5,'Ring Gears','ring-gears',1,6,'2010-05-03 11:27:30','2010-05-03 11:27:30'),(6,'Power Train Savers&reg;','power-train-saversreg',0,5,'2010-05-03 11:27:30','2010-05-03 11:27:30'),(7,'High Performance Torque Converter','high-performance-torque-converter',0,3,'2010-05-03 11:27:30','2010-05-03 11:27:30'),(8,'Driveline','driveline',1,2,'2010-05-03 11:27:30','2010-05-03 11:27:30');
+INSERT INTO `product_lines` VALUES (1,'High Performance Transmission','high-performance-transmission-1',1,4,'2010-05-03 11:27:30','2010-05-07 17:45:27','Sonnax High Performance Transmission parts include innovative solutions that perform under the toughest challenges and an extensive line of Powerglide parts. For all out racing, Sonnax Powerglide parts range from drums, pistons and gear sets to hard-to-find linkage items. Larger boost valves and servos, “shift-in-a-box” products, and line-to-lube pressure regulator valves typify the exceptional Sonnax products that help hardworking, daily-use transmission as well as race units perform better and last longer.'),(2,'Torque Converter &amp; HP Converter','torque-converter-amp-hp-converter-1',1,9,'2010-05-03 11:27:30','2010-05-07 17:45:17','Sonnax torque converter parts comprise a full line of quality components for domestic, import, industrial, racing and heavy-duty converters. Sonnax works closely with converter rebuilders around the world to develop new parts as new converters and requirements appear in the automatic transmission aftermarket. In a fast-paced and competitive marketplace, Sonnax remains committed to providing the quality product, top service and technical support customers deserve.'),(3,'Transmission','transmission-1',1,11,'2010-05-03 11:27:30','2010-05-07 17:43:31','Sonnax transmission parts feature carefully designed, innovative solutions that address common complaints and help rebuilders salvage expensive automatic transmissions and valve bodies. In addition, Sonnax offers many transmission and valve body parts for the latest automotive aftermarket units; direct replacement parts with proven track records; excellent product information; in-depth phone and online technical support; and a global network of knowledgeable transmission parts distributors.'),(4,'Allison&reg;','allisonreg-1',1,1,'2010-05-03 11:27:30','2010-05-07 17:45:51','<p>Sonnax offers a continually expanding line of Allison transmission and converter parts, including governors, ground sleeves, oil pans, converter pistons and enhanced billet steel converter cover. Sonnax\'s latest product additions include pump bushings, speed sensors  and ground sleeves for PTO and non-PTO units.</p>\r\n\r\n<p>In addition to replacement Allison parts, Sonnax Power Train Savers can be installed on the driveshafts of single or multi-axle, class 6, 7, and 8, light through heavy duty trucks to protect axles, driveshafts and differentials from over-torque damage.</p>'),(5,'Ring Gears','ring-gears-1',1,6,'2010-05-03 11:27:30','2010-05-07 17:46:13','Sonnax ring gears are available for common automotive flexplate and flywheel applications as well as for torque converter applications. They are manufactured in compliance with Sonnax designs,precisely formed and heat-treated,and machined on the faces to eliminate the undesirable stress concentrations found in many \"pressed\" rings.'),(6,'Power Train Savers&reg;','power-train-saversreg-1',0,5,'2010-05-03 11:27:30','2010-05-07 17:47:32','<p>Sonnax, a leading supplier to the automotive aftermarket, is pleased to offer over-torque protection with Power Train Savers&reg;</p>\r\n\r\n<p>The Power Train Saver protects your complete drive train, prevents gear, shaft and axle damage, and virtually eliminates down time.</p>\r\n\r\n<p>The Power Train Saver unit is welded permanently into your driveshaft. Carefully calibrated fuse sets are then chosen and installed to match your vehicle specs and type of service. In an over-torque situation, before driveline damage occurs, the fuses will shear, allowing the unit to freewheel while all major components and driveshaft remain intact. Simply replace the Torque Fuse® set and get your vehicle back into service.</p>'),(7,'High Performance Torque Converter','high-performance-torque-converter',0,3,'2010-05-03 11:27:30','2010-05-03 11:27:30',NULL),(8,'Driveline','driveline-1',1,2,'2010-05-03 11:27:30','2010-05-07 17:46:58','<p>Sonnax is proud to offer a full line of aluminum Driveline components, engineered for improved assembly, outstanding performance and greater durability. Our weld yolks are constructed from high-quality T6061 aluminum. Sonnax also offers aluminum driveline tubing by Alcoa.</p>\r\n<p>Sonnax is also the exclusive distributor of light-duty Power Train Savers® and Torque Fuses®, which are designed to prevent overtorque damage to differentials, axles, and driveshafts.</p>');
 /*!40000 ALTER TABLE `product_lines` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -611,7 +612,7 @@ CREATE TABLE `schema_migrations` (
 
 LOCK TABLES `schema_migrations` WRITE;
 /*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
-INSERT INTO `schema_migrations` VALUES ('20100406014345'),('20100407172612'),('20100413210910'),('20100413211735'),('20100413211959'),('20100413212200'),('20100413212417'),('20100413212749'),('20100413215418'),('20100413220109'),('20100413221634'),('20100415015743'),('20100415125308'),('20100415132445'),('20100415140221'),('20100415145756'),('20100415150311'),('20100503112328'),('20100503120539'),('20100506034304'),('20100506040838'),('20100506130258'),('20100506185254'),('20100506190612'),('20100506190934');
+INSERT INTO `schema_migrations` VALUES ('20100406014345'),('20100407172612'),('20100413210910'),('20100413211735'),('20100413211959'),('20100413212200'),('20100413212417'),('20100413212749'),('20100413215418'),('20100413220109'),('20100413221634'),('20100415015743'),('20100415125308'),('20100415132445'),('20100415140221'),('20100415145756'),('20100415150311'),('20100503112328'),('20100503120539'),('20100506034304'),('20100506040838'),('20100506130258'),('20100506185254'),('20100506190612'),('20100506190934'),('20100507174040');
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -662,7 +663,7 @@ CREATE TABLE `units` (
   PRIMARY KEY (`id`),
   KEY `index_units_on_product_line_id` (`product_line_id`),
   KEY `index_units_on_reference_figure_id` (`reference_figure_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=488 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=489 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -731,7 +732,7 @@ CREATE TABLE `users` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_login` (`login`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -740,7 +741,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'terry','f9f8c52502b7283b937a31f8aa5ffc7b7a7db060c12afafd3509411e42a85d245d6db86b98ab2d437fc63081cdadb2db1e3aec55cfd91aba95b4bcd2dec2422d','x7FxABAxdbiTKNgm7SyN','c2c6d06027314caa8fe66182c4d475f8eb0f7c775af9a41d003324d3a63c2bc813c462ea1b215a16bae4f0eeffdefb75589317a1a1ba4ade13c337acd61a63ab',3,0,'2010-05-07 16:10:25','2010-05-07 16:01:23','2010-05-07 05:37:08','127.0.0.1','127.0.0.1','2010-05-06 03:38:43','2010-05-07 16:10:25'),(2,'ep','19bbd22b77d40f1d3fbd857fec18a605a8984632770e9be5fc2324545b470ec8a5e0701191b6bfa562dd9b577331d7d7959f61d99fb424e80ab4f4e7ebcf85f7','E_i-gJVDUywW4QWwOgh5','4dd8d92ee6447977f188cdab69fa5ec6070edf51b82db257c7ba93193903cdb0d6958ee46709b4825e6b8ef40a449163025d3281241f75140bc15c63d539fdeb',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(3,'sjg','07f184ae8c45bb3b0e3ffcb83130b0f104a4a3e5f3550a5cf04ee932a6e7a8a2c2e65ba76682ee02cae134e1943ff201483f1331833f2ccc865751fdac0f5c72','xbFX-Mdde9NeK0nY8mD9','c223353b4a4e11e62a56ab44da1103cbc1946e92f0fbaa1ec52ebe9736536aea9c247c50b9c61323935fed90263787b52eaf703a013e14e5fe6dd6fa01d50bac',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(4,'admin','b6dd242dd09545691ccb20883f4bd3ec4282defab5d1d0a38bfed9c792cc6b307cfa3c290f996267e8eabce538a9e11a13f5a8e640e9f073b9689c31885f8937','ZzZ60GXdxcUgeNYHOJfH','c99c304b38776feff32286b9ba9ad2d1f3268222177ec504b9f19101194f2ee1623fa5cceaf57b2c55172306f428d417d2e9ee4d39cb125e8b0c9f2921e87cf3',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(5,'mll','5d96a29aa2505fcc2ce3b08bfcf0e3e869d6b0f01c40cf751b72134a62c4242b1e8f792537698125f7568bd3500ec25147e422f21568edda0c849b032f730fca','iAavaWlkgWo-HekDGuHS','7c71751af6553f437352b80628860b968f3a1a3699df6dcd463c2db471279d1a0725f56d009e94ced359511a120450a6dd1346ab23d489b791402a4402324d8a',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(6,'kag','a8208a77dc8f7ef9702fae9acaa6600c913a3b5eb82cf64d7dbad1274dcd9c632f84b8e16cda6637723d27c07932b9adba5c037ea0dae67fe0a06569509c5453','D25Wm8sWa3HDfL2KM_gv','0f405ab2e69a6f4869f0a045fbbaf2c62bfcbd13a21315173f0bb8b9fdab9da711804b9cb78f617c515a183284076f6293f7969a6bbc081fc49c07855da2c7e0',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(12,'nateklaiber','f5eb211d85ef3d1747c31bcf08d8502bf65bd959fcca1c720659b8e59c8c3a6ba81b100d60052ad95f0c6367a2c522d940d71103d44c2c4e22d25db517d3f01d','ui2RXj58H4RWigSQq4rM','3cc046c23c22305b7ea7fd1067256d669ac2a7764d8f75c595ceb4c3d1d64f89b78c8c45d8f38e4310dfc2535971fe7c800650168a72b3eeb8c97c24358b827b',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-07 16:10:07','2010-05-07 16:10:07');
+INSERT INTO `users` VALUES (1,'terry','f9f8c52502b7283b937a31f8aa5ffc7b7a7db060c12afafd3509411e42a85d245d6db86b98ab2d437fc63081cdadb2db1e3aec55cfd91aba95b4bcd2dec2422d','x7FxABAxdbiTKNgm7SyN','c2c6d06027314caa8fe66182c4d475f8eb0f7c775af9a41d003324d3a63c2bc813c462ea1b215a16bae4f0eeffdefb75589317a1a1ba4ade13c337acd61a63ab',3,0,'2010-05-07 17:47:32','2010-05-07 16:01:23','2010-05-07 05:37:08','127.0.0.1','127.0.0.1','2010-05-06 03:38:43','2010-05-07 17:47:32'),(2,'ep','19bbd22b77d40f1d3fbd857fec18a605a8984632770e9be5fc2324545b470ec8a5e0701191b6bfa562dd9b577331d7d7959f61d99fb424e80ab4f4e7ebcf85f7','E_i-gJVDUywW4QWwOgh5','4dd8d92ee6447977f188cdab69fa5ec6070edf51b82db257c7ba93193903cdb0d6958ee46709b4825e6b8ef40a449163025d3281241f75140bc15c63d539fdeb',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(3,'sjg','07f184ae8c45bb3b0e3ffcb83130b0f104a4a3e5f3550a5cf04ee932a6e7a8a2c2e65ba76682ee02cae134e1943ff201483f1331833f2ccc865751fdac0f5c72','xbFX-Mdde9NeK0nY8mD9','c223353b4a4e11e62a56ab44da1103cbc1946e92f0fbaa1ec52ebe9736536aea9c247c50b9c61323935fed90263787b52eaf703a013e14e5fe6dd6fa01d50bac',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(4,'admin','b6dd242dd09545691ccb20883f4bd3ec4282defab5d1d0a38bfed9c792cc6b307cfa3c290f996267e8eabce538a9e11a13f5a8e640e9f073b9689c31885f8937','ZzZ60GXdxcUgeNYHOJfH','c99c304b38776feff32286b9ba9ad2d1f3268222177ec504b9f19101194f2ee1623fa5cceaf57b2c55172306f428d417d2e9ee4d39cb125e8b0c9f2921e87cf3',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(5,'mll','5d96a29aa2505fcc2ce3b08bfcf0e3e869d6b0f01c40cf751b72134a62c4242b1e8f792537698125f7568bd3500ec25147e422f21568edda0c849b032f730fca','iAavaWlkgWo-HekDGuHS','7c71751af6553f437352b80628860b968f3a1a3699df6dcd463c2db471279d1a0725f56d009e94ced359511a120450a6dd1346ab23d489b791402a4402324d8a',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43'),(6,'kag','a8208a77dc8f7ef9702fae9acaa6600c913a3b5eb82cf64d7dbad1274dcd9c632f84b8e16cda6637723d27c07932b9adba5c037ea0dae67fe0a06569509c5453','D25Wm8sWa3HDfL2KM_gv','0f405ab2e69a6f4869f0a045fbbaf2c62bfcbd13a21315173f0bb8b9fdab9da711804b9cb78f617c515a183284076f6293f7969a6bbc081fc49c07855da2c7e0',0,0,NULL,NULL,NULL,NULL,NULL,'2010-05-06 03:38:43','2010-05-06 03:38:43');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -759,7 +760,7 @@ CREATE TABLE `users_roles` (
   UNIQUE KEY `by_role` (`user_id`,`role_id`),
   KEY `index_users_roles_on_user_id` (`user_id`),
   KEY `index_users_roles_on_role_id` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -768,7 +769,7 @@ CREATE TABLE `users_roles` (
 
 LOCK TABLES `users_roles` WRITE;
 /*!40000 ALTER TABLE `users_roles` DISABLE KEYS */;
-INSERT INTO `users_roles` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,6),(6,2,1),(7,2,2),(8,2,3),(9,2,4),(10,2,6),(11,3,2),(12,3,6),(13,4,2),(14,5,6),(15,6,2),(16,6,3),(17,6,4),(28,12,1),(27,12,2);
+INSERT INTO `users_roles` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,6),(6,2,1),(7,2,2),(8,2,3),(9,2,4),(10,2,6),(11,3,2),(12,3,6),(13,4,2),(14,5,6),(15,6,2),(16,6,3),(17,6,4);
 /*!40000 ALTER TABLE `users_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -781,4 +782,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-05-07 16:10:48
+-- Dump completed on 2010-05-07 17:47:47

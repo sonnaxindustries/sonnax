@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100506190934) do
+ActiveRecord::Schema.define(:version => 20100507174040) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20100506190934) do
     t.integer  "sort_order",   :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   add_index "product_lines", ["is_active"], :name => "index_product_lines_on_is_active"

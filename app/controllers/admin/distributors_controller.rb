@@ -1,4 +1,5 @@
 class Admin::DistributorsController < Admin::BaseController
+  before_filter :authorized?
   before_filter :retrieve_distributor, :only => [:show, :edit, :update, :destroy]
   
   def index
@@ -55,5 +56,10 @@ private
     rescue ActiveRecord::RecordNotFound
       render_404
     end
+  end
+  
+  def authorized?
+    true
+    #current_user && current_user.edit_distributors?
   end
 end

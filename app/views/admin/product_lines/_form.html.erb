@@ -7,6 +7,12 @@
     <%= f.text_field :name %>
   </div>
   
+  <div class="textarea description">
+    <%= f.error_message_on :description %>
+    <%= f.label :description, 'Summary' %>
+    <%= f.text_area :description, :cols => 30, :rows => 10 %>
+  </div>
+  
   <div class="text sort-order">
     <%= f.error_message_on :sort_order %>
     <%= f.label :sort_order, 'Sort Order' %>
