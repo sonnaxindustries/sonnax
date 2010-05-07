@@ -3,38 +3,66 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="content-language" content="en-us">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
     <title>Sonnax Administration</title>
+    <meta name= "MSSmartTagsPreventParsing" content="true">
+    <meta name="description" content="Sonnax Transmissions.">
+    <meta name="keywords" content="sonnax, transmissions">
+    <meta name="author" content="Sonnax">
+    <meta name="reply-to" content="info@sonnax.com">
+    <meta name="copyright" content="<%= Time.now.year %> Sonnax">
+    <meta name="google-site-verification" content="#">
+    <meta name="y_key" content="#">
+    <meta http-equiv="imagetoolbar" content="false">
+    <%= stylesheet_link_tag 'reset', 'application', 'administration' %>
     
   </head>
   
   <body id="home">
-    <div id="masthead">
-      <h1><%= link_to 'Sonnax Administration', '#' %></h1>       
-      <div class="user-options">
-        <p>You are logged in as <strong><%= current_user.login %></strong>, <%= link_to 'view your profile', account_path %> or <%= link_to 'sign out', sign_out_path %></p>
-      </div>
-    </div>
-    
-    <div id="wrapper">
-      <div id="wrapper-inner">
-        <div id="col-1">
-          <ul>
-            <li><%= link_to 'Product Lines', admin_product_lines_path %></li>
-            <li><%= link_to 'Parts', admin_parts_path %></li>
-            <li><%= link_to 'Units', admin_units_path %></li>
-            <li><%= link_to 'Makes', admin_makes_path %></li>
-            <li><%= link_to 'Reference Figures', admin_reference_figures_path %></li>
-            <li><%= link_to 'Distributors', admin_distributors_path %></li>
-            <li><%= link_to 'Publications', admin_publication_titles_path %></li>
-            <li><%= link_to 'Users', admin_users_path %></li>
+    <div id="container" class="group">
+      <div id="container-inner">
+        <div id="masthead">
+          <h1><%= link_to 'Sonnax', root_path %></h1>
+          <ul class="group">
+            <li><%= link_to 'Home', root_path %></li>
           </ul>
         </div>
-        <%= yield %>
+
+        <div id="wrapper" class="group">
+          <div id="wrapper-inner" class="group">
+            <div class="user-options group">
+              <p>You are logged in as <strong><%= current_user.login %></strong>, <%= link_to 'view your profile', account_path %> or <%= link_to 'sign out', sign_out_path %></p>
+            </div>
+            
+            <div id="col-1">
+              <ul>
+                <li><%= link_to 'Product Lines', admin_product_lines_path %></li>
+                <li><%= link_to 'Parts', admin_parts_path %></li>
+                <li><%= link_to 'Units', admin_units_path %></li>
+                <li><%= link_to 'Makes', admin_makes_path %></li>
+                <li><%= link_to 'Reference Figures', admin_reference_figures_path %></li>
+                <li><%= link_to 'Distributors', admin_distributors_path %></li>
+                <li><%= link_to 'Publications', admin_publication_titles_path %></li>
+                <li><%= link_to 'Users', admin_users_path %></li>
+              </ul>
+            </div>
+            
+            <%= yield %>
+          </div>
+        </div>
+
+        <div id="extra" class="group">
+          <p>Sonnax Group</p>
+        </div>
       </div>
     </div>
     
-    <div id="extra">
-      <p>&copy; <%= Date.today.year %> Sonnax Industries, Inc.</p>
+    <div id="disclaimer">
+      <p>&copy; <%= Date.today.year %> Sonnax Industries, Inc. Sonnax Transmission, Torque Converter, Performance, Driveline, Allison &reg; Replacement Parts for automotive aftermarket rebuilders.</p>
     </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
