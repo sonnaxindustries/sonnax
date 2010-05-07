@@ -29,7 +29,7 @@
       <tbody>
         <% @reference_figures.each do |reference_figure| %>
         <tr id="<%= dom_id(reference_figure) %>">
-          <td class="name"><%= photo_for(reference_figure) %><%= reference_figure.name %></td>
+          <td class="name"><%= image_tag reference_figure.avatar.url(:tiny) , :class => 'tiny-reference-figure' %><%= reference_figure.name %></td>
           <td class="options">
             <ul>
               <li><%= link_to 'Edit', edit_admin_reference_figure_path(reference_figure), :class => 'edit' %></li>
