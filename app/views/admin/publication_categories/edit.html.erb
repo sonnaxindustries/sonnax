@@ -1,0 +1,8 @@
+<h1>Edit: <%= @publication_category.name %></h1>
+<% form_for :publication_category, @publication_category, :url => admin_publication_category_path(@publication_category), :html => { :method => :put } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_publication_categories_path, :class => 'cancel' %>
+  </div>
+<% end %>
