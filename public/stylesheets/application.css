@@ -87,8 +87,9 @@ h1 {
   border-collapse: collapse;
 }
 #distributors table tbody td {
+  line-height: 1.7;
   font-size: 12px;
-  padding: 3px 0px;
+  padding: 3px 2px;
   border-bottom: 1px solid #ddd;
 }
 /* -- =LINKS -- */
