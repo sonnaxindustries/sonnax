@@ -1,6 +1,6 @@
 class Admin::UnitsController < Admin::BaseController
   before_filter :retrieve_unit, :only => [:show, :edit, :update, :destroy]
-  before_filter :retrieve_product_line_options, :only => [:edit, :update, :new, :create]
+  before_filter :retrieve_product_line_options, :retrieve_make_options, :only => [:edit, :update, :new, :create]
   
   def index
     @units = Admin::Unit.list(params)
@@ -63,5 +63,9 @@ private
   
   def retrieve_product_line_options
     @product_line_options = Admin::ProductLine.options
+  end
+  
+  def retrieve_make_options
+    @make_options = Admin::Make.options
   end
 end

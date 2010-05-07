@@ -2,6 +2,8 @@ class Admin::ReferenceFigure < ReferenceFigure
   has_many :publication_categories, :class_name => 'Admin::PublicationCategoriesTitle', :dependent => :destroy
   has_many :categories, :through => :publication_categories
   
+  has_one :unit, :class_name => 'Admin::Unit'
+  
   define_index do
     indexes :name, :sortable => true
     

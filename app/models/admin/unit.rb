@@ -1,5 +1,9 @@
 class Admin::Unit < Unit
   belongs_to :product_line, :class_name => 'Admin::ProductLine'
+  belongs_to :reference_figure, :class_name => 'Admin::ReferenceFigure'
+  
+  has_many :units_makes, :dependent => :destroy, :class_name => 'Admin::UnitsMake'
+  has_many :makes, :through => :units_makes
   
   define_index do
     indexes :name, :sortable => true

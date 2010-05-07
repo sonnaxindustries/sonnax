@@ -19,3 +19,20 @@
     <%= f.text_area :description, :cols => 30, :rows => 10 %>
   </div>
 </fieldset>
+<% if @make_options.any? %>
+<fieldset>
+	<legend>Make Information</legend>
+	<p>The makes that this unit will be attached to.</p>
+	<%= hidden_field_tag "unit[make_ids][]", '' %>
+	<% content_tag :div, :class => 'makes' do -%>
+		<% @make_options.each do |s| -%>
+			<% div_for s do %>
+				<label>
+					<%= check_box_tag "unit[make_ids][]", s.id, @unit.makes.include?(s) %>
+					<%= s.name %>
+				</label>
+			<% end -%>
+		<% end -%>
+	<% end -%>
+</fieldset>
+<% end %>

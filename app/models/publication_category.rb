@@ -28,7 +28,7 @@ class PublicationCategory < ActiveRecord::Base
     return "%s-%s" % [formatted_friendly, n.to_s]
   end
   
-  def before_save
+  def before_create
     self.url_friendly = self.generate_url_friendly!
   end
 end

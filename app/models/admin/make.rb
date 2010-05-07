@@ -1,5 +1,14 @@
 class Admin::Make < Make
+  has_many :units_makes, :dependent => :destroy, :class_name => 'Admin::UnitsMake'
+  has_many :units, :through => :units_makes
+  
   named_scope :list, :order => 'created_at DESC'
+  
+  class << self
+    def options
+      self.list
+    end
+  end
     
   def validate
     self.errors.add(:name, 'Please provide a name') unless self.name?
