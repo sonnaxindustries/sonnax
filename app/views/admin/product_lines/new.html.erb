@@ -1,2 +1,8 @@
-<h1>Admin::ProductLines#new</h1>
-<p>Find me in app/views/admin/product_lines/new.html.erb</p>
+<h1>Add a new ProductLine</h1>
+<% form_for :product_line, @product_line, :url => admin_product_lines_path do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_product_lines_path, :class => 'cancel' %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<fieldset>
+  <legend>Profile Information</legend>
+  
+  <div class="text name">
+    <%= f.error_message_on :name %>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="text sort-order">
+    <%= f.error_message_on :sort_order %>
+    <%= f.label :sort_order, 'Sort Order' %>
+    <%= f.text_field :sort_order %>
+  </div>
+  
+  <div class="checkbox is-active">
+    <%= f.check_box :is_active %> <%= f.label :is_active, 'Is this product line active?' %>
+  </div>
+</fieldset>

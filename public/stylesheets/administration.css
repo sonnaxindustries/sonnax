@@ -38,3 +38,14 @@ table tbody td.options ul li a {
   display: block;
   padding-right: 10px;
 }
+table thead th {
+  font-weight: bold;
+  border-bottom: 2px solid #666;
+  border-collapse: collapse;
+}
+table tbody td {
+  line-height: 1.7;
+  font-size: 12px;
+  padding: 3px 2px;
+  border-bottom: 1px solid #ddd;
+}
