@@ -1,4 +1,57 @@
 class Import::Excel::Publication
+  
+  class Type
+    def initialize(attrs={})
+      @attributes = attrs
+    end
+    
+    def title
+      @title ||= @attributes[:title]
+    end
+  end
+  
+  class Author
+    def initialize(attrs={})
+      @attributes = attrs
+    end
+    
+    def name
+      @name ||= @attributes[:name]
+    end
+  end
+  
+  class Subject
+    def initialize(attrs={})
+      @attributes = attrs
+    end
+    
+    def title
+      @title ||= @attributes[:title]
+    end
+  end
+  
+  class Category
+    def initialize(attrs={})
+      @attributes = attrs
+      self.parse_title!
+    end
+    
+    def title_name
+      @title_name ||= @attributes[:title_name]
+    end
+    
+    def title
+      @parsed_title.last
+    end
+    
+    def sort_order
+      @parsed_title.first.gsub('.', '')
+    end
+    
+    def parse_title!
+      @parsed_title = self.title_name.split(' ', 2)
+    end
+  end
     
   class Row
     def initialize(attrs={})
@@ -9,16 +62,28 @@ class Import::Excel::Publication
       @title ||= @attributes[:title]
     end
     
+    def publication_category
+      @publication_category ||= @attributes[:publication_category]
+    end
+    
     def category
-      @category ||= @attributes[:publication_category]
+      Category.find_by_name(self.publication_category)
+    end
+    
+    def publication_type
+      @publication_type ||= @attributes[:publication_type]
     end
     
     def type
-      @type ||= @attributes[:publication_type]
+      PublicationType.find_by_name(self.publication_type)
+    end
+    
+    def publication_subject
+      @publication_subject ||= @attributes[:publication_subject]
     end
     
     def subject
-      @subject ||= @attributes[:subject]
+      PublicationSubject.find_by_name(self.publication_subject)
     end
     
     def date
@@ -26,8 +91,12 @@ class Import::Excel::Publication
       @date ||= Date.parse(@attributes[:date])
     end
     
+    def author_name
+      @author_name ||= @attributes[:author_name]
+    end
+    
     def author
-      @author ||= @attributes[:author]
+      PublicationAuthor.find_by_full_name(self.author_name)
     end
     
     def pdf_filename
@@ -106,19 +175,35 @@ class Import::Excel::Publication
   end
   
   def publication_categories
-    @publication_categories ||= self.records.map(&:category).uniq.compact
+    @publication_categories ||= self.records.map(&:publication_category).uniq.compact
+  end
+  
+  def categories
+    self.publication_categories.inject([]) { |arr,val| arr << Category.new(:title_name => val); arr }
   end
   
   def publication_types
-    @publication_types ||= self.records.map(&:type).uniq.compact
+    @publication_types ||= self.records.map(&:publication_type).uniq.compact
+  end
+  
+  def types
+    self.publication_types.inject([]) { |arr,val| arr << Type.new(:title => val); arr }
   end
   
   def publication_subjects
-    @publication_subjects ||= self.records.map(&:subject).uniq.compact
+    @publication_subjects ||= self.records.map(&:publication_subject).uniq.compact
+  end
+  
+  def subjects
+    self.publication_subjects.inject([]) { |arr,val| arr << Subject.new(:title => val); arr }
   end
   
   def publication_authors
-    @publication_authors ||= self.records.map(&:author).uniq.compact
+    @publication_authors ||= self.records.map(&:author_name).uniq.compact
+  end
+  
+  def authors
+    self.publication_authors.inject([]) { |arr,val| arr << Author.new(:name => val); arr }
   end
   
   def records
@@ -134,9 +219,9 @@ class Import::Excel::Publication
                                :publication_category  => self.workbook.cell(index, 3),
                                :publication_type      => self.workbook.cell(index, 4),
                                :title                 => self.workbook.cell(index, 5),
-                               :subject               => self.workbook.cell(index, 6),
+                               :publication_subject   => self.workbook.cell(index, 6),
                                :date                  => self.workbook.cell(index, 7),
-                               :author                => self.workbook.cell(index, 8),
+                               :author_name           => self.workbook.cell(index, 8),
                                :pdf_filename          => self.workbook.cell(index, 9),
                                :product_line_id       => self.workbook.cell(index, 10),
                                :make_name             => self.workbook.cell(index, 11),
