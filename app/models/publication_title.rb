@@ -2,6 +2,9 @@ class PublicationTitle < ActiveRecord::Base
   has_many :publication_categories, :class_name => 'PublicationCategoriesTitle', :dependent => :destroy
   has_many :categories, :through => :publication_categories
   
+  has_many :publication_authors, :class_name => 'PublicationTitlesAuthor', :dependent => :destroy
+  has_many :authors, :through => :publication_authors
+  
   has_attached_file :pdf
   
   define_index do

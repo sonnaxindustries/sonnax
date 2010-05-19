@@ -1,4 +1,21 @@
+# NOTE: Use current or Legacy?
 class Import::Excel::Publication
+  
+  class << self
+    def import!
+      ActiveRecord::Base.connection.execute('TRUNCATE publication_authors')
+      ActiveRecord::Base.connection.execute('TRUNCATE publication_titles')
+      klass = self.new
+      klass.import_authors!
+      # klass.import_titles!
+      # makes, units, unit makes, and product lines are dependencies
+      # import categories
+      # import types
+      # import subjects
+      # import authors
+      # import keywords
+    end
+  end
   
   class Type
     def initialize(attrs={})
@@ -17,6 +34,26 @@ class Import::Excel::Publication
     
     def name
       @name ||= @attributes[:name]
+    end
+    
+    def name?
+      !self.name.blank?
+    end
+    
+    def first_name
+      self.name.split(' ', 2).first if self.name?
+    end
+    
+    def last_name
+      self.name.split(' ', 2).last if self.name?
+    end
+    
+    def to_params
+      {
+        :first_name => self.first_name,
+        :last_name => self.last_name,
+        :full_name => self.name
+      }
     end
   end
   
@@ -142,6 +179,14 @@ class Import::Excel::Publication
     def keywords
       @keywords ||= @attributes[:keywords]
     end
+    
+    def to_params
+      {
+        :title => self.title,
+        :pdf => self.pdf,
+        :published_at => self.date
+      }
+    end
   end
   
   def initialize
@@ -168,6 +213,10 @@ class Import::Excel::Publication
   
   def start_row
     3
+  end
+  
+  def import_titles!
+    self.records.map { |publication| PublicationTitle.create(publication.to_params) }
   end
   
   def publications_worksheet
@@ -204,6 +253,14 @@ class Import::Excel::Publication
   
   def authors
     self.publication_authors.inject([]) { |arr,val| arr << Author.new(:name => val); arr }
+  end
+  
+  def authors?
+    self.authors.any?
+  end
+  
+  def import_authors!
+    self.authors.map { |author| PublicationAuthor.create(author.to_params) }
   end
   
   def records
