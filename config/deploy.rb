@@ -16,27 +16,27 @@ set :user, 'root'
 set :use_sudo, false
 set :deploy_via, :remote_cache
 
-set :shared_host, 'theklaibers.com'
+set :shared_host, '74.50.61.9'
 
-role :app, 'theklaibers.com'
-role :web, 'theklaibers.com'
-role :db, 'theklaibers.com', :primary => true
+role :app, '74.50.61.9'
+role :web, '74.50.61.9'
+role :db, '74.50.61.9', :primary => true
 
-desc "deploy to the theklaibers subdomain"
-task :theklaibers do
-  set :deploy_to, "/var/www/rails/sonnax"
-  set :application, "sonnax"
-  set :app, "theklaibers.com"
-  set :db, "theklaibers.com"  
-end
-
-desc "deploy to the production domain"
-task :production do
-  set :deploy_to, "/var/www/rails/sonnax"
-  set :application, "sonnax"
-  set :app, "theklaibers.com"
-  set :db, "theklaibers.com"  
-end
+# desc "deploy to the theklaibers subdomain"
+# task :theklaibers do
+#   set :deploy_to, "/var/www/rails/sonnax"
+#   set :application, "sonnax"
+#   set :app, "theklaibers.com"
+#   set :db, "theklaibers.com"  
+# end
+# 
+# desc "deploy to the production domain"
+# task :production do
+#   set :deploy_to, "/var/www/rails/sonnax"
+#   set :application, "sonnax"
+#   set :app, "theklaibers.com"
+#   set :db, "theklaibers.com"  
+# end
 
 namespace(:deploy) do
   desc 'Move the database.yml file'
