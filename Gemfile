@@ -9,6 +9,9 @@ gem "authlogic",              "2.1.3"
 gem "thinking-sphinx",        "1.3.16"
 gem "liquid",                 "2.0.0"
 gem "acts_as_tree",           "0.1.1"
+gem "spreadsheet",            "0.6.4.1"
+gem "rubyzip",                "0.9.4"
+gem "roo",                    "1.9.3"
 
 group :test do
   gem "rspec",                "1.3.0"
