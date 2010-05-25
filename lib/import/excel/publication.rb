@@ -1,6 +1,15 @@
 class Import::Excel::Publication
   
   class << self
+    def keyword_types_hash
+      {
+        :rebuilding     => 'General Rebuilding Tip',
+        :diagnosis      => 'Diagnosis',
+        :complaint      => 'Complaint',
+        :correction     => 'Correction'
+      }
+    end
+    
     def import!
       tables = %w( publication_categories_titles publication_titles_units_makes publication_titles_authors publication_titles_product_lines publication_titles_subjects publication_titles_types publication_titles_keywords publication_keyword_types publication_keywords publication_categories publication_authors publication_titles publication_types publication_subjects )
       
@@ -289,6 +298,18 @@ class Import::Excel::Publication
       @keywords ||= @attributes[:keywords]
     end
     
+    def all_keywords
+      Import::Excel::Publication.keyword_types_hash.keys.inject([]) do |arr,kt|
+        keyword_type = PublicationKeywordType.find_by_title(Import::Excel::Publication.keyword_types_hash[kt])
+        arr << PublicationKeyword.find_by_publication_keyword_type_id_and_title(keyword_type.id, self.keywords.send(kt)) if !self.keywords.send(kt).nil? && keyword_type
+        arr
+      end
+    end
+    
+    def all_keywords?
+      self.all_keywords.any?
+    end
+    
     def to_params
       {
         :title => self.title,
@@ -344,6 +365,13 @@ class Import::Excel::Publication
       
       puts "Attaching publication (%s) to unit_makes..." % [record_object.title]
       record_object.units_makes << record.unit_make if record.unit_make? && !record_object.units_makes.include?(record.unit_make)
+      
+      puts "Attaching publication (%s) to keywords..." % [record_object.title]
+      if record.all_keywords?
+        record.all_keywords.each do |keyword|
+          record_object.keywords << keyword unless record_object.keywords.include?(keyword)
+        end
+      end
     end
   end
   

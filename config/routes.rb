@@ -52,6 +52,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :reference_figures, :as => 'reference-figures'
   map.resources :units
   
+  map.resources :publication_keywords, :as => 'keywords'
   map.resources :publication_authors, :as => 'authors'
   map.resources :publication_titles, :as => 'titles'
   map.resources :publication_subjects, :as => 'publication-subjects'
