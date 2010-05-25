@@ -4,6 +4,8 @@ class PublicationKeyword < ActiveRecord::Base
   has_many :publication_keywords, :class_name => 'PublicationTitlesKeyword', :dependent => :destroy
   has_many :publications, :through => :publication_keywords
   
+  named_scope :list, :order => 'created_at DESC'
+  
   class << self
     def detail!(id)
       self.find_by_url_friendly!(id)

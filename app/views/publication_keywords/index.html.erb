@@ -1,2 +1,9 @@
-<h1>PublicationKeywords#index</h1>
-<p>Find me in app/views/publication_keywords/index.html.erb</p>
+<h1>Keywords</h1>
+
+<% if @keywords.any? %>
+  <ul>
+  <% @keywords.each do |keyword| %>
+    <li><%= link_to "#{keyword.title} (#{keyword.publication_keyword_type.title})", publication_keyword_path(keyword.url_friendly) %></li>
+  <% end %>
+  </ul>
+<% end %>
