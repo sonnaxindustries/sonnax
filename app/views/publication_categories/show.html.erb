@@ -1,13 +1,8 @@
 <h1><%= @publication_category.name %></h1>
 
 
-<% if @publication_category.children? %>
-  <% @publication_category.children.each do |subcategory| %>
-  <h4><%= link_to subcategory.name, publication_category_publication_subcategory_path(@publication_category.url_friendly, subcategory.url_friendly) %></h4>
-    <% if subcategory.titles? %>
-      <% subcategory.titles.each do |title| %>
-      <p><%= link_to title.title, publication_category_publication_subcategory_publication_title_path(@publication_category.url_friendly, subcategory.url_friendly, title.url_friendly) %></p>
-      <% end %>
-    <% end %>
+<% if @publication_category.publications? %>
+  <% @publication_category.publications.each do |publication| %>
+    <p><%= link_to publication.title, publication_category_publication_title_path(@publication_category.url_friendly, publication.url_friendly) %></p>
   <% end %>
 <% end %>

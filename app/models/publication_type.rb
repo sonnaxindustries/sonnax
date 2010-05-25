@@ -1,10 +1,6 @@
-class PublicationCategory < ActiveRecord::Base
-  acts_as_tree
-  
-  has_many :publication_titles, :class_name => 'PublicationCategoriesTitle', :dependent => :destroy
-  has_many :publications, :through => :publication_titles
-  
-  named_scope :root_nodes, :conditions => { :parent_id => nil }, :order => 'name ASC'
+class PublicationType < ActiveRecord::Base
+  has_many :publication_types, :class_name => 'PublicationTitlesType', :dependent => :destroy
+  has_many :publications, :through => :publication_types
   
   class << self
     def detail!(id)
@@ -16,12 +12,12 @@ class PublicationCategory < ActiveRecord::Base
     self.publications.any?
   end
   
-  def children?
-    self.children.any?
+  def to_param
+    self.url_friendly
   end
   
   def generate_url_friendly!
-    formatted_friendly = self.name.extend(Helper::String).to_url_friendly
+    formatted_friendly = self.title.extend(Helper::String).to_url_friendly
     return formatted_friendly if !self.class.exists?(:url_friendly => formatted_friendly)
     n = 1
     n += 1 while self.class.exists?(:url_friendly => ("%s-%s" % [formatted_friendly, n.to_s]))

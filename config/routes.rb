@@ -51,7 +51,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :distributors
   map.resources :reference_figures, :as => 'reference-figures'
   map.resources :units
+  
+  map.resources :publication_authors, :as => 'authors'
+  map.resources :publication_titles, :as => 'titles'
+  map.resources :publication_subjects, :as => 'publication-subjects'
+  map.resources :publication_types, :as => 'publication-types'
   map.resources :publication_categories, :as => 'publications' do |ppub|
+    ppub.resources :publication_titles, :as => 'titles'
     ppub.resources :publication_subcategories, :as => 'subcategories' do |scat|
       scat.resources :publication_titles, :as => 'titles'
     end

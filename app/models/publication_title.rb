@@ -5,6 +5,21 @@ class PublicationTitle < ActiveRecord::Base
   has_many :publication_authors, :class_name => 'PublicationTitlesAuthor', :dependent => :destroy
   has_many :authors, :through => :publication_authors
   
+  has_many :publication_subjects, :class_name => 'PublicationTitlesSubject', :dependent => :destroy
+  has_many :subjects, :through => :publication_subjects
+  
+  has_many :publication_types, :class_name => 'PublicationTitlesType', :dependent => :destroy
+  has_many :types, :through => :publication_types, :source => :publication_type
+  
+  has_many :publication_keywords, :class_name => 'PublicationTitlesKeyword', :dependent => :destroy
+  has_many :keywords, :through => :publication_keywords
+  
+  has_many :publication_product_lines, :class_name => 'PublicationTitlesProductLine', :dependent => :destroy
+  has_many :product_lines, :through => :publication_product_lines
+  
+  has_many :publication_units_makes, :class_name => 'PublicationTitlesUnitsMake', :dependent => :destroy
+  has_many :units_makes, :through => :publication_units_makes
+  
   has_attached_file :pdf
   
   define_index do
@@ -20,8 +35,32 @@ class PublicationTitle < ActiveRecord::Base
     end
   end
   
+  def product_lines?
+    self.product_lines.any?
+  end
+  
+  def keywords?
+    self.keywords.any?
+  end
+  
+  def subjects?
+    self.subjects.any?
+  end
+  
+  def types?
+    self.types.any?
+  end
+  
   def categories?
     self.categories.any?
+  end
+  
+  def authors?
+    self.authors.any?
+  end
+  
+  def units_makes?
+    self.units_makes.any?
   end
   
   def remove_pdf!

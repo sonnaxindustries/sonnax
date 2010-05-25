@@ -1,12 +1,43 @@
 <h1><%= @title.title %></h1>
+
 <% if @title.published_at? %>
   <p class="published">Published on <%= @title.published_at.to_s(:month_day_year) %></p>
 <% end %>
 
-<p><strong>Description:</strong> <%= @title.description %></p>
-<p><strong>Volume:</strong> <%= @title.volume_number %></p>
+<% if @title.authors? %>
+  <h2>Author(s)</h2>
+  <p><%= @title.authors.map { |a| link_to a.full_name, publication_author_path(a) }.to_sentence %></p>
+<% end %>
+
+<% if @title.description? %>
+  <p><strong>Description:</strong> <%= @title.description %></p>
+<% end %>  
+
+<% if @title.volume_number? %>
+  <p><strong>Volume:</strong> <%= @title.volume_number %></p>
+<% end %>
+
+<% if @title.categories? %>
+  <h2>Categories</h2>
+  <p><%= @title.categories.map { |c| link_to c.name, publication_category_path(c.url_friendly) }.to_sentence %></p>
+<% end %>
+
+<% if @title.product_lines? %>
+  <h2>Product Lines</h2>
+  <p><%= @title.product_lines.map { |pl| link_to pl.name, product_line_path(pl.url_friendly) }.to_sentence %></p>
+<% end %>
+
+<% if @title.subjects? %>
+  <h2>Subject(s)</h2>
+  <p><%= @title.subjects.map { |s| link_to s.title, publication_subject_path(s.url_friendly) }.to_sentence %></p>
+<% end %>
+
+<% if @title.types? %>
+  <h2>Type(s)</h2>
+  <p><%= @title.types.map { |t| link_to t.title, publication_type_path(t.url_friendly) }.to_sentence %></p>
+<% end %>
 
 <% if @title.pdf? %>
   <h2>Download</h2>
-  <p><%= link_to @title.pdf_file_name, @title.pdf.url, :class => 'download' %></p>
+  <p><%= link_to @title.pdf_file_name, @title.pdf.url, :class => 'download' %> (<%= number_to_human_size(@title.pdf_file_size, :precision => 2) %>)</p>
 <% end %>

@@ -1,0 +1,9 @@
+<h1><%= @subject.title %></h1>
+
+<% if @subject.publications? %>
+  <ul>
+  <% @subject.publications.each do |publication| %>
+    <li><%= link_to publication.title, publication_title_path(publication.url_friendly) %></li>
+  <% end %>
+  </ul>
+<% end %>

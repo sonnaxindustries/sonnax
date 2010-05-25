@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100507174040) do
+ActiveRecord::Schema.define(:version => 20100524204349) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(:version => 20100507174040) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sort_order"
   end
 
   add_index "publication_categories", ["parent_id"], :name => "index_publication_categories_on_parent_id"
@@ -174,6 +175,38 @@ ActiveRecord::Schema.define(:version => 20100507174040) do
   add_index "publication_categories_titles", ["publication_category_id", "publication_title_id"], :name => "by_category", :unique => true
   add_index "publication_categories_titles", ["publication_category_id"], :name => "index_publication_categories_titles_on_publication_category_id"
   add_index "publication_categories_titles", ["publication_title_id"], :name => "index_publication_categories_titles_on_publication_title_id"
+
+  create_table "publication_keyword_types", :force => true do |t|
+    t.string   "title",       :null => false
+    t.text     "description"
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "publication_keywords", :force => true do |t|
+    t.integer  "publication_keyword_type_id", :null => false
+    t.string   "title",                       :null => false
+    t.string   "url_friendly",                :null => false
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_keywords", ["publication_keyword_type_id", "url_friendly"], :name => "by_keyword_type", :unique => true
+  add_index "publication_keywords", ["publication_keyword_type_id"], :name => "index_publication_keywords_on_publication_keyword_type_id"
+  add_index "publication_keywords", ["url_friendly"], :name => "index_publication_keywords_on_url_friendly"
+
+  create_table "publication_subjects", :force => true do |t|
+    t.string   "title",                       :null => false
+    t.string   "url_friendly",                :null => false
+    t.text     "description"
+    t.integer  "sort_order",   :default => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_subjects", ["url_friendly"], :name => "index_publication_subjects_on_url_friendly", :unique => true
 
   create_table "publication_titles", :force => true do |t|
     t.string   "title",            :null => false
@@ -199,6 +232,77 @@ ActiveRecord::Schema.define(:version => 20100507174040) do
   add_index "publication_titles_authors", ["publication_author_id"], :name => "index_publication_titles_authors_on_publication_author_id"
   add_index "publication_titles_authors", ["publication_title_id", "publication_author_id"], :name => "by_author", :unique => true
   add_index "publication_titles_authors", ["publication_title_id"], :name => "index_publication_titles_authors_on_publication_title_id"
+
+  create_table "publication_titles_keywords", :force => true do |t|
+    t.integer  "publication_title_id",   :null => false
+    t.integer  "publication_keyword_id", :null => false
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_titles_keywords", ["publication_keyword_id"], :name => "index_publication_titles_keywords_on_publication_keyword_id"
+  add_index "publication_titles_keywords", ["publication_title_id", "publication_keyword_id"], :name => "by_keyword", :unique => true
+  add_index "publication_titles_keywords", ["publication_title_id"], :name => "index_publication_titles_keywords_on_publication_title_id"
+
+  create_table "publication_titles_product_lines", :force => true do |t|
+    t.integer  "publication_title_id", :null => false
+    t.integer  "product_line_id",      :null => false
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_titles_product_lines", ["product_line_id"], :name => "index_publication_titles_product_lines_on_product_line_id"
+  add_index "publication_titles_product_lines", ["publication_title_id", "product_line_id"], :name => "by_product_line", :unique => true
+  add_index "publication_titles_product_lines", ["publication_title_id"], :name => "index_publication_titles_product_lines_on_publication_title_id"
+
+  create_table "publication_titles_subjects", :force => true do |t|
+    t.integer  "publication_title_id",   :null => false
+    t.integer  "publication_subject_id", :null => false
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_titles_subjects", ["publication_subject_id"], :name => "index_publication_titles_subjects_on_publication_subject_id"
+  add_index "publication_titles_subjects", ["publication_title_id", "publication_subject_id"], :name => "by_subject", :unique => true
+  add_index "publication_titles_subjects", ["publication_title_id"], :name => "index_publication_titles_subjects_on_publication_title_id"
+
+  create_table "publication_titles_types", :force => true do |t|
+    t.integer  "publication_title_id", :null => false
+    t.integer  "publication_type_id",  :null => false
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_titles_types", ["publication_title_id", "publication_type_id"], :name => "by_type", :unique => true
+  add_index "publication_titles_types", ["publication_title_id"], :name => "index_publication_titles_types_on_publication_title_id"
+  add_index "publication_titles_types", ["publication_type_id"], :name => "index_publication_titles_types_on_publication_type_id"
+
+  create_table "publication_titles_units_makes", :force => true do |t|
+    t.integer  "publication_title_id", :null => false
+    t.integer  "units_make_id",        :null => false
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_titles_units_makes", ["publication_title_id", "units_make_id"], :name => "by_unit_and_make", :unique => true
+  add_index "publication_titles_units_makes", ["publication_title_id"], :name => "index_publication_titles_units_makes_on_publication_title_id"
+  add_index "publication_titles_units_makes", ["units_make_id"], :name => "index_publication_titles_units_makes_on_units_make_id"
+
+  create_table "publication_types", :force => true do |t|
+    t.string   "title",                       :null => false
+    t.string   "url_friendly",                :null => false
+    t.text     "description"
+    t.integer  "sort_order",   :default => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_types", ["url_friendly"], :name => "index_publication_types_on_url_friendly", :unique => true
 
   create_table "redirects", :force => true do |t|
     t.string   "old_url",    :null => false

@@ -1,6 +1,9 @@
 class ProductLine < ActiveRecord::Base
   has_many :units, :dependent => :nullify
   
+  has_many :publication_product_lines, :class_name => 'PublicationTitlesProductLine', :dependent => :destroy
+  has_many :publications, :through => :publication_product_lines
+  
   named_scope :sorted, :order => 'sort_order DESC'
   named_scope :active, :conditions => { :is_active => true }
   

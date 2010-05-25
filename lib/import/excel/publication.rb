@@ -1,19 +1,37 @@
-# NOTE: Use current or Legacy?
 class Import::Excel::Publication
   
   class << self
     def import!
-      ActiveRecord::Base.connection.execute('TRUNCATE publication_authors')
-      ActiveRecord::Base.connection.execute('TRUNCATE publication_titles')
+      tables = %w( publication_categories_titles publication_titles_units_makes publication_titles_authors publication_titles_product_lines publication_titles_subjects publication_titles_types publication_titles_keywords publication_keyword_types publication_keywords publication_categories publication_authors publication_titles publication_types publication_subjects )
+      
+      puts 'Dropping the old tables of information....'
+      tables.each do |tbl|
+        stmt = "TRUNCATE %s" % [tbl]
+        ActiveRecord::Base.connection.execute(stmt)
+      end
+
       klass = self.new
+      puts 'Importing authors...'
       klass.import_authors!
-      # klass.import_titles!
-      # makes, units, unit makes, and product lines are dependencies
-      # import categories
-      # import types
-      # import subjects
-      # import authors
-      # import keywords
+      
+      puts 'Importing categories...'
+      klass.import_categories!
+      
+      puts 'Importing subjects...'
+      klass.import_subjects!
+      
+      puts 'Importing types....'
+      klass.import_types!
+      
+      puts 'Importing keywords...'
+      klass.import_keyword_types!
+      klass.import_keywords!
+      
+      puts 'Importing titles...'
+      klass.import_titles!
+      
+      puts 'Importing associated data...'
+      klass.import_associated_data!
     end
   end
   
@@ -24,6 +42,12 @@ class Import::Excel::Publication
     
     def title
       @title ||= @attributes[:title]
+    end
+    
+    def to_params
+      {
+        :title => self.title
+      }
     end
   end
   
@@ -65,12 +89,30 @@ class Import::Excel::Publication
     def title
       @title ||= @attributes[:title]
     end
+    
+    def to_params
+      {
+        :title => self.title
+      }
+    end
   end
   
   class Category
     def initialize(attrs={})
       @attributes = attrs
       self.parse_title!
+    end
+    
+    class << self
+      def find_by_name(name)
+        record = Import::Excel::Publication.new.categories.select { |cat| cat.title == name }
+        return record.first unless record.blank?
+      end
+      
+      def find_by_title_name(name)
+        record = Import::Excel::Publication.new.categories.select { |cat| cat.title_name == name }
+        return record.first unless record.blank?
+      end
     end
     
     def title_name
@@ -88,11 +130,26 @@ class Import::Excel::Publication
     def parse_title!
       @parsed_title = self.title_name.split(' ', 2)
     end
+    
+    def to_params
+      {
+        :name => self.title,
+        :sort_order => self.sort_order
+      }
+    end
   end
     
   class Row
     def initialize(attrs={})
       @attributes = attrs
+    end
+    
+    def <=>(other)
+      self.id <=> other.id
+    end
+    
+    def id
+      @id ||= @attributes[:title_id].to_i
     end
     
     def title
@@ -103,8 +160,12 @@ class Import::Excel::Publication
       @publication_category ||= @attributes[:publication_category]
     end
     
+    def publication_category_object
+      Import::Excel::Publication::Category.find_by_title_name(self.publication_category)
+    end
+    
     def category
-      Category.find_by_name(self.publication_category)
+      PublicationCategory.find_by_name(self.publication_category_object.title)
     end
     
     def publication_type
@@ -112,7 +173,7 @@ class Import::Excel::Publication
     end
     
     def type
-      PublicationType.find_by_name(self.publication_type)
+      PublicationType.find_by_title(self.publication_type)
     end
     
     def publication_subject
@@ -120,7 +181,7 @@ class Import::Excel::Publication
     end
     
     def subject
-      PublicationSubject.find_by_name(self.publication_subject)
+      PublicationSubject.find_by_title(self.publication_subject)
     end
     
     def date
@@ -136,6 +197,10 @@ class Import::Excel::Publication
       PublicationAuthor.find_by_full_name(self.author_name)
     end
     
+    def author?
+      !self.author.blank?
+    end
+    
     def pdf_filename
       @pdf_filename ||= @attributes[:pdf_filename]
     end
@@ -144,8 +209,12 @@ class Import::Excel::Publication
       !self.pdf_filename.blank?
     end
     
+    def pdf_file_exists?
+      File.exists?(File.join(Rails.root, 'public', 'file_conversions', 'tech-articles', self.pdf_filename))
+    end
+    
     def pdf
-      File.new(File.join(Rails.root, 'public', 'file_conversions', 'tech-articles', self.pdf_filename))
+      File.new(File.join(Rails.root, 'public', 'file_conversions', 'tech-articles', self.pdf_filename)) if self.pdf_file_exists?
     end
     
     def pdf?
@@ -156,24 +225,64 @@ class Import::Excel::Publication
       @product_line_id ||= @attributes[:product_line_id]
     end
     
-    def product_line
+    def legacy_product_line
       Legacy::ProductLine.find(self.product_line_id)
+    end
+    
+    def product_line
+      ProductLine.find_by_name(self.legacy_product_line.name)
     end
     
     def make_name
       @make_name ||= @attributes[:make_name]
     end
     
-    def make
+    def legacy_make
       Legacy::Make.find_by_make(self.make_name)
+    end
+    
+    def legacy_make?
+      !self.legacy_make.blank?
+    end
+    
+    def make
+      Make.find_by_name(self.legacy_make.make) if self.legacy_make?
+    end
+    
+    def make?
+      !self.make.blank?
     end
     
     def unit_name
       @unit_name ||= @attributes[:unit_name]
     end
     
-    def unit
+    def legacy_unit
       Legacy::Unit.find_by_name(self.unit_name)
+    end
+    
+    def legacy_unit?
+      !self.legacy_unit.blank?
+    end
+    
+    def unit
+      Unit.find_by_name(self.legacy_unit.name) if self.legacy_unit?
+    end
+    
+    def unit?
+      !self.unit.blank?
+    end
+    
+    def unit_and_make?
+      self.unit? && self.make?
+    end
+    
+    def unit_make
+      UnitsMake.find_by_make_id_and_unit_id(self.make.id, self.unit.id) if self.unit_and_make?
+    end
+    
+    def unit_make?
+      !self.unit_make.blank?
     end
     
     def keywords
@@ -215,8 +324,85 @@ class Import::Excel::Publication
     3
   end
   
+  def import_associated_data!
+    self.records.each do |record|
+      record_object = PublicationTitle.find_by_title(record.title)
+      puts "Attaching publication (%s) to category..." % [record_object.title]
+      record_object.categories << record.category unless record_object.categories.include?(record.category)
+      
+      puts "Attaching publication (%s) to subject..." % [record_object.title]
+      record_object.subjects << record.subject unless record_object.subjects.include?(record.subject)
+      
+      puts "Attaching publication (%s) to type..." % [record_object.title]
+      record_object.types << record.type unless record_object.types.include?(record.type)
+      
+      puts "Attaching publication (%s) to product line..." % [record_object.title]
+      record_object.product_lines << record.product_line unless record_object.product_lines.include?(record.product_line)
+      
+      puts "Attaching publication (%s) to author..." % [record_object.title]
+      record_object.authors << record.author if record.author? && !record_object.authors.include?(record.author)
+      
+      puts "Attaching publication (%s) to unit_makes..." % [record_object.title]
+      record_object.units_makes << record.unit_make if record.unit_make? && !record_object.units_makes.include?(record.unit_make)
+    end
+  end
+  
   def import_titles!
-    self.records.map { |publication| PublicationTitle.create(publication.to_params) }
+    self.unique_records.map { |publication| PublicationTitle.create(publication.to_params) }
+  end
+  
+  def import_categories!
+    self.categories.map { |category| PublicationCategory.create(category.to_params) }
+  end
+  
+  def import_subjects!
+    self.subjects.map { |subject| PublicationSubject.create(subject.to_params) }
+  end
+  
+  def import_types!
+    self.types.map { |type| PublicationType.create(type.to_params) }
+  end
+  
+  def import_keyword_types!
+    self.keyword_types_hash.values.map { |keyword_type| PublicationKeywordType.create(:title => keyword_type) } 
+  end
+  
+  def import_by_keyword_type!(keyword_type)
+    pub_type = PublicationKeywordType.find_by_title(self.keyword_types_hash[keyword_type])
+    self.publication_keywords.send(keyword_type).map { |keyword| PublicationKeyword.create(:publication_keyword_type_id => pub_type.id, :title => keyword) }
+  end
+  
+  def import_rebuilding_keywords!
+    self.import_by_keyword_type!(:rebuilding)
+  end
+  
+  def import_diagnosis_keywords!
+    self.import_by_keyword_type!(:diagnosis)
+  end
+  
+  def import_complaint_keywords!
+    self.import_by_keyword_type!(:complaint)
+  end
+  
+  def import_correction_keywords!
+    self.import_by_keyword_type!(:correction)
+  end
+  
+  def import_keywords!
+    self.keyword_types_hash.keys.map { |kt| self.send("import_#{kt.to_s}_keywords!") }
+  end
+  
+  def keyword_types_hash
+    {
+      :rebuilding     => 'General Rebuilding Tip',
+      :diagnosis      => 'Diagnosis',
+      :complaint      => 'Complaint',
+      :correction     => 'Correction'
+    }
+  end
+  
+  def keyword_types
+    @keyword_types ||= OpenStruct.new(self.keyword_types_hash)
   end
   
   def publications_worksheet
@@ -259,6 +445,29 @@ class Import::Excel::Publication
     self.authors.any?
   end
   
+  def rebuilding_keywords
+    self.records.map(&:keywords).map(&:rebuilding).uniq.compact
+  end
+  
+  def diagnosis_keywords
+    self.records.map(&:keywords).map(&:diagnosis).uniq.compact
+  end
+  
+  def complaint_keywords
+    self.records.map(&:keywords).map(&:complaint).uniq.compact
+  end
+  
+  def correction_keywords
+    self.records.map(&:keywords).map(&:correction).uniq.compact
+  end
+  
+  def publication_keywords
+    @publication_keywords ||= OpenStruct.new(:rebuilding    => self.rebuilding_keywords,
+                                             :diagnosis     => self.diagnosis_keywords,
+                                             :complaint     => self.complaint_keywords,
+                                             :correction    => self.correction_keywords)
+  end
+  
   def import_authors!
     self.authors.map { |author| PublicationAuthor.create(author.to_params) }
   end
@@ -266,6 +475,10 @@ class Import::Excel::Publication
   def records
     self.parse_records!
     @record_objects
+  end
+  
+  def unique_records
+    @unique_records ||= self.records.inject([]) { |arr,val| arr << val unless arr.map(&:id).include?(val.id); arr }
   end
   
   def parse_records!
