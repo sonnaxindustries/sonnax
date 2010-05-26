@@ -1,6 +1,8 @@
 class Converters::User < User
   class << self
     def run!
+      ActiveRecord::Base.connection.execute('TRUNCATE users')
+      ActiveRecord::Base.connection.execute('TRUNCATE users_roles')
       Legacy::User.all.each do |u|
         params = {
           :login => u.un,

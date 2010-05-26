@@ -1,6 +1,7 @@
 class Converters::Unit < Unit
   class << self
     def run!
+      ActiveRecord::Base.connection.execute('TRUNCATE units')
       Legacy::Unit.all.each do |r|
         params = {
           :name => r.name,

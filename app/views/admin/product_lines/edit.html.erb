@@ -1,4 +1,7 @@
 <h1>Edit: <%= @product_line.name %></h1>
+<ul>
+  <li><%= link_to 'Delete', admin_product_line_path(@product_line), :class => 'destroy-html', :method => :delete, :confirm => 'Are you sure you want to delete this Product Line?' %></li>
+</ul>
 <% form_for :product_line, @product_line, :url => admin_product_line_path(@product_line), :html => { :method => :put } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   

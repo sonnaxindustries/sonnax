@@ -1,4 +1,7 @@
 <h1>Edit: <%= @make.name %></h1>
+<ul>
+  <li><%= link_to 'Delete', admin_make_path(@make), :class => 'destroy-html', :method => :delete, :confirm => 'Are you sure you want to destroy this Make?'  %></li>
+</ul>
 <% form_for :make, @make, :url => admin_make_path(@make), :html => { :method => :put } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   

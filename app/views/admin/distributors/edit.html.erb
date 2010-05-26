@@ -1,4 +1,7 @@
 <h1>Edit: <%= @distributor.name %></h1>
+<ul>
+  <li><%= link_to 'Delete', admin_distributor_path(@distributor), :class => 'destroy-html', :method => :delete, :confirm => 'Are you sure you want to delete this Distributor?' %></li>
+</ul>
 <% form_for :distributor, @distributor, :url => admin_distributor_path(@distributor), :html => { :method => :put } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   

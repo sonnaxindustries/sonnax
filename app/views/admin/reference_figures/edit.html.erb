@@ -1,4 +1,7 @@
 <h1>Edit: <%= @reference_figure.name %></h1>
+<ul>
+  <li><%= link_to 'Delete', admin_reference_figure_path(@reference_figure), :class => 'destroy-html', :method => :delete, :confirm => 'Are you sure you want to destroy this Reference Figure?' %></li>
+</ul>
 <% form_for :reference_figure, @reference_figure, :url => admin_reference_figure_path(@reference_figure), :html => { :multipart => true, :method => :put } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   

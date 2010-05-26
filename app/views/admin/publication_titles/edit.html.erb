@@ -1,4 +1,7 @@
 <h1>Edit: <%= @publication_title.title %></h1>
+<ul>
+  <li><%= link_to 'Delete', admin_publication_title_path(@publication_title), :class => 'destroy-html', :method => :delete, :confirm => 'Are you sure you want to delete this Publication?' %></li>
+</ul>
 <% form_for :publication_title, @publication_title, :url => admin_publication_title_path(@publication_title), :html => { :multipart => true, :method => :put } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   

@@ -1,4 +1,7 @@
 <h1>Edit: <%= @user.login %></h1>
+<ul>
+  <li><%= link_to 'Delete', admin_user_path(@user), :class => 'destroy-html', :method => :delete, :confirm => 'Are you sure you want to delete this User?' %></li>
+</ul>
 <% form_for :user, @user, :url => admin_user_path(@user), :html => { :method => :put } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   
