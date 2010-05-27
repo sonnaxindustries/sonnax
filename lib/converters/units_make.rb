@@ -1,6 +1,7 @@
 class Converters::UnitsMake < UnitsMake
   class << self
     def run!
+      ActiveRecord::Base.connection.execute('TRUNCATE units_makes')
       Legacy::UnitMake.all.each do |u|
         
         if u.create_record?
