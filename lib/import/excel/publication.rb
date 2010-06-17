@@ -32,9 +32,10 @@ class Import::Excel::Publication
       puts 'Importing types....'
       klass.import_types!
       
-      puts 'Importing keywords...'
-      klass.import_keyword_types!
-      klass.import_keywords!
+      # NOTE: Keywords were removed in new spreadsheet
+      # puts 'Importing keywords...'
+      # klass.import_keyword_types!
+      # klass.import_keywords!
       
       puts 'Importing titles...'
       klass.import_titles!
@@ -193,9 +194,14 @@ class Import::Excel::Publication
       PublicationSubject.find_by_title(self.publication_subject)
     end
     
+    def subject?
+      !self.subject.blank?
+    end
+    
     def date
       return nil if @attributes[:date].blank?
-      @date ||= Date.parse(@attributes[:date])
+      @date ||= @attributes[:date]
+      #@date ||= Date.parse(@attributes[:date])
     end
     
     def author_name
@@ -325,7 +331,7 @@ class Import::Excel::Publication
   end
   
   def setup_sheet!
-    self.workbook.default_sheet = self.publications_worksheet
+    #self.workbook.default_sheet = self.publications_worksheet
   end
   
   def import!
@@ -352,7 +358,7 @@ class Import::Excel::Publication
       record_object.categories << record.category unless record_object.categories.include?(record.category)
       
       puts "Attaching publication (%s) to subject..." % [record_object.title]
-      record_object.subjects << record.subject unless record_object.subjects.include?(record.subject)
+      record_object.subjects << record.subject if record.subject? && !record_object.subjects.include?(record.subject)
       
       puts "Attaching publication (%s) to type..." % [record_object.title]
       record_object.types << record.type unless record_object.types.include?(record.type)
@@ -366,12 +372,13 @@ class Import::Excel::Publication
       puts "Attaching publication (%s) to unit_makes..." % [record_object.title]
       record_object.units_makes << record.unit_make if record.unit_make? && !record_object.units_makes.include?(record.unit_make)
       
-      puts "Attaching publication (%s) to keywords..." % [record_object.title]
-      if record.all_keywords?
-        record.all_keywords.each do |keyword|
-          record_object.keywords << keyword unless record_object.keywords.include?(keyword)
-        end
-      end
+      # NOTE: Removing keywords
+      # puts "Attaching publication (%s) to keywords..." % [record_object.title]
+      # if record.all_keywords?
+      #   record.all_keywords.each do |keyword|
+      #     record_object.keywords << keyword unless record_object.keywords.include?(keyword)
+      #   end
+      # end
     end
   end
   
@@ -513,22 +520,17 @@ class Import::Excel::Publication
     @record_objects = []
     (self.start_row..self.workbook.last_row).each_with_index do |index,row|
       @record_objects << Row.new(
-                               :title_id              => self.workbook.cell(index, 2),
-                               :publication_category  => self.workbook.cell(index, 3),
-                               :publication_type      => self.workbook.cell(index, 4),
-                               :title                 => self.workbook.cell(index, 5),
-                               :publication_subject   => self.workbook.cell(index, 6),
-                               :date                  => self.workbook.cell(index, 7),
-                               :author_name           => self.workbook.cell(index, 8),
-                               :pdf_filename          => self.workbook.cell(index, 9),
-                               :product_line_id       => self.workbook.cell(index, 10),
-                               :make_name             => self.workbook.cell(index, 11),
-                               :unit_name             => self.workbook.cell(index, 12),
-                               :keywords => OpenStruct.new(:rebuilding  => self.workbook.cell(index, 13),
-                                                           :diagnosis   => self.workbook.cell(index, 14),
-                                                           :complaint   => self.workbook.cell(index, 15),
-                                                           :correction  => self.workbook.cell(index, 16)
-                              )
+                               :title_id              => self.workbook.cell(index, 1),
+                               :publication_category  => self.workbook.cell(index, 2),
+                               :publication_type      => self.workbook.cell(index, 3),
+                               :title                 => self.workbook.cell(index, 4),
+                               :publication_subject   => self.workbook.cell(index, 11),
+                               :date                  => self.workbook.cell(index, 5),
+                               :author_name           => self.workbook.cell(index, 6),
+                               :pdf_filename          => self.workbook.cell(index, 7),
+                               :product_line_id       => self.workbook.cell(index, 8),
+                               :make_name             => self.workbook.cell(index, 9),
+                               :unit_name             => self.workbook.cell(index, 10)
                 )
       @record_objects
     end
