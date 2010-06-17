@@ -340,7 +340,7 @@ class Import::Excel::Publication
   end
   
   def workbook
-    @workbook ||= Excel.new(@file_name)
+    @workbook ||= ::Excel.new(@file_name)
   end
   
   def start_column
