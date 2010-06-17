@@ -225,11 +225,11 @@ class Import::Excel::Publication
     end
     
     def pdf_file_exists?
-      File.exists?(File.join(Rails.root, 'public', 'file_conversions', 'tech-articles', self.pdf_filename))
+      File.exists?(File.join(Rails.root, 'public', 'system', 'file_conversions', 'tech-articles', self.pdf_filename))
     end
     
     def pdf
-      File.new(File.join(Rails.root, 'public', 'file_conversions', 'tech-articles', self.pdf_filename)) if self.pdf_file_exists?
+      File.new(File.join(Rails.root, 'public', 'system', 'file_conversions', 'tech-articles', self.pdf_filename)) if self.pdf_file_exists?
     end
     
     def pdf?
