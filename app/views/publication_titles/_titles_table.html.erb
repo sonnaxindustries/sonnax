@@ -1,0 +1,18 @@
+<table cellpadding="0" cellspacing="0" width="100%" summary="Listing of transmission technical library publications">
+  <thead>
+    <tr>
+      <th class="article">Article</th>
+      <th class="authors">Author</th>
+      <th class="published-date">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% publications.each do |publication| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td class="article"><%= link_to publication.title, publication_category_publication_title_path(category.url_friendly, publication.url_friendly) %></td>
+      <td class="authors"><%= publication.authors.map { |author| author.full_name }.to_sentence %></td>
+      <td class="published-date"><%= publication.published_at.to_s(:month_year) if publication.published_at? %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

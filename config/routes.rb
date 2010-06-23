@@ -44,6 +44,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :contact, :as => 'contact-us'
   map.register '/register', :controller => 'users', :action => 'new'
   
+  map.technical_library '/technical-library', :controller => 'technical_library', :action => 'index'
+  map.technical_library_detail '/technical-library/:id', :controller => 'technical_library', :action => 'show'
+  map.technical_library_filter '/technical-library/:id/filter', :controller => 'technical_library', :action => 'filter'
+  
   map.distributor_by_country '/distributors/by-country/:country_code', :controller => 'distributors', :action => 'filter_by_country'
   map.distributor_by_state '/distributors/by-state/:state_code', :controller => 'distributors', :action => 'filter_by_state'
   map.distributor_by_city '/distributors/by-city/:city_name', :controller => 'distributors', :action => 'filter_by_city'

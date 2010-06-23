@@ -127,3 +127,82 @@ a {
   clear: both;
   visibility: hidden;
 }
+/* -- TECHNICAL LIBRARY --*/
+div.indicator {
+  display: inline;
+  margin-left: 5px;
+}
+div.technical-library-index ul {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+div.technical-library-index ul a {
+  color: #0202FF;
+  font-weight: bold;
+  font-size: 14px;
+}
+div.publication-list label {
+  font-weight: bold;
+}
+div.publication-list {
+  float: left;
+}
+div.publication-list div#filter-options {
+  float: left;
+  width: 100%;
+  padding: 15px 0 25px 0;
+}
+div.publication-list form select {
+  width: 200px;
+}
+div.publication-list form label {
+  width: 15%;
+  float: left;
+}
+div.publication-list div.make-units {
+  float: left;
+  width: 49%;
+}
+div.publication-list div.subjects {
+  float: left;
+  width: 49%;
+}
+div.publication-list div.publications {
+  clear: both;
+}
+div.publication-list form div.submit {
+  display: none;
+}
+div.publication-list table tr.even {
+  
+}
+div.publication-list table tr.odd {
+  background-color: #D7DEE5;
+}
+div.publication-list table {
+  width: 100%;
+}
+div.publication-list table a {
+  color: #0505FF;
+}
+div.publication-list table tbody a {
+  text-decoration: none;
+}
+div.publication-list table tbody td {
+  padding: 4px 5px;
+}
+div.publication-list table thead th.article {
+  width: 60%;
+}
+div.publication-list table thead th.authors {
+  width: 20%;
+}
+div.publication-list table thead th.published-date {
+  width: 19%;
+}
+div.publication-list table thead th {
+  font-weight: bold;
+  color: #0505FF;
+  font-size: 14px;
+  border-bottom: 2px solid #ddd;
+}

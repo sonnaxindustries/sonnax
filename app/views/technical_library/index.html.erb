@@ -1,0 +1,13 @@
+<div class="technical-library-index">
+  <h1>Technical Library</h1>
+  <% if @publication_categories.any? %>
+  <ul>
+    <% @publication_categories.each do |category| %>
+    <li><%= link_to category.name, technical_library_detail_path(category.url_friendly) %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <p>Our library contains all of our technical articles and resources.</p>
+  <p>More text here about tech library and what a good resource it is.</p>
+  <p>Text here with recent info as straight HTML, no database text on this page.</p>
+</div>

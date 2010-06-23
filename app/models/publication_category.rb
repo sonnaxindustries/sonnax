@@ -20,6 +20,10 @@ class PublicationCategory < ActiveRecord::Base
     self.children.any?
   end
   
+  def underscored_name
+    self.url_friendly.underscore
+  end
+  
   def generate_url_friendly!
     formatted_friendly = self.name.extend(Helper::String).to_url_friendly
     return formatted_friendly if !self.class.exists?(:url_friendly => formatted_friendly)

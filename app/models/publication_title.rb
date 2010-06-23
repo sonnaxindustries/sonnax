@@ -33,6 +33,39 @@ class PublicationTitle < ActiveRecord::Base
     def detail!(id)
       self.find_by_url_friendly!(id)
     end
+    
+    def find_by_filter(attrs={})
+      #attrs.assert_valid_keys(:subject, :make, :unit, :category)
+      
+      subject_id  = attrs.delete(:subject)
+      make_id     = attrs.delete(:make)
+      unit_id     = attrs.delete(:unit)
+      category_id = attrs.delete(:category)
+      
+      joins = []
+      conditions = []
+      
+      if !subject_id.blank?
+        joins << 'LEFT JOIN publication_titles_subjects pts ON pts.publication_title_id = publication_titles.id'
+        conditions << ["pts.publication_subject_id = ?", subject_id]
+      end
+      
+      if !category_id.blank?
+        joins << 'LEFT JOIN publication_categories_titles pct ON pct.publication_title_id = publication_titles.id'
+        conditions << ["pct.publication_category_id = ?", category_id]
+      end
+      
+      if !make_id.blank? && !unit_id.blank?
+        units_make = UnitsMake.find_by_make_id_and_unit_id(make_id, unit_id)
+        
+        if !units_make.blank?
+          joins << 'LEFT JOIN publication_titles_units_makes ptum ON ptum.publication_title_id = publication_titles.id'
+          conditions << ["ptum.units_make_id = ?", units_make.id]
+        end
+      end
+      
+      self.all(:joins => joins.join(' '), :conditions => conditions.extend(Helper::Array).to_conditions)
+    end
   end
   
   def product_lines?
