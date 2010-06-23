@@ -1,7 +1,4 @@
 class TechnicalLibraryController < ApplicationController
-  before_filter :retrieve_makes,
-                :retrieve_units, 
-                :retrieve_subjects
   
   def index
     @publication_categories = PublicationCategory.all
@@ -11,6 +8,10 @@ class TechnicalLibraryController < ApplicationController
     begin
       @publication_category = PublicationCategory.find_by_url_friendly!(params[:id], :include => [:publications])
       @publications = @publication_category.publications.all(:include => [:authors])
+      
+      @makes = Make.with_publications(:category => @publication_category)
+      @units = Unit.with_publications(:category => @publication_category)
+      @subjects = PublicationSubject.with_publications(:category => @publication_category)
       
       @form_presenter = TechnicalLibrary::FormPresenter.new(:category => @publication_category, :makes => @makes, :units => @units, :subjects => @subjects)
       
@@ -22,12 +23,15 @@ class TechnicalLibraryController < ApplicationController
   
   def filter
     @publication_category = PublicationCategory.find_by_url_friendly!(params[:id])
+    @makes = Make.with_publications(:category => @publication_category)
+    @units = Unit.with_publications(:category => @publication_category)
+    @subjects = PublicationSubject.with_publications(:category => @publication_category)
     
-    @unit_options = Unit.all.map { |unit| [unit.name, unit.id] }.push(['-- Select Unit --', '']).reverse
+    @unit_options = @units.map { |unit| [unit.name, unit.id] }.unshift(['-- Select Unit --', ''])
     
     if params[:filter] && !params[:filter][:make].blank?
       @make = Make.find(params[:filter].fetch('make'))
-      @unit_options = @make.units.map { |unit| [unit.name, unit.id] }.push(['-- Select Unit --', '']).reverse
+      @unit_options = @make.units.in_category(@publication_category).map { |unit| [unit.name, unit.id] }.unshift(['-- Select Unit --', ''])
     end
     
     params[:filter].merge!(:category => @publication_category.id) if params[:filter]
@@ -49,18 +53,5 @@ class TechnicalLibraryController < ApplicationController
         }
       end
     end
-  end
-  
-private
-  def retrieve_makes
-    @makes = Make.with_publications
-  end
-  
-  def retrieve_units
-    @units = Unit.with_publications
-  end
-  
-  def retrieve_subjects
-    @subjects = PublicationSubject.with_publications
   end
 end

@@ -7,10 +7,22 @@ class PublicationSubject < ActiveRecord::Base
       self.find_by_url_friendly!(id)
     end
     
-    def with_publications
+    def with_publications(options={})
+      joins = []
+      conditions = []
+      
+      joins << 'LEFT JOIN publication_subjects ps ON ps.id = pts.publication_subject_id'
+      
+      if options[:category]
+        joins << 'LEFT JOIN publication_titles pt ON pt.id = pts.publication_title_id'
+        joins << 'LEFT JOIN publication_categories_titles pct ON pct.publication_title_id = pt.id'
+        conditions << ["pct.publication_category_id IN (?)", options[:category]]
+      end
+      
       self.all(:select => 'DISTINCT(pts.publication_subject_id), ps.*',
                :from => 'publication_titles_subjects pts',
-               :joins => 'LEFT JOIN publication_subjects ps ON ps.id = pts.publication_subject_id',
+               :joins => joins.join(' '),
+               :conditions => conditions.extend(Helper::Array).to_conditions,
                :order => 'ps.title ASC')
     end
   end

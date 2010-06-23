@@ -28,6 +28,7 @@ $(document).ready(function() {
       dataType: 'json',
       success: function(response) {
         $elem.siblings('div.indicator').remove();
+        $('div.publication-list form div.unit-selector select').html(response.unit_select_options);
         var domId = '#' + response.dom_id;
         $(domId).html(response.publications_partial);
       }
