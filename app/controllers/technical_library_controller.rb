@@ -1,4 +1,7 @@
 class TechnicalLibraryController < ApplicationController
+  before_filter :retrieve_makes,
+                :retrieve_units, 
+                :retrieve_subjects
   
   def index
     @publication_categories = PublicationCategory.all
@@ -6,12 +9,8 @@ class TechnicalLibraryController < ApplicationController
   
   def show
     begin
-      @publication_category = PublicationCategory.find_by_url_friendly!(params[:id])
-      @publications = @publication_category.publications
-      
-      @makes = Make.all
-      @units = Unit.all
-      @subjects = PublicationSubject.all
+      @publication_category = PublicationCategory.find_by_url_friendly!(params[:id], :include => [:publications])
+      @publications = @publication_category.publications.all(:include => [:authors])
       
       @form_presenter = TechnicalLibrary::FormPresenter.new(:category => @publication_category, :makes => @makes, :units => @units, :subjects => @subjects)
       
@@ -34,9 +33,6 @@ class TechnicalLibraryController < ApplicationController
     params[:filter].merge!(:category => @publication_category.id) if params[:filter]
     @publications = PublicationTitle.find_by_filter(params[:filter] || {})
     
-    @makes = Make.all
-    @units = Unit.all
-    @subjects = PublicationSubject.all
     
     @form_presenter = TechnicalLibrary::FormPresenter.new(:category => @publication_category, :makes => @makes, :units => @units, :subjects => @subjects)
 
@@ -53,5 +49,18 @@ class TechnicalLibraryController < ApplicationController
         }
       end
     end
+  end
+  
+private
+  def retrieve_makes
+    @makes = Make.with_publications
+  end
+  
+  def retrieve_units
+    @units = Unit.with_publications
+  end
+  
+  def retrieve_subjects
+    @subjects = PublicationSubject.with_publications
   end
 end

@@ -20,6 +20,12 @@ class PublicationTitle < ActiveRecord::Base
   has_many :publication_units_makes, :class_name => 'PublicationTitlesUnitsMake', :dependent => :destroy
   has_many :units_makes, :through => :publication_units_makes
   
+  has_many :publication_units, :class_name => 'PublicationTitlesUnit', :dependent => :destroy
+  has_many :units, :through => :publication_units
+  
+  has_many :publication_makes, :class_name => 'PublicationTitlesMake', :dependent => :destroy
+  has_many :makes, :through => :publication_makes
+  
   has_attached_file :pdf
   
   define_index do
@@ -55,16 +61,19 @@ class PublicationTitle < ActiveRecord::Base
         conditions << ["pct.publication_category_id = ?", category_id]
       end
       
-      if !make_id.blank? && !unit_id.blank?
-        units_make = UnitsMake.find_by_make_id_and_unit_id(make_id, unit_id)
-        
-        if !units_make.blank?
-          joins << 'LEFT JOIN publication_titles_units_makes ptum ON ptum.publication_title_id = publication_titles.id'
-          conditions << ["ptum.units_make_id = ?", units_make.id]
-        end
+      if !make_id.blank?
+        joins << 'LEFT JOIN publication_titles_makes ptm ON ptm.publication_title_id = publication_titles.id'
+        conditions << ["ptm.make_id = ?", make_id]
       end
       
-      self.all(:joins => joins.join(' '), :conditions => conditions.extend(Helper::Array).to_conditions)
+      if !unit_id.blank?
+        joins << 'LEFT JOIN publication_titles_units ptu ON ptu.publication_title_id = publication_titles.id'
+        conditions << ["ptu.unit_id = ?", unit_id]
+      end
+      
+      self.all(:joins => joins.join(' '), 
+               :conditions => conditions.extend(Helper::Array).to_conditions,
+               :include => [:authors])
     end
   end
   

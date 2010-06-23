@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100524204349) do
+ActiveRecord::Schema.define(:version => 20100623151151) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -245,6 +245,18 @@ ActiveRecord::Schema.define(:version => 20100524204349) do
   add_index "publication_titles_keywords", ["publication_title_id", "publication_keyword_id"], :name => "by_keyword", :unique => true
   add_index "publication_titles_keywords", ["publication_title_id"], :name => "index_publication_titles_keywords_on_publication_title_id"
 
+  create_table "publication_titles_makes", :force => true do |t|
+    t.integer  "publication_title_id", :null => false
+    t.integer  "make_id",              :null => false
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_titles_makes", ["make_id"], :name => "index_publication_titles_makes_on_make_id"
+  add_index "publication_titles_makes", ["publication_title_id", "make_id"], :name => "by_make", :unique => true
+  add_index "publication_titles_makes", ["publication_title_id"], :name => "index_publication_titles_makes_on_publication_title_id"
+
   create_table "publication_titles_product_lines", :force => true do |t|
     t.integer  "publication_title_id", :null => false
     t.integer  "product_line_id",      :null => false
@@ -280,6 +292,18 @@ ActiveRecord::Schema.define(:version => 20100524204349) do
   add_index "publication_titles_types", ["publication_title_id", "publication_type_id"], :name => "by_type", :unique => true
   add_index "publication_titles_types", ["publication_title_id"], :name => "index_publication_titles_types_on_publication_title_id"
   add_index "publication_titles_types", ["publication_type_id"], :name => "index_publication_titles_types_on_publication_type_id"
+
+  create_table "publication_titles_units", :force => true do |t|
+    t.integer  "publication_title_id", :null => false
+    t.integer  "unit_id",              :null => false
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publication_titles_units", ["publication_title_id", "unit_id"], :name => "by_unit", :unique => true
+  add_index "publication_titles_units", ["publication_title_id"], :name => "index_publication_titles_units_on_publication_title_id"
+  add_index "publication_titles_units", ["unit_id"], :name => "index_publication_titles_units_on_unit_id"
 
   create_table "publication_titles_units_makes", :force => true do |t|
     t.integer  "publication_title_id", :null => false

@@ -6,6 +6,13 @@ class PublicationSubject < ActiveRecord::Base
     def detail!(id)
       self.find_by_url_friendly!(id)
     end
+    
+    def with_publications
+      self.all(:select => 'DISTINCT(pts.publication_subject_id), ps.*',
+               :from => 'publication_titles_subjects pts',
+               :joins => 'LEFT JOIN publication_subjects ps ON ps.id = pts.publication_subject_id',
+               :order => 'ps.title ASC')
+    end
   end
   
   def publications?

@@ -9,9 +9,15 @@ $(document).ready(function() {
 })
 
 $(document).ready(function() {
+  
   //-- Technical Library
+  $("div.publications table").tablesorter();
+  
   $('div.publication-list form div.subject-selector select').live('change', function(e) {
     var $elem = $(this);
+    $('div.publication-list form div.make-selector select').val('');
+    $('div.publication-list form div.unit-selector select').val('');
+    
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
     
     var $form = $(this).closest('form');
@@ -23,7 +29,8 @@ $(document).ready(function() {
       success: function(response) {
         $elem.siblings('div.indicator').remove();
         var domId = '#' + response.dom_id;
-        $(domId).html(response.publications_partial);
+        console.log($(domId));
+        //$(domId).html(response.publications_partial);
       }
     });
     e.preventDefault();
@@ -54,6 +61,7 @@ $(document).ready(function() {
   
   $('div.publication-list form div.unit-selector select').live('change', function(e) {
     var $elem = $(this);
+    $('div.publication-list form div.subject-selector select').val('');
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
     
     var $form = $(this).closest('form');

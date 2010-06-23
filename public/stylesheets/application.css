@@ -181,6 +181,7 @@ div.publication-list table tr.odd {
 }
 div.publication-list table {
   width: 100%;
+  clear: both;
 }
 div.publication-list table a {
   color: #0505FF;
@@ -189,15 +190,21 @@ div.publication-list table tbody a {
   text-decoration: none;
 }
 div.publication-list table tbody td {
-  padding: 4px 5px;
+  padding: 4px 0px;
 }
-div.publication-list table thead th.article {
+div.publication-list table tbody td.article {
+  padding-left: 5px;
+}
+div.publication-list table thead th.article,
+div.publication-list table tbody td.article {
   width: 60%;
 }
-div.publication-list table thead th.authors {
+div.publication-list table thead th.authors,
+div.publication-list table tbody td.authors {
   width: 20%;
 }
-div.publication-list table thead th.published-date {
+div.publication-list table thead th.published-date,
+div.publication-list table tbody td.published-date {
   width: 19%;
 }
 div.publication-list table thead th {

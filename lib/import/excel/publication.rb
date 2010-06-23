@@ -32,11 +32,6 @@ class Import::Excel::Publication
       puts 'Importing types....'
       klass.import_types!
       
-      # NOTE: Keywords were removed in new spreadsheet
-      # puts 'Importing keywords...'
-      # klass.import_keyword_types!
-      # klass.import_keywords!
-      
       puts 'Importing titles...'
       klass.import_titles!
       
@@ -369,16 +364,14 @@ class Import::Excel::Publication
       puts "Attaching publication (%s) to author..." % [record_object.title]
       record_object.authors << record.author if record.author? && !record_object.authors.include?(record.author)
       
+      puts "Attaching publication (%s) to units..." % [record_object.title]
+      record_object.units << record.unit if record.unit? && !record_object.units.include?(record.unit)
+      
+      puts "Attaching publication (%s) to makes..." % [record_object.title]
+      record_object.makes << record.make if record.make? && !record_object.makes.include?(record.make)
+      
       puts "Attaching publication (%s) to unit_makes..." % [record_object.title]
       record_object.units_makes << record.unit_make if record.unit_make? && !record_object.units_makes.include?(record.unit_make)
-      
-      # NOTE: Removing keywords
-      # puts "Attaching publication (%s) to keywords..." % [record_object.title]
-      # if record.all_keywords?
-      #   record.all_keywords.each do |keyword|
-      #     record_object.keywords << keyword unless record_object.keywords.include?(keyword)
-      #   end
-      # end
     end
   end
   
