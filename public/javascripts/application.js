@@ -29,7 +29,6 @@ $(document).ready(function() {
       success: function(response) {
         $elem.siblings('div.indicator').remove();
         var domId = '#' + response.dom_id;
-        console.log($(domId));
         $(domId).html(response.publications_partial);
       }
     });

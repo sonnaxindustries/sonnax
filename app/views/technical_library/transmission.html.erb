@@ -3,10 +3,10 @@
 
 <div id="<%= dom_id(@publication_category, :list) %>" class="publication-list">
   <p>Select the Make or a Subject to refine your search. Click on Title, Author, Date or View to sort your results.</p>
-  <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get } do |f| %>
+  <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
   <fieldset>
     <legend>Filtering Options</legend>
-    <div id="filter-options">
+    <div id="filter-options" class="group">
       <div class="make-units">
         <div class="make-selector">
           <%= f.label :make, 'Make:' %>
@@ -34,7 +34,7 @@
   <% end %>
   
   <% if @publications.any? %>
-  <div id="<%= dom_id(@publication_category, :publications) %>" class="publications">
+  <div id="<%= dom_id(@publication_category, :publications) %>" class="publications group">
     <%= render :partial => 'publication_titles/titles_table.html.erb', :locals => { :category => @publication_category, :publications => @publications } %>
   </div>
   <% end %>

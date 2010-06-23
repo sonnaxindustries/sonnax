@@ -144,13 +144,12 @@ div.technical-library-index ul a {
 div.publication-list label {
   font-weight: bold;
 }
-div.publication-list {
-  float: left;
-}
 div.publication-list div#filter-options {
-  float: left;
   width: 100%;
   padding: 15px 0 25px 0;
+}
+div.publication-list form {
+  width: 100%;
 }
 div.publication-list form select {
   width: 200px;
@@ -181,6 +180,7 @@ div.publication-list table tr.odd {
 }
 div.publication-list table {
   width: 100%;
+  float: left;
   clear: both;
 }
 div.publication-list table a {
