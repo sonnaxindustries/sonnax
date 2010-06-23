@@ -84,6 +84,15 @@ body {
 h1 {
   font-size: 28px;
 }
+.inactive,
+.even .inactive {
+  color: #ddd;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.odd .inactive {
+  color: #333;
+}
 /* -- =FORMS -- */
 form fieldset legend {
   position: absolute;
