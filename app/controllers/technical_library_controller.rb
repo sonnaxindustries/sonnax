@@ -24,7 +24,9 @@ class TechnicalLibraryController < ApplicationController
   def filter
     @publication_category = PublicationCategory.find_by_url_friendly!(params[:id])
     
-    if params[:filter] && params[:filter][:make]
+    @unit_options = Unit.all.map { |unit| [unit.name, unit.id] }.push(['-- Select Unit --', '']).reverse
+    
+    if params[:filter] && !params[:filter][:make].blank?
       @make = Make.find(params[:filter].fetch('make'))
       @unit_options = @make.units.map { |unit| [unit.name, unit.id] }.push(['-- Select Unit --', '']).reverse
     end
