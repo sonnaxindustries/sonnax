@@ -171,6 +171,9 @@ div.publication-list div.make-units {
   float: left;
   width: 49%;
 }
+div.publication-list div.make-units .make-selector {
+  padding-bottom: 10px;
+}
 div.publication-list div.subjects {
   float: left;
   width: 49%;

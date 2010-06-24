@@ -4,7 +4,7 @@ class PublicationAuthor < ActiveRecord::Base
   
   class << self
     def detail!(id)
-      self.find_by_id!(id)
+      self.find_by_id!(id, :include => [:publications])
     end
   end
   

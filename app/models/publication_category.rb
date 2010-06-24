@@ -8,7 +8,7 @@ class PublicationCategory < ActiveRecord::Base
   
   class << self
     def detail!(id)
-      self.find_by_url_friendly!(id)
+      self.find_by_url_friendly!(id, :include => [:publications])
     end
   end
   

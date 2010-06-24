@@ -37,7 +37,7 @@ class PublicationTitle < ActiveRecord::Base
   
   class << self
     def detail!(id)
-      self.find_by_url_friendly!(id)
+      self.find_by_url_friendly!(id, :include => [:authors, :subjects, :categories, :product_lines, :types, :keywords])
     end
     
     def find_by_filter(attrs={})
