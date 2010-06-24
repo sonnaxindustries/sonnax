@@ -9,7 +9,7 @@
   <tbody>
     <% publications.each do |publication| %>
     <tr class="<%= cycle('even', 'odd') %>">
-      <td class="article"><%= link_to publication.title, publication_category_publication_title_path(category.url_friendly, publication.url_friendly) %></td>
+      <td class="article"><%= link_to publication.title, publication_category_publication_title_path(category.url_friendly, publication.url_friendly) %> <%= pdf_details(publication) %></td>
       <td class="authors"><%= publication_authors_list(publication) %></td>
       <td class="published-date"><%= publication_published_at(publication) %></td>
     </tr>

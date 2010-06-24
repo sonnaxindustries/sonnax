@@ -93,6 +93,10 @@ h1 {
 .odd .inactive {
   color: #333;
 }
+span.pdf-size {
+  font-size: 11px;
+  vertical-align: middle;
+}
 /* -- =FORMS -- */
 form fieldset legend {
   position: absolute;
