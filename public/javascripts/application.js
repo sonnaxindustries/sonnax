@@ -11,9 +11,13 @@ $(document).ready(function() {
 $(document).ready(function() {
 
   //-- Technical Library
-  $("div.publications table").tablesorter({
-    widgets: ['zebra']
-  });
+  $(document).bind('tablesorter-initialize', function() {
+    $("div.publications table").tablesorter({
+      widgets: ['zebra']
+    });
+  })
+
+  $(document).trigger('tablesorter-initialize');
 
   $('div.publication-list form div.subject-selector select').live('change', function(e) {
     var $elem = $(this);
@@ -33,6 +37,7 @@ $(document).ready(function() {
         $('div.publication-list form div.unit-selector select').html(response.unit_select_options);
         var domId = '#' + response.dom_id;
         $(domId).html(response.publications_partial);
+        $(document).trigger('tablesorter-initialize');
       }
     });
     e.preventDefault();
@@ -56,6 +61,7 @@ $(document).ready(function() {
         $('div.publication-list form div.unit-selector select').html(response.unit_select_options);
         var domId = '#' + response.dom_id;
         $(domId).html(response.publications_partial);
+        $(document).trigger('tablesorter-initialize');
       }
     });
     e.preventDefault();
@@ -76,6 +82,7 @@ $(document).ready(function() {
         $elem.siblings('div.indicator').remove();
         var domId = '#' + response.dom_id;
         $(domId).html(response.publications_partial);
+        $(document).trigger('tablesorter-initialize');
       }
     });
     e.preventDefault();
