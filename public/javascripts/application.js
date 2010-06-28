@@ -9,17 +9,19 @@ $(document).ready(function() {
 })
 
 $(document).ready(function() {
-  
+
   //-- Technical Library
-  $("div.publications table").tablesorter();
-  
+  $("div.publications table").tablesorter({
+    widgets: ['zebra']
+  });
+
   $('div.publication-list form div.subject-selector select').live('change', function(e) {
     var $elem = $(this);
     $('div.publication-list form div.make-selector select').val('');
     $('div.publication-list form div.unit-selector select').val('');
-    
+
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-    
+
     var $form = $(this).closest('form');
     $.ajax({
       url: $form.attr('action'),
@@ -35,14 +37,14 @@ $(document).ready(function() {
     });
     e.preventDefault();
   });
-  
+
   $('div.publication-list form div.make-selector select').live('change', function(e) {
     var $elem = $(this);
     $('div.publication-list form div.subject-selector select').val('');
     $('div.publication-list form div.unit-selector select').val('');
-    
+
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-    
+
     var $form = $(this).closest('form');
     $.ajax({
       url: $form.attr('action'),
@@ -58,12 +60,12 @@ $(document).ready(function() {
     });
     e.preventDefault();
   });
-  
+
   $('div.publication-list form div.unit-selector select').live('change', function(e) {
     var $elem = $(this);
     $('div.publication-list form div.subject-selector select').val('');
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-    
+
     var $form = $(this).closest('form');
     $.ajax({
       url: $form.attr('action'),
