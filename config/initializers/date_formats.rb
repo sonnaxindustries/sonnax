@@ -3,6 +3,7 @@ date_formats = {
   :month_day_year => lambda { |time| time.strftime("%B #{time.day.ordinalize}, %Y") },
   :month_day => lambda { |time| time.strftime("%B #{time.day.ordinalize}") },
   :month_year => "%B %Y",
+  :month_num_year_num => "%m-%Y",
   :month_name_full_year => "%B %Y"
 }
 

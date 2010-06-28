@@ -9,7 +9,7 @@ module Admin::PublicationTitlesHelper
   
   def publication_published_at(publication)
     if publication.published_at?
-      publication.published_at.to_s(:month_year)
+      publication.published_at.to_s(:month_num_year_num)
     else
       '<span class="inactive">Not Provided</span>'
     end
