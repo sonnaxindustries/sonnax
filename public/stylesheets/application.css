@@ -206,7 +206,7 @@ div.publication-list table tbody a {
   text-decoration: none;
 }
 div.publication-list table tbody td {
-  padding: 4px 0px;
+  padding: 4px 5px;
 }
 div.publication-list table tbody td.article {
   padding-left: 5px;
@@ -233,7 +233,8 @@ div.publication-list table thead th {
 table.tablesorter thead tr .header {
 	background-image: url(/images/icons/bg.gif);
 	background-repeat: no-repeat;
-	background-position: center right;
+	background-position: 0 50%;
+	padding-left: 18px;
 	cursor: pointer;
 }
 table.tablesorter thead tr .headerSortUp {
