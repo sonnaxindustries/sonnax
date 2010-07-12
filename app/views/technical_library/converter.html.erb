@@ -1,0 +1,41 @@
+<h1>Torque Converter Technical Library</h1>
+<p>Our library contains all of our technical articles and resources. More text here about tech library and what a good resource it is.</p>
+
+<div id="<%= dom_id(@publication_category, :list) %>" class="publication-list">
+  <p>Select the Make or a Subject to refine your search. Click on Title, Author, Date or View to sort your results.</p>
+  <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+  <fieldset>
+    <legend>Filtering Options</legend>
+    <div id="filter-options" class="group">
+      <div class="make-units">
+        <div class="make-selector">
+          <%= f.label :make, 'Make:' %>
+          <%= f.select :make, @form_presenter.make_options, :include_blank => '-- Select Make --' %>
+        </div>
+
+        <div class="unit-selector">
+          <%= f.label :unit, 'Unit:' %>
+          <%= f.select :unit, @form_presenter.unit_options, :include_blank => '-- Select Unit --' %>
+        </div>
+      </div>
+
+      <div class="subjects">
+        <div class="subject-selector">
+          <%= f.label :subject, 'Subject:' %>
+          <%= f.select :subject, @form_presenter.subject_options, :include_blank => '-- Select Subject --' %>
+        </div>
+      </div>
+
+      <div class="submit">
+        <%= f.submit 'Filter' %>
+      </div>
+    </div>
+  </fieldset>
+  <% end %>
+
+  <% if @publications.any? %>
+  <div id="<%= dom_id(@publication_category, :publications) %>" class="publications group">
+    <%= render :partial => 'publication_titles/titles_table.html.erb', :locals => { :category => @publication_category, :publications => @publications } %>
+  </div>
+  <% end %>
+</div>
