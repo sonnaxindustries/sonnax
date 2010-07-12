@@ -4,6 +4,7 @@ tmp/**/*
 config/database.yml
 public/cache/**/*
 public/system/**/*
+public/system/file_conversions
 vendor/bundler_gems
 vendor/bundler_gems/gems
 vendor/bundler_gems/specifications
