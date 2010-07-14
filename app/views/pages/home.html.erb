@@ -1,39 +1,73 @@
-<p><strong>Sonnax</strong> is a diversified supplier of <em>specialized drivetrain products</em> to the automotive and commercial vehicle industries, and to industrial sectors utilizing drivetrain technology.</p>
+<div id="home">
+  <div id="intro">
+    <p><strong>Sonnax</strong> is a diversified supplier of <em>specialized drivetrain products</em> to the automotive and commercial vehicle industries, and to industrial sectors utilizing drivetrain technology.</p>
+  </div>
 
-<div id="parts">
-  <ul>
-    <li>
-      <h3><%= link_to 'Transmission Parts', '#' %></h3>
-      <%= link_to(image_tag('transmission-parts.jpg', :alt => 'Transmission Parts'), '#') %>
-      <p>Sold under the label Transmission Specialties®, Sonnax transmission parts are known in the automatic transmission repair industry for effectively restoring full operation of automatic transmissions and salvaging expensive valve bodies. The Transmission Specialties product catalog has become the de facto industry instruction manual, guiding builders from transmission complaints to product solutions. Popular Sure Cure® kits provide the key products to repair a particular unit.</p>
-      <p class="more"><%= link_to "Browse our Transmission Parts &rarr;", '#' %></p>
-    </li>
-    
-    <li>
-      <h3><%= link_to 'Torque Converter Parts', '#' %></h3>
-      <%= link_to(image_tag('torque-converter-parts.jpg', :alt => 'Torque Converter Parts'), '#') %>
-      <p>Sonnax is the acknowledged global leader in the manufacture and distribution of torque converter components for standard and high performance converters. A full line of components ranges from precisely machined billet-steel converter covers to the smallest washer or o-ring. Torque converter remanufacturers worldwide confide in Sonnax to provide superior products, the highest level of customer service, and responsive technical support.</p>
-      <p class="more"><%= link_to "Browse our Torque Converter Parts &rarr;", '#' %></p>
-    </li>
-    
-    <li>
-      <h3><%= link_to "Power Train Savers &reg;", '#' %> &amp; <%= link_to "Driveline Components", '#' %></h3>
-      <%= link_to(image_tag('driveline-parts.jpg', :alt => 'Driveline Parts'), '#') %>
-      <p>The Power Train Saver is a unique drivetrain protection device that can be used on virtually anything that is shaft driven. When an over-torque situation occurs, a system of shear pins called Torque Fuses will shear while the PTS unit continues to hold the shaft in position, avoiding damage to expensive driveline components. This is a must for applications where downtime is not acceptable. In addition, Sonnax offers a complete line of aluminum driveshaft components and tubing for the driveline industry</p>
-      <p class="more"><%= link_to "Browse our Power Train Saves and Driveline Component Parts &rarr;", '#' %></p>
-    </li>
-    
-    <li>
-      <h3><%= link_to "High Performance Parts", '#' %></h3>
-      <%= link_to(image_tag('high-performance-parts.jpg', :alt => 'High Performance Parts'), '#') %>
-      <p>Sonnax provides high performance components for automatic transmissions and torque converters for racing and other extreme service conditions. A full line of components for the Powerglide transmission, a longtime staple of performance racing, is complemented by a growing line of enhanced products for other popular heavy duty, performance applications. Sonnax also offers informed technical support to builders in selecting parts to fit their performance requirements.</p>
-      <p class="more"><%= link_to "Browse our High Performance Parts &rarr;", '#' %></p>
-    </li>
-  </ul>
-</div>
+  <div id="col-1" class="group">
+    <div id="parts">
+      <ul>
+        <li>
+          <h3><%= link_to 'Transmission Parts', '#' %></h3>
+          <%= link_to(image_tag('ts-parts.jpg', :alt => 'Transmission Parts'), '#') %>
+          <p>Sold under the label Transmission Specialties&reg;, Sonnax transmission parts are known in the automatic transmission repair industry for effectively restoring full operation of automatic transmissions and salvaging expensive valve bodies. The Transmission Specialties product catalog has become the de facto industry instruction manual, guiding builders from transmission complaints to product solutions. Popular Sure Cure&reg; kits provide the key products to repair a particular unit.</p>
+        </li>
 
-<div class="newsletter-signup">
-  <h3>Sign up for our Newsletter</h3>
-  <p>Become a <strong>Sonnax Insider</strong> by subscribing to our newsletter to receive the latest product news and releases.</p>
-  <p class="more"><%= link_to "Get more information &rarr;", sonnax_insider_path %></p>
+        <li>
+          <h3><%= link_to 'Torque Converter Parts', '#' %></h3>
+          <%= link_to(image_tag('tc-parts.jpg', :alt => 'Torque Converter Parts'), '#') %>
+          <p>Sonnax is the acknowledged global leader in the manufacture and distribution of torque converter components for standard and high performance converters. A full line of components ranges from precisely machined billet-steel converter covers to the smallest washer or o-ring. Torque converter remanufacturers worldwide confide in Sonnax to provide superior products, the highest level of customer service, and responsive technical support.</p>
+        </li>
+
+        <li>
+          <h3><%= link_to "Power Train Savers&reg; &amp; Driveline Components", '#' %></h3>
+          <%= link_to(image_tag('driveline-parts.jpg', :alt => 'Driveline Parts'), '#') %>
+          <p>The Power Train Saver is a unique drivetrain protection device that can be used on virtually anything that is shaft driven. When an over-torque situation occurs, a system of shear pins called Torque Fuses will shear while the PTS unit continues to hold the shaft in position, avoiding damage to expensive driveline components. This is a must for applications where downtime is not acceptable. In addition, Sonnax offers a complete line of aluminum driveshaft components and tubing for the driveline industry</p>
+        </li>
+
+        <li>
+          <h3><%= link_to "High Performance Parts", '#' %></h3>
+          <%= link_to(image_tag('hp-parts.jpg', :alt => 'High Performance Parts'), '#') %>
+          <p>Sonnax provides high performance components for automatic transmissions and torque converters for racing and other extreme service conditions. A full line of components for the Powerglide transmission, a longtime staple of performance racing, is complemented by a growing line of enhanced products for other popular heavy duty, performance applications. Sonnax also offers informed technical support to builders in selecting parts to fit their performance requirements.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="col-2" class="group">
+    <div id="cores">
+      <%= image_tag 'solenoid-cores.gif' %>
+    </div>
+
+    <div id="insider">
+      <h4>Become a Sonnax Insider</h4>
+      <p>Get the scoop on new Sonnax products, industry happenings and technical resources!</p>
+      <%= link_to 'Learn More...', '#', :class => 'more' %>
+    </div>
+
+    <div id="espanol">
+      <h4><%= link_to 'Informacion en Espanol', '#' %></h4>
+    </div>
+
+    <div id="sitemap">
+      <h4><%= link_to 'Site Map', '#' %></h4>
+    </div>
+  </div>
+
+  <div id="col-3">
+    <div class="social-media group">
+      <div class="twitter">
+        <%= image_tag('twitter-32x32.png', :alt => 'Follow on Twitter') %>
+        <%= link_to 'Follow Sonnax on Twitter', '#', :class => 'twitter' %>
+      </div>
+
+      <div class="facebook">
+        <%= image_tag('facebook-32x32.png', :alt => 'Fan us on Facebook') %>
+        <%= link_to 'Become a Sonnax fan on Facebook', '#', :class => 'facebook' %>
+      </div>
+    </div>
+
+    <div class="iso-registered">
+      <%= link_to 'Sonnax Industries is an ISO 9001: 2008 Registered Company', 'ISO90012008CERTIFICATE.pdf' %>
+    </div>
+  </div>
 </div>

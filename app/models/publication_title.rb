@@ -41,12 +41,11 @@ class PublicationTitle < ActiveRecord::Base
     end
 
     def find_by_filter(attrs={})
-      #attrs.assert_valid_keys(:subject, :make, :unit, :category)
-
-      subject_id  = attrs.delete(:subject)
-      make_id     = attrs.delete(:make)
-      unit_id     = attrs.delete(:unit)
-      category_id = attrs.delete(:category)
+      subject_id      = attrs.delete(:subject)
+      make_id         = attrs.delete(:make)
+      unit_id         = attrs.delete(:unit)
+      category_id     = attrs.delete(:category)
+      product_line_id = attrs.delete(:product_line)
 
       joins = []
       conditions = []
