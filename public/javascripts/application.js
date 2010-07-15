@@ -9,6 +9,14 @@ $(document).ready(function() {
 })
 
 $(document).ready(function() {
+  $('div#masthead ul li').mouseover(function() {
+    $(this).addClass('sfhover');
+  });
+  
+  $('div#masthead ul li').mouseout(function() {
+    $(this).removeClass('sfhover');
+  });
+  
   
   $('a[href^="http://"]:not("[href*=sonnax.com]"), a[rel="external"], a[href$="pdf"]').click(function(e) {
     //var pageInfo = $(this).attr('href') + " (" + $(this).attr('title') + ")";
@@ -25,8 +33,29 @@ $(document).ready(function() {
   $('a[href^="http://"]:not("[href*=within3.com]"), a[rel="external"]').addClass('link-external');
   
   //-- Technical Library
+  $.tablesorter.addParser({
+    id: 'mm-yyyy',
+    is: function(s) {
+      return false;
+    },
+    format: function(s) {
+      s = '' + s;
+      var hit = s.match(/(\d{2})-(\d{4})/);
+      if (hit && hit.length == 3) {
+        return hit[2] + hit[1];
+      } else {
+        return s;
+      };
+    },
+    type: 'numeric'
+  });
+  
   $(document).bind('tablesorter-initialize', function() {
     $("div.publications table").tablesorter({
+      headers:
+      {
+        2 : { sorter: "mm-yyyy" }
+      },
       widgets: ['zebra']
     });
   })
