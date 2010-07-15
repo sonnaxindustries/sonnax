@@ -35,7 +35,7 @@
 
   <div id="col-2" class="group">
     <div id="cores">
-      <%= image_tag 'solenoid-cores.gif' %>
+      <%= link_to(image_tag('solenoid-cores.gif', :alt => 'Solenoid Core Purchase Program'), new_solenoid_path) %>
     </div>
 
     <div id="insider">
@@ -57,17 +57,17 @@
     <div class="social-media group">
       <div class="twitter">
         <%= image_tag('twitter-32x32.png', :alt => 'Follow on Twitter') %>
-        <%= link_to 'Follow Sonnax on Twitter', '#', :class => 'twitter' %>
+        <%= link_to 'Follow Sonnax on Twitter', 'http://www.twitter.com/sonnax', :rel => 'external', :class => 'twitter' %>
       </div>
 
       <div class="facebook">
         <%= image_tag('facebook-32x32.png', :alt => 'Fan us on Facebook') %>
-        <%= link_to 'Become a Sonnax fan on Facebook', '#', :class => 'facebook' %>
+        <%= link_to 'Become a Sonnax fan on Facebook', 'http://www.facebook.com/pages/Sonnax/98769428353', :rel => 'external', :class => 'facebook' %>
       </div>
     </div>
 
     <div class="iso-registered">
-      <%= link_to 'Sonnax Industries is an ISO 9001: 2008 Registered Company', 'ISO90012008CERTIFICATE.pdf' %>
+      <%= link_to 'Sonnax Industries is an ISO 9001: 2008 Registered Company', 'downloads/ISO90012008CERTIFICATE.pdf' %>
     </div>
   </div>
 </div>

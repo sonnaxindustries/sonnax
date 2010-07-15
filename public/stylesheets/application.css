@@ -38,6 +38,15 @@ body {
 #extra p {
   padding: 3px 10px;
 }
+  #extra p.addr {
+    float: left;
+  }
+  #extra p.communication {
+    float: right;
+  }
+  #extra p a {
+    color: #fff;
+  }
 #wrapper {
   float: left;
   width: 100%;
@@ -98,6 +107,10 @@ h1 {
 }
 .odd .inactive {
   color: #333;
+}
+span.required {
+  color: #ff0000;
+  font-weight: bold;
 }
 span.pdf-size {
   font-size: 11px;
@@ -374,4 +387,83 @@ a.facebook {
   font-size: 16px;
   color: #00257B;
   font-weight: bold;
+}
+/* =SOLENOIDS */
+div#solenoids div#col-1 {
+  width: 415px;
+  float: left;
+}
+div#solenoids div#col-2 {
+  float: right;
+  width: 340px;
+}
+div#solenoids h2,
+div#solenoids h3,
+div#solenoids ol li strong {
+  font-weight: bold;
+  color: #039;
+  line-height: 1.3;
+}
+div#solenoids h2 {
+  font-size: 18px;
+}
+div#solenoids h3 {
+  font-size: 14px;
+}
+div#solenoids h3.byline {
+  margin: 10px 0;
+}
+div#solenoids ol li strong {
+  font-weight: bold;
+}
+div#solenoids p.note,
+div#solenoids div.contact {
+  font-size: 10px;
+  line-height: 1.2;
+}
+div#solenoids ol {
+  margin: 10px 0 10px 30px;
+  list-style-type: decimal;
+}
+div#solenoids ul {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+div#solenoids ul li {
+  line-height: 1.5;
+  list-style: disc;
+  margin: 0 0 10px 0;
+}
+div#solenoids form div.formError {
+  clear: both;
+  font-weight: bold;
+  color: #ff0000;
+  text-align: center;
+}
+div#solenoids div#return-form {
+  margin-bottom: 40px;
+}
+div#solenoids form label {
+  width: 140px;
+  clear: both;
+  float: left;
+  text-align: right;
+  margin-right: 18px;
+  margin-bottom: 6px;
+}
+div#solenoids form input {
+  float: left;
+}
+div#solenoids form fieldset.submit input {
+  margin-top: 15px;
+  margin-left: 150px;
+}
+div#solenoids div#return-form {
+  margin-top: 20px;
+}
+/* =SOLENOID THANKS */
+div#solenoid-thanks h2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
 }

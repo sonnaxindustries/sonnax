@@ -51,6 +51,8 @@ ActionController::Routing::Routes.draw do |map|
   map.distributor_by_country '/distributors/by-country/:country_code', :controller => 'distributors', :action => 'filter_by_country'
   map.distributor_by_state '/distributors/by-state/:state_code', :controller => 'distributors', :action => 'filter_by_state'
   map.distributor_by_city '/distributors/by-city/:city_name', :controller => 'distributors', :action => 'filter_by_city'
+  
+  map.resource :solenoid, :as => 'solenoids', :member => 'thanks'
   map.resources :makes
   map.resources :distributors
   map.resources :reference_figures, :as => 'reference-figures'

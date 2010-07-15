@@ -1,0 +1,111 @@
+<div id="solenoids">
+  <div id="col-1">
+    <h2>Solenoid Core Purchase Program *</h2>
+    <h3 class="byline">We make it <em>fast</em> and <em>easy</em> to return your Solenoid cores!</h3>
+    
+    <ol>
+      <li><strong>Collect Cores</strong> Fire or more cores is recommended.</li>
+      <li><strong>Contact Us</strong> We'll setup a Return Authorization for you.</li>
+      <li><strong>Ship Your Cores</strong> We pre-pay all shipping charges and provide labels.</li>
+      <li><strong>Get Paid!</strong> We'll send you a check in the mail.</li>
+    </ol>
+    
+    <p class="note">* Continental U/S/ only. If you are a customer outside the continental U.S. with many Solenoid cores, please contact us at (802) 463-0379 to discuss your return.</p>
+    
+    <div id="return-form" class="group">
+      <h3>Start your core return</h3>
+      <p><span class="required">*</span> Required fields</p>
+      <% form_for :solenoid, @solenoid, :url => solenoid_path do |f| %>
+        <fieldset>
+          <legend>Your Information</legend>
+
+          <div class="name">
+            <%= f.error_message_on :name %>
+            <%= f.label :name, '<span class="required">*</span> Name' %>
+            <%= f.text_field :name %>
+          </div>
+
+          <div class="company">
+            <%= f.error_message_on :company %>
+            <%= f.label :company, '<span class="required">*</span> Company' %>
+            <%= f.text_field :company %>
+          </div>
+
+          <div class="address">
+            <%= f.error_message_on :address %>
+            <%= f.label :address, '<span class="required">*</span> Address' %>
+            <%= f.text_field :address %>
+          </div>
+
+          <div class="city">
+            <%= f.error_message_on :city %>
+            <%= f.label :city, '<span class="required">*</span> City' %>
+            <%= f.text_field :city %>
+          </div>
+
+          <div class="state">
+            <%= f.error_message_on :state %>
+            <%= f.label :state, '<span class="required">*</span> State' %>
+            <%= f.text_field :state %>
+          </div>
+
+          <div class="postal-code">
+            <%= f.error_message_on :postal_code %>
+            <%= f.label :postal_code, '<span class="required">*</span> Postal Code' %>
+            <%= f.text_field :postal_code %>
+          </div>
+
+          <div class="phone">
+            <%= f.error_message_on :phone %>
+            <%= f.label :phone, '<span class="required">*</span> Telephone' %>
+            <%= f.text_field :phone %>
+          </div>
+
+          <div class="email">
+            <%= f.label :email, 'E-Mail' %>
+            <%= f.text_field :email %>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Core Information</legend>
+
+          <div class="number-of-cores">
+            <%= f.error_message_on :number_of_cores %>
+            <%= f.label :number_of_cores, '<span class="required">*</span> Approximate Number of Cores' %>
+            <%= f.text_field :number_of_cores %>
+          </div>
+
+          <div class="core-applications">
+            <%= f.label :core_applications, 'Core Applications' %>
+            <%= f.text_field :core_applications %>
+          </div>
+        </fieldset>
+
+        <fieldset class="submit">
+          <%= f.submit 'Submit' %>
+        </fieldset>
+      <% end %>
+    </div>
+    
+    <div class="contact">
+      <p>We will contact you within one business day to start processing your return. You may also return Solenoid cores by contacting us directly at (800) 843-2600, Ext. 379, Monday to Friday, 8:30 a.m to 5 p.m. ET.</p>
+    </div>
+  </div>
+  
+  <div id="col-2">
+    <h3>We buy these Solenoid Cores</h3>
+    <%= image_tag('solenoids-we-buy.gif', :alt => 'Solenoids we buy') %>
+    
+    <h3>Please review the following guidelines before returning Solenoid cores</h3>
+    <ul>
+      <li>Saving cores until you have five or more is recommended, as this streamlines the process and expedites your return. We accept 45RFE/545RFE Early Style, 45RFE/545RFE/68RFE Late Style and 5R55N/W/S (OEM and remanufactured) Solenoids.</li>
+      <li>All shipments must have a Return Authorization in order to be processed. Shipping charges are paid by Sonnax.</li>
+      <li>Solenoids must be packaged in plastic bags before being placed in a box, to ensure any oil will not leak and create shipping issues with UPS.</li>
+      <li>Due to UPS shipping standards, please limit individual box weight to 75 lbs. This would be approximately 20 Solenoids per box.</li>
+      <li>If you have a large quantity of Solenoids and require more than one box, Sonnax will issue one return label for each box. If the shipment is too large for UPS, Sonnax will arrange for a common carrier to pick up.</li>
+      <li>Sonnax will issue a check within 60 days of the shipment being sent from your facility.</li>
+      <li>Unusable parts or parts not meeting the criteria will not be returned or credited.</li>
+    </ul>
+  </div>
+</div>

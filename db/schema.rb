@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100623151151) do
+ActiveRecord::Schema.define(:version => 20100714225755) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -361,6 +361,25 @@ ActiveRecord::Schema.define(:version => 20100623151151) do
   end
 
   add_index "roles", ["key_name"], :name => "index_roles_on_key_name", :unique => true
+
+  create_table "solenoid_programs", :force => true do |t|
+    t.string   "name",              :null => false
+    t.string   "company",           :null => false
+    t.string   "address",           :null => false
+    t.string   "city",              :null => false
+    t.string   "state",             :null => false
+    t.string   "postal_code",       :null => false
+    t.string   "phone",             :null => false
+    t.string   "email"
+    t.string   "fax"
+    t.integer  "number_of_cores"
+    t.string   "core_applications"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "solenoid_programs", ["email"], :name => "index_solenoid_programs_on_email"
+  add_index "solenoid_programs", ["name"], :name => "index_solenoid_programs_on_name"
 
   create_table "states", :force => true do |t|
     t.string   "name",         :limit => 100, :null => false
