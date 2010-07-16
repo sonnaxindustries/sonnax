@@ -1,3 +1,6 @@
+require 'iconv'
+require File.expand_path(File.dirname(__FILE__) + '/../helper')
+
 module Helper::String  
   def to_url_friendly(separator = '-')
     begin

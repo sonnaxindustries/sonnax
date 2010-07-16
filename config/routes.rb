@@ -40,6 +40,7 @@ ActionController::Routing::Routes.draw do |map|
     page.how_to_order '/how-to-order', :action => 'how_to_order'
     page.quick_search '/quick-search', :action => 'quick_search'
     page.technical_information '/technical-information', :action => 'technical_information'
+    page.connect '/page/:template', :action => 'static_page'
   end
   
   map.resource :user_session
