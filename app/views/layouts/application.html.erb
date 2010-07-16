@@ -21,6 +21,10 @@
       <%= stylesheet_link_tag 'ie6' %>
     <![endif]-->
     
+    <!--[if IE 7]>
+      <%= stylesheet_link_tag 'ie7' %>
+    <![endif]-->
+    
   </head>
   
   <body id="home">
@@ -32,17 +36,20 @@
             <li class="home"><%= link_to 'Home', root_path %></li>
             <li class="product-lines">
               <%= link_to 'Product Lines', product_lines_path %>
-              <% if @product_lines_nav.any? %>
               <ul>
-                <% @product_lines_nav.each do |nav| %>
-                <li><%= link_to nav.name, product_line_path(nav.url_friendly) %></li>
-                <% end %>
+                 <li><%= link_to 'Transmission', '#' %></li>
+                 <li><%= link_to 'Torque Converter &amp; HP Converter', '#' %></li>
+                 <li><%= link_to 'High Performance Transmission', '#' %></li>
+                 <li><%= link_to 'Allison&reg;', '#' %></li>
+                 <li><%= link_to 'Ring Gears', '#' %></li>
+                 <li><%= link_to 'Harley-Davidson&reg;', '#' %></li>
+                 <li><%= link_to 'Driveline', '#' %></li>
+                 <li class="last"><%= link_to 'Power Train Savers', '#' %></li>
               </ul>
-              <% end %>
             </li>
             <li class="search"><%= link_to 'Quick Search', quick_search_path %></li>
-            <li class="how-to-order"><%= link_to 'How to Order', how_to_order_path %></li>
             <li class="technical-library"><%= link_to 'Technical Library', technical_library_path %></li>
+            <li class="news-and-events"><%= link_to 'News &amp; Events', news_and_events_path %></li>
             <li class="about-us">
               <%= link_to 'About Us', about_us_path %>
               <ul>
@@ -53,7 +60,8 @@
                 <li><%= link_to 'Career Opportunities', career_opportunities_path %></li>
                 <li><%= link_to 'Schedule of Events', events_list_path %></li>
                 <li><%= link_to 'Sonnax News', news_list_path %></li>
-                <li><%= link_to 'Contact Us', new_contact_path %></li>
+                <li><%= link_to 'Terms &amp; Conditions', terms_and_conditions_path %></li>
+                <li class="last"><%= link_to 'Contact Us', new_contact_path %></li>
               </ul>
             </li>
           </ul>
@@ -74,10 +82,6 @@
     
     <div id="disclaimer" class="group">
       <p>&copy; <%= Date.today.year %> Sonnax Industries, Inc. Sonnax Transmission, Torque Converter, Performance, Driveline, Allison &reg; Replacement Parts for automotive aftermarket rebuilders.</p>
-    </div>
-    
-    <div id="terms" class="group">
-      <p>This website and all of its contents are the intellectual property of Sonnax Industries, Inc. No portion of this work may be reproduced or transmitted in any form or by any means, mechanical or electronic, including photocopying and/or recording, or by any other information storage and/or retrieval system without the prior written consent of Sonnax Industries, Inc. Sonnax customers may use the part numbers only for the limited purpose of placing orders with Sonnax or otherwise operating their business, but in no case is permission granted to any customer, business entity, or individual to utilize the part numbers in order to compete with Sonnax. © 2008 Sonnax Industries, Inc. Sonnax Transmission, Torque Converter, Performance, Driveline, Allison&reg; Replacement Parts for automotive aftermarket rebuilders.</p>
     </div>
     <%= javascript_include_tag 'jquery-1.4.2.min.js' %>
     <%= javascript_include_tag 'jquery.tablesorter.min.js' %>

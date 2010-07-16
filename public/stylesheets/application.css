@@ -8,8 +8,10 @@ body {
   text-align: center;
   color: #000041;
 }
-#disclaimer,
-#terms {
+p {
+  margin-bottom: 10px;
+}
+#disclaimer {
   width: 800px;
   margin: 0 auto;
   color: #666;
@@ -55,7 +57,7 @@ body {
   padding: 35px 3px 30px 17px;
 }
 #masthead h1 a {
-  background: url('/images/header-home.jpg') 100% 0 no-repeat;
+  background: url('/images/header.jpg') 100% 0 no-repeat;
   display: block;
   height: 120px;
   text-indent: -9999px;
@@ -75,55 +77,70 @@ body {
   list-style: none;
 }
 #masthead ul li.home,
-#masthead ul li.home a {
-  width: 132px;
-}
+#masthead ul li.home a,
 #masthead ul li.product-lines,
-#masthead ul li.product-lines a {
-  width: 132px;
-}
+#masthead ul li.product-lines a,
 #masthead ul li.search,
-#masthead ul li.search a {
-  width: 132px;
-}
-#masthead ul li.how-to-order,
-#masthead ul li.how-to-order a {
-  width: 132px;
-}
+#masthead ul li.search a,
+#masthead ul li.news-and-events,
+#masthead ul li.news-and-events a,
 #masthead ul li.techincal-library,
 #masthead ul li.technical-library a {
   width: 132px;
+  text-align: center;
 }
 #masthead ul li.about-us,
 #masthead ul li.about-us a {
-  width: 132px;
+  width: 135px;
+  text-align: center;
   border-right: none;
 }
-#masthead a {
+#masthead ul li {
+  border-right: 1px solid #000;
+}
+#masthead ul li a {
+  font-size: 12px;
   line-height: 3;
   height: 36px;
-  border-right: 1px solid #000;
   display: block;
   color: #fff;
   text-decoration: none;
-  text-transform: uppercase;
+}
+#masthead ul li a:hover {
+  background: #888888;
 }
 #masthead ul li {
   margin: 0;
   padding: 0;
   float: left;
 }
+#masthead ul li ul li a {
+  line-height: 2.2;
+  height: 28px;
+  padding-left: 10px;
+}
 #masthead ul li ul li {
+  text-align: left;
   border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
 }
-#masthead ul li.product-lines ul,
+#masthead ul li.product-lines ul {
+  width: 242px;
+}
 #masthead ul li.product-lines ul a {
-  width: 240px;
-  line-height: 1;
+  text-align: left;
+  width: 230px;
 }
-#masthead ul li.about-us ul,
+#masthead ul li.about-us ul {
+  width: 202px;
+}
+#masthead ul li.product-lines ul li.last,
+#masthead ul li.about-us ul li.last {
+  border-bottom: none;
+}
 #masthead ul li.about-us ul a {
-  width: 200px;
+  text-align: left;
+  width: 190px;
 }
 #masthead ul li ul {
   position: absolute;
@@ -133,33 +150,6 @@ body {
 #masthead ul li.sfhover ul {
   left: auto;
 }
-/*#masthead ul a {
-  color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-#masthead ul li {
-  float: left;
-  display: inline;
-  height: 36px;
-  border-right: 1px solid #000;
-}
-#masthead ul li a {
-  display: block;
-  padding: 0px 22px;
-  height: 36px;
-  line-height: 3;
-}
-#masthead ul li a:hover {
-  background-color: #888888;
-}
-#masthead ul li.last {
-  border: none;
-  padding-right: 6px;
-}
-#masthead ul ul {
-  display: none;
-}*/
 h1 {
   font-size: 28px;
 }
@@ -191,7 +181,6 @@ form div.select label,
 form div.date label,
 form div.datetime label {
   display: block;
-  font-weight: bold;
 }
 form div.text input,
 form div.textarea textarea {
@@ -461,6 +450,10 @@ div#solenoids div#col-2 {
   float: right;
   width: 340px;
 }
+h3 {
+  font-weight: bold;
+}
+h2,
 div#solenoids h2,
 div#solenoids h3,
 div#solenoids ol li strong {
@@ -498,15 +491,19 @@ div#solenoids ul li {
   list-style: disc;
   margin: 0 0 10px 0;
 }
+div#contact form div.formError,
 div#solenoids form div.formError {
   clear: both;
   font-weight: bold;
   color: #ff0000;
+}
+div#solenoids form div.formError {
   text-align: center;
 }
 div#solenoids div#return-form {
   margin-bottom: 40px;
 }
+div#contact form label,
 div#solenoids form label {
   width: 140px;
   clear: both;
@@ -515,10 +512,14 @@ div#solenoids form label {
   margin-right: 18px;
   margin-bottom: 6px;
 }
+div#contact form input,
+div#contact form textarea,
 div#solenoids form input {
   float: left;
 }
+div#contact form div.submit input,
 div#solenoids form fieldset.submit input {
+  clear: both;
   margin-top: 15px;
   margin-left: 150px;
 }
@@ -530,4 +531,320 @@ div#solenoid-thanks h2 {
   font-size: 16px;
   font-weight: bold;
   color: #000;
+}
+/* =HISTORY */
+div#history-and-mission ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+div#history-and-mission ul li {
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+div#history-and-mission h2 {
+  margin: 6px 0px;
+  font-size: 16px;
+}
+div#history-and-mission p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+div#history-and-mission div#col-1 {
+  float: left;
+  width: 365px;
+}
+div#history-and-mission div#col-2 {
+  float: right;
+  width: 390px;
+}
+/* =DIRECTIONS */
+div#directions ul {
+  list-style: disc;
+}
+div#directions strong {
+  font-weight: bold;
+}
+div#directions h2 {
+  margin: 6px 0;
+  font-size: 14px;
+}
+div#directions h1,
+div#directions div.map {
+  text-align: center;
+}
+div#directions ul li {
+  margin-left: 20px;
+}
+/* =CONTACT */
+div#contact dt {
+  font-size: 14px;
+  font-weight: bold;
+}
+div#contact form {
+  margin: 15px 0 0 0;
+}
+/* =INTERNATIONALINFO */
+div#international-info p {
+  margin: 10px 0;
+}
+div#international-info ul.options {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* =CAREERS */
+div#career-opportunities p {
+  line-height: 1.5;
+}
+div#career-opportunities h2 {
+  font-size: 16px;
+  margin: 6px 0;
+}
+div#career-opportunities img {
+  margin-bottom: 15px;
+}
+/* =TASCFORCE */
+div#tasc-force p {
+  line-height: 1.5;
+}
+div#tasc-force div#col-1 p img {
+  float: left;
+  margin: 0 7px 7px 0;
+}
+div#tasc-force div#col-1 {
+  float: left;
+  width: 430px;
+}
+div#tasc-force div#col-2 {
+  float: right;
+  width: 325px;
+}
+div#tasc-force h2 {
+  margin: 6px 0;
+  font-size: 14px;
+}
+div.photo em.caption {
+  line-height: 1.5;
+  color: #666;
+  font-size: 10px;
+  font-style: italic;
+}
+div#tasc-force div.photo.half {
+  padding-top: 20px;
+}
+div#tasc-force div.photo.half img {
+  float: left;
+  margin-right: 10px;
+}
+div#tasc-force div.photo.whole {
+  width: 290px;
+  margin-bottom: 20px;
+}
+div#tasc-force div.photo.whole img {
+  float: left;
+  width: 290px;
+}
+div#tasc-force div.photo.half em.caption {
+  float: left;
+  width: 150px;
+}
+div#tasc-force div.photo.whole em.caption {
+  clear: both;
+}
+div.testimonies {
+  margin-right: 15px;
+}
+div.testimonies blockquote {
+  font-style: italic;
+}
+div.testimonies cite {
+  color: #666;
+}
+div.testimonies ul {
+  margin-top: 10px;
+}
+div.testimonies ul li {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+div.testimonies ul li.last {
+  border: none;
+}
+/* =FLAGS */
+ul.flags {
+  float: left;
+  margin-bottom: 10px;
+}
+ul.flags li {
+  text-indent: -9999px;
+  width: 74px;
+  height: 47px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  border: 1px solid #000;
+  margin: 6px 0 10px 10px;
+  float: left;
+}
+li.argentina {
+  background-image: url('/images/flags/argentina.gif');
+}
+li.australia {
+  background-image: url('/images/flags/australia.gif');
+}
+li.barbados {
+  background-image: url('/images/flags/barbados.gif');
+}
+li.belarus {
+  background-image: url('/images/flags/belarus.gif');
+}
+li.belgium {
+  background-image: url('/images/flags/belgium.gif');
+}
+li.brazil {
+  background-image: url('/images/flags/brazil.gif');
+}
+li.bulgaria {
+  background-image: url('/images/flags/bulgaria.gif');
+}
+li.canada {
+  background-image: url('/images/flags/canada.gif');
+}
+li.chile {
+  background-image: url('/images/flags/chile.gif');
+}
+li.china {
+  background-image: url('/images/flags/china.gif');
+}
+li.columbia {
+  background-image: url('/images/flags/columbia.gif');
+}
+li.costa-rica {
+  background-image: url('/images/flags/costa_rica.gif');
+}
+li.czechoslovakia {
+  background-image: url('/images/flags/czechoslovakia.gif');
+}
+li.denmark {
+  background-image: url('/images/flags/denmark.gif');
+}
+li.el-salvador {
+  background-image: url('/images/flags/el_salvador.gif');
+}
+li.finland {
+  background-image: url('/images/flags/finland.gif');
+}
+li.france {
+  background-image: url('/images/flags/france.gif');
+}
+li.germany {
+  background-image: url('/images/flags/germany.gif');
+}
+li.guatemala {
+  background-image: url('/images/flags/guatemala.gif');
+}
+li.hungary {
+  background-image: url('/images/flags/hungary.gif');
+}
+li.iceland {
+  background-image: url('/images/flags/iceland.gif');
+}
+li.israel {
+  background-image: url('/images/flags/israel.gif');
+}
+li.jamaica {
+  background-image: url('/images/flags/jamaica.gif');
+}
+li.japan {
+  background-image: url('/images/flags/japan.gif');
+}
+li.kazakhstan {
+  background-image: url('/images/flags/kazakhstan.gif');
+}
+li.kuwait {
+  background-image: url('/images/flags/kuwait.gif');
+}
+li.latvia {
+  background-image: url('/images/flags/latvia.gif');
+}
+li.lebanon {
+  background-image: url('/images/flags/lebanon.gif');
+}
+li.lithuania {
+  background-image: url('/images/flags/lithuania.gif');
+}
+li.malaysia {
+  background-image: url('/images/flags/malaysia.gif');
+}
+li.mexico {
+  background-image: url('/images/flags/mexico.gif');
+}
+li.netherlands {
+  background-image: url('/images/flags/netherlands.gif');
+}
+li.new-zealand {
+  background-image: url('/images/flags/new_zealand.gif');
+}
+li.norway {
+  background-image: url('/images/flags/norway.gif');
+}
+li.peru {
+  background-image: url('/images/flags/peru.gif');
+}
+li.poland {
+  background-image: url('/images/flags/poland.gif');
+}
+li.puerto-rico {
+  background-image: url('/images/flags/puerto_rico.gif');
+}
+li.russia {
+  background-image: url('/images/flags/russia.gif');
+}
+li.saudi-arabia {
+  background-image: url('/images/flags/saudiarabia.gif');
+}
+li.serbia-montenegro {
+  background-image: url('/images/flags/serbia_montenegro.gif');
+}
+li.singapor {
+  background-image: url('/images/flags/singapor.gif');
+}
+li.south-africa {
+  background-image: url('/images/flags/south_africa.gif');
+}
+li.south-korea {
+  background-image: url('/images/flags/southkorea.gif');
+}
+li.spain {
+  background-image: url('/images/flags/spain.gif');
+}
+li.sweden {
+  background-image: url('/images/flags/sweden.gif');
+}
+li.switzerland {
+  background-image: url('/images/flags/switzerland.gif');
+}
+li.taiwan {
+  background-image: url('/images/flags/taiwan.gif');
+}
+li.thailand {
+  background-image: url('/images/flags/thailand.gif');
+}
+li.trinidad {
+  background-image: url('/images/flags/trinidad.gif');
+}
+li.turkey {
+  background-image: url('/images/flags/turkey.gif');
+}
+li.united-kingdom {
+  background-image: url('/images/flags/uk.gif');
+}
+li.ukraine {
+  background-image: url('/images/flags/ukraine.gif');
+}
+li.unitarab {
+  background-image: url('/images/flags/unitarab.gif');
+}
+li.venezuela {
+  background-image: url('/images/flags/venezuela.gif');
 }

@@ -1,3 +1,6 @@
-#masthead ul li a {
-  display: inline;
+div#masthead ul li ul {
+  margin-left: -66px;
+}
+div#masthead li:hover {  
+  position: static;  
 }

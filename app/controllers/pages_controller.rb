@@ -18,6 +18,15 @@ class PagesController < ApplicationController
   def catalog_request
   end
   
+  def directions
+  end
+  
+  def terms_and_conditions    
+  end
+  
+  def news_and_events
+  end
+  
   def about_us
   end
   

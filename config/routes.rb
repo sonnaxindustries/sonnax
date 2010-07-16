@@ -22,10 +22,13 @@ ActionController::Routing::Routes.draw do |map|
   map.prototype_validation '/prototype/validation/:part_number', :controller => 'prototypes', :action => 'validation'
   
   map.with_options(:controller => 'pages') do |page|
+    page.terms_and_conditions '/terms-and-conditions', :action => 'terms_and_conditions'
+    page.directions '/directions', :action => 'directions'
     page.history_mission '/history-and-mission', :action => 'history_and_mission'
     page.international_info '/international-info', :action => 'international_info'
     page.tasc_force '/tasc-force', :action => 'tasc_force'
     page.career_opportunities '/career-opportunities', :action => 'career_opportunities'
+    page.news_and_events '/news-and-events', :action => 'news_and_events'
     page.news_list '/news', :action => 'news'
     page.events_list '/events', :action => 'events'
     page.international_shipping_and_payment '/international-shipping-and-payment-options', :action => 'international_shipping_and_payment'
