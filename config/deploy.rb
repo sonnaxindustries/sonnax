@@ -52,10 +52,12 @@ namespace(:deploy) do
   end
   
   desc 'Symlink the static pages directory'
-  task(:symlink_pages), :roles => :app do
-    shared_dir = File.join(shared_path, 'pages')
+  task(:symlink_pages, :roles => :app) do
+    shared_dir = File.join(shared_path, '/pages/')
     release_dir = File.join(current_release, 'app/views/pages/static')
     run("mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}")
+    run("chmod -R 777 #{shared_dir}")
+    #ln -s /var/www/rails/sonnax/shared/pages/ static
   end
 end
 
