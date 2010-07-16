@@ -8,7 +8,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.load_paths += %W( #{RAILS_ROOT}/app/presenters #{RAILS_ROOT}/app/observers #{RAILS_ROOT}/app/mailers #{RAILS_ROOT}/app/sweepers #{RAILS_ROOT}/app/builders )
-  config.active_record.observers = :solenoid_program_observer
+  config.active_record.observers = :solenoid_program_observer, :contact_observer
 
   config.time_zone = 'UTC'
 
