@@ -986,11 +986,12 @@ div.driveline ul a {
 }
 /*= PL-POWERTRAINSAVERS */
 div.power-train-savers div.note {
-  width: 730px;
+  width: 100%;
 }
 div.power-train-savers div#col-1 {
   float: left;
-  width: 400px;
+  width: 390px;
+  overflow: visible;
 }
 div.power-train-savers div#col-2 {
   float: right;
