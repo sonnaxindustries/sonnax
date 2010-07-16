@@ -1,25 +1,18 @@
-<div id="product-line" class="transmission">
+<div id="product-line" class="driveline">
   <div id="col-1">
-    <h1><%= @product_line.name %></h1>
-    <div class="description">
-      <p><%= @product_line.description %></p>
-    </div>
-    
-    <ul>
-      <li><%= link_to 'Part and Application Finder', product_line_parts_path(@product_line.url_friendly) %></li>
-      <li><%= link_to 'New Parts', recent_product_line_parts_path(@product_line.url_friendly) %></li>
-      <li><%= link_to 'Distributors', distributors_path %></li>
-      <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path %></li>
-      <li><%= link_to 'Contact Us', new_contact_path %></li>
-    </ul>
+    <%= image_tag('driveline.jpg', :width => 398, :height => 398, :alt => 'Driveline') %>
   </div>
   
   <div id="col-2">
-    <div class="featured">
-      <p><strong>Featured Product:</strong> <%= link_to 'Product Name', '#' %></p>
-      <p><strong>Make:</strong> <%= link_to 'General Motors', '#' %></p>
-      <p><strong>Unit:</strong> </p>
-      <p class="description">Here is the description of the featured part.</p>
+    <h1>Driveline</h1>
+    <div class="description">
+      <p>Sonnax is proud to offer a full line of aluminum Driveline components, engineered for improved assembly, outstanding performance and greater durability. Our weld yolks are constructed from high-quality T6061 aluminum. Sonnax also offers aluminum driveline tubing by Alcoa.</p>
+      <p>Sonnax is also the exclusive distributor of light-duty Power Train Savers® and Torque Fuses®, which are designed to prevent overtorque damage to differentials, axles, and driveshafts.
+      </p>
     </div>
+    
+    <ul>
+      <li><%= link_to 'Driveline &reg; Part Finder', product_line_parts_path(@product_line.url_friendly) %></li>
+    </ul>
   </div>
 </div>

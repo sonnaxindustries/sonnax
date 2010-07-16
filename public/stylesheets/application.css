@@ -9,6 +9,7 @@ body {
   color: #000041;
 }
 p {
+  line-height: 1.5;
   margin-bottom: 10px;
 }
 #disclaimer {
@@ -155,6 +156,29 @@ p {
 }
 h1 {
   font-size: 28px;
+}
+sup {
+  vertical-align: top;
+  font-size: 9px;
+}
+div.note {
+  background: #eee;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  margin: 15px 0;
+  width: 100%;
+}
+a.pdf {
+  padding-left: 17px;
+  background: transparent url('/images/icons/pdf-12x12.gif') 0 0 no-repeat;
+}
+a.wmv {
+  padding-left: 17px;
+  background: transparent url('/images/icons/wmv-12x12.gif') 0 0 no-repeat;
+}
+a.email {
+  padding-left: 22px;
+  background: transparent url('/images/icons/email.png') 0 0 no-repeat;
 }
 .inactive,
 .even .inactive {
@@ -584,7 +608,6 @@ div#history-and-mission h2 {
 }
 div#history-and-mission p {
   margin-bottom: 10px;
-  line-height: 1.5;
 }
 div#history-and-mission div#col-1 {
   float: left;
@@ -595,9 +618,6 @@ div#history-and-mission div#col-2 {
   width: 390px;
 }
 /* =NEWSLETTER */
-div#subscribe-to-newsletter p {
-  line-height: 1.5;
-}
 div#subscribe-to-newsletter h2 {
   font-size: 14px;
   margin: 6px 0;
@@ -617,9 +637,6 @@ div#subscribe-to-newsletter div.cc-form div.submit {
   float: left;
 }
 /* =INSIDER */
-div#insider p {
-  line-height: 1.5;
-}
 div#insider h2 {
   font-size: 14px;
   margin: 6px 0;
@@ -692,9 +709,6 @@ div#international-info ul.options {
   margin-bottom: 10px;
 }
 /* =CAREERS */
-div#career-opportunities p {
-  line-height: 1.5;
-}
 div#career-opportunities h2 {
   font-size: 16px;
   margin: 6px 0;
@@ -703,9 +717,6 @@ div#career-opportunities img {
   margin-bottom: 15px;
 }
 /* =TASCFORCE */
-div#tasc-force p {
-  line-height: 1.5;
-}
 div#tasc-force div#col-1 p img {
   float: left;
   margin: 0 7px 7px 0;
@@ -946,4 +957,84 @@ li.unitarab {
 }
 li.venezuela {
   background-image: url('/images/flags/venezuela.gif');
+}
+/*= PL-RINGGEARS */
+div.ring-gears div#col-1 {
+  float: left;
+  width: 365px;
+}
+div.ring-gears div#col-2 {
+  float: right;
+  margin-right: 15px;
+  width: 350px;
+}
+div.ring-gears ul a {
+  font-weight: bold;
+}
+/*= PL-DRIVELINE */
+div.driveline div#col-1 {
+  float: left;
+  width: 400px;
+}
+div.driveline div#col-2 {
+  float: right;
+  margin-right: 15px;
+  width: 325px;
+}
+div.driveline ul a {
+  font-weight: bold;
+}
+/*= PL-POWERTRAINSAVERS */
+div.power-train-savers div.note {
+  width: 730px;
+}
+div.power-train-savers div#col-1 {
+  float: left;
+  width: 400px;
+}
+div.power-train-savers div#col-2 {
+  float: right;
+  margin-right: 15px;
+  width: 325px;
+}
+div.power-train-savers ul a {
+  font-weight: bold;
+}
+/*= PL-HARLEYDAVIDSON */
+div.harley-davidson div#col-1 {
+  float: left;
+  width: 365px;
+}
+div.harley-davidson div#col-2 {
+  float: right;
+  margin-right: 15px;
+  width: 350px;
+}
+div.harley-davidson ul a {
+  font-weight: bold;
+}
+div#harley-distributors h2 {
+  font-size: 14px;
+  margin: 6px 0;
+}
+div#harley-distributors table {
+  width: 100%;
+}
+div#harley-distributors table td {
+  width: 50%;
+}
+/* =TESTIMONIES */
+div#customer-testimonials h2 {
+  font-size: 16px;
+  margin: 6px 0;
+}
+div#customer-testimonials blockquote {
+  margin: 0 20px 10px 20px;
+}
+div#customer-testimonials cite {
+  color: #666;
+  font-weight: bold;
+}
+div#customer-testimonials ul li {
+  margin-bottom: 20px;
 }

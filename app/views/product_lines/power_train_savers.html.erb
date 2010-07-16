@@ -1,25 +1,27 @@
-<div id="product-line" class="transmission">
+<div id="product-line" class="power-train-savers">
   <div id="col-1">
     <h1><%= @product_line.name %></h1>
     <div class="description">
-      <p><%= @product_line.description %></p>
+      <%= @product_line.description %>
     </div>
     
     <ul>
-      <li><%= link_to 'Part and Application Finder', product_line_parts_path(@product_line.url_friendly) %></li>
-      <li><%= link_to 'New Parts', recent_product_line_parts_path(@product_line.url_friendly) %></li>
-      <li><%= link_to 'Distributors', distributors_path %></li>
+      <li><%= link_to 'Download Parts Catalog', '/downloads/power-train-savers/pts-online-catalog.pdf', :class => 'pdf' %></li>
+      <li><%= link_to 'Installation Instructions', '/downloads/power-train-savers/pts-instructions.pdf', :class => 'pdf' %></li>
+      <li><%= link_to 'View our Demonstration Video <sup>1</sup>', '/videos/power-train-savers/pts-sonnax.wmv', :class => 'wmv' %></li>
       <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path %></li>
+      <li><%= link_to 'Frequently Asked Questions', power_train_savers_faq_path %></li>
+      <li><%= link_to 'Customer Testimonials', power_train_savers_testimonies_path %></li>
       <li><%= link_to 'Contact Us', new_contact_path %></li>
     </ul>
+    
+    <div class="note">
+      <h2>Note</h2>
+      <p><sup>1</sup> Windows Media Player is required to play the video. <%= link_to 'Download Windows Media Player now', 'http://www.microsoft.com/windows/windowsmedia/player/9series', :rel => 'external' %>.</p>
+    </div>
   </div>
   
   <div id="col-2">
-    <div class="featured">
-      <p><strong>Featured Product:</strong> <%= link_to 'Product Name', '#' %></p>
-      <p><strong>Make:</strong> <%= link_to 'General Motors', '#' %></p>
-      <p><strong>Unit:</strong> </p>
-      <p class="description">Here is the description of the featured part.</p>
-    </div>
+    <%= image_tag('powertrainsaver.jpg', :width => 324, :height => 320, :alt => 'Power Train Savers') %>
   </div>
 </div>

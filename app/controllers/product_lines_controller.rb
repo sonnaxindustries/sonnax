@@ -19,6 +19,9 @@ class ProductLinesController < ApplicationController
   def harley_davidson
   end
   
+  def harley_davidson_parts
+  end
+  
   def power_train_savers
     begin
       @product_line = ProductLine.power_train_savers

@@ -42,6 +42,8 @@ ActionController::Routing::Routes.draw do |map|
     page.how_to_order '/how-to-order', :action => 'how_to_order'
     page.quick_search '/quick-search', :action => 'quick_search'
     page.technical_information '/technical-information', :action => 'technical_information'
+    page.power_train_savers_testimonies '/power-train-savers-testimonies', :action => 'pts_testimonies'
+    page.power_train_savers_faq '/power-train-savers-faq', :action => 'pts_faq'
     page.connect '/page/:template', :action => 'static_page'
   end
   
@@ -84,6 +86,7 @@ ActionController::Routing::Routes.draw do |map|
     product_line.driveline '/driveline', :action => 'driveline'
     product_line.allison '/allison', :action => 'allison'
     product_line.harley_davidson '/harley-davidson', :action => 'harley_davidson'
+    product_line.harley_davidson_parts '/harley-davidson/parts', :action => 'harley_davidson_parts'
     product_line.power_train_savers '/power-train-savers', :action => 'power_train_savers'
   end
   

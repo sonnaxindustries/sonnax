@@ -54,6 +54,12 @@ class PagesController < ApplicationController
   def valve_body_layouts
   end
   
+  def pts_testimonies
+  end
+  
+  def pts_faq
+  end
+  
   def static_page
     page_template = "pages/static/%s" % [params[:template]]
     render page_template
