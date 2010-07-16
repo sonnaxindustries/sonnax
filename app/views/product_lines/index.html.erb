@@ -1,11 +1,12 @@
 <h1>Product Lines</h1>
 <p>Select a product line to access specific information about our products and how to order.</p>
-<% if @product_lines.any? %>
-  <ul class="product-lines">
-  <% @product_lines.each do |product_line| %>
-    <li><%= link_to product_line.name, product_line_path(product_line.url_friendly) %></li>
-  <% end %>
-  </ul>
-<% else %>
-<p>There are currently no product lines available.</p>
-<% end %>
+<ul>
+  <li><%= link_to 'Transmission', transmission_path %></li>
+  <li><%= link_to 'Torque Converter &amp; HP Converter', torque_converter_path %></li>
+  <li><%= link_to 'High Performance Transmission', high_performance_transmission_path %></li>
+  <li><%= link_to 'Allison&reg;', allison_path %></li>
+  <li><%= link_to 'Ring Gears', ring_gears_path %></li>
+  <li><%= link_to 'Harley-Davidson&reg;', harley_davidson_path %></li>
+  <li><%= link_to 'Driveline', driveline_path %></li>
+  <li class="last"><%= link_to 'Power Train Savers', power_train_savers_path %></li>
+</ul>

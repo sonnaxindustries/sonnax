@@ -131,13 +131,16 @@ p {
   text-align: left;
   width: 230px;
 }
+#masthead ul li.technical-library ul,
 #masthead ul li.about-us ul {
   width: 202px;
 }
+#masthead ul li.technical-library ul li.last,
 #masthead ul li.product-lines ul li.last,
 #masthead ul li.about-us ul li.last {
   border-bottom: none;
 }
+#masthead ul li.technical-library ul a,
 #masthead ul li.about-us ul a {
   text-align: left;
   width: 190px;
@@ -556,6 +559,46 @@ div#history-and-mission div#col-1 {
 div#history-and-mission div#col-2 {
   float: right;
   width: 390px;
+}
+/* =INSIDER */
+div#insider p {
+  line-height: 1.5;
+}
+div#insider h2 {
+  font-size: 14px;
+  margin: 6px 0;
+}
+div#insider ul.benefits {
+  list-style: disc;
+  margin-bottom: 20px;
+}
+div.newsletter-signup, 
+div.newsletter-subscribe {
+  margin: 20px 0;
+}
+div.newsletter-signup img, 
+div.newsletter-subscribe img {
+  float: left;
+  margin-right: 10px;
+}
+div.newsletter-signup a, 
+div.newsletter-subscribe a {
+  color: #039;
+  font-weight: bold;
+}
+div#insider ul.benefits li {
+  margin-left: 20px;
+}
+div#insider div#col-1 {
+  float: left;
+  width: 350px;
+}
+div#insider div#col-2 {
+  float:right;
+  width: 350px;
+}
+div#insider div#col-2 img {
+  margin-bottom: 20px;
 }
 /* =DIRECTIONS */
 div#directions ul {

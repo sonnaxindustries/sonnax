@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   map.prototype_validation '/prototype/validation/:part_number', :controller => 'prototypes', :action => 'validation'
   
   map.with_options(:controller => 'pages') do |page|
+    page.insider '/insider', :action => 'insider'
     page.terms_and_conditions '/terms-and-conditions', :action => 'terms_and_conditions'
     page.directions '/directions', :action => 'directions'
     page.history_mission '/history-and-mission', :action => 'history_and_mission'
@@ -73,6 +74,18 @@ ActionController::Routing::Routes.draw do |map|
       scat.resources :publication_titles, :as => 'titles'
     end
   end
+  
+  map.with_options(:controller => 'product_lines', :path_prefix => '/product-lines') do |product_line|
+    product_line.transmission '/transmission', :action => 'transmission'
+    product_line.torque_converter '/torque-converter', :action => 'torque_converter'
+    product_line.ring_gears '/ring-gears', :action => 'ring_gears'
+    product_line.high_performance_transmission '/high-performance-transmission', :action => 'high_performance_transmission'
+    product_line.driveline '/driveline', :action => 'driveline'
+    product_line.allison '/allison', :action => 'allison'
+    product_line.harley_davidson '/harley-davidson', :action => 'harley_davidson'
+    product_line.power_train_savers '/power-train-savers', :action => 'power_train_savers'
+  end
+  
   map.resources :product_lines, :as => 'product-lines' do |pl|
     pl.resources :parts, :collection => { :recent => :get }
   end

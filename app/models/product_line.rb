@@ -16,6 +16,34 @@ class ProductLine < ActiveRecord::Base
   end
   
   class << self
+    def transmission
+      self.find_by_url_friendly!('transmission')
+    end
+    
+    def high_performance_transmission
+      self.find_by_url_friendly!('high-performance-transmission')
+    end
+    
+    def torque_converter
+      self.find_by_url_friendly!('torque-converter')
+    end
+    
+    def ring_gears
+      self.find_by_url_friendly!('ring-gears')
+    end
+    
+    def driveline
+      self.find_by_url_friendly!('driveline')
+    end
+    
+    def power_train_savers
+      self.find_by_url_friendly!('power-train-savers')
+    end
+    
+    def allison
+      self.find_by_url_friendly!('allison')
+    end
+    
     def detail!(id)
       self.find_by_url_friendly!(id, :conditions => { :is_active => true })
     end

@@ -48,6 +48,9 @@ class PagesController < ApplicationController
   def events
   end
   
+  def insider
+  end
+  
   def static_page
     page_template = "pages/static/%s" % [params[:template]]
     render page_template

@@ -1,0 +1,25 @@
+<div id="product-line" class="transmission">
+  <div id="col-1">
+    <h1><%= @product_line.name %></h1>
+    <div class="description">
+      <p><%= @product_line.description %></p>
+    </div>
+    
+    <ul>
+      <li><%= link_to 'Part and Application Finder', product_line_parts_path(@product_line.url_friendly) %></li>
+      <li><%= link_to 'New Parts', recent_product_line_parts_path(@product_line.url_friendly) %></li>
+      <li><%= link_to 'Distributors', distributors_path %></li>
+      <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path %></li>
+      <li><%= link_to 'Contact Us', new_contact_path %></li>
+    </ul>
+  </div>
+  
+  <div id="col-2">
+    <div class="featured">
+      <p><strong>Featured Product:</strong> <%= link_to 'Product Name', '#' %></p>
+      <p><strong>Make:</strong> <%= link_to 'General Motors', '#' %></p>
+      <p><strong>Unit:</strong> </p>
+      <p class="description">Here is the description of the featured part.</p>
+    </div>
+  </div>
+</div>
