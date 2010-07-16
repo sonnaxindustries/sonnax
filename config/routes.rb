@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   map.prototype_validation '/prototype/validation/:part_number', :controller => 'prototypes', :action => 'validation'
   
   map.with_options(:controller => 'pages') do |page|
+    page.valve_body_layouts '/valve-body-layouts', :action => 'valve_body_layouts'
     page.insider '/insider', :action => 'insider'
     page.terms_and_conditions '/terms-and-conditions', :action => 'terms_and_conditions'
     page.directions '/directions', :action => 'directions'

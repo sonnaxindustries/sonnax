@@ -15,7 +15,7 @@
       <%= image_tag('transmission-newsletter.gif', :width => 38, :height => 54, :alt => 'Sign up for our newsletter') %>
       <ul>
         <li><%= link_to 'Sign up for the newsletter' %></li>
-        <li><%= link_to 'View recent transmission newsletter', '#' %></li>
+        <li><%= link_to 'View recent transmission newsletter (34MB PDF)', 'downloads/sonnax-trans-report_v1n1.pdf' %></li>
       </ul>
     </div>
     
@@ -25,8 +25,8 @@
     <div class="newsletter-subscribe group">
       <%= image_tag('sonnax-insider-envelope.gif', :width => 51, :height => 38, :alt => 'Subscribe to our newsletter') %>
       <ul>
-        <li><%= link_to 'Subscribe Now!', '#' %></li>
-        <li><%= link_to 'View recent Sonnax E-News', '#' %></li>
+        <li><%= link_to 'Subscribe Now!', subscribe_to_email_newsletter_path %></li>
+        <li><%= link_to 'View recent Sonnax E-News', 'http://archive.constantcontact.com/fs092/1101913914829/archive/1102780439386.html', :rel => 'external' %></li>
       </ul>
     </div>
   </div>

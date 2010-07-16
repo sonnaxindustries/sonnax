@@ -371,20 +371,24 @@ div#home div#col-2 {
   float: right;
 }
   div#home div#col-2 div#cores,
-  div#home div#col-2 div#insider,
+  div#home div#col-2 div#insider-intro,
   div#home div#col-2 div#espanol {
     margin-bottom: 45px;
   }
-  div#home div#col-2 div#insider h4 {
+  div#home div#col-2 div#insider-intro h4 {
     font-size: 21px;
     line-height: 1.3;
     font-weight: bold;
     color: #024368;
   }
-  div#home div#col-2 div#insider {
+  div#home div#col-2 div#insider-intro {
     text-align: center;
   }
-  div#home div#col-2 div#insider p {
+  div#home div#col-2 div#insider-intro a {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  div#home div#col-2 div#insider-intro p {
     font-size: 14px;
     line-height: 1.4;
     color: #000;
@@ -413,6 +417,36 @@ div#home div.iso-registered {
   font-weight: bold;
   color: #00257B;
   text-align: center;
+}
+/* =VALVEBODYLAYOUTS */
+a.app-guide {
+  color: #ff0000;
+  font-style: italic;
+}
+div#valve-body-layouts ul li ul {
+  text-align: center;
+}
+div#valve-body-layouts ul li ul li {
+  margin: 0;
+  height: auto;
+}
+div#valve-body-layouts ul {
+  float: left;
+}
+div#valve-body-layouts ul li a {
+  font-weight: bold;
+}
+div#valve-body-layouts ul li {
+  float: left;
+  width: 250px;
+  height: 200px;
+  margin: 0 10px 30px 0;
+}
+div#valve-body-layouts ul li img {
+  float: left;
+}
+div#valve-body-layouts a {
+  clear: both;
 }
 /* =SOCIAL */
 div.social-media {
@@ -559,6 +593,28 @@ div#history-and-mission div#col-1 {
 div#history-and-mission div#col-2 {
   float: right;
   width: 390px;
+}
+/* =NEWSLETTER */
+div#subscribe-to-newsletter p {
+  line-height: 1.5;
+}
+div#subscribe-to-newsletter h2 {
+  font-size: 14px;
+  margin: 6px 0;
+}
+div#subscribe-to-newsletter div.cc-form {
+  margin: 20px 0;
+}
+div#subscribe-to-newsletter div.cc-form label {
+  float: left;
+  margin-right: 5px;
+}
+div#subscribe-to-newsletter div.cc-form input {
+  float: left;
+  margin-right: 5px;
+}
+div#subscribe-to-newsletter div.cc-form div.submit {
+  float: left;
 }
 /* =INSIDER */
 div#insider p {
