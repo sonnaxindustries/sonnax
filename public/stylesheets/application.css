@@ -12,6 +12,9 @@ p {
   line-height: 1.5;
   margin-bottom: 10px;
 }
+strong {
+  font-weight: bold;
+}
 #disclaimer {
   width: 800px;
   margin: 0 auto;
@@ -958,6 +961,9 @@ li.unitarab {
 li.venezuela {
   background-image: url('/images/flags/venezuela.gif');
 }
+div#product-line ul a {
+  font-weight: bold;
+}
 /*= PL-RINGGEARS */
 div.ring-gears div#col-1 {
   float: left;
@@ -968,9 +974,6 @@ div.ring-gears div#col-2 {
   margin-right: 15px;
   width: 350px;
 }
-div.ring-gears ul a {
-  font-weight: bold;
-}
 /*= PL-DRIVELINE */
 div.driveline div#col-1 {
   float: left;
@@ -980,9 +983,6 @@ div.driveline div#col-2 {
   float: right;
   margin-right: 15px;
   width: 325px;
-}
-div.driveline ul a {
-  font-weight: bold;
 }
 /*= PL-POWERTRAINSAVERS */
 div.power-train-savers div.note {
@@ -998,9 +998,6 @@ div.power-train-savers div#col-2 {
   margin-right: 15px;
   width: 325px;
 }
-div.power-train-savers ul a {
-  font-weight: bold;
-}
 /*= PL-HARLEYDAVIDSON */
 div.harley-davidson div#col-1 {
   float: left;
@@ -1010,9 +1007,6 @@ div.harley-davidson div#col-2 {
   float: right;
   margin-right: 15px;
   width: 350px;
-}
-div.harley-davidson ul a {
-  font-weight: bold;
 }
 div#harley-distributors h2 {
   font-size: 14px;
@@ -1038,4 +1032,36 @@ div#customer-testimonials cite {
 }
 div#customer-testimonials ul li {
   margin-bottom: 20px;
+  
+}
+/* =NEWS */
+div#news h2 {
+  font-size: 14px;
+  margin: 10px 0 2px 0;
+}
+div#news {
+  margin-right: 15px;
+}
+div#news ul.articles {
+  margin-top: 20px;
+}
+div#news ul.articles li {
+  margin-bottom: 15px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #ddd;
+}
+div#news ul.articles li.last {
+  border-bottom: none;
+}
+div#news ul.articles li ul li {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+div#news div.photo {
+  width: 600px;
+}
+div#news div.photo img {
+  border: 2px solid #ddd;
+  padding: 2px;
 }
