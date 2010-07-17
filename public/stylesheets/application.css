@@ -1035,24 +1035,30 @@ div#customer-testimonials ul li {
   
 }
 /* =NEWS */
+div#events h2,
 div#news h2 {
   font-size: 14px;
   margin: 10px 0 2px 0;
 }
-div#news {
+div#news,
+div#events {
   margin-right: 15px;
 }
+div#events ul.articles,
 div#news ul.articles {
   margin-top: 20px;
 }
+div#events ul.articles li,
 div#news ul.articles li {
   margin-bottom: 15px;
   padding-bottom: 7px;
   border-bottom: 1px solid #ddd;
 }
+div#events ul.articles li.last,
 div#news ul.articles li.last {
   border-bottom: none;
 }
+div#events ul.articles li ul li,
 div#news ul.articles li ul li {
   border: none;
   padding: 0;
@@ -1064,4 +1070,10 @@ div#news div.photo {
 div#news div.photo img {
   border: 2px solid #ddd;
   padding: 2px;
+}
+div#events em.published-date,
+div#news em.published-date {
+  font-size: 10px;
+  font-style: italic;
+  color: #333;
 }
