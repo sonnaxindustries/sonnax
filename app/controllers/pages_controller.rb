@@ -60,6 +60,12 @@ class PagesController < ApplicationController
   def pts_faq
   end
   
+  def hp_distributors
+  end
+  
+  def publication_glossary
+  end
+  
   def static_page
     page_template = "pages/static/%s" % [params[:template]]
     render page_template

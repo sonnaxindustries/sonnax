@@ -37,6 +37,7 @@ ActionController::Routing::Routes.draw do |map|
     page.sonnax_insider '/sonnax-insider', :action => 'sonnax_insider'
     page.catalog_request '/catalog-request', :action => 'catalog_request'
     page.harley_distributors '/harley-davidson-distributors', :action => 'harley_distributors'
+    page.high_performance_distributors '/high-performance-distributors', :action => 'hp_distributors'
     page.subscribe_to_email_newsletter '/subscribe-to-email-newsletter', :action => 'subscribe_to_email_newsletter' 
     page.about_us '/about-us', :action => 'about_us'
     page.how_to_order '/how-to-order', :action => 'how_to_order'
@@ -44,6 +45,7 @@ ActionController::Routing::Routes.draw do |map|
     page.technical_information '/technical-information', :action => 'technical_information'
     page.power_train_savers_testimonies '/power-train-savers-testimonies', :action => 'pts_testimonies'
     page.power_train_savers_faq '/power-train-savers-faq', :action => 'pts_faq'
+    page.publication_glossary '/publication-glossary', :action => 'publication_glossary'
     page.connect '/page/:template', :action => 'static_page'
   end
   

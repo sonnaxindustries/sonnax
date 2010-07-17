@@ -1077,3 +1077,10 @@ div#news em.published-date {
   font-style: italic;
   color: #333;
 }
+/* =PUBLICATIONGLOSSARY */
+div#publication-glossary dt {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 6px 0 0 0;
+  color: #039;
+}
