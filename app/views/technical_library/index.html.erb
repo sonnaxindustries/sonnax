@@ -1,13 +1,40 @@
-<div class="technical-library-index">
+<div id="technical-library">
   <h1>Technical Library</h1>
-  <% if @publication_categories.any? %>
-  <ul>
-    <% @publication_categories.each do |category| %>
-    <li><%= link_to category.name, technical_library_detail_path(category.url_friendly) %></li>
-    <% end %>
+  <p>Sonnax offers a broad range of publications to help technicians stay abreast of developments in automatic transmission rebuilding. Select from one of the publication types below for a list of articles to read online or print. Click on underlined text for <%= link_to 'a brief description of Sonnax publications', publication_glossary_path %> or to <%= link_to 'request a catalog', catalog_request_path %>.</p>
+  
+  <h2>Select the publication you need</h2>
+  <ul class="publications group">
+    <li><%= link_to 'Transmission', technical_library_detail_path('transmission') %></li>
+    <li><%= link_to 'Converter', technical_library_detail_path('converter') %></li>
   </ul>
-  <% end %>
-  <p>Our library contains all of our technical articles and resources.</p>
-  <p>More text here about tech library and what a good resource it is.</p>
-  <p>Text here with recent info as straight HTML, no database text on this page.</p>
+  
+  <div class="dvd">
+    <h3><%= link_to 'Valve Body Rebuilding Guidelines (click here to order Valve Body Training DVD)', catalog_request_path  %></h3>
+    <p>Narrated by Sonnax Vice President of Technical Development Bob Warnke, the Valve Body Training DVD covers valve and pump body wear, inspection, reaming procedures and testing. Learn the basics of visual inspection, Wet Air Tests, vacuum and deflection testing, along with step-by-step demonstrations on bore sizing, reaming, test stands and more.</p>
+  </div>
+  
+  <div class="video-resources">
+    <h2>Video Resources</h2>
+    <ul>
+      <li><%= link_to 'Play a clip from the Valve Body Training DVD <sup>1</sup>', '/videos/technical-library/valve-body-clip-qt.mov', :class => 'quicktime' %></li>
+      <li><%= link_to 'Play a clip from the Valve Body Training DVD <sup>2</sup>', '/videos/technical-library/valve-body-clip.wmv', :class => 'wmv' %></li>
+    </ul>
+  </div>
+  
+  <h2>Reaming Instruction PDFs</h2>
+  <ul>
+    <li><%= link_to 'Sonnax Tool Kits using VB-FIX (visual layout)', '/downloads/technical-library/sonnax-tool-kits-VB-FIX-visual.pdf', :class => 'pdf' %></li>
+    <li><%= link_to 'Sonnax Tool Kits using VB-FIX', '/downloads/technical-library/sonnax-tool-kits-using-VB-FIX.pdf', :class => 'pdf' %></li>
+    <li><%= link_to 'Sonnax Took Kit with drill jig', '/downloads/technical-library/sonnax-tool-kit-w-drill-jig.pdf', :class => 'pdf' %></li>
+    <li><%= link_to 'Standard Sonnax Tool Kit (no drill jig, no reaming fixture)', '/downloads/technical-library/standard-sonnax-tool-kit.pdf', :class => 'pdf' %></li>
+  </ul>
+  
+  <h2>Vacuum Testing Guidelines</h2>
+  <p>Vacuum testing information and test results provided in Sonnax literature should be used as a guideline only. The pump, gauge and any calibration orifices used in specific equipment configurations will greatly influence vacuum test readings. Please read the source information below for guidelines on set-up and calibration as well as general recommendations and pass/fail parameter suggestions. Please note: pass/fail parameters are altered by the number of spools tested in a captive circuit, spool diameters, and contact length of spool with its bore.</p>
+  
+  <div class="note">
+    <h2>Note</h2>
+    <p><sup>1</sup> Quicktime Player is required to play the video. <%= link_to 'Download Quicktime Player now', 'http://www.apple.com/quicktime/download/', :rel => 'external' %>.</p>
+    <p><sup>2</sup> Windows Media Player is required to play the video. <%= link_to 'Download Windows Media Player now', 'http://www.microsoft.com/windows/windowsmedia/player/9series', :rel => 'external' %>.</p>
+  </div>
 </div>

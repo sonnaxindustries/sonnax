@@ -175,6 +175,10 @@ a.pdf {
   padding-left: 17px;
   background: transparent url('/images/icons/pdf-12x12.gif') 0 0 no-repeat;
 }
+a.quicktime {
+  padding-left: 17px;
+  background: transparent url('/images/icons/quicktime-12x12.jpg') 0 0 no-repeat;
+}
 a.wmv {
   padding-left: 17px;
   background: transparent url('/images/icons/wmv-12x12.gif') 0 0 no-repeat;
@@ -1083,4 +1087,44 @@ div#publication-glossary dt {
   font-size: 14px;
   margin: 6px 0 0 0;
   color: #039;
+}
+/* =TECHNICALLIBRARY */
+div#technical-library h2 {
+  font-size: 14px;
+  margin: 15px 0 0 0;
+}
+div#technical-library {
+  margin-right: 15px;
+}
+div#technical-library div.note {
+  width: 730px;
+}
+div#technical-library ul.publications {
+  margin: 15px 0;
+}
+div#technical-library ul.publications li {
+  font-weight: bold;
+  margin-left: 10px;
+  float: left;
+  background: #00548e;
+  border: 1px solid #333;
+  width: 200px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 1.3px;
+}
+div#technical-library ul.publications li a {
+  display: block;
+  padding: 8px 15px;
+  color: #fff;
+  text-decoration: none;
+}
+div#technical-library ul.publications li a:hover {
+  color: #00548e;
+  background: #ddd;
+}
+div.dvd {
+  margin: 15px 0;
+  padding-left: 80px;
+  background: transparent url('/images/icons/dvd.jpg') 0 15px no-repeat;
 }
