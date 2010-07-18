@@ -306,7 +306,7 @@ div.publication-list table {
   clear: both;
 }
 div.publication-list table a {
-  color: #0505FF;
+  color: #00548e;
 }
 div.publication-list table tbody a {
   text-decoration: none;
@@ -331,7 +331,7 @@ div.publication-list table tbody td.published-date {
 }
 div.publication-list table thead th {
   font-weight: bold;
-  color: #0505FF;
+  color: #00548e;
   font-size: 14px;
   border-bottom: 2px solid #ddd;
 }
@@ -1127,4 +1127,23 @@ div.dvd {
   margin: 15px 0;
   padding-left: 80px;
   background: transparent url('/images/icons/dvd.jpg') 0 15px no-repeat;
+}
+/* =HOW TO ORDER */
+div#how-to-order h2 {
+  font-size: 14px;
+  margin: 15px 0 0 0;
+}
+div#how-to-order ol li {
+  margin-bottom: 15px;
+}
+/* =PAYMENT AND SHIPPING */
+div#payment-and-shipping h2 {
+  font-size: 14px;
+  margin: 15px 0 0 0;
+}
+div#payment-and-shipping ul {
+  list-style: disc;
+}
+div#payment-and-shipping ul li {
+  margin-left: 20px;
 }
