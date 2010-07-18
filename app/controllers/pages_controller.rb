@@ -66,6 +66,9 @@ class PagesController < ApplicationController
   def publication_glossary
   end
   
+  def speed_order
+  end
+  
   def static_page
     page_template = "pages/static/%s" % [params[:template]]
     render page_template

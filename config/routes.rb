@@ -46,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
     page.power_train_savers_testimonies '/power-train-savers-testimonies', :action => 'pts_testimonies'
     page.power_train_savers_faq '/power-train-savers-faq', :action => 'pts_faq'
     page.publication_glossary '/publication-glossary', :action => 'publication_glossary'
+    page.speed_order '/speed-order', :action => 'speed_order'
     page.connect '/page/:template', :action => 'static_page'
   end
   
