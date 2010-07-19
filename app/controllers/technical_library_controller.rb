@@ -8,7 +8,7 @@ class TechnicalLibraryController < ApplicationController
     begin
       @publication_category = PublicationCategory.find_by_url_friendly!(params[:id], :include => [:publications])
       @publications = @publication_category.publications.all(:include => [:authors])
-      
+            
       @makes = Make.with_publications(:category => @publication_category)
       @units = Unit.with_publications(:category => @publication_category)
       @subjects = PublicationSubject.with_publications(:category => @publication_category)

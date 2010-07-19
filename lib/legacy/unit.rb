@@ -16,7 +16,7 @@ class Legacy::Unit < Legacy::Connection
   end
   
   def _model_record
-    ::Unit.find_by_name(self.name)
+    ::Unit.find_by_name_and_product_line_id(self.name, self.product_line)
   end
   
   def _model_record?

@@ -53,6 +53,10 @@ class ProductLine < ActiveRecord::Base
     end
   end
   
+  def underscored_name
+    self.url_friendly.underscore
+  end
+  
   def units?
     self.units.any?
   end
