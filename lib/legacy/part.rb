@@ -6,12 +6,34 @@ class Legacy::Part < Legacy::Connection
   has_many :speed_orders, :class_name => 'Legacy::SpeedOrderTemp', :foreign_key => 'part_number', :primary_key => 'part_number'
   
   named_scope :part_types, :select => 'DISTINCT(parts.part_type)', :conditions => ["parts.part_type IS NOT NULL and parts.part_type != ''"]
+  named_scope :parts_with_numbers, :conditions => ["(parts.part_number IS NOT NULL AND parts.part_number != '')"]
+  named_scope :parts_with_product_lines, :conditions => ["(parts.product_line NOT IN (8,9,10,11))"]
+  named_scope :limited, lambda { |limit| { :limit => limit }}
   
   PART_ATTRIBUTE_KEYS = [:thick, :pitch, :no_of_teeth, :inner_diameter, :chamfer, :steel_driveshaft_tube_od, :outer_diameter, :tube_diameter, :torque_fuse_options]
+  PART_ASSET_KEYS = [:photo, :announcement, :instructions, :tech, :vbfix]
   
   class << self
+    def list
+      self.parts_with_numbers.parts_with_product_lines
+    end
+    
     def product_attribute_keys
       PART_ATTRIBUTE_KEYS.inject([]) { |ar,val| ar << OpenStruct.new(:name => val.to_s.humanize, :key_name => val.to_s) }
+    end
+    
+    def part_asset_keys
+      PART_ASSET_KEYS.inject([]) { |ar,val| ar << OpenStruct.new(:name => val.to_s.humanize, :key_name => val.to_s) }
+    end
+    
+    def part_photos
+      photos = []
+      self.list.each do |part|
+        if part.photo?
+          photos << OpenStruct.new(:filename => part.photo_filename)
+        end
+      end
+      photos
     end
     
     def part_type_keys
@@ -23,11 +45,19 @@ class Legacy::Part < Legacy::Connection
     end
   end
   
+  def part_type_object
+    @part_type_object ||= PartType.find_by_name(self.part_type)
+  end
+  
+  def name
+    self.part_number
+  end
+  
   def part_attributes
     self.class::PART_ATTRIBUTE_KEYS.inject([]) do |ar,val| 
-      part_attribute = PartAttributeType.find_by_key_name(val.to_s)
+      part_attribute_type = PartAttributeType.find_by_key_name(val.to_s)
       part_attribute_value = self.send(val)
-      ar << OpenStruct.new(:part_attribute => part_attribute, :attr_value => part_attribute_value)
+      ar << OpenStruct.new(:part_attribute_type => part_attribute_type, :attr_value => part_attribute_value)
       ar
     end
   end
@@ -46,7 +76,7 @@ class Legacy::Part < Legacy::Connection
   end
   
   def photo_file
-    @photo_file ||= File.new(self.photo_filename)
+    @photo_file ||= File.new(self.photo_filename) if self.photo_file?
   end
   
   # ANNOUNCEMENTS
@@ -63,7 +93,7 @@ class Legacy::Part < Legacy::Connection
   end
   
   def announcement_file
-    @announcement_file ||= File.new(self.announcement_filename)
+    @announcement_file ||= File.new(self.announcement_filename) if self.announcement_file?
   end
   
   # INSTRUCTIONS
@@ -80,7 +110,7 @@ class Legacy::Part < Legacy::Connection
   end
   
   def instructions_file
-    @instructions_file ||= File.new(self.instructions_filename)
+    @instructions_file ||= File.new(self.instructions_filename) if self.instructions_file?
   end
   
   # TECH
@@ -97,23 +127,23 @@ class Legacy::Part < Legacy::Connection
   end
   
   def tech_file
-    @tech_file ||= File.new(self.tech_filename)
+    @tech_file ||= File.new(self.tech_filename) if self.tech_file?
   end
   
   # VBFIX
-  def tech_filename
-    @tech_filename ||= if self.tech?
-      File.join(Rails.root, 'public', 'file_conversions', 'instructions', self.tech) 
+  def vbfix_filename
+    @vbfix_filename ||= if self.vbfix?
+      File.join(Rails.root, 'public', 'file_conversions', 'tech-articles', self.vbfix) 
     else
       ''
     end
   end
   
-  def tech_file?
-    File.exists?(self.tech_filename)
+  def vbfix_file?
+    File.exists?(self.vbfix_filename)
   end
   
-  def tech_file
-    @tech_file ||= File.new(self.tech_filename)
+  def vbfix_file
+    @vbfix_file ||= File.new(self.vbfix_filename) if self.vbfix_file?
   end
 end

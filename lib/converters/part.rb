@@ -15,19 +15,38 @@ class Converters::Part < Part
         ActiveRecord::Base.connection.execute(statement)
       end
       
-      Legacy::Part.each do |part|
+      Legacy::Part.list.each do |part|
         params = {
-        
+          :part_type        => part.part_type_object,
+          :part_number      => part.part_number,
+          :oem_part_number  => part.oem_part_number,
+          :name             => part.name,
+          :price            => part.price,
+          :weight           => part.weight,
+          :ref_code         => part.ref_code,
+          :ref_code_sort    => part.ref_code_sort
         }
         
-        new_part = self.create!(params)
+        new_part = self.new(params)
+        new_part.save!
         
         #Create the attributes table
-        part.part_attributes.each do |attribute|
-          if !attribute.attr_value.blank?
-            new_part.part_attributes.create(:part_attribute_type => attribute.part_attribute_type, :attr_value => attribute.attr_value)
+        puts "Checking for attributes..."
+        part.part_attributes.each do |a|
+          if !a.attr_value.blank?
+            puts "Adding attribute %s for %s..." % [a.part_attribute_type.name, part.part_number]
+            new_part.part_attributes.create(:part_attribute_type => a.part_attribute_type, :attr_value => a.attr_value)
+          else
+            puts "No attribute value found for %s" % [part.part_number]
           end
         end
+        
+        #Create the assets table
+        # part.part_assets.each do |asset|
+        #   if !asset.file.blank?
+        #     new_part.part_assets.create(:part_asset_type => attribute.part_asset_type, :asset => attribute.asset)
+        #   end
+        # end
       end
     end
   end

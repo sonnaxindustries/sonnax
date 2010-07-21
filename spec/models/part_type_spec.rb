@@ -18,6 +18,21 @@ describe PartType do
     @part_type.class::DEFAULT_TYPE_NAME.should == 'Uncategorized'
   end
   
+  context 'With values' do
+    before(:each) do
+      @part_type = Factory.build(:part_type)
+      @seeds = @part_type.class.seeds
+    end
+    
+    it "should return 1 record for #default" do
+      @part_type.class.default.should_not be_blank
+    end
+    
+    it "should return 1 record for seeded data" do
+      @seeds.size.should == 1
+    end
+  end
+  
   it "should create a URL friendly name before creation" do
     @part_type.name = 'Torque Converter'
     @part_type.save

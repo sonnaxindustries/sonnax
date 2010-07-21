@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100721175936) do
+ActiveRecord::Schema.define(:version => 20100721195555) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -101,8 +101,10 @@ ActiveRecord::Schema.define(:version => 20100721175936) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "key_name"
   end
 
+  add_index "part_asset_types", ["key_name"], :name => "index_part_asset_types_on_key_name", :unique => true
   add_index "part_asset_types", ["name"], :name => "index_part_asset_types_on_name"
   add_index "part_asset_types", ["url_friendly"], :name => "index_part_asset_types_on_url_friendly", :unique => true
 
@@ -152,6 +154,26 @@ ActiveRecord::Schema.define(:version => 20100721175936) do
 
   add_index "part_types", ["name"], :name => "index_part_types_on_name"
   add_index "part_types", ["url_friendly"], :name => "index_part_types_on_url_friendly", :unique => true
+
+  create_table "parts", :force => true do |t|
+    t.integer  "part_type_id",    :null => false
+    t.string   "part_number"
+    t.string   "oem_part_number"
+    t.string   "name"
+    t.string   "url_friendly",    :null => false
+    t.string   "description"
+    t.float    "price"
+    t.float    "weight"
+    t.string   "ref_code"
+    t.integer  "ref_code_sort"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "parts", ["oem_part_number"], :name => "index_parts_on_oem_part_number"
+  add_index "parts", ["part_number"], :name => "index_parts_on_part_number"
+  add_index "parts", ["part_type_id"], :name => "index_parts_on_part_type_id"
+  add_index "parts", ["url_friendly"], :name => "index_parts_on_url_friendly", :unique => true
 
   create_table "postal_code_types", :force => true do |t|
     t.string   "name",       :limit => 100, :null => false

@@ -13,6 +13,10 @@ class PartType < ActiveRecord::Base
     def seeds
       ['Uncategorized'].each { |t| self.create(:name => t) }
     end
+    
+    def default
+      self.find(:first, :conditions => ["part_types.name = ?", self::DEFAULT_TYPE_NAME])
+    end
   end
   
   def generate_url_friendly!
