@@ -19,6 +19,11 @@ describe PartAttribute do
     @part_attribute.should_not be_valid
   end
   
+  it "should not be valid without a value" do
+    @part_attribute.attr_value = nil
+    @part_attribute.should_not be_valid
+  end
+  
   it "should ensure uniqueness of the part and part attribute type" do
     @part_attribute.save
     @new_part_attribute = @part_attribute.clone

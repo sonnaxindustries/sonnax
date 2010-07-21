@@ -5,11 +5,30 @@ class Legacy::Part < Legacy::Connection
   has_one :featured, :class_name => 'Legacy::PartsFeatured'
   has_many :speed_orders, :class_name => 'Legacy::SpeedOrderTemp', :foreign_key => 'part_number', :primary_key => 'part_number'
   
+  named_scope :part_types, :select => 'DISTINCT(parts.part_type)', :conditions => ["parts.part_type IS NOT NULL and parts.part_type != ''"]
+  
   PART_ATTRIBUTE_KEYS = [:thick, :pitch, :no_of_teeth, :inner_diameter, :chamfer, :steel_driveshaft_tube_od, :outer_diameter, :tube_diameter, :torque_fuse_options]
   
   class << self
     def product_attribute_keys
       PART_ATTRIBUTE_KEYS.inject([]) { |ar,val| ar << OpenStruct.new(:name => val.to_s.humanize, :key_name => val.to_s) }
+    end
+    
+    def part_type_keys
+      records = if self.part_types.any?
+        self.part_types.map(&:part_type).unshift('Uncategorized')
+      else
+        ['Uncategorized']
+      end
+    end
+  end
+  
+  def part_attributes
+    self.class::PART_ATTRIBUTE_KEYS.inject([]) do |ar,val| 
+      part_attribute = PartAttributeType.find_by_key_name(val.to_s)
+      part_attribute_value = self.send(val)
+      ar << OpenStruct.new(:part_attribute => part_attribute, :attr_value => part_attribute_value)
+      ar
     end
   end
   
