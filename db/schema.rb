@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100718045026) do
+ActiveRecord::Schema.define(:version => 20100721172111) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -94,6 +94,33 @@ ActiveRecord::Schema.define(:version => 20100718045026) do
 
   add_index "makes", ["key_name"], :name => "index_makes_on_key_name", :unique => true
   add_index "makes", ["url_friendly"], :name => "index_makes_on_url_friendly", :unique => true
+
+  create_table "part_asset_types", :force => true do |t|
+    t.string   "name",         :null => false
+    t.string   "url_friendly", :null => false
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "part_asset_types", ["name"], :name => "index_part_asset_types_on_name"
+  add_index "part_asset_types", ["url_friendly"], :name => "index_part_asset_types_on_url_friendly", :unique => true
+
+  create_table "part_assets", :force => true do |t|
+    t.integer  "part_id",            :null => false
+    t.integer  "part_asset_type_id", :null => false
+    t.integer  "asset_id",           :null => false
+    t.string   "name"
+    t.text     "description"
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "part_assets", ["asset_id"], :name => "index_part_assets_on_asset_id"
+  add_index "part_assets", ["part_asset_type_id"], :name => "index_part_assets_on_part_asset_type_id"
+  add_index "part_assets", ["part_id", "part_asset_type_id", "asset_id"], :name => "by_type", :unique => true
+  add_index "part_assets", ["part_id"], :name => "index_part_assets_on_part_id"
 
   create_table "part_attribute_types", :force => true do |t|
     t.string   "name"
