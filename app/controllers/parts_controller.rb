@@ -2,17 +2,18 @@ class PartsController < ApplicationController
   before_filter :retrieve_product_line
   
   def index
-    #@parts = @product_line.parts
+    @parts = @product_line.parts
   end
   
   def recent
-    #ordered by most recent
+    @parts = @product_line.parts.recent
   end
 
   def show
-    # NOTE: The rendered view will be a partial based on the product_line 
     begin
-      @part = @product_lines.parts.find_by_id!(params[:id])
+      @part = @product_line.parts.find_by_url_friendly!(params[:id])
+      template_file = "parts/by_product_line/%s" % [@product_line.url_friendly.underscore]
+      render template_file
     rescue ActiveRecord::RecordNotFound
       render_404
     end

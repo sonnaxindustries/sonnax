@@ -8,6 +8,7 @@ class Legacy::Part < Legacy::Connection
   named_scope :part_types, :select => 'DISTINCT(parts.part_type)', :conditions => ["parts.part_type IS NOT NULL and parts.part_type != ''"]
   named_scope :parts_with_numbers, :conditions => ["(parts.part_number IS NOT NULL AND parts.part_number != '')"]
   named_scope :parts_with_product_lines, :conditions => ["(parts.product_line NOT IN (8,9,10,11))"]
+  named_scope :by_product_line, lambda { |product_line| { :conditions => ["parts.product_line = ?", product_line] }}
   named_scope :limited, lambda { |limit| { :limit => limit }}
   
   PART_ATTRIBUTE_KEYS = [:thick, :pitch, :no_of_teeth, :inner_diameter, :chamfer, :steel_driveshaft_tube_od, :outer_diameter, :tube_diameter, :torque_fuse_options]
@@ -15,7 +16,7 @@ class Legacy::Part < Legacy::Connection
   
   class << self
     def list
-      self.parts_with_numbers.parts_with_product_lines
+      self.parts_with_numbers.parts_with_product_lines#.limited(20)
     end
     
     def product_attribute_keys
@@ -47,6 +48,10 @@ class Legacy::Part < Legacy::Connection
   
   def part_type_object
     @part_type_object ||= PartType.find_by_name(self.part_type)
+  end
+  
+  def featured?
+    !self.featured.blank?
   end
   
   def name

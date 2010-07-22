@@ -1,0 +1,27 @@
+<div id="part" class="torque-converter">
+  <h1><%= @part.part_number %></h1>
+  
+  <div id="col-1">
+    <div class="description">
+      <% if @part.primary_photo? %>
+        <%= image_tag @part.primary_photo.photo.asset.url(:medium) %>
+      <% end %>
+      <%= @part.description %>
+    </div>
+  </div>
+  
+  <div id="col-2">
+    <div class="resources">
+      <h2>Resources</h2>
+    </div>
+
+    <div class="more-information">
+      <h2>More Information</h2>
+      <ul>
+        <li><%= link_to "Torque Converter Part Finder", '#' %></li>
+        <li><%= link_to "Find a Torque Converter Publication", '#' %></li>
+        <li><%= link_to "Find a Torque Converter Distributor", distributors_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>

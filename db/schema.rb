@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100721195555) do
+ActiveRecord::Schema.define(:version => 20100721215150) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -197,6 +197,22 @@ ActiveRecord::Schema.define(:version => 20100721195555) do
   add_index "postal_codes", ["code"], :name => "index_postal_codes_on_code", :unique => true
   add_index "postal_codes", ["postal_code_type_id"], :name => "index_postal_codes_on_postal_code_type_id"
   add_index "postal_codes", ["state_id"], :name => "index_postal_codes_on_state_id"
+
+  create_table "product_line_parts", :force => true do |t|
+    t.integer  "product_line_id",                    :null => false
+    t.integer  "part_id",                            :null => false
+    t.text     "summary"
+    t.text     "description"
+    t.integer  "sort_order"
+    t.boolean  "is_featured",     :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_line_parts", ["is_featured"], :name => "index_product_line_parts_on_is_featured"
+  add_index "product_line_parts", ["part_id"], :name => "index_product_line_parts_on_part_id"
+  add_index "product_line_parts", ["product_line_id", "part_id"], :name => "by_part", :unique => true
+  add_index "product_line_parts", ["product_line_id"], :name => "index_product_line_parts_on_product_line_id"
 
   create_table "product_lines", :force => true do |t|
     t.string   "name",                           :null => false

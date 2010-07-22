@@ -965,8 +965,49 @@ li.unitarab {
 li.venezuela {
   background-image: url('/images/flags/venezuela.gif');
 }
+/* =PRODUCT LINE */
 div#product-line ul a {
   font-weight: bold;
+}
+div#product-line h2 {
+  font-size: 14px;
+  margin: 10px 0 7px 0;
+}
+div.allison div#col-1 {
+  float: left;
+  width: 365px;
+}
+div.allison div#col-2 {
+  float: right;
+  margin-right: 15px;
+  width: 350px;
+}
+div.high-performance-transmission div#col-1 {
+  float: left;
+  width: 365px;
+}
+div.high-performance-transmission div#col-2 {
+  float: right;
+  margin-right: 15px;
+  width: 350px;
+}
+div.transmission div#col-1 {
+  float: left;
+  width: 365px;
+}
+div.transmission div#col-2 {
+  float: right;
+  margin-right: 15px;
+  width: 350px;
+}
+div.torque-converter div#col-1 {
+  float: left;
+  width: 365px;
+}
+div.torque-converter div#col-2 {
+  float: right;
+  margin-right: 15px;
+  width: 350px;
 }
 /*= PL-RINGGEARS */
 div.ring-gears div#col-1 {
@@ -1146,4 +1187,9 @@ div#payment-and-shipping ul {
 }
 div#payment-and-shipping ul li {
   margin-left: 20px;
+}
+/* =PART */
+div#part h2 {
+  font-size: 14px;
+  margin: 10px 0 0 0;
 }

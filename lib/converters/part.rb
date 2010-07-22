@@ -10,7 +10,7 @@ class Converters::Part < Part
     
     def run!
       # Here we want to take the old DB and get rid of records we don't need (clean up the old DB before importing)
-      %w( parts part_attributes part_assets ).each do |table|
+      %w( parts product_line_parts part_attributes part_assets ).each do |table|
         statement = "TRUNCATE %s" % [table]
         ActiveRecord::Base.connection.execute(statement)
       end
@@ -21,6 +21,7 @@ class Converters::Part < Part
           :part_number      => part.part_number,
           :oem_part_number  => part.oem_part_number,
           :name             => part.name,
+          :description      => part.description,
           :price            => part.price,
           :weight           => part.weight,
           :ref_code         => part.ref_code,
@@ -29,6 +30,23 @@ class Converters::Part < Part
         
         new_part = self.new(params)
         new_part.save!
+        
+        #add the photo
+        puts "Checking for the product photo..."
+        if part.photo_file?
+          asset = Asset.find_by_asset_file_name(File.basename(part.photo_filename))
+          
+          if !asset.blank?
+            new_part.part_assets.create(:part_asset_type => PartAssetType.photo, :asset => asset, :name => part.name, :description => part.description)
+          end
+        end
+        
+        #add to product line
+        puts "Checking for product line..."
+        if part.product_line?
+          puts "Adding product line %s for %s" % [part.product_line._model_record.name, part.part_number]
+          new_part.product_line_parts.create(:product_line => part.product_line._model_record, :is_featured => part.featured?)
+        end
         
         #Create the attributes table
         puts "Checking for attributes..."

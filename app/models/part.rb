@@ -3,8 +3,27 @@ class Part < ActiveRecord::Base
   
   has_many :part_attributes, :dependent => :destroy
   
+  has_many :part_assets, :dependent => :destroy
+  has_many :assets, :through => :part_assets
+  
+  has_many :part_photos, :dependent => :destroy
+  has_many :photos, :through => :part_photos, :source => :asset
+  
+  has_many :product_line_parts
+  has_many :product_lines, :through => :product_line_parts
+  
+  named_scope :recent, :conditions => ["parts.created_at >= ?", 1.month.ago]
+  
   def before_save
     self.part_type_id = PartType.default.id unless self.part_type_id?
+  end
+  
+  def primary_photo
+    self.part_assets.photos.first
+  end
+  
+  def primary_photo?
+    !self.primary_photo.blank?
   end
   
   def generate_url_friendly!

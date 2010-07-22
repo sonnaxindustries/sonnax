@@ -1,6 +1,10 @@
 class PartPhoto < ActiveRecord::Base
   set_table_name 'assets'
   
+  belongs_to :part
+  belongs_to :part_asset_type
+  belongs_to :asset
+  
   has_attached_file :asset,
                     :styles => { :thumbnail => '84x63#', :medium => '460>', :large => '572>' }
   

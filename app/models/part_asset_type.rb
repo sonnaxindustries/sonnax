@@ -12,6 +12,10 @@ class PartAssetType < ActiveRecord::Base
     def seeds
       ['Photo', 'Announcement', 'Instructions', 'Technical Bulletin', 'VB Fix'].each { |t| self.create(:name => t) }
     end
+    
+    def photo
+      self.find(1)
+    end
   end
   
   def same_name?(other)
