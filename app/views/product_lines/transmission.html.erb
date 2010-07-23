@@ -15,19 +15,10 @@
   </div>
   
   <div id="col-2">
-    <% if @product_line.featured_parts.any? %>
-    <h2>Featured Parts</h2>
-      <% @product_line.featured_parts.each do |part| %>
-      <div class="featured">
-        <% if part.primary_photo? %>
-          <p><%= image_tag part.primary_photo.photo.asset.url(:thumbnail) %></p>
-        <% end %>
-        <p><strong>Featured Product:</strong> <%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
-        <p><strong>Make:</strong> <%= link_to 'General Motors', '#' %></p>
-        <p><strong>Unit:</strong> </p>
-        <p class="description"><%= part.description %></p>
-      </div>
-      <% end %>
-    <% end %>
+    <div class="valve-body-layouts group">
+      <%= link_to image_tag('transmission/722-6-VB-home.jpg', :width => 350, :height => 151, :alt => 'Valve Body Layouts'), valve_body_layouts_path %>
+      <%= link_to 'Mercedes 722.6', valve_body_layouts_path %>
+      <p>Click on image for printable valve body layouts.</p>
+    </div>
   </div>
 </div>

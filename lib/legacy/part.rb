@@ -2,6 +2,8 @@ class Legacy::Part < Legacy::Connection
   set_table_name 'parts'
   belongs_to :product_line, :class_name => 'Legacy::ProductLine', :foreign_key => 'product_line'
   
+  has_many :unit_components, :class_name => 'Legacy::UnitComponent', :foreign_key => 'assembly_or_part_id'
+  
   has_one :featured, :class_name => 'Legacy::PartsFeatured'
   has_many :speed_orders, :class_name => 'Legacy::SpeedOrderTemp', :foreign_key => 'part_number', :primary_key => 'part_number'
   
@@ -17,7 +19,6 @@ class Legacy::Part < Legacy::Connection
   class << self
     def list
       #self.parts_with_numbers.parts_with_product_lines#.limited(20)
-      #self.parts_with_numbers#.parts_with_product_lines#.limited(20)
       self.all
     end
     
@@ -46,6 +47,14 @@ class Legacy::Part < Legacy::Connection
         ['Uncategorized']
       end
     end
+  end
+  
+  def _model_record
+    ::Part.find(:first, :conditions => ["parts.product_line_id = ? AND parts.part_number = ? AND item = ? AND notes = ?", self.product_line_id, self.part_number, self.item, self.notes])
+  end
+  
+  def _model_record?
+    !self._model_record.blank?
   end
   
   def product_line_id

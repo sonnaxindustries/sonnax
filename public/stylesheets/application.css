@@ -42,7 +42,8 @@ strong {
   border-top: 1px solid #000000;
 }
 #extra p {
-  padding: 3px 10px;
+  line-height: 1.7;
+  padding: 7px 10px 0 10px;
 }
   #extra p.addr {
     float: left;
@@ -966,6 +967,27 @@ li.venezuela {
   background-image: url('/images/flags/venezuela.gif');
 }
 /* =PRODUCT LINE */
+div.featured img {
+  border: 1px solid #00548e;
+  padding: 1px;
+  background-color: #ddd;
+}
+div#product-line div.featured h2 {
+  margin: 0 0 10px 0;
+}
+div#product-line div.description {
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+div#product-line div.valve-body-layouts {
+  float: left;
+  text-align: center;
+  width: 350px;
+}
+div#product-line div.valve-body-layouts a {
+  font-weight: bold;
+  font-size: 14px;
+}
 div#product-line ul a {
   font-weight: bold;
 }

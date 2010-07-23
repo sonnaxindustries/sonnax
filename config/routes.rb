@@ -95,7 +95,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :product_lines, :as => 'product-lines' do |pl|
-    pl.resources :parts, :collection => { :recent => :get }
+    pl.resources :parts, :collection => { :recent => :get, :search => :get }
   end
   
   map.with_options(:controller => 'user_sessions') do |us|

@@ -59,7 +59,7 @@ class ProductLine < ActiveRecord::Base
   end
   
   def featured_parts
-    self.parts.featured
+    self.parts.random_featured
   end
   
   def units?

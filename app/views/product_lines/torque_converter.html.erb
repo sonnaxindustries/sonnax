@@ -16,11 +16,13 @@
   
   <div id="col-2">
     <% if @product_line.featured_parts.any? %>
-    <h2>Featured Parts</h2>
+    <div class="featured">
+      <h2>Featured Part</h2>
+      
       <% @product_line.featured_parts.each do |part| %>
-      <div class="featured">
+      <div class="part">
         <% if part.primary_photo? %>
-          <p><%= image_tag part.primary_photo.photo.asset.url(:thumbnail) %></p>
+          <p><%= image_tag part.primary_photo.photo.asset.url(:medium) %></p>
         <% end %>
         <p><strong>Featured Product:</strong> <%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
         <p><strong>Make:</strong> <%= link_to 'General Motors', '#' %></p>
@@ -28,6 +30,7 @@
         <p class="description"><%= part.description %></p>
       </div>
       <% end %>
+    </div>
     <% end %>
   </div>
 </div>
