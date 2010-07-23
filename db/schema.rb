@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100721215150) do
+ActiveRecord::Schema.define(:version => 20100723052829) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -156,11 +156,10 @@ ActiveRecord::Schema.define(:version => 20100721215150) do
   add_index "part_types", ["url_friendly"], :name => "index_part_types_on_url_friendly", :unique => true
 
   create_table "parts", :force => true do |t|
-    t.integer  "part_type_id",    :null => false
+    t.integer  "part_type_id",                       :null => false
     t.string   "part_number"
     t.string   "oem_part_number"
     t.string   "name"
-    t.string   "url_friendly",    :null => false
     t.string   "description"
     t.float    "price"
     t.float    "weight"
@@ -168,12 +167,16 @@ ActiveRecord::Schema.define(:version => 20100721215150) do
     t.integer  "ref_code_sort"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "item"
+    t.text     "notes"
+    t.integer  "product_line_id",                    :null => false
+    t.boolean  "is_featured",     :default => false
   end
 
+  add_index "parts", ["is_featured"], :name => "index_parts_on_is_featured"
   add_index "parts", ["oem_part_number"], :name => "index_parts_on_oem_part_number"
   add_index "parts", ["part_number"], :name => "index_parts_on_part_number"
   add_index "parts", ["part_type_id"], :name => "index_parts_on_part_type_id"
-  add_index "parts", ["url_friendly"], :name => "index_parts_on_url_friendly", :unique => true
 
   create_table "postal_code_types", :force => true do |t|
     t.string   "name",       :limit => 100, :null => false

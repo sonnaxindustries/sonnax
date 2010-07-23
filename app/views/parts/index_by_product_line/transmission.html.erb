@@ -3,12 +3,20 @@
 <% if @parts.any? %>
 <table cellpadding="0" summary="Listing of Parts for <%= @product_line.name %>">
   <thead>
+    <th>Ref. No</th>
+    <th>Item</th>
+    <th>Description</th>
     <th>Part Number</th>
+    <th>Quantity</th>
   </thead>
   <tbody>
     <% @parts.each do |part| %>
     <tr>
+      <td></td>
+      <td><%= part.item %></td>
+      <td><%= part.description %></td>
       <td><%= link_to part.part_number, product_line_part_path(@product_line.url_friendly, part) %></td>
+      <td><% if part.part_number? %><input type="text"><% end %></td>
     </tr>
     <% end %>
   </tbody>

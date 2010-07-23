@@ -16,7 +16,9 @@ class Legacy::Part < Legacy::Connection
   
   class << self
     def list
-      self.parts_with_numbers.parts_with_product_lines#.limited(20)
+      #self.parts_with_numbers.parts_with_product_lines#.limited(20)
+      #self.parts_with_numbers#.parts_with_product_lines#.limited(20)
+      self.all
     end
     
     def product_attribute_keys
@@ -44,6 +46,10 @@ class Legacy::Part < Legacy::Connection
         ['Uncategorized']
       end
     end
+  end
+  
+  def product_line_id
+    self.product_line._model_record.id
   end
   
   def part_type_object

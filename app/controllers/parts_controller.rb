@@ -3,16 +3,21 @@ class PartsController < ApplicationController
   
   def index
     @parts = @product_line.parts
+    
+    template_file = "parts/index_by_product_line/%s" % [@product_line.url_friendly.underscore]
+    render template_file
   end
   
   def recent
     @parts = @product_line.parts.recent
+    template_file = "parts/index_by_product_line/recent/%s" % [@product_line.url_friendly.underscore]
+    render template_file
   end
 
   def show
     begin
-      @part = @product_line.parts.find_by_url_friendly!(params[:id])
-      template_file = "parts/by_product_line/%s" % [@product_line.url_friendly.underscore]
+      @part = @product_line.parts.find(params[:id])
+      template_file = "parts/show_by_product_line/%s" % [@product_line.url_friendly.underscore]
       render template_file
     rescue ActiveRecord::RecordNotFound
       render_404

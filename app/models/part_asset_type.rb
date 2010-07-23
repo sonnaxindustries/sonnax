@@ -14,7 +14,7 @@ class PartAssetType < ActiveRecord::Base
     end
     
     def photo
-      self.find(1)
+      self.find_by_id(1)
     end
   end
   

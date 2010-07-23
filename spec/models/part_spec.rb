@@ -9,6 +9,11 @@ describe Part do
     @part.should be_valid
   end
   
+  it "should not be valid without a product line" do
+    @part.product_line_id = nil
+    @part.should_not be_valid
+  end
+  
   context 'Part Type' do
     before(:each) do
       Factory.build(:part_type).class.seeds #need to seed the data to make sure we can set the default
@@ -25,13 +30,6 @@ describe Part do
       @part.part_type = @part_type
       @part.save
       @part.part_type.name.should == 'New Name'
-    end
-    
-    it "should create a URL friendly title from the part number" do
-      @part.part_number = 'N 0908'
-      @part.url_friendly = nil
-      @part.save
-      @part.url_friendly.should == 'n-0908'
     end
   end
 end

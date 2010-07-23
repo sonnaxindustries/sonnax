@@ -19,13 +19,13 @@
     <h2>Featured Parts</h2>
       <% @product_line.featured_parts.each do |part| %>
       <div class="featured">
-        <% if part.part.primary_photo? %>
-          <p><%= image_tag part.part.primary_photo.photo.asset.url(:thumbnail) %></p>
+        <% if part.primary_photo? %>
+          <p><%= image_tag part.primary_photo.photo.asset.url(:thumbnail) %></p>
         <% end %>
-        <p><strong>Featured Product:</strong> <%= link_to part.part.name, product_line_part_path(@product_line.url_friendly, part.part.url_friendly) %></p>
+        <p><strong>Featured Product:</strong> <%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
         <p><strong>Make:</strong> <%= link_to 'General Motors', '#' %></p>
         <p><strong>Unit:</strong> </p>
-        <p class="description"><%= part.part.description %></p>
+        <p class="description"><%= part.description %></p>
       </div>
       <% end %>
     <% end %>

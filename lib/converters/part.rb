@@ -17,15 +17,19 @@ class Converters::Part < Part
       
       Legacy::Part.list.each do |part|
         params = {
+          :product_line_id  => part.product_line_id,
           :part_type        => part.part_type_object,
           :part_number      => part.part_number,
           :oem_part_number  => part.oem_part_number,
           :name             => part.name,
+          :item             => part.item,
+          :notes            => part.notes,
           :description      => part.description,
           :price            => part.price,
           :weight           => part.weight,
           :ref_code         => part.ref_code,
-          :ref_code_sort    => part.ref_code_sort
+          :ref_code_sort    => part.ref_code_sort,
+          :is_featured      => part.featured?
         }
         
         new_part = self.new(params)
@@ -40,14 +44,7 @@ class Converters::Part < Part
             new_part.part_assets.create(:part_asset_type => PartAssetType.photo, :asset => asset, :name => part.name, :description => part.description)
           end
         end
-        
-        #add to product line
-        puts "Checking for product line..."
-        if part.product_line?
-          puts "Adding product line %s for %s" % [part.product_line._model_record.name, part.part_number]
-          new_part.product_line_parts.create(:product_line => part.product_line._model_record, :is_featured => part.featured?)
-        end
-        
+
         #Create the attributes table
         puts "Checking for attributes..."
         part.part_attributes.each do |a|
