@@ -2,7 +2,7 @@ require 'config/recipes/passenger'
 require 'config/recipes/shared_assets'
 require 'config/recipes/sonnax'
 require 'config/recipes/bundler'
-require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.16/lib/thinking_sphinx/deploy/capistrano.rb'
+require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/deploy/capistrano.rb'
 
 set :application, "sonnax"
 set :repository, 'git@github.com:nateklaiber/sonnax.git'
@@ -23,14 +23,6 @@ role :app, '74.50.61.9'
 role :web, '74.50.61.9'
 role :db, '74.50.61.9', :primary => true
 
-# desc "deploy to the theklaibers subdomain"
-# task :theklaibers do
-#   set :deploy_to, "/var/www/rails/sonnax"
-#   set :application, "sonnax"
-#   set :app, "theklaibers.com"
-#   set :db, "theklaibers.com"  
-# end
-# 
 # desc "deploy to the production domain"
 # task :production do
 #   set :deploy_to, "/var/www/rails/sonnax"
@@ -38,8 +30,6 @@ role :db, '74.50.61.9', :primary => true
 #   set :app, "theklaibers.com"
 #   set :db, "theklaibers.com"  
 # end
-
-
 
 namespace(:deploy) do
   desc 'Move the database.yml file'

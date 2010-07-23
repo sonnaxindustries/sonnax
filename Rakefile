@@ -8,4 +8,4 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
-#require 'thinking_sphinx/tasks'
+require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/tasks'
