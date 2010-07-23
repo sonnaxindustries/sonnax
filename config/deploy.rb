@@ -2,7 +2,7 @@ require 'config/recipes/passenger'
 require 'config/recipes/shared_assets'
 require 'config/recipes/sonnax'
 require 'config/recipes/bundler'
-require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.16/lib/thinking_sphinx/deploy/capistrano.rb'
+require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/deploy/capistrano.rb'
 
 set :application, "sonnax"
 set :repository, 'git@github.com:nateklaiber/sonnax.git'
