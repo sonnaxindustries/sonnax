@@ -1,11 +1,6 @@
-Capistrano::Configuration.instance.load do
-  namespace(:sonnax) do
-    namespace(:assets) do
-      desc "Push the assets to the remote server"
-      task(:push) do
-        puts "Pushing the local assets to the remote server.."
-      end
-      
+Capistrano::Configuration.instance.load do  
+  namespace(:sonnax) do    
+    namespace(:assets) do      
       desc 'Destroy the shared Paperclip assets'
       task(:destroy) do
         directories = %w( assets avatars pdfs )

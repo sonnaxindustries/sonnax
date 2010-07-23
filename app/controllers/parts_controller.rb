@@ -31,7 +31,14 @@ class PartsController < ApplicationController
     @search_form_presenter = SearchFormPresenter.new(:search_terms => search_term, :url => search_path)
     
     template_file = "parts/index_by_product_line/search/%s" % [@product_line.url_friendly.underscore]
-    render template_file
+    
+    respond_to do |wants|
+      wants.html do
+        render template_file
+      end
+      wants.json do
+      end
+    end
   end
 
   def show

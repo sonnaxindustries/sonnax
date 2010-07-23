@@ -3,7 +3,8 @@ class Converters::PartPhoto < PartPhoto
     def run!
       #ActiveRecord::Base.connection.execute("DELETE FROM assets WHERE asset_content_type IN ('image/jpeg')")
       ActiveRecord::Base.connection.execute("TRUNCATE part_assets")
-      PartPhoto.photos.map(&:destroy)
+      ActiveRecord::Base.connection.execute("TRUNCATE assets")
+      #PartPhoto.photos.map(&:destroy)
       Legacy::Part.part_photos.each do |r|
         
         if File.exists?(r.filename)

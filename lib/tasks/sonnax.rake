@@ -1,4 +1,24 @@
+namespace :s do
+  task :repro => 'sonnax:repro'
+  
+  namespace :db do
+    task :pull => 'sonnax:database:pull'
+    task :push => 'sonnax:database:push'
+  end
+  
+  namespace :assets do
+    task :pull => 'sonnax:assets:pull'
+    task :push => 'sonnax:assets:push'
+    task :destroy => 'sonnax:assets:destroy'
+  end
+end
+
 namespace :sonnax do
+  desc 'Repro Production setup (shared assets and database)'
+  task(:repro) do
+    puts 'Building repro from production...'
+  end
+  
   namespace :database do
     desc 'Pull down the database and replicate locally'
     task(:pull) do

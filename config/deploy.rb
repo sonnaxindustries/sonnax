@@ -44,12 +44,7 @@ namespace(:deploy) do
   
   desc 'Symlink the static pages directory'
   task(:symlink_pages, :roles => :app) do
-    #shared_dir = File.join(shared_path, '/pages/')
-    #release_dir = File.join(current_release, 'app/views/pages/static')
-    #run("mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}")
-    #run("chmod -R 777 #{shared_dir}")
     run('ln -s /var/www/rails/sonnax/shared/pages/ /var/www/rails/sonnax/current/app/views/pages/static')
-    #ln -s /var/www/rails/sonnax/shared/pages/ static
   end
 end
 
@@ -59,6 +54,21 @@ task(:copy_shared) do
   run_locally("scp -r /users/nateklaiber/sites/sonnax/public/system/* root@206.123.113.157:#{shared_path}/system/")
 end
 
+namespace :rake do  
+  desc "Run a task on a remote server."  
+  # run like: cap staging rake:invoke task=a_certain_task  
+  task :invoke do  
+    run("cd #{deploy_to}/current; /usr/bin/rake #{ENV['task']} RAILS_ENV=#{rails_env}")  
+  end  
+end
+
+def rake(*tasks)
+  rails_env = fetch(:rails_env, "production")
+  rake = fetch(:rake, "rake")
+  tasks.each do |t|
+    run "if [ -d #{release_path} ]; then cd #{release_path}; else cd #{current_path}; fi; #{rake} RAILS_ENV=#{rails_env} #{t}"
+  end
+end
 
 
 after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages'
