@@ -14,6 +14,24 @@ describe Part do
     @part.should_not be_valid
   end
   
+  context 'New Items' do
+    before(:each) do
+      @parts = [
+        Factory.create(:part, :is_new_item => false),
+        Factory.create(:part, :is_new_item => true),
+        Factory.create(:part, :is_new_item => true)
+      ]
+    end
+    
+    it "should contain 2 new items" do
+      Part.recent.size.should == 2
+    end
+    
+    it "should contain 1 older item" do
+      Part.old.size.should == 1
+    end
+  end
+  
   context 'Part Type' do
     before(:each) do
       Factory.build(:part_type).class.seeds #need to seed the data to make sure we can set the default

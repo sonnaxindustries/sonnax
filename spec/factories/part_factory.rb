@@ -11,4 +11,5 @@ Factory.define(:part) do |f|
   f.weight 34.34
   f.ref_code '1'
   f.ref_code_sort 3
+  f.is_new_item 0
 end

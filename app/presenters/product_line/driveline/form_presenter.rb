@@ -40,4 +40,18 @@ class ProductLine::Driveline::FormPresenter
   def make
     #
   end
+  
+  def series
+  end
+  
+  def series_options
+    []
+  end
+  
+  def tube_diameter
+  end
+  
+  def tube_diameter_options
+    []
+  end
 end

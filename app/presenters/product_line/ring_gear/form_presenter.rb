@@ -13,6 +13,13 @@ class ProductLine::RingGear::FormPresenter
     #
   end
   
+  def teeth_options
+    ['23']
+  end
+  
+  def number_of_teeth
+  end
+  
   def category
     @category ||= @attributes[:category]
   end

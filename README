@@ -1,3 +1,5 @@
+- FIX cap_helper.rb for database updates
+
 We have distinct product lines
 We have distinct parts
 

@@ -29,7 +29,8 @@ class Converters::Part < Part
           :weight           => part.weight,
           :ref_code         => part.ref_code,
           :ref_code_sort    => part.ref_code_sort,
-          :is_featured      => part.featured?
+          :is_featured      => part.featured?,
+          :is_new_item      => part.new_item?
         }
         
         new_part = self.new(params)

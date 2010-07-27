@@ -1,24 +1,82 @@
-<h1>Parts for <%= @product_line.name %></h1>
+<div id="product-line" class="transmission">
+  <h1>Parts for <%= @product_line.name %></h1>
+  
+  <div class="search-and-filter group">
+    <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+    <fieldset>
+      <legend>Filtering Options</legend>
+      <div id="filter-options" class="group">
+        <div class="make-units">
+          <div class="make-selector">
+            <%= f.label :make, 'Make:' %>
+            <%= f.select :make, @form_presenter.make_options, :include_blank => '-- Select Make --' %>
+          </div>
 
-<% if @parts.any? %>
-<table cellpadding="0" summary="Listing of Parts for <%= @product_line.name %>">
-  <thead>
-    <th>Ref. No</th>
-    <th>Item</th>
-    <th>Description</th>
-    <th>Part Number</th>
-    <th>Quantity</th>
-  </thead>
-  <tbody>
-    <% @parts.each do |part| %>
-    <tr>
-      <td></td>
-      <td><%= part.item %></td>
-      <td><%= part.description %></td>
-      <td><%= link_to part.part_number, product_line_part_path(@product_line.url_friendly, part) %></td>
-      <td><% if part.part_number? %><input type="text"><% end %></td>
-    </tr>
+          <div class="unit-selector">
+            <%= f.label :unit, 'Unit:' %>
+            <%= f.select :unit, @form_presenter.unit_options, :include_blank => '-- Select Unit --' %>
+          </div>
+        </div>
+
+        <div class="submit">
+          <%= f.submit 'Filter' %>
+        </div>
+      </div>
+    </fieldset>
     <% end %>
-  </tbody>
-</table>
-<% end %>
+
+    <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+    <fieldset>
+      <legend>Search</legend>
+      <div id="search-options" class="group">
+        <div class="search-terms">
+          <%= f.label :q, 'Search Part Number:' %>
+          <%= f.text_field :q %>
+        </div>
+      </div>
+
+      <div class="submit">
+        <%= f.submit 'Search' %>
+      </div>
+    </fieldset>
+    <% end %>
+  </div>
+  
+  <div class="options group">
+    <ul>
+      <li><%= link_to 'Valve Body Layouts', valve_body_layouts_path %></li>
+    </ul>
+  </div>
+  
+  <% if @parts.any? %>
+  <div id="<%= dom_id(@product_line, :parts) %>" class="parts group">
+    <table cellpadding="0" summary="Listing of Parts for <%= @product_line.name %>">
+      <thead>
+        <th>Product Line</th>
+        <th>Part Number</th>
+        <th>Description</th>
+        <th>Item Notes</th>
+        <th>Make</th>
+        <th>Units</th>
+      </thead>
+      <tbody>
+        <% @parts.each do |part| %>
+        <tr>
+          <td>{product_line}</td>
+          <td><%= link_to part.part_number, product_line_part_path(@product_line.url_friendly, part) %></td>
+          <td><%= part.description %></td>
+          <td><%= part.notes %></td>
+          <td>{make}</td>
+          <td>{unit}</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <ul class="ordering-options">
+      <li><%= link_to 'View Cart', '#' %></li>
+      <li><input type="submit" name="submit" value="Add to Cart"></li>
+    </ul>
+  </div>
+  <% end %>
+</div>

@@ -20,8 +20,8 @@ class Part < ActiveRecord::Base
     has created_at, updated_at, part_type_id, product_line_id
   end
   
-  #NOTE: For some reason, when running the indexer, it fails for the 1.month.ago. This has to be commented out in order to index parts
-  named_scope :recent, :conditions => ["parts.created_at >= ?", 1.month.ago]
+  named_scope :recent, :conditions => ["parts.is_new_item = ?", true]
+  named_scope :old, :conditions => ["parts.is_new_item = ?", false]
   named_scope :featured, :conditions => ["parts.is_featured = ?", true]
   named_scope :random_featured, :conditions => ["parts.is_featured = ?", true], :limit => 1, :order => 'RAND()'
   
