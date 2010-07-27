@@ -1,3 +1,109 @@
+We have distinct product lines
+We have distinct parts
+
+We have parts inside of product lines. If I were to view a product line, it would show all parts associated to the product line.
+
+We have distinct makes
+We have distinct units
+
+We have units inside of product lines. When inside of a different product line, they represent a different reference figure.
+
+We have units attached to makes. If I were to view a make, it would show all associated units. We have to query backwards to get all makes for specified units in a product line.
+
+--------------------
+PARTS FOR PRODUCT LINE / MAKE / UNIT
+SELECT *
+FROM units u
+LEFT JOIN unit_makes um ON um.unit_id = u.id
+LEFT JOIN makes m ON um.make_id = m.id
+WHERE m.id = 27 AND u.product_line = 2
+---------------------
+
+DISTINCT UNIT NAMES AND COUNTS
+SELECT `name`, COUNT(`name`) AS cnt
+FROM units u
+GROUP BY `name`
+HAVING count(cnt) > 1
+ORDER BY cnt DESC
+
+----------------------
+
+
+
+units
+- id
+- name
+- url_friendly
+- description
+
+product_lines
+- id
+- name
+- url_friendly
+- description
+- sort_order
+- is_active
+
+product_line_units
+- id
+- unit_id
+- product_line_id
+- reference_figure_id
+- description
+- sort_order
+
+parts
+- id
+- number
+- oem_number
+- item
+- description
+- price
+- weight
+
+product_line_parts
+- id
+- part_id
+- product_line_id
+- description
+
+makes
+- id
+- name
+- url_friendly
+- description
+- is_active
+- sort_order
+
+product_line_units_makes
+- make_id
+- unit_id
+- sort_order
+
+unit_components
+- unit_id
+- part_id
+- sort_order
+- code_on_reference_figure
+- description
+- notes
+
+speed_orders
+- id
+- session_id
+- part_id
+- quantity
+
+orders_parts
+- id 
+- order_id
+- part_id
+- quantity
+
+
+DO: 
+- Add 'type' to assets - or just use content type?
+
 ------------------------------------- DATA EXPORTER -------------------------------------
 Exporting the DB for Sonnax. Once we have this object, we can define formatters and she can export in whatever format she would like.
 
@@ -6,6 +112,7 @@ DataExporter object
 - created_at
 - updated_at
 - filename
+
 ------------------------------------- /DATA EXPORTER -------------------------------------
 use default_scope on these models
 Distributors have addresses
@@ -41,6 +148,8 @@ SONNAFLOW_CHARTS_DIRECTORY  = File.join(ROOT_CONVERSIONS, 'sonnaflow-charts')
 
 This is the documentation for the Sonnax website re-build.
 
+
+
 ------------------------------------- API -------------------------------------
 CONSTANT CONTACT:
 Key Display Name: Sonnax	
@@ -72,8 +181,8 @@ GEMS:
 
 MAILERS:
 - Catalog Request
-- Contact Us (contextual to section being initiated from)
-- Subscribe to Sonnax Insider
+- Contact Us (contextual to section being initiated from) [DONE]
+- Subscribe to Sonnax Insider [DONE]
 - Product Quotes
 
 EMAIL ADDRESSES:
@@ -213,6 +322,16 @@ TODO (2010-02-03)
 - jQuery and AJAX adding of makes and such before saving
 
 DATABASE:
+------------------- DB ------------------------
+cart
+orders
+orders_parts
+customers
+customers_orders
+------------------- /DB ------------------------
+
+
+
 product_line_publications
 - id
 - product_line_id

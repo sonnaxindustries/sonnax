@@ -1,5 +1,4 @@
 require 'config/recipes/passenger'
-require 'config/recipes/shared_assets'
 require 'config/recipes/sonnax'
 require 'config/recipes/bundler'
 require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/deploy/capistrano.rb'
