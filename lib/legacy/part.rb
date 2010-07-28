@@ -2,7 +2,7 @@ class Legacy::Part < Legacy::Connection
   set_table_name 'parts'
   belongs_to :product_line, :class_name => 'Legacy::ProductLine', :foreign_key => 'product_line'
   
-  has_many :unit_components, :class_name => 'Legacy::UnitComponent', :foreign_key => 'assembly_or_part_id'
+  has_many :unit_components, :class_name => 'Legacy::UnitComponent', :foreign_key => 'assembly_or_part_id', :conditions => ['unit_components.component_type = ?', 0]
   
   has_one :featured, :class_name => 'Legacy::PartsFeatured'
   has_many :speed_orders, :class_name => 'Legacy::SpeedOrderTemp', :foreign_key => 'part_number', :primary_key => 'part_number'
