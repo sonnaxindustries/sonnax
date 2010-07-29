@@ -1,7 +1,7 @@
 <div id="product-line" class="driveline">
   <h1>Parts for <%= @product_line.name %></h1>
   
-  <div class="search-and-filter group">
+  <div class="filter group">
     <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
     <fieldset>
       <legend>Filtering Options</legend>

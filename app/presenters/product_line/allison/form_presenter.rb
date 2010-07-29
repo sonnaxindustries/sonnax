@@ -6,15 +6,15 @@ class ProductLine::Allison::FormPresenter
   end
   
   def url
-    '#'
+    filter_product_line_parts_path(self.product_line.url_friendly)
   end
   
   def q
     #
   end
   
-  def category
-    @category ||= @attributes[:category]
+  def product_line
+    @product_line ||= @attributes[:product_line]
   end
   
   def units

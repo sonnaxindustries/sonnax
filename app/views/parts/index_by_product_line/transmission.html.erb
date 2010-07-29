@@ -1,7 +1,7 @@
 <div id="product-line" class="transmission">
   <h1>Parts for <%= @product_line.name %></h1>
   
-  <div class="search-and-filter group">
+  <div class="filter group">
     <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
     <fieldset>
       <legend>Filtering Options</legend>
@@ -49,34 +49,12 @@
   </div>
   
   <% if @parts.any? %>
-  <div id="<%= dom_id(@product_line, :parts) %>" class="parts group">
-    <table cellpadding="0" summary="Listing of Parts for <%= @product_line.name %>">
-      <thead>
-        <th>Product Line</th>
-        <th>Part Number</th>
-        <th>Description</th>
-        <th>Item Notes</th>
-        <th>Make</th>
-        <th>Units</th>
-      </thead>
-      <tbody>
-        <% @parts.each do |part| %>
-        <tr>
-          <td>{product_line}</td>
-          <td><%= link_to part.part_number, product_line_part_path(@product_line.url_friendly, part) %></td>
-          <td><%= part.description %></td>
-          <td><%= part.notes %></td>
-          <td>{make}</td>
-          <td>{unit}</td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    
-    <ul class="ordering-options">
-      <li><%= link_to 'View Cart', '#' %></li>
-      <li><input type="submit" name="submit" value="Add to Cart"></li>
-    </ul>
-  </div>
+  <%= render :partial => 'product_lines/transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+
+  
+  <ul class="ordering-options">
+    <li><%= link_to 'View Cart', '#' %></li>
+    <li><input type="submit" name="submit" value="Add to Cart"></li>
+  </ul>
   <% end %>
 </div>

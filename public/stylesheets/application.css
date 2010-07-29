@@ -292,6 +292,7 @@ div.publication-list div.subjects {
 div.publication-list div.publications {
   clear: both;
 }
+div#product-line div.filter form div.submit,
 div.publication-list form div.submit {
   display: none;
 }

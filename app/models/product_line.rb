@@ -54,6 +54,24 @@ class ProductLine < ActiveRecord::Base
     end
   end
   
+  def associated_units(attrs={})
+    attrs.merge!(:product_line => self)
+    Part.find_units_by_filter(attrs)
+  end
+  
+  def unit_options(attrs={})
+    self.associated_units(attrs).map { |unit| [unit.name, unit.id] }
+  end
+  
+  def associated_makes(attrs={})
+    attrs.merge!(:product_line => self)
+    Part.find_makes_by_filter(attrs)
+  end
+  
+  def make_options(attrs={})
+    self.associated_makes(attrs).map { |make| [make.name, make.id] }
+  end
+  
   def underscored_name
     self.url_friendly.underscore
   end

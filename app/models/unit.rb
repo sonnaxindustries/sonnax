@@ -2,6 +2,9 @@ class Unit < ActiveRecord::Base
   belongs_to :product_line
   belongs_to :reference_figure
   
+  has_many :unit_components, :dependent => :destroy
+  has_many :parts, :through => :unit_components
+  
   has_many :units_makes, :dependent => :destroy
   has_many :makes, :through => :units_makes
   

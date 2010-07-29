@@ -10,6 +10,9 @@ class Part < ActiveRecord::Base
   has_many :part_photos, :dependent => :destroy
   has_many :photos, :through => :part_photos, :source => :asset
   
+  has_many :unit_components, :dependent => :destroy
+  has_many :units, :through => :unit_components
+  
   define_index do
     indexes :part_number, :sortable => true
     indexes :oem_part_number, :sortable => true
@@ -27,6 +30,142 @@ class Part < ActiveRecord::Base
   
   def validate
     self.errors.add(:product_line, 'Please provide a product line ID') unless self.product_line_id?
+  end
+  
+  class << self
+    def find_makes_by_filter(attrs={})
+      make_id         = attrs.delete(:make)
+      unit_id         = attrs.delete(:unit)
+      product_line_id = attrs.delete(:product_line)
+      part_id         = attrs.delete(:part)
+      
+      select      = "DISTINCT(m.id) AS make_id"
+      from        = "parts p"
+      order       = "m.name"
+      joins       = []
+      conditions  = []
+      
+      if !product_line_id.blank?
+        conditions << ["pl.id = ?", product_line_id]
+      end
+      
+      if !make_id.blank?
+        conditions << ["m.id = ?", make_id]
+      end
+      
+      if !unit_id.blank?
+        conditions << ["u.id = ?", unit_id]
+      end
+      
+      if !part_id.blank?
+        conditions << ["p.id = ?", part_id]
+      end
+      
+      joins << "LEFT JOIN product_lines pl ON pl.id = p.product_line_id"
+      joins << "LEFT JOIN unit_components uc ON uc.part_id = p.id"
+      joins << "LEFT JOIN units u ON u.id = uc.unit_id"
+      joins << "LEFT JOIN units_makes um ON um.unit_id = u.id"
+      joins << "LEFT JOIN makes m ON um.make_id = m.id"
+      
+      conditions << ["p.part_number <> '' AND u.name IS NOT NULL AND m.id IS NOT NULL"]
+      
+      results = self.all(:select => select,
+               :from => from,
+               :joins => joins.join(' '),
+               :conditions => conditions.extend(Helper::Array).to_conditions,
+               :order => order)
+      ids_list = results.map(&:make_id)
+      makes = Make.find(ids_list, :order => 'name')
+    end
+    
+    def find_units_by_filter(attrs={})
+      make_id         = attrs.delete(:make)
+      unit_id         = attrs.delete(:unit)
+      product_line_id = attrs.delete(:product_line)
+      part_id         = attrs.delete(:part)
+      
+      select      = "DISTINCT(u.id) AS unit_id"
+      from        = "parts p"
+      order       = "m.name"
+      joins       = []
+      conditions  = []
+      
+      if !product_line_id.blank?
+        conditions << ["pl.id = ?", product_line_id]
+      end
+      
+      if !make_id.blank?
+        conditions << ["m.id = ?", make_id]
+      end
+      
+      if !unit_id.blank?
+        conditions << ["u.id = ?", unit_id]
+      end
+      
+      if !part_id.blank?
+        conditions << ["p.id = ?", part_id]
+      end
+      
+      joins << "LEFT JOIN product_lines pl ON pl.id = p.product_line_id"
+      joins << "LEFT JOIN unit_components uc ON uc.part_id = p.id"
+      joins << "LEFT JOIN units u ON u.id = uc.unit_id"
+      joins << "LEFT JOIN units_makes um ON um.unit_id = u.id"
+      joins << "LEFT JOIN makes m ON um.make_id = m.id"
+      
+      conditions << ["p.part_number <> '' AND u.name IS NOT NULL AND m.id IS NOT NULL"]
+      
+      results = self.all(:select => select,
+               :from => from,
+               :joins => joins.join(' '),
+               :conditions => conditions.extend(Helper::Array).to_conditions,
+               :order => order)
+      ids_list = results.map(&:unit_id)
+      units = Unit.find(ids_list, :order => 'name')
+    end
+    
+    def find_by_filter(attrs={})
+      make_id         = attrs.delete(:make)
+      unit_id         = attrs.delete(:unit)
+      product_line_id = attrs.delete(:product_line)
+      part_id         = attrs.delete(:part)
+      
+      select      = "p.id, pl.name, p.part_number, p.description, p.notes, p.item, u.name as Unit, m.name AS Make, p.part_type_id, p.ref_code, p.ref_code_sort"
+      from        = "parts p"
+      order       = "p.part_number + 0"
+      joins       = []
+      conditions  = []
+      
+      if !product_line_id.blank?
+        conditions << ["pl.id = ?", product_line_id]
+      end
+      
+      if !make_id.blank?
+        conditions << ["m.id = ?", make_id]
+      end
+      
+      if !unit_id.blank?
+        conditions << ["u.id = ?", unit_id]
+      end
+      
+      if !part_id.blank?
+        conditions << ["p.id = ?", part_id]
+      end
+      
+      joins << "LEFT JOIN product_lines pl ON pl.id = p.product_line_id"
+      joins << "LEFT JOIN unit_components uc ON uc.part_id = p.id"
+      joins << "LEFT JOIN units u ON u.id = uc.unit_id"
+      joins << "LEFT JOIN units_makes um ON um.unit_id = u.id"
+      joins << "LEFT JOIN makes m ON um.make_id = m.id"
+      
+      conditions << ["p.part_number <> '' AND u.name IS NOT NULL AND m.id IS NOT NULL"]
+      
+      self.all(:select => select,
+               :from => from,
+               :joins => joins.join(' '),
+               :conditions => conditions.extend(Helper::Array).to_conditions,
+               :order => order)
+
+    end
   end
   
   def before_save
