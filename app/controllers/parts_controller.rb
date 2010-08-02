@@ -21,8 +21,10 @@ class PartsController < ApplicationController
     @makes = @product_line.associated_makes
     @units = @product_line.associated_units
     @unit_options = @product_line.unit_options.unshift(['-- Select Unit --', ''])
+    @make = nil
     
     if params[:filter] && !params[:filter][:make].blank?
+      @make = Make.find(params[:filter][:make])
       @unit_options = @product_line.unit_options(:make => params[:filter].fetch('make')).unshift(['-- Select Unit --', ''])
     end
         

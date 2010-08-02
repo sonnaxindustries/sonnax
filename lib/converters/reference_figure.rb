@@ -1,6 +1,7 @@
 class Converters::ReferenceFigure < ReferenceFigure
   class << self
     def run!
+      ActiveRecord::Base.connection.execute('TRUNCATE reference_figures')
       Legacy::RefFigure.all.each do |r|
         params = {
           :name => r.name

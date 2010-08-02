@@ -1,6 +1,7 @@
 class Converters::Distributor < Distributor
   class << self
     def run!
+      ActiveRecord::Base.connection.execute('TRUNCATE distributors')
       Legacy::Distributor.all.each do |r|
         r.determine_email_and_url!
         params = {

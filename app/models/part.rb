@@ -67,7 +67,8 @@ class Part < ActiveRecord::Base
       joins << "LEFT JOIN units_makes um ON um.unit_id = u.id"
       joins << "LEFT JOIN makes m ON um.make_id = m.id"
       
-      conditions << ["p.part_number <> '' AND u.name IS NOT NULL AND m.id IS NOT NULL"]
+      #conditions << ["p.part_number <> '' AND u.name IS NOT NULL AND m.id IS NOT NULL"]
+      conditions << ["u.name IS NOT NULL AND m.id IS NOT NULL"]
       
       results = self.all(:select => select,
                :from => from,
@@ -112,7 +113,8 @@ class Part < ActiveRecord::Base
       joins << "LEFT JOIN units_makes um ON um.unit_id = u.id"
       joins << "LEFT JOIN makes m ON um.make_id = m.id"
       
-      conditions << ["p.part_number <> '' AND u.name IS NOT NULL AND m.id IS NOT NULL"]
+      #conditions << ["p.part_number <> '' AND u.name IS NOT NULL AND m.id IS NOT NULL"]
+      conditions << ["u.name IS NOT NULL AND m.id IS NOT NULL"]
       
       results = self.all(:select => select,
                :from => from,
@@ -157,7 +159,8 @@ class Part < ActiveRecord::Base
       joins << "LEFT JOIN units_makes um ON um.unit_id = u.id"
       joins << "LEFT JOIN makes m ON um.make_id = m.id"
       
-      conditions << ["p.part_number <> '' AND u.name IS NOT NULL AND m.id IS NOT NULL"]
+      #conditions << ["p.part_number <> '' AND u.name IS NOT NULL AND m.id IS NOT NULL"]
+      conditions << ["u.name IS NOT NULL AND m.id IS NOT NULL"]
       
       self.all(:select => select,
                :from => from,
@@ -166,6 +169,18 @@ class Part < ActiveRecord::Base
                :order => order)
 
     end
+  end
+  
+  def make
+    begin
+      UnitComponent.make_for_part(self)
+    rescue UnitComponent::MissingUnitIds
+      nil
+    end
+  end
+  
+  def make?
+    !self.make.blank?
   end
   
   def before_save

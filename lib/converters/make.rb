@@ -1,6 +1,7 @@
 class Converters::Make < Make
   class << self
     def run!
+      ActiveRecord::Base.connection.execute('TRUNCATE makes')
       Legacy::Make.all.each do |m|
         params = {
           :name => m.make

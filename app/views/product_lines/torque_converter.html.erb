@@ -25,8 +25,13 @@
           <p><%= image_tag part.primary_photo.photo.asset.url(:medium) %></p>
         <% end %>
         <p><strong>Featured Product:</strong> <%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
-        <p><strong>Make:</strong> <%= link_to 'General Motors', '#' %></p>
-        <p><strong>Unit:</strong> </p>
+        <p><strong>Make:</strong> <%= link_to part.make.name, '#' %></p>
+        <p>
+          <strong>Unit:</strong> 
+          <% if part.units.any? %>
+            <%= part.units.map { |unit| link_to unit.name, '#' }.join(', ') %>
+          <% end %>
+        </p>
         <p class="description"><%= part.description %></p>
       </div>
       <% end %>

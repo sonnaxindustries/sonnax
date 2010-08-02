@@ -15,7 +15,7 @@
         <td><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part) %></td>
         <td><%= part.description %></td>
         <td><%= part.notes %></td>
-        <td>{make}</td>
+        <td><%= part.make.name if part.make? %></td>
         <td>
           <% if part.units.any? %>
             <%= part.units.map(&:name).join(', ') %>

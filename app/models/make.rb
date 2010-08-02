@@ -8,7 +8,7 @@ class Make < ActiveRecord::Base
   named_scope :list, :order => 'id ASC'
   named_scope :ordered, lambda { |order| { :order => order }}
   
-  class << self
+  class << self    
     def detail!(id)
       self.find_by_url_friendly!(id)
     end
@@ -31,6 +31,10 @@ class Make < ActiveRecord::Base
                :conditions => conditions.extend(Helper::Array).to_conditions,
                :order => 'm.name ASC')
     end
+  end
+  
+  def parts
+    @parts ||= Part.find_by_filter(:make => self)
   end
   
   def units?
