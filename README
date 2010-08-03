@@ -1,4 +1,35 @@
+EXTERNAL NOTES:
+- Publication importer needs to use old product line IDS with _model_record
+- Task to push shared assets (DONE)
+- Task to clear out shared assets (DONE) - Do this before importer and when pushing to the server
+- Product Line -> Part, Unit -> Product Line, Make -> Unit - How to get make out of a part?
+- Main import script to do everything in order
+- Paperclip naming path (ID or url_friendly)
+- Update admin with new parts and attributes
+- Import parts DISTINCT by product line (group?)
+- Featured parts rotators
+- Specs for associations and named_scopes
+- URL FRIENDLY module with associated tests
+
+/EXTERNAL NOTES
+
 - FIX cap_helper.rb for database updates
+
+
+- Part type callback. If none specified, set to default
+- Part counts pre/post database conversion
+  - Repro production
+  - Get counts
+  - Run cleanup script
+  - Get counts
+  - Run conversions
+  - Get counts
+- TABLES TO CLEAN
+  - parts
+  - unit_components
+- TABLES TO DROP
+  - Development tables that can be dropped
+- Time based input 'new' for parts
 
 We have distinct product lines
 We have distinct parts
@@ -97,13 +128,13 @@ speed_orders
 - quantity
 
 orders_parts
-- id 
+- id
 - order_id
 - part_id
 - quantity
 
 
-DO: 
+DO:
 - Add 'type' to assets - or just use content type?
 
 ------------------------------------- DATA EXPORTER -------------------------------------
@@ -154,9 +185,9 @@ This is the documentation for the Sonnax website re-build.
 
 ------------------------------------- API -------------------------------------
 CONSTANT CONTACT:
-Key Display Name: Sonnax	
-Key: fa7d24bf-7f27-4706-bf2e-4c8f33d1d602	
-Consumer Secret: 45f303163b39489fa7e445b3e20d37b1	
+Key Display Name: Sonnax
+Key: fa7d24bf-7f27-4706-bf2e-4c8f33d1d602
+Consumer Secret: 45f303163b39489fa7e445b3e20d37b1
 Status: Active
 
 Login:
@@ -248,7 +279,7 @@ SEO:
 
 SITE NOTES:
 - SEO is somewhat low on priorities, as they have the exposure and audience. Let's just get this cleaned up and more organized to view and make sense of.
-- Internal search is high priority, as they want to be able to search the entire internal site. Currently using Google Search for this, but that takes people out of context. 
+- Internal search is high priority, as they want to be able to search the entire internal site. Currently using Google Search for this, but that takes people out of context.
 - Product Catalog is high priority
 - Per discussion with David, he wants to put the emphasis on creating a better experience so people don't have to contact, versus relying on contact methods
 
@@ -273,7 +304,7 @@ UX:
   - Email for Quote
 - Navigation naming
 - Videos using a standard video player to stream, not requiring a plugin.
-- Catalog request. Could this be on every page? 
+- Catalog request. Could this be on every page?
   - Full page to catalog order
   - Email sign up, checkbox versus a second page
 - Inconsistency of news/events. Can we move these off of wordpress, and give a quick custom admin for this?
@@ -281,8 +312,8 @@ UX:
 
 - Using Blog 'Pages' versus actual items, which means links are not linking directly to the article. Current homepage is an example.
 - Inconsistent Navigation
-  
-  
+
+
 ASSETS FOR PARTS:
 - Installation Instructions
 - Catalog
@@ -313,11 +344,11 @@ API DATABASE:
 - twitter
 - flickr?
 - constant_contact (use this to properly segment data, as well as tie this into a login system for users)
-  - subscription queue in a background job? 
-  - Process directly to CC and also add into the system? 
+  - subscription queue in a background job?
+  - Process directly to CC and also add into the system?
   - Process directly to CC, and then sync with CC?
   - How can users integrate?
-  
+
 - Should be able to get a catalog without registering. If registered, then information is prefilled.
 
 TODO (2010-02-03)
@@ -475,7 +506,7 @@ orders
 (REMOVE: TC)
 
 order_parts
-- id 
+- id
 - order_id
 - part_id
 - quantity
@@ -930,10 +961,10 @@ Product Market Segments
     - "A guy building a transmission for a friend"
     - "A guy building a transmission for a trailer"
   - These parts are sold directly to the consumer, not through a distributor
-  
+
 Distributors
 - Not always educated on all of Sonnax's catalog
-- They do not promote Sonnax's products 
+- They do not promote Sonnax's products
 
 Main Markets: The market is very specific and very niche. If someone has worked with transmissions, they have heard of Sonnax. The parts are very need specific.
 - Automatic Transmission Repair Shops
@@ -961,6 +992,6 @@ News
 
 Weaknesses of the current site
 - The product catalog is structured for sales. It is too fragmented in the wrong places.
-  - EX: Someone coming to look for transmissions many not realized it's in 'High Performance Parts', and therefore not find what they are looking for. 
+  - EX: Someone coming to look for transmissions many not realized it's in 'High Performance Parts', and therefore not find what they are looking for.
 - The language may sometimes carry a myopic view of the company
 - There are many ways to contact Sonnax, but this is seen as a symptom of a bigger problem: people can't find what they are looking for on the current website.
