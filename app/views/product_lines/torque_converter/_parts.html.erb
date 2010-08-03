@@ -10,7 +10,7 @@
     <tbody>
       <% @parts.each do |part| %>
       <tr>
-        <td></td>
+        <td><%= part.reference_number %></td>
         <td><%= part.item %></td>
         <td><%= part.description %></td>
         <td><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part) %></td>
@@ -20,3 +20,7 @@
     </tbody>
   </table>
 </div>
+
+<% if @unit %>
+  <%= image_tag @unit.reference_figure.avatar.url %>
+<% end %>

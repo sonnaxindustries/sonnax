@@ -27,6 +27,10 @@ class PartsController < ApplicationController
       @make = Make.find(params[:filter][:make])
       @unit_options = @product_line.unit_options(:make => params[:filter].fetch('make')).unshift(['-- Select Unit --', ''])
     end
+    
+    if params[:filter] && !params[:filter][:unit].blank?
+      @unit = Unit.find(params[:filter][:unit])
+    end
         
     params[:filter].merge!(:product_line => @product_line) if params[:filter]
     @parts = Part.find_by_filter(params[:filter] || {})

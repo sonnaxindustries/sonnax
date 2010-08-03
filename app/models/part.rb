@@ -179,6 +179,14 @@ class Part < ActiveRecord::Base
     end
   end
   
+  def unit_components?
+    self.unit_components.any?
+  end
+  
+  def reference_number
+    self.unit_components.first.code_on_reference_figure if self.unit_components?
+  end
+  
   def create_tech_file(asset)
     asset = Asset.create :asset => asset
     self.part_assets.create(:part_asset_type_id => 4, :asset => asset)
