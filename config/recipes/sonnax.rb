@@ -45,7 +45,7 @@ Capistrano::Configuration.instance.load do
         
         puts "Pulling assets from the remote server..."
         puts asset_manager.to_s
-        #run_locally(asset_manager.cmd)
+        run_locally(asset_manager.cmd)
       end
       
       desc 'Push assets to remote server...'
@@ -73,7 +73,7 @@ Capistrano::Configuration.instance.load do
 
           puts "Destroying the assets on the remote server..."
           puts asset_manager.to_s
-          #run(asset_manager.cmd)
+          run(asset_manager.cmd)
         end
       end
     end

@@ -71,7 +71,7 @@ module SharedAssetManager
     include SharedAssetManagerBase
     
     def cmd
-      @cmd ||= "rsync --recursive --times --rsh=ssh --compress --human-readable --progress %s@%s:%s/system/ public/system/" % [self.user, self.shared_host, self.shared_path]
+      @cmd ||= "rsync --recursive --times --rsh=ssh --compress --human-readable --progress %s@%s:%s/system/file_conversions/ public/system/file_conversions/" % [self.user, self.shared_host, self.shared_path]
     end
   end
   

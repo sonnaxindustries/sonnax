@@ -113,7 +113,7 @@ class Legacy::Part < Legacy::Connection
   end
   
   def announcement_file
-    @announcement_file ||= File.new(self.announcement_filename) if self.announcement_file?
+    @announcement_file ||= File.open(self.announcement_filename) if self.announcement_file?
   end
   
   # INSTRUCTIONS
@@ -130,7 +130,7 @@ class Legacy::Part < Legacy::Connection
   end
   
   def instructions_file
-    @instructions_file ||= File.new(self.instructions_filename) if self.instructions_file?
+    @instructions_file ||= File.open(self.instructions_filename) if self.instructions_file?
   end
   
   # TECH
@@ -147,7 +147,7 @@ class Legacy::Part < Legacy::Connection
   end
   
   def tech_file
-    @tech_file ||= File.new(self.tech_filename) if self.tech_file?
+    @tech_file ||= File.open(self.tech_filename) if self.tech_file?
   end
   
   # VBFIX
@@ -164,6 +164,6 @@ class Legacy::Part < Legacy::Connection
   end
   
   def vbfix_file
-    @vbfix_file ||= File.new(self.vbfix_filename) if self.vbfix_file?
+    @vbfix_file ||= File.open(self.vbfix_filename) if self.vbfix_file?
   end
 end

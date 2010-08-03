@@ -10,7 +10,7 @@ class Converters::Part < Part
     
     def run!
       # Here we want to take the old DB and get rid of records we don't need (clean up the old DB before importing)
-      %w( parts product_line_parts part_attributes part_assets ).each do |table|
+      %w( parts product_line_parts part_attributes part_assets assets ).each do |table|
         statement = "TRUNCATE %s" % [table]
         ActiveRecord::Base.connection.execute(statement)
       end
@@ -57,12 +57,33 @@ class Converters::Part < Part
           end
         end
         
-        #Create the assets table
-        # part.part_assets.each do |asset|
-        #   if !asset.file.blank?
-        #     new_part.part_assets.create(:part_asset_type => attribute.part_asset_type, :asset => attribute.asset)
-        #   end
-        # end
+        puts "Checking for announcements file..."
+        if part.announcement_file?
+          file = File.open(part.announcement_filename, 'r')
+          new_part.create_announcement(file)
+          file.close
+        end
+        
+        puts "Checking for instructions file..."
+        if part.instructions_file?
+          file = File.open(part.instructions_filename, 'r')
+          new_part.create_instructions(file)
+          file.close
+        end
+        
+        puts "Checking for VBFix file..."
+        if part.vbfix_file?
+          file = File.open(part.vbfix_filename, 'r')
+          new_part.create_vbfix(file)
+          file.close
+        end
+        
+        puts "Checking for tech article..."
+        if part.tech_file?
+          file = File.open(part.tech_filename, 'r')
+          new_part.create_tech_file(file)
+          file.close
+        end
       end
     end
   end

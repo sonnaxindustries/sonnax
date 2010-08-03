@@ -8,7 +8,7 @@ class Part < ActiveRecord::Base
   has_many :assets, :through => :part_assets
   
   has_many :part_photos, :dependent => :destroy
-  has_many :photos, :through => :part_photos, :source => :asset
+  has_many :photos, :through => :part_photos
   
   has_many :unit_components, :dependent => :destroy
   has_many :units, :through => :unit_components
@@ -177,6 +177,26 @@ class Part < ActiveRecord::Base
     rescue UnitComponent::MissingUnitIds
       nil
     end
+  end
+  
+  def create_tech_file(asset)
+    asset = Asset.create :asset => asset
+    self.part_assets.create(:part_asset_type_id => 4, :asset => asset)
+  end
+  
+  def create_vbfix(asset)
+    asset = Asset.create :asset => asset
+    self.part_assets.create(:part_asset_type_id => 5, :asset => asset)
+  end
+  
+  def create_instructions(asset)
+    asset = Asset.create :asset => asset
+    self.part_assets.create(:part_asset_type_id => 3, :asset => asset)
+  end
+  
+  def create_announcement(asset)
+    asset = Asset.create :asset => asset
+    self.part_assets.create(:part_asset_type_id => 2, :asset => asset)
   end
   
   def make?
