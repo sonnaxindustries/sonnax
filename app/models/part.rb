@@ -18,7 +18,11 @@ class Part < ActiveRecord::Base
     indexes :oem_part_number, :sortable => true
     indexes :description
     indexes :item
-    indexes :notes    
+    indexes :notes 
+    
+    indexes unit_components.code_on_reference_figure, :as => :reference_code, :sortable => true   
+    
+    where "parts.part_number <> ''"
     
     has created_at, updated_at, part_type_id, product_line_id
   end
@@ -84,6 +88,7 @@ class Part < ActiveRecord::Base
       unit_id         = attrs.delete(:unit)
       product_line_id = attrs.delete(:product_line)
       part_id         = attrs.delete(:part)
+      part_name       = attrs.delete(:part_name)
       
       select      = "DISTINCT(u.id) AS unit_id"
       from        = "parts p"
@@ -105,6 +110,11 @@ class Part < ActiveRecord::Base
       
       if !part_id.blank?
         conditions << ["p.id = ?", part_id]
+      end
+      
+      if !part_name.blank?
+        part_name_filter = "%s%" % [part_name]
+        conditions << ["p.part_number LIKE (?)", part_name_filter]
       end
       
       joins << "LEFT JOIN product_lines pl ON pl.id = p.product_line_id"
@@ -130,8 +140,9 @@ class Part < ActiveRecord::Base
       unit_id         = attrs.delete(:unit)
       product_line_id = attrs.delete(:product_line)
       part_id         = attrs.delete(:part)
+      part_name       = attrs.delete(:part_name)
       
-      select      = "p.id, pl.name, p.part_number, p.description, p.notes, p.item, u.name as Unit, m.name AS Make, p.part_type_id, p.ref_code, p.ref_code_sort"
+      select      = "p.id, pl.name, p.part_number, p.description, p.notes, p.item, u.name as Unit, uc.code_on_reference_figure, m.name AS Make, p.part_type_id, p.ref_code, p.ref_code_sort"
       from        = "parts p"
       order       = "p.part_number + 0"
       joins       = []
@@ -151,6 +162,11 @@ class Part < ActiveRecord::Base
       
       if !part_id.blank?
         conditions << ["p.id = ?", part_id]
+      end
+      
+      if !part_name.blank?
+        part_name_filter = "%s%" % [part_name]
+        conditions << ["p.part_number LIKE (?)", part_name_filter]
       end
       
       joins << "LEFT JOIN product_lines pl ON pl.id = p.product_line_id"
@@ -184,7 +200,11 @@ class Part < ActiveRecord::Base
   end
   
   def reference_number
-    self.unit_components.first.code_on_reference_figure if self.unit_components?
+    if self.respond_to?(:code_on_reference_figure)
+      self.code_on_reference_figure
+    else
+      self.unit_components.first.code_on_reference_figure
+    end
   end
   
   def create_tech_file(asset)
