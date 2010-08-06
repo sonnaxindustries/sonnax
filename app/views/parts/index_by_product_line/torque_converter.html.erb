@@ -9,12 +9,12 @@
         <div class="make-units">
           <div class="make-selector">
             <%= f.label :make, 'Make:' %>
-            <%= f.select :make, @form_presenter.make_options, :include_blank => '-- Select Make --' %>
+            <%= f.select :make, @form_presenter.make_options, :selected => @form_presenter.make_id, :include_blank => '-- Select Make --' %>
           </div>
-
+          
           <div class="unit-selector">
             <%= f.label :unit, 'Unit:' %>
-            <%= f.select :unit, @form_presenter.unit_options, :include_blank => '-- Select Unit --' %>
+            <%= f.select :unit, @form_presenter.unit_options, :selected => @form_presenter.unit_id, :include_blank => '-- Select Unit --' %>
           </div>
         </div>
 
@@ -52,10 +52,7 @@
   
   <% if @parts.any? %>
   <%= render :partial => 'product_lines/torque_converter/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
-  
-  <ul class="ordering-options">
-    <li><%= link_to 'View Cart', '#' %></li>
-    <li><input type="submit" name="submit" value="Add to Cart"></li>
-  </ul>
+  <% else %>
+  <%= render :partial => 'product_lines/torque_converter/no_parts', :locals => { :product_line => @product_line } %>
   <% end %>
 </div>

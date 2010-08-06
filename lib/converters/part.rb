@@ -9,8 +9,8 @@ class Converters::Part < Part
     end
     
     def run!
-      # Here we want to take the old DB and get rid of records we don't need (clean up the old DB before importing)
-      %w( parts product_line_parts part_attributes part_assets assets ).each do |table|
+      # Here we want to take the old DB and get rid of records we don't need (clean up the old DB before importing) - part_assets assets
+      %w( parts product_line_parts part_attributes ).each do |table|
         statement = "TRUNCATE %s" % [table]
         ActiveRecord::Base.connection.execute(statement)
       end

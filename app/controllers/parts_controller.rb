@@ -2,13 +2,12 @@ class PartsController < ApplicationController
   before_filter :retrieve_product_line
   
   def index
-    @parts = @product_line.parts
-    
+    @parts = []
+    @units = []    
     @makes = @product_line.associated_makes
-    @units = @product_line.associated_units
-    
-    presenter_object = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
-    @form_presenter = presenter_object.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units)
+
+    form_presenter = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
+    @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units)
     
     search_path = search_product_line_parts_path(@product_line.url_friendly)
     @search_form_presenter = SearchFormPresenter.new(:search_terms => '', :url => search_path)
@@ -19,25 +18,33 @@ class PartsController < ApplicationController
   
   def filter
     @makes = @product_line.associated_makes
-    @units = @product_line.associated_units
-    @unit_options = @product_line.unit_options.unshift(['-- Select Unit --', ''])
-    @make = nil
+    @units, @parts = []
+    @make, @unit = nil
+
+    params[:filter].reverse_merge!(:product_line => @product_line) if params[:filter]
     
-    if params[:filter] && !params[:filter][:make].blank?
+    form_presenter = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
+    collection_presenter = "ProductLine::%s::CollectionPresenter" % [@product_line.url_friendly.underscore.classify]
+    
+    @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+    @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
+
+    if params[:filter] && !params[:filter][:make].blank? && params[:filter][:unit].blank?
       @make = Make.find(params[:filter][:make])
-      @unit_options = @product_line.unit_options(:make => params[:filter].fetch('make')).unshift(['-- Select Unit --', ''])
+      @parts = Part.find_by_filter(params[:filter] || {})
+      @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
+      @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
     end
     
-    if params[:filter] && !params[:filter][:unit].blank?
-      @unit = Unit.find(params[:filter][:unit])
+    if params[:filter] && !params[:filter][:make].blank? && !params[:filter][:unit].blank?
+      @make = Make.find(params[:filter][:make])
+      @unit = Unit.find(params[:filter][:unit])  
+      @parts = Part.find_by_filter(params[:filter] || {})
+
+      @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
+      @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)    
     end
         
-    params[:filter].merge!(:product_line => @product_line) if params[:filter]
-    @parts = Part.find_by_filter(params[:filter] || {})
-    
-    presenter_object = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
-    @form_presenter = presenter_object.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units)
-    
     search_path = search_product_line_parts_path(@product_line.url_friendly)
     @search_form_presenter = SearchFormPresenter.new(:search_terms => '', :url => search_path)
     
@@ -51,7 +58,7 @@ class PartsController < ApplicationController
         parts_template_file = "product_lines/%s/parts.html.erb" % [@product_line.url_friendly.underscore]
         render :json => {
           :dom_id => dom_id(@product_line, :parts),
-          :unit_select_options => render_to_string(:partial => 'product_lines/unit_options.html.erb', :locals => { :unit_options => @unit_options }),
+          :unit_select_options => render_to_string(:partial => 'product_lines/unit_options.html.erb', :locals => { :unit_options => @form_presenter.unit_options }),
           :parts_partial => render_to_string(:partial => parts_template_file, :locals => { :product_line => @product_line, :parts => @parts })
         }
       end
@@ -65,8 +72,14 @@ class PartsController < ApplicationController
   end
   
   def search
-    search_term = params[:search][:q]
-    @parts = Part.search(params[:search][:q], :with => { :product_line_id => @product_line.id })
+
+    search_term = if params[:search] && !params[:search][:q].blank?
+      params[:search][:q]
+    elsif params[:q]
+      params[:q]
+    end
+    
+    @parts = Part.search(search_term, :with => { :product_line_id => @product_line.id })
     
     @makes = @product_line.associated_makes
     @units = @product_line.associated_units

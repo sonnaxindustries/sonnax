@@ -51,32 +51,8 @@
   </div>
   
   <% if @parts.any? %>
-  <div id="<%= dom_id(@product_line, :parts) %>" class="parts group">
-    <table cellpadding="0" summary="Listing of Parts for <%= @product_line.name %>">
-      <thead>
-        <th>Ref. No</th>
-        <th>Item</th>
-        <th>Description</th>
-        <th>Part Number</th>
-        <th>Quantity</th>
-      </thead>
-      <tbody>
-        <% @parts.each do |part| %>
-        <tr>
-          <td></td>
-          <td><%= part.item %></td>
-          <td><%= part.description %></td>
-          <td><%= link_to part.part_number, product_line_part_path(@product_line.url_friendly, part) %></td>
-          <td><% if part.part_number? %><input type="text" size="2"><% end %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    
-    <ul class="ordering-options">
-      <li><%= link_to 'View Cart', '#' %></li>
-      <li><input type="submit" name="submit" value="Add to Cart"></li>
-    </ul>
-  </div>
+  <%= render :partial => 'product_lines/torque_converter/search/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+  <% else %>
+  <%= render :partial => 'parts/index_by_product_line/search/no_results', :locals => { :product_line => @product_line } %>
   <% end %>
 </div>

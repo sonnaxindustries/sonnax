@@ -3,6 +3,19 @@ class UnitComponent < ActiveRecord::Base
   belongs_to :unit
   belongs_to :part
   
+  define_index do
+    indexes code_on_reference_figure, :sortable => true
+    indexes part.part_number, :as => :part_number, :sortable => true
+    indexes unit.name, :as => :unit_name
+    indexes unit.product_line_id, :as => :product_line_id, :sortable => true
+    
+    where "parts.part_number <> ''"
+    group_by 'unit_components.code_on_reference_figure'
+    
+    has code_on_reference_figure
+    has part_id, unit_id, created_at, updated_at
+  end
+  
   class << self
     def make_for_part(part)
       results = self.all(:select => 'unit_components.unit_id', 

@@ -42,6 +42,9 @@ class Converters::Import
       puts 'Converting the Part Attribute Types...'
       Converters::PartAttributeType.run!
       
+      puts 'Converting the Part Photos...'
+      Converters::PartPhoto.run!
+      
       puts 'Converting the Parts...'
       Converters::Part.run!
       

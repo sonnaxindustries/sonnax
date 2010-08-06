@@ -108,8 +108,8 @@ $(document).ready(function() {
       success: function(response) {
         $elem.siblings('div.indicator').remove();
         $('div#product-line form div.unit-selector select').html(response.unit_select_options);
-        var domId = "#" + response.dom_id;
-        $(domId).html(response.parts_partial);
+        //var domId = "#" + response.dom_id;
+        //$(domId).html(response.parts_partial);
       }
     })
     e.preventDefault();
@@ -127,8 +127,9 @@ $(document).ready(function() {
       dataType: 'json',
       success: function(response) {
         $elem.siblings('div.indicator').remove();
-        var domId = "#" + response.dom_id;
-        $(domId).html(response.parts_partial);
+        //var domId = "#" + response.dom_id;
+        var domId = $('div#no-parts');
+        $(domId).replaceWith(response.parts_partial);
       }
     })
 

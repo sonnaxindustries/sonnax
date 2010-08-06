@@ -10,11 +10,15 @@ class ProductLine::TorqueConverter::FormPresenter
   end
   
   def q
-    #
+    @q ||= @attributes[:q]
   end
   
   def product_line
     @product_line ||= @attributes[:product_line]
+  end
+  
+  def product_line?
+    !self.product_line.blank?
   end
   
   def units
@@ -22,7 +26,11 @@ class ProductLine::TorqueConverter::FormPresenter
   end
   
   def unit_options
-    self.units.map { |unit| [unit.name, unit.id] }
+    if self.make?
+      self.product_line.unit_options(:make => self.make).unshift(['-- Select Unit --', ''])
+    else
+      self.units.map { |unit| [unit.name, unit.id] }
+    end
   end
   
   def makes
@@ -34,10 +42,26 @@ class ProductLine::TorqueConverter::FormPresenter
   end
   
   def unit
-    #
+    @unit ||= @attributes[:unit]
+  end
+  
+  def unit?
+    !self.unit.blank?
+  end
+  
+  def unit_id
+    if self.unit? then self.unit.id else nil end
   end
   
   def make
-    #
+    @make ||= @attributes[:make]
+  end
+  
+  def make?
+    !self.make.blank?
+  end
+  
+  def make_id
+    if self.make? then self.make.id else nil end
   end
 end

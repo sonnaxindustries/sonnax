@@ -54,7 +54,7 @@ Capistrano::Configuration.instance.load do
         
         puts "Pushing assets to the remote server..."
         puts asset_manager.to_s
-        #run_locally(asset_manager.cmd)
+        run_locally(asset_manager.cmd)
       end
       
       namespace :destroy do
