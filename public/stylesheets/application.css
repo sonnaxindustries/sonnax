@@ -205,6 +205,20 @@ span.pdf-size {
   font-size: 11px;
   vertical-align: middle;
 }
+ul.article-list {
+  margin-bottom: 10px;
+  list-style: disc;
+}
+ul.article-list li {
+  margin-left: 15px;
+}
+div#page {
+  margin-right: 15px;
+}
+div#page h2 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
 /* -- =FORMS -- */
 form fieldset legend {
   position: absolute;
@@ -224,11 +238,16 @@ form div.textarea textarea {
   color: #666;
 }
 /* -- =DISTRIBUTORS -- */
+table.base {
+  margin-bottom: 15px;
+}
+table.base thead th,
 #distributors table thead th {
   font-weight: bold;
   border-bottom: 2px solid #666;
   border-collapse: collapse;
 }
+table.base tbody td,
 #distributors table tbody td {
   line-height: 1.7;
   font-size: 12px;
@@ -297,7 +316,7 @@ div.publication-list form div.submit {
   display: none;
 }
 div.publication-list table tr.even {
-  
+
 }
 div.publication-list table tr.odd {
   background-color: #D7DEE5;
@@ -654,16 +673,16 @@ div#insider ul.benefits {
   list-style: disc;
   margin-bottom: 20px;
 }
-div.newsletter-signup, 
+div.newsletter-signup,
 div.newsletter-subscribe {
   margin: 20px 0;
 }
-div.newsletter-signup img, 
+div.newsletter-signup img,
 div.newsletter-subscribe img {
   float: left;
   margin-right: 10px;
 }
-div.newsletter-signup a, 
+div.newsletter-signup a,
 div.newsletter-subscribe a {
   color: #039;
   font-weight: bold;
@@ -1100,7 +1119,7 @@ div#customer-testimonials cite {
 }
 div#customer-testimonials ul li {
   margin-bottom: 20px;
-  
+
 }
 /* =NEWS */
 div#events h2,
