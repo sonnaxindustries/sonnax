@@ -1,0 +1,79 @@
+<div id="catalog-request">
+  <h1>Request Catalogs</h1>
+  <p>Just a click away, you will find online versions of some of these catalogs. For any printed catalog, CD or DVD we have available to send, please select, then fill in all the fields below</p>
+  
+  <% form_for :catalog_request, @catalog_request, :url => catalog_request_path do |f| %>
+  <fieldset>
+    <legend>Catalog Information</legend>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Your Information</legend>
+    
+    <div class="text name">
+      <%= f.error_message_on :name %>
+      <%= f.label :name, '<span class="required">*</span> Name' %>
+      <%= f.text_field :name %>
+    </div>
+    
+    <div class="text company">
+      <%= f.error_message_on :company %>
+      <%= f.label :company, '<span class="required">*</span> Company' %>
+      <%= f.text_field :company %>
+    </div>
+    
+    <div class="text type-of-business">
+      <%= f.error_message_on :type_of_business %>
+      <%= f.label :type_of_business, '<span class="required">*</span> Type of Business' %>
+      <%= f.text_field :type_of_business %>
+    </div>
+    
+    <div class="text address">
+      <%= f.error_message_on :address %>
+      <%= f.label :address, '<span class="required">*</span> Address' %>
+      <%= f.text_field :address %>
+    </div>
+    
+    <div class="text city">
+      <%= f.error_message_on :city %>
+      <%= f.label :city, '<span class="required">*</span> City' %>
+      <%= f.text_field :city %>
+    </div>
+    
+    <div class="text state">
+      <%= f.error_message_on :state %>
+      <%= f.label :state, '<span class="required">*</span> State' %>
+      <%= f.text_field :state %>
+    </div>
+    
+    <div class="text postal-code">
+      <%= f.error_message_on :postal_code %>
+      <%= f.label :postal_code, '<span class="required">*</span> Zip Code' %>
+      <%= f.text_field :postal_code %>
+    </div>
+    
+    <div class="text country">
+      <%= f.error_message_on :country %>
+      <%= f.label :country, '<span class="required">*</span> Country' %>
+      <%= f.text_field :country %>
+    </div>
+    
+    <div class="text phone-number">
+      <%= f.error_message_on :phone_number %>
+      <%= f.label :phone_number, '<span class="required">*</span> Phone Number' %>
+      <%= f.text_field :phone_number %>
+    </div>
+    
+    <div class="text email-address">
+      <%= f.error_message_on :email_address %>
+      <%= f.label :email_address, '<span class="required">*</span> E-Mail Address' %>
+      <%= f.text_field :email_address %>
+    </div>
+  </fieldset>
+  
+  <fieldset class="submit">
+    <%= f.submit 'Request Catalogs' %>
+  </fieldset>
+  <% end %>
+</div>
+
