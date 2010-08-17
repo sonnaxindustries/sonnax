@@ -35,7 +35,6 @@ ActionController::Routing::Routes.draw do |map|
     page.events_list '/events', :action => 'events'
     page.international_shipping_and_payment '/international-shipping-and-payment-options', :action => 'international_shipping_and_payment'
     page.sonnax_insider '/sonnax-insider', :action => 'sonnax_insider'
-    page.catalog_request '/catalog-request', :action => 'catalog_request'
     page.harley_distributors '/harley-davidson-distributors', :action => 'harley_distributors'
     page.high_performance_distributors '/high-performance-distributors', :action => 'hp_distributors'
     page.subscribe_to_email_newsletter '/subscribe-to-email-newsletter', :action => 'subscribe_to_email_newsletter' 
@@ -53,6 +52,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.resource :account, :controller => "users"
   map.resource :contact, :as => 'contact-us'
+  map.resource :catalog_request, :as => 'catalog-request', :collection => { :thanks => :get }
   map.register '/register', :controller => 'users', :action => 'new'
   
   map.technical_library '/technical-library', :controller => 'technical_library', :action => 'index'
