@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100728222252) do
+ActiveRecord::Schema.define(:version => 20100817015251) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -31,6 +31,25 @@ ActiveRecord::Schema.define(:version => 20100728222252) do
   end
 
   add_index "catalog_formats", ["url_friendly"], :name => "index_catalog_formats_on_url_friendly", :unique => true
+
+  create_table "catalog_requests", :force => true do |t|
+    t.string   "name",             :null => false
+    t.string   "company",          :null => false
+    t.string   "type_of_business", :null => false
+    t.string   "address",          :null => false
+    t.string   "city",             :null => false
+    t.string   "state",            :null => false
+    t.string   "postal_code",      :null => false
+    t.string   "country",          :null => false
+    t.string   "phone_number",     :null => false
+    t.string   "email_address",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "catalog_requests", ["email_address"], :name => "index_catalog_requests_on_email_address"
+  add_index "catalog_requests", ["name"], :name => "index_catalog_requests_on_name"
+  add_index "catalog_requests", ["postal_code"], :name => "index_catalog_requests_on_postal_code"
 
   create_table "cities", :force => true do |t|
     t.string   "name",         :limit => 100, :null => false
