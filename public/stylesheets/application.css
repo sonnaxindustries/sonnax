@@ -580,6 +580,7 @@ div#solenoids ul li {
   list-style: disc;
   margin: 0 0 10px 0;
 }
+div#catalog-request form div.formError,
 div#contact form div.formError,
 div#solenoids form div.formError {
   clear: both;
@@ -1276,4 +1277,16 @@ div.torque-converter table.parts th.description {
 }
 div.torque-converter table.parts th.part-number {
   width: 109px;
+}
+/* =CATALOG REQUEST */
+div#catalog-request form ul {
+  float: left;
+  margin: 10px 0;
+}
+div#catalog-request form ul li {
+  float: left;
+  width: 175px;
+  height: 280px;
+  padding: 5px;
+  padding: 5px 5px 10px 5px;
 }
