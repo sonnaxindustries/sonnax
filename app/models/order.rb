@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   attr_accessor :part_groups_to_save
-  has_many :line_items
+  has_many :line_items, :dependent => :destroy
   has_many :parts, :through => :line_items
   
   SHIPPING_METHODS = { :ups_ground  => 'UPS Ground', 

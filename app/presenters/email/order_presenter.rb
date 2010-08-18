@@ -18,8 +18,7 @@ class Email::OrderPresenter
   end
   
   def recipients
-    ['nate@theklaibers.com']
-    #['nate@theklaibers.com', 'ep@sonnax.com']
+    ['nate@theklaibers.com', 'ep@sonnax.com']
   end
   
   def sent_on
