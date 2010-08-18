@@ -580,6 +580,7 @@ div#solenoids ul li {
   list-style: disc;
   margin: 0 0 10px 0;
 }
+div#cart form div.formError,
 div#catalog-request form div.formError,
 div#contact form div.formError,
 div#solenoids form div.formError {

@@ -1,12 +1,29 @@
 class CartController < ApplicationController
+  before_filter :retrieve_cart, :only => [:show, :checkout]
+  before_filter :retrieve_shipping_options, :only => [:show, :checkout]
   
   def show
-    @cart = find_cart
     @order = Order.new
-    @shipping_types = Order.shipping_method_options
   end
   
   def checkout
+    begin
+      @order = Order.new(params[:order])
+      @order.save!
+      
+      session[:cart] = nil
+      
+      respond_to do |wants|
+        wants.html do
+          redirect_to(thanks_cart_path)
+        end
+      end
+    rescue ActiveRecord::RecordInvalid
+      render :action => 'show'
+    end
+  end
+  
+  def thanks
   end
   
   def add_speed_order
@@ -58,5 +75,14 @@ class CartController < ApplicationController
     session[:cart] = nil
     flash[:notice] = "Your cart is currently empty" 
     redirect_to(cart_path)
+  end
+  
+private
+  def retrieve_cart
+    @cart = find_cart
+  end
+  
+  def retrieve_shipping_options
+    @shipping_types = Order.shipping_method_options
   end
 end
