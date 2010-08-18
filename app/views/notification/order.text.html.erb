@@ -1,0 +1,39 @@
+<h1>Quote Request</h1>
+<p>Received: <%= @order.created_at.to_s(:month_day_year) %></p>
+
+<h2>Visitor Information</h2>
+<p>Name: <%= @order.name %></p>
+<p>Company: <%= @order.company %></p>
+<p>Postal Code: <%= @order.postal_code %></p>
+<p>E-Mail: <%= @order.email %></p>
+<p>Shipping Method: <%= @order.formatted_shipping_method %></p>
+<p>OK to Round: <%= @order.should_round_quantities %></p>
+<p>Comments: <%= @order.comments %></p>
+
+<h2>Parts Information</h2>
+<% if @order.line_items? %>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <thead>
+    <th>Quantity</th>
+    <th>Part Number</th>
+    <th>Item</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <% @order.line_items.each do |line_item| %>
+    <td><%= line_item.quantity %></td>
+    <td><%= line_item.part.part_number %></td>
+    <td><%= line_item.part.item %></td>
+    <td><%= line_item.part.description %></td>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p><strong>No parts provided!</strong></p>
+<% end %>
+
+
+<hr>
+<p>Signup to receive Sonnax new product e-Nouncements at <%= link_to 'www.sonnax.com/termsandconditions.html', 'http://www.sonnax.com/termsandconditions.html' %></p>
+
+<p>CONFIDENTIALITY NOTICE: This e-mail transmission, and any documents, files or previous e-mail message attached to it may contain confidential and proprietary material for the sole use of the intended recipient (s). Do not read this e-mail if you are not the intended recipient. Any review, use, distribution or disclosure by others is strictly prohibited. If you are not the intended recipient (or authorized to receive for the recipient) you are hereby notified that any disclosure, copying, distribution or use of any of the information contained in or attached to this transmission is STRICTLY PROHIBITED and you should delete all copies of this message and its attachments without reading or saving in any manner.</p>

@@ -16,6 +16,14 @@ class Notification < ActionMailer::Base
     body        catalog_request_presenter.body
   end
   
+  def order(order_presenter)
+    subject     order_presenter.subject
+    recipients  order_presenter.recipients
+    from        order_presenter.from
+    sent_on     order_presenter.sent_on
+    body        order_presenter.body
+  end
+  
   def contact(contact_presenter)
     subject     contact_presenter.subject
     recipients  contact_presenter.recipients
