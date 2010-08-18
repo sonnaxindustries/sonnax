@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   filter_parameter_logging :password, :password_confirmation
   
+  before_filter :find_cart
   before_filter :retrieve_current_controller_info
   before_filter :retrieve_product_line_nav
   before_filter :retrieve_page_details
@@ -80,6 +81,10 @@ class ApplicationController < ActionController::Base
   end
   
 private
+  def find_cart 
+    session[:cart] ||= Cart.new
+  end
+  
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find

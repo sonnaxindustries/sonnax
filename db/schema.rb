@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100818042428) do
+ActiveRecord::Schema.define(:version => 20100818050400) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -103,6 +103,19 @@ ActiveRecord::Schema.define(:version => 20100818042428) do
   end
 
   add_index "distributors", ["url_friendly"], :name => "index_distributors_on_url_friendly", :unique => true
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "order_id",    :null => false
+    t.integer  "part_id",     :null => false
+    t.integer  "quantity",    :null => false
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["order_id", "part_id"], :name => "by_part", :unique => true
+  add_index "line_items", ["order_id"], :name => "index_line_items_on_order_id"
+  add_index "line_items", ["part_id"], :name => "index_line_items_on_part_id"
 
   create_table "makes", :force => true do |t|
     t.string   "name",         :limit => 150, :null => false
@@ -488,6 +501,16 @@ ActiveRecord::Schema.define(:version => 20100818042428) do
   end
 
   add_index "roles", ["key_name"], :name => "index_roles_on_key_name", :unique => true
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "solenoid_programs", :force => true do |t|
     t.string   "name",              :null => false

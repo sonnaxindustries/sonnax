@@ -63,6 +63,7 @@ ActionController::Routing::Routes.draw do |map|
   map.distributor_by_state '/distributors/by-state/:state_code', :controller => 'distributors', :action => 'filter_by_state'
   map.distributor_by_city '/distributors/by-city/:city_name', :controller => 'distributors', :action => 'filter_by_city'
   
+  map.resource :cart, :controller => 'cart',  :member => { :add => :post, :empty_cart => :get, :checkout => :post, :add_multiple => :post, :remove => :delete, :update_quantity => :post }
   map.resource :solenoid, :as => 'solenoids', :member => 'thanks'
   map.resources :makes
   map.resources :distributors

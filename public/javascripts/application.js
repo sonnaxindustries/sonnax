@@ -17,6 +17,22 @@ $(document).ready(function() {
     $(this).removeClass('sfhover');
   });
   
+  // CART
+  $('div#cart div.cart-container a.remove').live('click', function(e) {
+    var $elem = $(this);
+    $.ajax({
+      url: $elem.attr('href'),
+      type: 'DELETE',
+      dataType: 'json',
+      success: function(response) {
+        var domId = '#' + response.dom_id
+        $(domId).fadeOut();
+      }
+    })
+    e.preventDefault();
+  })
+  // END CART
+  
   
   $('a[href^="http://"]:not("[href*=sonnax.com]"), a[rel="external"], a[href$="pdf"]').click(function(e) {
     //var pageInfo = $(this).attr('href') + " (" + $(this).attr('title') + ")";

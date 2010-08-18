@@ -1308,3 +1308,11 @@ div#quick-search div.search-parts form div.submit input {
 div#no-search-results h2 {
   font-size: 14px;
 }
+/* =CART */
+div#cart {
+  margin-right: 15px;
+}
+div#cart h2 {
+  font-size: 14px;
+  margin: 10px 0 7px 0;
+}

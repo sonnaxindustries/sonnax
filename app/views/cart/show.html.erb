@@ -1,0 +1,96 @@
+<div id="cart">
+  <h1>Shopping Cart</h1>
+  
+  <% if @cart.parts? %>
+    
+    <% form_for @order, :url => checkout_cart_path do |f| %>
+    <div class="cart-container">
+      <table cellpadding="0" cellspacing="0" width="100%" class="base" summary="Listing of parts in the cart">
+        <thead>
+          <th>Part Number</th>
+          <th>Item</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @cart.parts.each do |part| %>
+          <tr id="<%= dom_id(part.part, :line_item) %>">
+            <td><%= part.name %></td>
+            <td><%= part.item %></td>
+            <td><%= part.description %></td>
+            <td><%= text_field_tag "order[#{part.part_id}]", part.quantity, :size => 2 %></td>
+            <td><%= link_to 'Remove', remove_cart_path(:part_id => part.part_id), :class => 'remove' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    
+    <ul class="cart-options">
+      <li><%= link_to 'Continue Speed Ordering', speed_order_path %></li>
+      <li><%= link_to 'Update', update_quantity_cart_path, :class => 'update' %></li>
+    </ul>
+    
+    <h2>Please fill out the following information to complete this order:</h2>
+    
+    <fieldset>
+      <legend>Your Information</legend>
+      
+      <div class="text name">
+        <%= f.error_message_on :name %>
+        <%= f.label :name, '<span class="required">*</span> Name' %>
+        <%= f.text_field :name %>
+      </div>
+      
+      <div class="text company">
+        <%= f.error_message_on :company %>
+        <%= f.label :company, '<span class="required">*</span> Company' %>
+        <%= f.text_field :company %>
+      </div>
+      
+      <div class="text postal-code">
+        <%= f.error_message_on :postal_code %>
+        <%= f.label :postal_code, '<span class="required">*</span> Zip Code' %>
+        <%= f.text_field :postal_code %>
+      </div>
+      
+      <div class="text email">
+        <%= f.error_message_on :email %>
+        <%= f.label :email, '<span class="required">*</span> E-Mail Address' %>
+        <%= f.text_field :email %>
+      </div>
+      
+      <div class="text po-number">
+        <%= f.error_message_on :po_number %>
+        <%= f.label :po_number, 'P.O. Number' %>
+        <%= f.text_field :po_number %>
+      </div>
+      
+      <div class="text shipping-method">
+        <%= f.error_message_on :shipping_method %>
+        <%= f.label :shipping_method, 'Shipping Method' %>
+        <%= f.select :shipping_method, @shipping_types %>
+      </div>
+      
+      <div class="text round-quantities">
+        <%= f.error_message_on :should_round_quantities %>
+        <%= f.check_box :should_round_quantities %> <%= f.label :should_round_quantities, 'Please round my order quantities to suit standard packaged quantities' %>
+      </div>
+      
+      <div class="text comments">
+        <%= f.error_message_on :comments %>
+        <%= f.label :comments, 'Comments, Special Instructions, Additional Parts' %>
+        <%= f.text_area :comments %>
+      </div>
+            
+    </fieldset>
+    
+    <fieldset class="submit">
+      <%= f.submit 'Place Order' %>
+    </fieldset>
+    <% end %>
+  <% else %>
+    <p>You have no parts in your cart.</p>
+  <% end %>
+</div>

@@ -2,6 +2,8 @@ class Part < ActiveRecord::Base
   belongs_to :part_type
   belongs_to :product_line
   
+  has_many :line_items
+  
   has_many :part_attributes, :dependent => :destroy
   
   has_many :part_assets, :dependent => :destroy
