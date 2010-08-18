@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100818023553) do
+ActiveRecord::Schema.define(:version => 20100818042428) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -114,6 +114,23 @@ ActiveRecord::Schema.define(:version => 20100818023553) do
 
   add_index "makes", ["key_name"], :name => "index_makes_on_key_name", :unique => true
   add_index "makes", ["url_friendly"], :name => "index_makes_on_url_friendly", :unique => true
+
+  create_table "orders", :force => true do |t|
+    t.string   "name",                                      :null => false
+    t.string   "company",                                   :null => false
+    t.string   "postal_code",                               :null => false
+    t.string   "email",                                     :null => false
+    t.string   "po_number"
+    t.string   "shipping_method",                           :null => false
+    t.boolean  "should_round_quantities", :default => true
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["email"], :name => "index_orders_on_email"
+  add_index "orders", ["po_number"], :name => "index_orders_on_po_number"
+  add_index "orders", ["postal_code"], :name => "index_orders_on_postal_code"
 
   create_table "part_asset_types", :force => true do |t|
     t.string   "name",         :null => false
