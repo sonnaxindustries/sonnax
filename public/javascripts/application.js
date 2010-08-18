@@ -25,8 +25,11 @@ $(document).ready(function() {
     $.ajax({
       url: $elem.attr('href'),
       type: 'PUT',
-      dataType: 'html',
-      data: $form.serialize()
+      dataType: 'json',
+      data: $form.serialize(),
+      success: function(response) {
+        window.location = response.redirect_to;
+      }
     })
     e.preventDefault();
   });

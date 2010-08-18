@@ -165,6 +165,19 @@ sup {
   vertical-align: top;
   font-size: 9px;
 }
+body div.notice {
+  font-weight: bold;
+  line-height: 1;
+  font-size: 14px;
+  background: #eee;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin: 15px 0;
+}
+body div.notice p {
+  background: transparent url('/images/icons/tick.png') 0 50% no-repeat;
+  padding-left: 20px;
+}
 div.note {
   background: #eee;
   padding: 10px 15px;

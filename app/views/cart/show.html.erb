@@ -1,5 +1,10 @@
 <div id="cart">
   <h1>Shopping Cart</h1>
+  <% if flash[:notice] %>
+  <div class="notice">
+    <p><%= flash[:notice] %></p>
+  </div>
+  <% end %>
   
   <% if @cart.parts? %>
   <p><%= link_to 'Empty Shopping Cart', empty_cart_cart_path, :confirm => 'Are you sure you want to empty your cart?' %></p>

@@ -26,12 +26,17 @@ class CartController < ApplicationController
   def update
     @cart = find_cart
     @cart.update_parts!(params[:order][:part_groups])
+    flash[:notice] = "Cart has been updated!"
     
     respond_to do |wants|
       wants.html do
         redirect_to(cart_path)
       end
-      wants.json
+      wants.json do
+        render :json => {
+          :redirect_to => cart_path
+        }
+      end
     end
   end
   
