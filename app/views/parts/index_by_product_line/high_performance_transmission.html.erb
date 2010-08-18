@@ -49,11 +49,8 @@
   </div>
   
   <% if @parts.any? %>
-  <%= render :partial => 'product_lines/high_performance_transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
-  
-  <ul class="ordering-options">
-    <li><%= link_to 'View Cart', '#' %></li>
-    <li><input type="submit" name="submit" value="Add to Cart"></li>
-  </ul>
+    <%= render :partial => 'product_lines/high_performance_transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+  <% else %>
+    <%= render :partial => 'product_lines/high_performance_transmission/no_parts', :locals => { :product_line => @product_line } %>
   <% end %>
 </div>

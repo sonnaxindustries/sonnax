@@ -1,9 +1,9 @@
-class PartsController < ApplicationController
+class AllisonPartsController < ApplicationController
   before_filter :retrieve_product_line, :except => [:search_single]
   
   def index
     @parts = []
-    @units = []    
+    @units = @product_line.units  
     @makes = @product_line.associated_makes
 
     form_presenter = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
@@ -17,12 +17,14 @@ class PartsController < ApplicationController
   end
   
   def filter
-    @makes = @product_line.associated_makes
-    @units = []
+    @makes = []
+    @units = @product_line.units
+    @make = Make.allison
     @parts = []
     @make, @unit = nil
 
     params[:filter].reverse_merge!(:product_line => @product_line) if params[:filter]
+    params[:filter].reverse_merge!(:make => Make.find_by_url_friendly('allison')) if params[:filter]
     
     form_presenter = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
     collection_presenter = "ProductLine::%s::CollectionPresenter" % [@product_line.url_friendly.underscore.classify]
@@ -30,23 +32,13 @@ class PartsController < ApplicationController
     @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
     @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
 
-    if params[:filter] && !params[:filter][:make].blank? && params[:filter][:unit].blank?
-      @make = Make.find(params[:filter][:make])
-      @parts = []
-      #@parts = Part.find_by_filter(params[:filter] || {})
+    if params[:filter] && !params[:filter][:unit].blank?    
+      raise params[:filter].inspect
+      @parts = Part.find_by_filter(params[:filter] || {})
       @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
       @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
     end
-    
-    if params[:filter] && !params[:filter][:make].blank? && !params[:filter][:unit].blank?
-      @make = Make.find(params[:filter][:make])
-      @unit = Unit.find(params[:filter][:unit])  
-      @parts = Part.find_by_filter(params[:filter] || {})
 
-      @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
-      @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)    
-    end
-        
     search_path = search_product_line_parts_path(@product_line.url_friendly)
     @search_form_presenter = SearchFormPresenter.new(:search_terms => '', :url => search_path)
     
@@ -67,71 +59,19 @@ class PartsController < ApplicationController
     end
   end
   
+  def search
+  end
+  
   def recent
     @parts = @product_line.parts.recent
     template_file = "parts/index_by_product_line/recent/%s" % [@product_line.url_friendly.underscore]
     render template_file
   end
-  
-  def search
 
-    search_term = if params[:search] && !params[:search][:q].blank?
-      params[:search][:q]
-    elsif params[:q]
-      params[:q]
-    end
-    
-    @parts = Part.search(search_term, :with => { :product_line_id => @product_line.id })
-    
-    @makes = @product_line.associated_makes
-    @units = @product_line.associated_units
-    
-    presenter_object = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
-    @form_presenter = presenter_object.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units)
-    
-    search_path = search_product_line_parts_path(@product_line.url_friendly)
-    @search_form_presenter = SearchFormPresenter.new(:search_terms => search_term, :url => search_path)
-    
-    template_file = "parts/index_by_product_line/search/%s" % [@product_line.url_friendly.underscore]
-    
-    respond_to do |wants|
-      wants.html do
-        render template_file
-      end
-      wants.json do
-      end
-    end
-  end
-  
-  def search_single
-    begin
-      @part = Part.find_single!(params[:search][:q])
-      
-      respond_to do |wants|
-        wants.html do
-          render :action => :show
-        end
-      end
-    rescue ActiveRecord::RecordNotFound
-      @search_form_presenter = SearchFormPresenter.new(:search_terms => params[:search][:q], :url => search_single_part_path)
-      render :template => 'parts/no_search_results.html.erb'
-    end
-  end
-
-  def show
-    begin
-      @part = @product_line.parts.find(params[:id])
-      template_file = "parts/show_by_product_line/%s" % [@product_line.url_friendly.underscore]
-      render template_file
-    rescue ActiveRecord::RecordNotFound
-      render_404
-    end
-  end
-  
 private
   def retrieve_product_line
     begin
-      @product_line = ProductLine.detail!(params[:product_line_id])
+      @product_line = ProductLine.detail!('allison')
     rescue ActiveRecord::RecordNotFound
       render_404
     end

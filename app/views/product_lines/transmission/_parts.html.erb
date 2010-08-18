@@ -1,22 +1,22 @@
 <div id="<%= dom_id(product_line, :parts) %>" class="parts group">
-  <table cellpadding="0" summary="Listing of Parts for <%= product_line.name %>">
+  <table cellpadding="0" summary="Listing of Parts for <%= product_line.name %>" class="parts" width="100%">
     <thead>
-      <th>Product Line</th>
-      <th>Part Number</th>
-      <th>Description</th>
-      <th>Item Notes</th>
-      <th>Make</th>
-      <th>Units</th>
+      <th class="product-line">Product Line</th>
+      <th class="part-number">Part Number</th>
+      <th class="description">Description</th>
+      <th class="notes">Item Notes</th>
+      <th class="make">Make</th>
+      <th class="units">Units</th>
     </thead>
     <tbody>
       <% parts.each do |part| %>
       <tr>
-        <td><%= product_line.name %></td>
-        <td><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part) %></td>
-        <td><%= part.description %></td>
-        <td><%= part.notes %></td>
-        <td><%= part.make.name if part.make? %></td>
-        <td>
+        <td class="product-line"><%= product_line.name %></td>
+        <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part) %></td>
+        <td class="description"><%= part.description %></td>
+        <td class="notes"><%= part.notes %></td>
+        <td class="make"><%= part.make.name if part.make? %></td>
+        <td class="units">
           <% if part.units.any? %>
             <%= part.units.map(&:name).join(', ') %>
           <% end %>

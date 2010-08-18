@@ -65,6 +65,19 @@
     <%= f.label :weight, 'Weight' %>
     <%= f.text_field :weight, :size => 5 %>
   </div>
+  
+  <div class="text primary-photo file-upload">
+    <% if @part.primary_photo? %>
+    <p><strong>Current Photo of the Part</strong></p>
+    <div class="avatar" id="<%= dom_id(@part, :primary_photo) %>">
+      <%= image_tag @part.primary_photo.asset.asset.url, :class => 'photo' %>
+      <p class="remove-photo"><%= link_to 'Remove Photo', remove_photo_admin_part_path(@part), :class => 'destroy' %></p>
+    </div>
+    <% end %>
+    <%= f.error_message_on :primary_photo_src %>
+    <%= f.label :primary_photo_src, 'Photo' %>
+    <%= f.file_field :primary_photo_src %>
+  </div>
 </fieldset>
 
 <fieldset>

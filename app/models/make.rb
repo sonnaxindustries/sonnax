@@ -8,7 +8,11 @@ class Make < ActiveRecord::Base
   named_scope :list, :order => 'id ASC'
   named_scope :ordered, lambda { |order| { :order => order }}
   
-  class << self    
+  class << self  
+    def allison
+      self.find_by_url_friendly('allison')
+    end
+      
     def detail!(id)
       self.find_by_url_friendly!(id)
     end

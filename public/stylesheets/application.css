@@ -1292,6 +1292,44 @@ div.torque-converter table.parts th.description {
 div.torque-converter table.parts th.part-number {
   width: 109px;
 }
+
+/* =TRANSMISSION PARTS */
+div.transmission table.parts th.product-line,
+div.transmission table.parts td.product-line {
+  width: 118px;
+  padding-left: 10px;
+}
+div.transmission table.parts th.notes {
+  width: 140px;
+}
+div.transmission table.parts th.make {
+  width: 110px;
+}
+div.transmission table.parts th.description {
+  width: 165px;
+}
+div.transmission table.parts th.part-number {
+  width: 90px;
+}
+
+/* =HIGH PERFORMANCE TRANSMISSION PARTS */
+div.high-performance-transmission table.parts th.ref-code,
+div.high-performance-transmission table.parts td.ref-code {
+  width: 100px;
+  padding-left: 10px;
+}
+div.high-performance-transmission table.parts th.notes {
+  width: 140px;
+}
+div.high-performance-transmission table.parts th.make {
+  width: 70px;
+}
+div.high-performance-transmission table.parts th.description {
+  width: 108px;
+}
+div.high-performance-transmission table.parts th.part-number {
+  width: 95px;
+}
 /* =CATALOG REQUEST */
 div#catalog-request form ul {
   float: left;
