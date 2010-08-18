@@ -41,8 +41,7 @@ $(document).ready(function() {
       type: 'DELETE',
       dataType: 'json',
       success: function(response) {
-        var domId = '#' + response.dom_id
-        $(domId).fadeOut();
+        window.location = response.redirect_to
       }
     })
     e.preventDefault();

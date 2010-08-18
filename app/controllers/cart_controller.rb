@@ -64,11 +64,13 @@ class CartController < ApplicationController
     else
       @cart = find_cart
       @cart.remove_part(part)
-
+      flash[:notice] = "Part has been removed!"
+      
       respond_to do |wants|
         wants.html 
         wants.json do 
           render :json => {
+            :redirect_to => cart_path,
             :dom_id => dom_id(part, :line_item)
           }
         end
