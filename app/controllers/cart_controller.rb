@@ -23,6 +23,18 @@ class CartController < ApplicationController
     end
   end
   
+  def update
+    @cart = find_cart
+    @cart.update_parts!(params[:order][:part_groups])
+    
+    respond_to do |wants|
+      wants.html do
+        redirect_to(cart_path)
+      end
+      wants.json
+    end
+  end
+  
   def thanks
   end
   

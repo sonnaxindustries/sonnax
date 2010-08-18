@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  attr_accessor :part_groups_to_save
   has_many :line_items
   has_many :parts, :through => :line_items
   
@@ -26,6 +27,39 @@ class Order < ActiveRecord::Base
     SHIPPING_METHODS[method]
   end
   
+  def add_line_items
+   @part_groups_to_save.each do |cart_item|
+      part = Part.find(cart_item['part_id'])
+      quantity = cart_item['quantity'].to_i
+
+      if part
+        if self.line_items.exists?(:part_id => part.id)
+          line_item = self.line_items.find_by_part_id(part.id)
+          
+          if quantity == 0
+            line_item.destroy
+          else
+            line_item.update_attributes(:quantity => quantity)
+          end
+          
+        else
+          
+          if quantity > 0
+            self.line_items.create(:part_id => part.id, :quantity => quantity)
+          end
+        end
+      end
+    end
+  end
+  
+  def part_groups=(arr)
+    @part_groups_to_save = arr.first.values   
+  end
+  
+  def part_groups
+    [self.line_items.inject({}) { |hsh,li| hsh[li.part.id.to_s] = { 'quantity' => li.quantity.to_s, 'part_number' => li.part.part_number }; hsh }]
+  end
+  
   def validate
     self.errors.add(:name, 'Please provide your name') unless self.name?
     self.errors.add(:company, 'Please provide your company') unless self.company?
@@ -33,4 +67,7 @@ class Order < ActiveRecord::Base
     self.errors.add(:email, 'Please provide your email address') unless self.email?
   end
   
+  def after_save
+    self.add_line_items
+  end
 end

@@ -21,10 +21,12 @@
   </thead>
   <tbody>
     <% @order.line_items.each do |line_item| %>
-    <td><%= line_item.quantity %></td>
-    <td><%= line_item.part.part_number %></td>
-    <td><%= line_item.part.item %></td>
-    <td><%= line_item.part.description %></td>
+    <tr>
+      <td><%= line_item.quantity %></td>
+      <td><%= line_item.part.part_number %></td>
+      <td><%= line_item.part.item %></td>
+      <td><%= line_item.part.description %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>

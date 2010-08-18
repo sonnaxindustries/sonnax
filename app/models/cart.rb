@@ -19,6 +19,21 @@ class Cart
     end
   end
   
+  def update_parts!(parts_hash)
+    part_orders = parts_hash.first.values
+
+    part_orders.each do |part|
+      quantity = part['quantity'].to_i
+      
+      cart_item = @parts.select { |item| item.part_number == part['part_number'] }.first
+      if cart_item
+        cart_item.update_quantity!(quantity)
+        
+        @parts.delete_if { |item| item.quantity == 0 }
+      end
+    end
+  end
+  
   def add_multiple_speed_order_parts(parts_hash)
     product_line_id = parts_hash['product_line_id'].to_i
     part_orders = parts_hash['parts'].values.flatten

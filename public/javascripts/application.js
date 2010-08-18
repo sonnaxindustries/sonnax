@@ -18,6 +18,19 @@ $(document).ready(function() {
   });
   
   // CART
+  $('div#cart ul.cart-options a.update').live('click', function(e) {
+    var $elem = $(this);
+    var $form = $('div#cart form');
+    
+    $.ajax({
+      url: $elem.attr('href'),
+      type: 'PUT',
+      dataType: 'html',
+      data: $form.serialize()
+    })
+    e.preventDefault();
+  });
+  
   $('div#cart div.cart-container a.remove').live('click', function(e) {
     var $elem = $(this);
     $.ajax({

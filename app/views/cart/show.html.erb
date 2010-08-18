@@ -20,7 +20,11 @@
             <td><%= part.name %></td>
             <td><%= part.item %></td>
             <td><%= part.description %></td>
-            <td><%= text_field_tag "order[#{part.part_id}]", part.quantity, :size => 2 %></td>
+            <td>
+              <%= hidden_field_tag "order[part_groups][][#{part.part_id}][part_id]", part.part_id %>
+              <%= hidden_field_tag "order[part_groups][][#{part.part_id}][part_number]", part.name %>
+              <%= text_field_tag "order[part_groups][][#{part.part_id}][quantity]", part.quantity, :size => 2 %>
+            </td>
             <td><%= link_to 'Remove', remove_cart_path(:part_id => part.part_id), :class => 'remove' %></td>
           </tr>
           <% end %>
@@ -30,7 +34,7 @@
     
     <ul class="cart-options">
       <li><%= link_to 'Continue Speed Ordering', speed_order_path %></li>
-      <li><%= link_to 'Update', update_quantity_cart_path, :class => 'update' %></li>
+      <li><%= link_to 'Update', update_cart_path, :class => 'update' %></li>
     </ul>
     
     <h2>Please fill out the following information to complete this order:</h2>

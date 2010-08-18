@@ -10,6 +10,14 @@ class CartItem
     @quantity += by
   end
   
+  def update_quantity!(amt)
+    @quantity = amt
+  end
+  
+  def part_number
+    @part.part_number
+  end
+  
   def name
     @part.name
   end
