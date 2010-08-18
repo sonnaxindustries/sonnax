@@ -1,1 +1,54 @@
-<h1>Quick Search</h1>
+<div id="quick-search">
+  <h1>Quick Search</h1>
+  
+  <div class="by-make-unit">
+    <h2>Quick Search by application (Make, Unit, Series, etc.)</h2>
+    <% if @product_line_parts.any? %>
+    <ul>
+      <% @product_line_parts.each do |product_line| %>
+        <li><%= link_to product_line.name, product_line_parts_path(product_line.url_friendly) %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+  
+  <div class="search-parts">
+    <h2>Quick Search by Sonnax part number</h2>
+    <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+    <fieldset>
+      <legend>Search</legend>
+      <div id="search-options" class="group">
+        <div class="search-terms">
+          <%= f.label :q, 'Search Part Number:' %>
+          <%= f.text_field :q %>
+        </div>
+      </div>
+
+      <div class="submit">
+        <%= f.submit 'Search' %>
+      </div>
+    </fieldset>
+    <% end %>
+  </div>
+  
+  <div class="new-products">
+    <h2>Quick Search by New Products</h2>
+    <% if @product_line_new_parts.any? %>
+    <ul>
+      <% @product_line_new_parts.each do |product_line| %>
+        <li><%= link_to product_line.name, recent_product_line_parts_path(product_line.url_friendly) %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+  
+  <div class="more-info">
+    <h2>More options</h2>
+    <ul>
+      <li><%= link_to 'Browse our Technical Library', technical_library_path %></li>
+      <li><%= link_to 'Request Sonnax Catalogs', new_catalog_request_path %></li>
+    </ul>
+  </div>
+</div>
+
+

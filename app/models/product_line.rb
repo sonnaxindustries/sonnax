@@ -17,6 +17,18 @@ class ProductLine < ActiveRecord::Base
   end
   
   class << self
+    def all_with_parts
+      self.find(:all, 
+                :conditions => ["url_friendly IN (?)", %w( allison transmission torque-converter driveline high-performance-transmission ring-gears )],
+                :order => 'name ASC')
+    end
+    
+    def all_with_new_parts
+      self.find(:all, 
+                :conditions => ["url_friendly IN (?)", %w( allison transmission high-performance-transmission torque-converter )],
+                :order => 'name ASC')
+    end
+    
     def transmission
       self.find_by_url_friendly!('transmission')
     end

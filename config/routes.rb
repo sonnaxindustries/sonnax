@@ -88,7 +88,7 @@ ActionController::Routing::Routes.draw do |map|
     product_line.ring_gears '/ring-gears', :action => 'ring_gears'
     product_line.high_performance_transmission '/high-performance-transmission', :action => 'high_performance_transmission'
     product_line.driveline '/driveline', :action => 'driveline'
-    product_line.allison '/allison', :action => 'allison'
+    product_line.allison '/allison', :action => 'allison' #NOTE: Move to allison_parts_controller.rb
     product_line.harley_davidson '/harley-davidson', :action => 'harley_davidson'
     product_line.harley_davidson_parts '/harley-davidson/parts', :action => 'harley_davidson_parts'
     product_line.power_train_savers '/power-train-savers', :action => 'power_train_savers'
@@ -97,6 +97,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :product_lines, :as => 'product-lines' do |pl|
     pl.resources :parts, :collection => { :recent => :get, :search => :get, :filter => :get }
   end
+  
+  map.search_single_part '/search-by-part-number', :controller => 'parts', :action => 'search_single'
   
   map.with_options(:controller => 'user_sessions') do |us|
     us.login '/login', :action => 'new'

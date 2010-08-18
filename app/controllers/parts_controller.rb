@@ -1,5 +1,5 @@
 class PartsController < ApplicationController
-  before_filter :retrieve_product_line
+  before_filter :retrieve_product_line, :except => [:search_single]
   
   def index
     @parts = []
@@ -98,6 +98,21 @@ class PartsController < ApplicationController
       end
       wants.json do
       end
+    end
+  end
+  
+  def search_single
+    begin
+      @part = Part.find_single!(params[:search][:q])
+      
+      respond_to do |wants|
+        wants.html do
+          render :action => :show
+        end
+      end
+    rescue ActiveRecord::RecordNotFound
+      @search_form_presenter = SearchFormPresenter.new(:search_terms => params[:search][:q], :url => search_single_part_path)
+      render :template => 'parts/no_search_results.html.erb'
     end
   end
 

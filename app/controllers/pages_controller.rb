@@ -34,6 +34,9 @@ class PagesController < ApplicationController
   end
   
   def quick_search
+    @product_line_parts = ProductLine.all_with_parts
+    @product_line_new_parts = ProductLine.all_with_new_parts
+    @search_form_presenter = SearchFormPresenter.new(:q => [], :url => search_single_part_path)
   end
   
   def tasc_force

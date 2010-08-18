@@ -77,7 +77,7 @@
         <h2>Diagnostic Guide en Espa&ntilde;ol</h2>
         
         <div class="extra">
-          <p>Get one from a <a href="http://www.sonnax.com/distributor.php?country=USA&go=GO">Transmission Specialties Distributor</a></p>
+          <p>Get one from a <%= link_to 'Transmission Specialties Distributor', distributor_by_country_path('USA') %></p>
         </div>
       </li>
       
@@ -112,7 +112,7 @@
       </li>
       
       <li>
-        <a href="tech-articles/sonnax-trans-report_v1n1.pdf"><img src="/images/catalogs/transreportv1n1.gif" alt="Transmission Report" width="145" height="188"></a>
+        <a href="/downloads/catalogs/sonnax-trans-report_v1n1.pdf"><img src="/images/catalogs/transreportv1n1.gif" alt="Transmission Report" width="145" height="188"></a>
         <h2>Transmission Report</h2>
         <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_report, @catalog_request.catalogs_hash.include?(@catalogs.transmission_report) %>
       </li>

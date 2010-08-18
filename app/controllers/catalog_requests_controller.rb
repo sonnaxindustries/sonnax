@@ -1,5 +1,5 @@
 class CatalogRequestsController < ApplicationController
-  before_filter :retrieve_catalogs
+  before_filter :retrieve_catalogs, :except => [:thanks]
   
   def new
     @catalog_request = CatalogRequest.new

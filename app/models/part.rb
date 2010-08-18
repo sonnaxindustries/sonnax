@@ -37,6 +37,12 @@ class Part < ActiveRecord::Base
   end
   
   class << self
+    def find_single!(part_number)
+      part = self.find(:first, :conditions => ["part_number = :part_number OR oem_part_number = :part_number", { :part_number => part_number }])
+      raise ActiveRecord::RecordNotFound unless part
+      part
+    end
+    
     def find_makes_by_filter(attrs={})
       make_id         = attrs.delete(:make)
       unit_id         = attrs.delete(:unit)
