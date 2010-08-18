@@ -9,6 +9,12 @@ class CartController < ApplicationController
   def checkout
   end
   
+  def add_speed_order
+    @cart = find_cart
+    @cart.add_from_speed_order(params[:speed_order])
+    redirect_to(cart_path)
+  end
+  
   def add_multiple
     @cart = find_cart
     @cart.add_multiple_parts(params[:cart])

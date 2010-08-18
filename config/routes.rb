@@ -49,6 +49,8 @@ ActionController::Routing::Routes.draw do |map|
     page.connect '/page/:template', :action => 'static_page'
   end
   
+  map.add_speed_order '/speed-order/add', :controller => 'cart', :action => 'add_speed_order'
+  
   map.resource :user_session
   map.resource :account, :controller => "users"
   map.resource :contact, :as => 'contact-us'

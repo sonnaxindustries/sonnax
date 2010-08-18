@@ -70,6 +70,9 @@ class PagesController < ApplicationController
   end
   
   def speed_order
+    @cart = find_cart
+    @speed_order = SpeedOrder.new
+    @product_line_options = ProductLine.speed_order_options
   end
   
   def static_page
