@@ -1,2 +1,8 @@
-<h1>Admin::Parts#new</h1>
-<p>Find me in app/views/admin/parts/new.html.erb</p>
+<h1>Add a new Part</h1>
+<% form_for :part, @part, :url => admin_parts_path, :html => { :multipart => true } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_parts_path, :class => 'cancel' %>
+  </div>
+<% end %>

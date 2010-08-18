@@ -1,2 +1,33 @@
-<h1>Admin::Parts#index</h1>
-<p>Find me in app/views/admin/parts/index.html.erb</p>
+<div id="parts">
+  <h1>Parts</h1>
+  <div class="add-new"><%= link_to 'Add New Part', new_admin_part_path, :class => 'create' %></div>
+  <% if @parts.any? %>
+    <table cellpadding="0" cellspacing="0" summary="Listing of Parts" width="100%">
+      <thead>
+        <tr>
+          <th>Part Number</th>
+          <th>Name</th>
+          <th>Item</th>
+          <th class="options"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @parts.each do |part| %>
+        <tr id="<%= dom_id(part) %>">
+          <td><%= part.part_number %></td>
+          <td><%= part.name %></td>
+          <td><%= part.item %></td>
+          <td class="options">
+            <ul>
+              <li><%= link_to 'Edit', edit_admin_part_path(part), :class => 'edit' %></li>
+            </ul>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate(@parts, :class => 'digg_pagination') %>
+  <% else %>
+  <p>There are no Parts.</p>
+  <% end %>
+</div>

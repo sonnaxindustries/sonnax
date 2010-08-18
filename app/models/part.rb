@@ -2,15 +2,15 @@ class Part < ActiveRecord::Base
   belongs_to :part_type
   belongs_to :product_line
   
-  has_many :line_items
+  has_many :line_items, :dependent => :destroy
   
   has_many :part_attributes, :dependent => :destroy
   
   has_many :part_assets, :dependent => :destroy
   has_many :assets, :through => :part_assets
   
-  has_many :part_photos, :dependent => :destroy
-  has_many :photos, :through => :part_photos
+  # has_many :part_photos, :dependent => :destroy
+  # has_many :photos, :through => :part_photos
   
   has_many :unit_components, :dependent => :destroy
   has_many :units, :through => :unit_components

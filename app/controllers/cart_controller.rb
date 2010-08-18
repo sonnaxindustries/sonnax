@@ -1,3 +1,4 @@
+#TODO: Refactor
 class CartController < ApplicationController
   before_filter :retrieve_cart, :only => [:show, :checkout]
   before_filter :retrieve_shipping_options, :only => [:show, :checkout]

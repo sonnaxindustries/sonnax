@@ -1,2 +1,11 @@
-<h1>Admin::Parts#edit</h1>
-<p>Find me in app/views/admin/parts/edit.html.erb</p>
+<h1>Edit: <%= @part.part_number %></h1>
+<ul>
+  <li><%= link_to 'Delete', admin_part_path(@part), :class => 'destroy-html', :method => :delete, :confirm => 'Are you sure you want to destroy this Part?' %></li>
+</ul>
+<% form_for :part, @part, :url => admin_part_path(@part), :html => { :multipart => true, :method => :put } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_parts_path, :class => 'cancel' %>
+  </div>
+<% end %>

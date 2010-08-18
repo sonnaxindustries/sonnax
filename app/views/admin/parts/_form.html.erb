@@ -1,0 +1,85 @@
+<fieldset>
+  <legend>Part Information</legend>
+  
+  <div class="text name">
+    <%= f.error_message_on :name %>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="checkbox is-featured">
+    <%= f.error_message_on :is_featured %>
+    <%= f.check_box :is_featured %> <%= f.label :is_featured, 'Make this a featured part' %>
+  </div>
+  
+  <div class="select product-line">
+    <%= f.error_message_on :product_line_id %>
+    <%= f.label :product_line_id, 'Product Line' %>
+    <%= f.select :product_line_id, @product_line_options %>
+  </div>
+  
+  <div class="select part-type">
+    <%= f.error_message_on :part_type_id %>
+    <%= f.label :part_type_id, 'Part Type' %>
+    <%= f.select :part_type_id, @part_type_options %>
+  </div>
+  
+  <div class="text part-number">
+    <%= f.error_message_on :part_number %>
+    <%= f.label :part_number, 'Part Number' %>
+    <%= f.text_field :part_number %>
+  </div>
+  
+  <div class="text oem-part-number">
+    <%= f.error_message_on :oem_part_number %>
+    <%= f.label :oem_part_number, 'OEM Part Number' %>
+    <%= f.text_field :oem_part_number %>
+  </div>
+  
+  <div class="textarea description">
+    <%= f.error_message_on :description %>
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, :size => '50x10' %>
+  </div>
+  
+  <div class="textarea notes">
+    <%= f.error_message_on :notes %>
+    <%= f.label :notes, 'Notes' %>
+    <%= f.text_area :notes, :size => '50x10' %>
+  </div>
+  
+  <div class="text item">
+    <%= f.error_message_on :item %>
+    <%= f.label :item, 'Item' %>
+    <%= f.text_field :item %>
+  </div>
+  
+  <div class="text price money">
+    <%= f.error_message_on :price %>
+    <%= f.label :price, 'Price' %>
+    $<%= f.text_field :price, :size => 5 %>
+  </div>
+  
+  <div class="text weight">
+    <%= f.error_message_on :weight %>
+    <%= f.label :weight, 'Weight' %>
+    <%= f.text_field :weight, :size => 5 %>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Reference Code Information</legend>
+  
+  <div class="text ref-code">
+    <%= f.error_message_on :ref_code %>
+    <%= f.label :ref_code, 'Reference Code' %>
+    <%= f.text_field :ref_code %>
+  </div>
+  
+  <div class="text ref-code-sort">
+    <%= f.error_message_on :ref_code_sort %>
+    <%= f.label :ref_code_sort, 'Reference Code Sort' %>
+    <%= f.text_field :ref_code_sort, :size => 2 %>
+  </div>
+  
+</fieldset>
