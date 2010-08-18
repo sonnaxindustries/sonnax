@@ -1,5 +1,23 @@
 <div id="parts">
   <h1>Parts</h1>
+  
+  <div class="search-box group">
+    <% form_tag admin_search_parts_path, :method => :get do %>
+      <fieldset>
+        <legend>Search</legend>
+        
+        <div class="text search-parts search">
+          <%= label_tag :q, 'Search Term' %>
+          <%= text_field_tag :q, params[:q] %>
+        </div>
+        
+        <div class="submit">
+          <%= submit_tag 'Search' %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+  
   <div class="add-new"><%= link_to 'Add New Part', new_admin_part_path, :class => 'create' %></div>
   <% if @parts.any? %>
     <table cellpadding="0" cellspacing="0" summary="Listing of Parts" width="100%">

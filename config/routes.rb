@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
     
     admin.search_units '/search/units/', :controller => 'units', :action => 'search'
     admin.search_distributors '/search/distributors/', :controller => 'distributors', :action => 'search'
+    admin.search_parts '/search/parts', :controller => 'parts', :action => 'search'
     admin.search_reference_figures '/search/reference-figures/', :controller => 'reference_figures', :action => 'search'
     admin.search_publication_titles '/search/publication-titles/', :controller => 'publication_titles', :action => 'search'
   end

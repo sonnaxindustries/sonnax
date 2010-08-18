@@ -6,6 +6,11 @@ class Admin::PartsController < Admin::BaseController
   def index
     @parts = Admin::Part.list(params)
   end
+  
+  def search
+    @parts = Admin::Part.search(params[:q], :page => params[:page])
+    render :action => :index
+  end
 
   def new
     @part = Admin::Part.new
