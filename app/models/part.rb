@@ -40,7 +40,7 @@ class Part < ActiveRecord::Base
   
   class << self
     def find_single!(part_number)
-      part = self.find(:first, :conditions => ["part_number = :part_number OR oem_part_number = :part_number", { :part_number => part_number }])
+      part = self.find(:first, :conditions => ["(part_number = :part_number AND part_number <> '') OR (oem_part_number = :part_number AND oem_part_number <> '')", { :part_number => part_number }])
       raise ActiveRecord::RecordNotFound unless part
       part
     end
