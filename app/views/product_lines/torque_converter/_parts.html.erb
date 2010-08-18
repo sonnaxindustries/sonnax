@@ -1,5 +1,5 @@
 <% if @unit %>
-  <%#= image_tag @unit.reference_figure.avatar.url(:original) %>
+  <%= image_tag @unit.reference_figure.avatar.url(:medium) %>
 <% end %>
 
 <% form_for :cart, @cart, :url => add_multiple_cart_path do |f| %>
@@ -26,7 +26,8 @@
           <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part) %></td>
           <td class="quantity">
             <% if part.part_number? %> 
-              <%= text_field_tag "cart[#{part.id}]", '', :size => 2 %>
+              <%= hidden_field_tag "cart[parts][#{i}][][part_number]", part.part_number %>
+              <%= text_field_tag "cart[parts][#{i}][][quantity]", '', :size => 2 %>
             <% end %>
           </td>
           <% end %>

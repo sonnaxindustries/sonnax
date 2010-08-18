@@ -1,13 +1,13 @@
 class CartItem
-  attr_reader :part, :quantity
+  attr_reader :part, :quantity, :extra_quantity
   
   def initialize(part, quantity = 1)
     @part = part
-    @quantity = quantity.to_i
+    @quantity = quantity
   end
   
-  def increment_quantity!
-    @quantity += 1
+  def increment_quantity!(by = 1)
+    @quantity += by
   end
   
   def name

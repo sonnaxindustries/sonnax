@@ -7,6 +7,7 @@ class PartAsset < ActiveRecord::Base
   validates_uniqueness_of :part_id, :scope => [:part_asset_type_id, :asset_id]
   
   named_scope :photos, :conditions => { :part_asset_type_id => PartAssetType.photo }
+  named_scope :resources, :conditions => ["part_asset_type_id NOT IN (?)", PartAssetType.photo]
   
   def validate
     self.errors.add(:part, 'Please provide a Part ID') unless self.part_id?

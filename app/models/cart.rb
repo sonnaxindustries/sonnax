@@ -19,24 +19,35 @@ class Cart
     end
   end
   
-  def add_from_speed_order(parts_hash)
-    parts_hash.each do |row|
-      attrs = row[1]
-      if !attrs['quantity'].blank?
-        part = Part.find_by_part_number(attrs['part_number'])
-        if part
-          self.add_part(part, attrs['quantity'])
+  def add_multiple_speed_order_parts(parts_hash)
+    product_line_id = parts_hash['product_line_id'].to_i
+    part_orders = parts_hash['parts'].values.flatten
+    
+    part_orders.each do |part|
+      quantity = part['quantity'].to_i
+      part_number = part['part_number']
+
+      if quantity > 0
+        part_record = Part.find_by_part_number_and_product_line_id(part_number, product_line_id)
+        
+        if part_record
+          self.add_part(part_record, quantity)
         end
       end
     end
   end
   
   def add_multiple_parts(parts_hash)
-    parts_hash.each do |part|
-      if !part[1].blank?
-        part_record = Part.find(part[0])
+    part_orders = parts_hash['parts'].values.flatten
+    
+    part_orders.each do |part|
+      quantity = part['quantity'].to_i
+      part_number = part['part_number']
+
+      if quantity > 0
+        part_record = Part.find_by_part_number(part_number)
         if part_record
-          self.add_part(part_record, part[1].to_i)
+          self.add_part(part_record, quantity)
         end
       end
     end
@@ -49,7 +60,7 @@ class Cart
   def add_part(part, quantity = 1)
     current_part = @parts.find { |item| item.part == part }
     if current_part
-      current_part.increment_quantity!
+      current_part.increment_quantity!(quantity.to_i)
     else
       @parts << CartItem.new(part, quantity.to_i)
     end

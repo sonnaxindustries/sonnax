@@ -13,8 +13,8 @@
   <div id="col-2">
     <div class="resources">
       <h2>Resources</h2>
-      <% if @part.part_assets.any? %>
-        <% @part.part_assets.each do |pa| %>
+      <% if @part.part_assets.resources.any? %>
+        <% @part.part_assets.resources.each do |pa| %>
         <li><%= link_to pa.asset.asset_file_name, pa.asset.asset.url %> (<%= pa.part_asset_type.name %>)</li>
         <% end %>
       <% end %>

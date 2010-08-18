@@ -24,8 +24,8 @@
       <tbody>
         <% (1..10).each do |row| %>
         <tr>
-          <td><%= text_field_tag "speed_order[#{row}][part_number]", '', :size => 35 %></td>
-          <td><%= text_field_tag "speed_order[#{row}][quantity]", '', :size => 2 %></td>
+          <td><%= text_field_tag "speed_order[parts][#{row}][][part_number]", '', :size => 35 %></td>
+          <td><%= text_field_tag "speed_order[parts][#{row}][][quantity]", '', :size => 2 %></td>
         </tr>
         <% end %>
       </tbody>

@@ -11,7 +11,7 @@ class CartController < ApplicationController
   
   def add_speed_order
     @cart = find_cart
-    @cart.add_from_speed_order(params[:speed_order])
+    @cart.add_multiple_speed_order_parts(params[:speed_order])
     redirect_to(cart_path)
   end
   

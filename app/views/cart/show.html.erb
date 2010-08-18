@@ -2,6 +2,7 @@
   <h1>Shopping Cart</h1>
   
   <% if @cart.parts? %>
+  <p><%= link_to 'Empty Shopping Cart', empty_cart_cart_path, :confirm => 'Are you sure you want to empty your cart?' %></p>
     
     <% form_for @order, :url => checkout_cart_path do |f| %>
     <div class="cart-container">
