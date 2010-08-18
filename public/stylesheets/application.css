@@ -1301,6 +1301,9 @@ div#quick-search div ul li {
   background: transparent url('/images/icons/bullet_blue.png') 0 50% no-repeat;
   padding-left: 18px;
 }
+div#quick-search div.search-parts form div.submit input {
+  float: left;
+}
 /* =NO SEARCH RESULTS */
 div#no-search-results h2 {
   font-size: 14px;
