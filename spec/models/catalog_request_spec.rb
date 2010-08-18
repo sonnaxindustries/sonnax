@@ -2,7 +2,11 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe CatalogRequest do
   before(:each) do
-    @catalog_request = Factory.build(:catalog_request, :catalogs => [1])
+    @catalog_request = Factory.build(:catalog_request, :catalogs_hash => ['Testing'])
+  end
+  
+  after(:each) do
+    @catalog_request.destroy
   end
 
   it "should create a new instance given valid attributes" do
@@ -11,6 +15,12 @@ describe CatalogRequest do
   
   it "should contain at least 1 catalog" do
     CatalogRequest.catalogs.should_not be_empty
+  end
+  
+  it "should serialize the storage of the catalogs in an array" do
+    @catalog_request.catalogs_hash = ['First Catalog', 'Second Catalog']
+    @catalog_request.save
+    @catalog_request.catalogs_hash.should == ['First Catalog', 'Second Catalog']
   end
   
   context 'Validations' do
@@ -65,7 +75,7 @@ describe CatalogRequest do
     end
     
     it "should not be valid without at least 1 catalog selected" do
-      @catalog_request.catalogs = []
+      @catalog_request.catalogs_hash = []
       @catalog_request.should_not be_valid
     end
   end

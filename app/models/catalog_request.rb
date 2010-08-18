@@ -1,11 +1,6 @@
 require 'ostruct'
 class CatalogRequest < ActiveRecord::Base  
-  attr_accessor :catalogs, :catalogs_collection
-  
-  def initialize(attributes={})
-    self.catalogs_collection = []
-    super(attributes)
-  end
+  serialize :catalogs_hash, Array
   
   class << self
     def catalogs
@@ -39,22 +34,16 @@ class CatalogRequest < ActiveRecord::Base
     self.errors.add(:country, 'Please provide your country') unless self.country?
     self.errors.add(:phone_number, 'Please provide your phone number') unless self.phone_number?
     self.errors.add(:email_address, 'Please provide your email address') unless self.email_address?
-    self.errors.add(:catalogs, 'Please select at least one catalog') unless self.catalogs?
-  end
-  
-  def catalogs=(val)
-    if val.blank?
-      self.catalogs_collection = []
-    else
-      self.catalogs_collection << val unless self.catalogs_collection.include?(val)
-    end
-  end
-  
-  def catalogs
-    self.catalogs_collection.flatten.compact
+    self.errors.add(:catalogs_hash, 'Please select at least one catalog') unless self.catalogs?
   end
   
   def catalogs?
-    self.catalogs.any?
+    !self.catalogs_hash.blank?
+  end
+  
+  alias :catalogs_hash? :catalogs?
+  
+  def after_initialize
+    self.catalogs_hash = [] unless self.catalogs_hash?
   end
 end

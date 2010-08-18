@@ -8,6 +8,14 @@ class Notification < ActionMailer::Base
     body        solenoid_program_presenter.body
   end
   
+  def catalog_request(catalog_request_presenter)
+    subject     catalog_request_presenter.subject
+    recipients  catalog_request_presenter.recipients
+    from        catalog_request_presenter.from
+    sent_on     catalog_request_presenter.sent_on
+    body        catalog_request_presenter.body
+  end
+  
   def contact(contact_presenter)
     subject     contact_presenter.subject
     recipients  contact_presenter.recipients

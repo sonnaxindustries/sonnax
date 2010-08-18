@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100817015251) do
+ActiveRecord::Schema.define(:version => 20100818023553) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20100817015251) do
     t.string   "email_address",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "catalogs_hash"
   end
 
   add_index "catalog_requests", ["email_address"], :name => "index_catalog_requests_on_email_address"

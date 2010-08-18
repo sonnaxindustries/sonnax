@@ -1,0 +1,29 @@
+<h1>Catalog Request</h1>
+<p>Received: <%= @catalog_request.created_at.to_s(:month_day_year) %></p>
+
+<h2>Visitor Information</h2>
+<p>Name: <%= @catalog_request.name %></p>
+<p>Company: <%= @catalog_request.company %></p>
+<p>Type of Business: <%= @catalog_request.type_of_business %></p>
+<p>Address: <%= @catalog_request.address %></p>
+<p>City: <%= @catalog_request.city %></p>
+<p>State: <%= @catalog_request.state %></p>
+<p>Postal Code: <%= @catalog_request.postal_code %></p>
+<p>Country: <%= @catalog_request.country %></p>
+<p>Telephone: <%= @catalog_request.phone_number %></p>
+<p>E-Mail: <%= @catalog_request.email_address %></p>
+
+
+<h2>Catalog Information</h2>
+<p>I would like to receive the following catalogs:</p>
+<ul>
+<% @catalog_request.catalogs_hash.each do |catalog| %>
+  <li><%= catalog %></li>
+<% end %>
+</ul>
+
+
+<hr>
+<p>Signup to receive Sonnax new product e-Nouncements at <%= link_to 'www.sonnax.com/termsandconditions.html', 'http://www.sonnax.com/termsandconditions.html' %></p>
+
+<p>CONFIDENTIALITY NOTICE: This e-mail transmission, and any documents, files or previous e-mail message attached to it may contain confidential and proprietary material for the sole use of the intended recipient (s). Do not read this e-mail if you are not the intended recipient. Any review, use, distribution or disclosure by others is strictly prohibited. If you are not the intended recipient (or authorized to receive for the recipient) you are hereby notified that any disclosure, copying, distribution or use of any of the information contained in or attached to this transmission is STRICTLY PROHIBITED and you should delete all copies of this message and its attachments without reading or saving in any manner.</p>

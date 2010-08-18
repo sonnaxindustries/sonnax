@@ -1,0 +1,26 @@
+Catalog Request
+Received: <%= @catalog_request.created_at.to_s(:month_day_year) %>
+
+Visitor Information
+Name: <%= @catalog_request.name %>
+Company: <%= @catalog_request.company %>
+Type of Business: <%= @catalog_request.type_of_business %>
+Address: <%= @catalog_request.address %>
+City: <%= @catalog_request.city %>
+State: <%= @catalog_request.state %>
+Postal Code: <%= @catalog_request.postal_code %>
+Country: <%= @catalog_request.country %>
+Telephone: <%= @catalog_request.phone_number %>
+E-Mail: <%= @catalog_request.email_address %>
+
+
+Catalog Information
+I would like to receive the following catalogs:
+<% @catalog_request.catalogs_hash.each do |catalog| %>
+  <%= catalog %>
+<% end %>
+
+
+Signup to receive Sonnax new product e-Nouncements at http://www.sonnax.com/termsandconditions.html
+
+CONFIDENTIALITY NOTICE: This e-mail transmission, and any documents, files or previous e-mail message attached to it may contain confidential and proprietary material for the sole use of the intended recipient (s). Do not read this e-mail if you are not the intended recipient. Any review, use, distribution or disclosure by others is strictly prohibited. If you are not the intended recipient (or authorized to receive for the recipient) you are hereby notified that any disclosure, copying, distribution or use of any of the information contained in or attached to this transmission is STRICTLY PROHIBITED and you should delete all copies of this message and its attachments without reading or saving in any manner.
