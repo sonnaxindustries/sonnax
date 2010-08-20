@@ -69,6 +69,7 @@ class PartsController < ApplicationController
   
   def recent
     @parts = @product_line.parts.recent
+    
     template_file = "parts/index_by_product_line/recent/%s" % [@product_line.url_friendly.underscore]
     render template_file
   end
