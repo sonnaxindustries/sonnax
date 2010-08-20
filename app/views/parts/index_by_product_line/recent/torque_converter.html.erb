@@ -1,16 +1,17 @@
-<h1>New Parts for <%= @product_line.name %></h1>
-
-<% if @parts.any? %>
-<table cellpadding="0" summary="Listing of Parts for <%= @product_line.name %>">
-  <thead>
-    <th>Part Number</th>
-  </thead>
-  <tbody>
-    <% @parts.each do |part| %>
-    <tr>
-      <td><%= link_to part.part_number, product_line_part_path(@product_line.url_friendly, part) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
+<div id="product-line" class="torque-converter">
+  <h1>New Parts for <%= @product_line.name %></h1>
+  
+  <div class="options group">
+    <ul>
+      <li><%= link_to 'Speed Order Form', speed_order_path %></li>
+      <li><%= mail_to 'tcnew@sonnax.com', 'Request New Parts', :subject => 'New Torque Converter Product Request', :class => 'email' %></li>
+      <li><%= link_to 'Details Section', '/downloads/torque-converter/details.pdf', :class => 'pdf' %></li>
+    </ul>
+  </div>
+  
+  <% if @parts.any? %>
+  <%= render :partial => 'product_lines/torque_converter/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+  <% else %>
+  <%= render :partial => 'product_lines/torque_converter/no_parts', :locals => { :product_line => @product_line } %>
+  <% end %>
+</div>

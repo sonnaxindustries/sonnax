@@ -12,13 +12,13 @@
       <% parts.each do |part| %>
       <tr>
         <td class="product-line"><%= product_line.name %></td>
-        <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part) %></td>
+        <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part), :class => part_class(part) %></td>
         <td class="description"><%= part.description %></td>
         <td class="notes"><%= part.notes %></td>
         <td class="make"><%= part.make.name if part.make? %></td>
         <td class="units">
           <% if part.units.any? %>
-            <%= part.units.map(&:name).join(', ') %>
+            <%= part.units.map { |u| link_to(u.name, '#') }.join(', ') %>
           <% end %>
         </td>
       </tr>

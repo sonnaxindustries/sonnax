@@ -1,16 +1,11 @@
-<h1>New Parts for <%= @product_line.name %></h1>
+<div id="product-line" class="high-performance-transmission">
+  <h1>New Parts for <%= @product_line.name %></h1>
+  <p>This list will change as new product arrives so please check back frequently.</p>
 
-<% if @parts.any? %>
-<table cellpadding="0" summary="Listing of Parts for <%= @product_line.name %>">
-  <thead>
-    <th>Part Number</th>
-  </thead>
-  <tbody>
-    <% @parts.each do |part| %>
-    <tr>
-      <td><%= link_to part.part_number, product_line_part_path(@product_line.url_friendly, part) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
+  
+  <% if @parts.any? %>
+    <%= render :partial => 'product_lines/high_performance_transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+  <% else %>
+    <%= render :partial => 'product_lines/high_performance_transmission/no_parts', :locals => { :product_line => @product_line } %>
+  <% end %>
+</div>

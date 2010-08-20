@@ -1,22 +1,6 @@
-$(document).ready(function() {
-  $('#distributors table tr').hover(
-    function() {
-      $(this).addClass('table-hover');
-    },
-    function() {
-      $(this).removeClass('table-hover');
-    });
-})
 
-$(document).ready(function() {
-  $('div#masthead ul li').mouseover(function() {
-    $(this).addClass('sfhover');
-  });
-  
-  $('div#masthead ul li').mouseout(function() {
-    $(this).removeClass('sfhover');
-  });
-  
+
+$(document).ready(function() {  
   // CART
   $('div#cart ul.cart-options a.update').live('click', function(e) {
     var $elem = $(this);
@@ -47,21 +31,6 @@ $(document).ready(function() {
     e.preventDefault();
   })
   // END CART
-  
-  
-  $('a[href^="http://"]:not("[href*=sonnax.com]"), a[rel="external"], a[href$="pdf"]').click(function(e) {
-    //var pageInfo = $(this).attr('href') + " (" + $(this).attr('title') + ")";
-    //pageTracker._trackEvent('Outgoing', 'ClickedExternalLink', pageInfo);
-    window.open($(this).attr('href'));
-    e.preventDefault();
-  })
-  
-  $('a[href^="mailto:"]').click(function(e) {
-    pageTracker._trackEvent('Email', 'ClickedMailtoLink', $(this).attr('href').replace('mailto:', ''));
-  })
-  
-  $('a[href^="mailto:"]').addClass('link-email');
-  $('a[href^="http://"]:not("[href*=within3.com]"), a[rel="external"]').addClass('link-external');
   
   //-- Technical Library
   $.tablesorter.addParser({

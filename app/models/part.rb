@@ -152,7 +152,7 @@ class Part < ActiveRecord::Base
       
       select      = "p.id, pl.name, p.part_number, p.description, p.notes, p.item, u.name as Unit, uc.code_on_reference_figure, m.name AS Make, p.part_type_id, p.ref_code, p.ref_code_sort"
       from        = "parts p"
-      order       = "p.part_number + 0"
+      order       = "CAST(uc.code_on_reference_figure AS DECIMAL(10,1)) DESC, p.part_number + 0"
       joins       = []
       conditions  = []
       
