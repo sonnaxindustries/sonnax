@@ -20,7 +20,7 @@ class ProductLine < ActiveRecord::Base
     def speed_order_options
       self.find(:all, 
                 :conditions => ["url_friendly IN (?)", %w( allison transmission torque-converter )],
-                :order => 'name ASC').map { |r| [r.name, r.id] }
+                :order => 'name ASC').map { |r| [r.unescaped_name, r.id] }
     end
     
     def all_with_parts
@@ -70,6 +70,10 @@ class ProductLine < ActiveRecord::Base
     def list
       self.active.sorted
     end
+  end
+  
+  def unescaped_name
+    CGI.unescapeHTML(self.name)
   end
   
   def associated_units(attrs={})
