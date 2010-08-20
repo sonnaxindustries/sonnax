@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|  
+
   map.namespace(:admin) do |admin|
     admin.dashboard '/', :controller => 'base', :action => 'dashboard'
     admin.resources :product_lines, :as => 'product-lines'
@@ -109,8 +110,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :product_lines, :as => 'product-lines' do |pl|
     pl.resources :parts, :collection => { :recent => :get, :search => :get, :filter => :get }
   end
-  
-  
   
   map.search_single_part '/search-by-part-number', :controller => 'parts', :action => 'search_single'
   
