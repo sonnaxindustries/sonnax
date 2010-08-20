@@ -1299,6 +1299,10 @@ div.torque-converter table.parts th.part-number {
   width: 105px;
   padding-right: 4px;
 }
+div.torque-converter div.recent table.parts th.part-number,
+div.torque-converter div.recent table.parts td.part-number {
+  padding-left: 10px;
+}
 
 /* =TRANSMISSION PARTS */
 div.transmission table.parts th.product-line,

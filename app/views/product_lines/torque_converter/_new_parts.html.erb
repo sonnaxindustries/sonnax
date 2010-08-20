@@ -1,6 +1,5 @@
-
 <% form_for :cart, @cart, :url => add_multiple_cart_path do |f| %>
-<div id="<%= dom_id(product_line, :parts) %>" class="parts search group">
+<div id="<%= dom_id(product_line, :parts) %>" class="parts search recent group">
   <table cellpadding="0" class="parts" summary="Listing of Parts for <%= product_line.name %>">
     <thead>
       <th class="part-number">Part Number</th>

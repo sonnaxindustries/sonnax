@@ -12,7 +12,7 @@
     
     <div class="select publication-id">
       <%= f.label :product_line_id, 'Select product line for this section of your order' %>
-      <%= f.select :product_line_id, @product_line_options %>
+      <%= f.select :product_line_id, @product_line_options, :selected => @selected_product_line.id %>
     </div>
     
     <table cellpadding="0" cellspacing="0" width="50%" class="base">

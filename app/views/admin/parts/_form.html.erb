@@ -12,6 +12,11 @@
     <%= f.check_box :is_featured %> <%= f.label :is_featured, 'Make this a featured part' %>
   </div>
   
+  <div class="checkbox is-new_item">
+    <%= f.error_message_on :is_new_item %>
+    <%= f.check_box :is_new_item %> <%= f.label :is_new_item, 'Is this a new item?' %>
+  </div>
+  
   <div class="select product-line">
     <%= f.error_message_on :product_line_id %>
     <%= f.label :product_line_id, 'Product Line' %>
