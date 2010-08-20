@@ -82,7 +82,8 @@ class PartsController < ApplicationController
       params[:q]
     end
     
-    @parts = Part.search(search_term, :with => { :product_line_id => @product_line.id })
+    #@parts = Part.search(search_term, :with => { :product_line_id => @product_line.id })
+    @parts = Part.search_by_filter(search_term, :product_line => @product_line)
     
     @makes = @product_line.associated_makes
     @units = @product_line.associated_units

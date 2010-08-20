@@ -73,6 +73,7 @@ class PagesController < ApplicationController
     @cart = find_cart
     @speed_order = SpeedOrder.new
     @product_line_options = ProductLine.speed_order_options
+    @selected_product_line = ProductLine.torque_converter
   end
   
   def static_page
