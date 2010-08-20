@@ -5,5 +5,6 @@ module ApplicationHelper
     else
       'regular'
     end
+    class_string
   end
 end
