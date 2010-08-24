@@ -70,7 +70,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :cart, :controller => 'cart',  :member => { :thanks => :get, :add => :post, :empty_cart => :get, :checkout => :post, :add_multiple => :post, :remove => :delete, :update => :put }
   map.resource :solenoid, :as => 'solenoids', :member => 'thanks'
   map.resources :makes
-  map.resources :distributors
+  map.resources :distributors, :collection => { :filter => :get }
   map.resources :reference_figures, :as => 'reference-figures'
   map.resources :units
   map.resources :parts
