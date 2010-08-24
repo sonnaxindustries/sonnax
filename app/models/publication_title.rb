@@ -76,6 +76,23 @@ class PublicationTitle < ActiveRecord::Base
                :order => 'publication_titles.published_at DESC')
     end
   end
+  
+  def html_filename
+    "%s.html" % [self.spreadsheet_id.to_s]
+  end
+  
+  def html_file_paths
+    [File.join(Rails.root, 'public', 'system', 'pages', 'tc_articles', self.html_filename), File.join(Rails.root, 'public', 'system', 'pages', 'ts_articles', self.html_filename)]
+  end
+  
+  def html_file?
+    self.html_file_paths.any? { |path| File.exists?(path) }
+  end
+  
+  def html_file
+    filename = self.html_file_paths.select { |path| File.exists?(path) }.first
+    File.read(filename)
+  end
 
   def product_lines?
     self.product_lines.any?

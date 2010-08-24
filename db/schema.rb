@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100818050400) do
+ActiveRecord::Schema.define(:version => 20100824215555) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -360,6 +360,7 @@ ActiveRecord::Schema.define(:version => 20100818050400) do
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "spreadsheet_id"
   end
 
   add_index "publication_titles", ["url_friendly"], :name => "index_publication_titles_on_url_friendly", :unique => true
