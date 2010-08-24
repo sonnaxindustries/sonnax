@@ -2,6 +2,7 @@
 class CartController < ApplicationController
   before_filter :retrieve_cart, :only => [:show, :checkout]
   before_filter :retrieve_shipping_options, :only => [:show, :checkout]
+  before_filter :retrieve_default_shipping_option, :only => [:show, :checkout]
   
   def show
     @order = Order.new
@@ -104,5 +105,9 @@ private
   
   def retrieve_shipping_options
     @shipping_types = Order.shipping_method_options
+  end
+  
+  def retrieve_default_shipping_option
+    @default_shipping_option = Order.default_shipping_option
   end
 end

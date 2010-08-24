@@ -8,9 +8,14 @@ class Order < ActiveRecord::Base
                        :ups_2day    => 'UPS 2nd Day',
                        :ups_next    => 'UPS Next Day'
                       }
+
   class << self
     def shipping_method_options
-      self::SHIPPING_METHODS.map { |f| [f[1], f[0]] }.reverse
+      self::SHIPPING_METHODS.map { |f| [f[1], f[0].to_s] }.reverse
+    end
+    
+    def default_shipping_option
+      'ups_ground'
     end
   end
   

@@ -80,7 +80,7 @@
       <div class="text shipping-method">
         <%= f.error_message_on :shipping_method %>
         <%= f.label :shipping_method, 'Shipping Method' %>
-        <%= f.select :shipping_method, @shipping_types %>
+        <%= f.select :shipping_method, @shipping_types, :selected => @default_shipping_option %>
       </div>
       
       <div class="text round-quantities">
