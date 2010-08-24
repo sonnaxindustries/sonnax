@@ -1,5 +1,21 @@
 <div id="distributors">
   <h1>Distributors</h1>
+  
+  <% form_for :country, @country_form_presenter, :url => @country_form_presenter.url, :html => { :method => :get } do |f| %>
+  <fieldset>
+    <legend>Filter by Country</legend>
+    
+    <div class="select country">
+      <%= f.label :country_code, 'Locate a Transmission Distributor' %>
+      <%= f.select :country_code, @country_form_presenter.country_options, :selected => @country_form_presenter.selected %>
+    </div>
+    
+    <div class="submit">
+      <%= f.submit 'Go' %>
+    </div>
+  </fieldset>
+  <% end %>
+  
   <% if @distributors.any? %>
     <table cellpadding="0" cellspacing="0" summary="Listing of Distributors" width="100%">
       <thead>

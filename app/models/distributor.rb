@@ -4,6 +4,8 @@ class Distributor < ActiveRecord::Base
   named_scope :by_country, lambda { |name| { :conditions => ["country = ?", name] }}
   named_scope :by_city, lambda { |name| { :conditions => ["city = ?", name] }}
   
+  DEFAULT_COUNTRY_OPTION = 'USA'
+  
   define_index do
     indexes :name, :sortable => true
     indexes country, :sortable => true
@@ -15,6 +17,10 @@ class Distributor < ActiveRecord::Base
   end
   
   class << self
+    def country_options
+      self.countries.map { |c| [c.country, c.country] }
+    end
+    
     def countries
       self.find(:all, :select => 'DISTINCT(country)', :order => 'country ASC')
     end
