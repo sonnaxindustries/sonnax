@@ -36,31 +36,31 @@ class ProductLine < ActiveRecord::Base
     end
     
     def transmission
-      self.find_by_url_friendly!('transmission')
+      self.find_by_type!('ProductLines::Transmission')
     end
     
     def high_performance_transmission
-      self.find_by_url_friendly!('high-performance-transmission')
+      self.find_by_type!('ProductLines::HighPerformanceTransmission')
     end
     
     def torque_converter
-      self.find_by_url_friendly!('torque-converter')
+      self.find_by_type!('ProductLines::Converter')
     end
     
     def ring_gears
-      self.find_by_url_friendly!('ring-gears')
+      self.find_by_type!('ProductLines::RingGear')
     end
     
     def driveline
-      self.find_by_url_friendly!('driveline')
+      self.find_by_type!('ProductLines::Driveline')
     end
     
     def power_train_savers
-      self.find_by_url_friendly!('power-train-savers')
+      self.find_by_type!('ProductLines::PowerTrainSaver')
     end
     
     def allison
-      self.find_by_url_friendly!('allison')
+      self.find_by_type!('ProductLines::Allison')
     end
     
     def detail!(id)
@@ -106,6 +106,11 @@ class ProductLine < ActiveRecord::Base
     self.units.any?
   end
   
+  def generate_type!
+    type_name = self.name.extend(Helper::String).to_type_name
+    "ProductLines::%s" % [type_name]
+  end
+  
   def generate_url_friendly!
     formatted_friendly = self.name.extend(Helper::String).to_url_friendly
     return formatted_friendly if !self.class.exists?(:url_friendly => formatted_friendly)
@@ -115,6 +120,7 @@ class ProductLine < ActiveRecord::Base
   end
   
   def before_create
+    self.type = self.generate_type!
     self.url_friendly = self.generate_url_friendly!
   end
 end
