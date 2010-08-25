@@ -21,7 +21,8 @@ class AllisonPartsController < ApplicationController
     @units = @product_line.units
     @make = Make.allison
     @parts = []
-    @make, @unit = nil
+    @make = nil
+    @unit = nil
 
     params[:filter].reverse_merge!(:product_line => @product_line) if params[:filter]
     params[:filter].reverse_merge!(:make => Make.find_by_url_friendly('allison')) if params[:filter]
@@ -60,6 +61,40 @@ class AllisonPartsController < ApplicationController
   end
   
   def search
+    @makes = []
+    @units = @product_line.units
+    @make = Make.allison
+    @parts = []
+    @make = nil
+    @unit = nil
+    
+    search_term = if params[:search] && !params[:search][:q].blank?
+      params[:search][:q]
+    elsif params[:q]
+      params[:q]
+    end
+    
+    #@parts = Part.search(search_term, :with => { :product_line_id => @product_line.id })
+    @parts = Part.search_by_filter(search_term, :product_line => @product_line)
+    
+    @makes = @product_line.associated_makes
+    @units = @product_line.associated_units
+    
+    presenter_object = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
+    @form_presenter = presenter_object.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units)
+    
+    search_path = search_product_line_parts_path(@product_line.url_friendly)
+    @search_form_presenter = SearchFormPresenter.new(:search_terms => search_term, :url => search_path)
+    
+    template_file = "parts/index_by_product_line/search/%s" % [@product_line.url_friendly.underscore]
+    
+    respond_to do |wants|
+      wants.html do
+        render template_file
+      end
+      wants.json do
+      end
+    end
   end
   
   def recent

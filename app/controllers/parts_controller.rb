@@ -16,7 +16,7 @@ class PartsController < ApplicationController
     render template_file
   end
   
-  def filter
+  def filter    
     @makes = @product_line.associated_makes
     @units = []
     @parts = []
@@ -58,9 +58,11 @@ class PartsController < ApplicationController
       
       wants.json do
         parts_template_file = "product_lines/%s/parts.html.erb" % [@product_line.url_friendly.underscore]
+        no_parts_template_file = "product_lines/%s/no_parts.html.erb" % [@product_line.url_friendly.underscore]
         render :json => {
           :dom_id => dom_id(@product_line, :parts),
           :unit_select_options => render_to_string(:partial => 'product_lines/unit_options.html.erb', :locals => { :unit_options => @form_presenter.unit_options }),
+          :no_parts_partial => render_to_string(:partial => no_parts_template_file, :locals => { :product_line => @product_line }),
           :parts_partial => render_to_string(:partial => parts_template_file, :locals => { :product_line => @product_line, :parts => @parts })
         }
       end
