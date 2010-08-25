@@ -1,3 +1,5 @@
+var changeEvt = $.browser.msie ? "click" : "change";
+
 $(document).ready(function() {  
   // CART
   $('div#cart ul.cart-options a.update').live('click', function(e) {
@@ -31,7 +33,7 @@ $(document).ready(function() {
   // END CART
   
   // PRODUCT LINES
-  $('div#product-line form div.make-selector select').live('change', function(e) {
+  $('div#product-line form div.make-selector select').live(changeEvt, function(e) {
     $('div.search div#search-options div.search-terms input[type="text"]').val('');
     var $elem = $(this);
     $('div#product-line form div.unit-selector select').val('');
@@ -55,7 +57,7 @@ $(document).ready(function() {
     e.preventDefault();
   });
   
-  $('div#product-line form div.unit-selector select').live('change', function(e) {
+  $('div#product-line form div.unit-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
     
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
@@ -106,7 +108,9 @@ $(document).ready(function() {
 
   $(document).trigger('tablesorter-initialize');
 
-  $('div.publication-list form div.subject-selector select').live('change', function(e) {
+  
+  
+  $('div.publication-list form div.subject-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
     $('div.publication-list form div.make-selector select').val('');
     $('div.publication-list form div.unit-selector select').val('');
@@ -130,7 +134,7 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-  $('div.publication-list form div.make-selector select').live('change', function(e) {
+  $('div.publication-list form div.make-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
     $('div.publication-list form div.subject-selector select').val('');
     $('div.publication-list form div.unit-selector select').val('');
@@ -154,7 +158,7 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-  $('div.publication-list form div.unit-selector select').live('change', function(e) {
+  $('div.publication-list form div.unit-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
     $('div.publication-list form div.subject-selector select').val('');
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
