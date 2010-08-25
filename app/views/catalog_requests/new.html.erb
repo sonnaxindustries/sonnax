@@ -32,7 +32,7 @@
         <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_new_product_advisory, @catalog_request.catalogs_hash.include?(@catalogs.ts_new_product_advisory) %>
         
         <div class="extra">
-          <p>Access New Parts since Volume 7 Catalog <a href="http://www.sonnax.com/part_finder.php?pl=3&amp;new_only=true">HERE</a></p></p>
+          <p>Access New Parts since Volume 7 Catalog <%= link_to 'HERE', recent_product_line_parts_path('transmission') %></p>
         </div>
       </li>
       
@@ -41,7 +41,7 @@
         <h2>Torque Converter Catalog, Volume 6</h2>
         
         <div class="extra">
-          <p>You can access the online catalog pages <a href="part_finder.php?pl=2">HERE</a></p>
+          <p>You can access the online catalog pages <%= link_to 'HERE', product_line_parts_path('torque-converter') %></p>
         </div>
       </li>
       
@@ -50,7 +50,7 @@
         <h2>High Performance Catalog, Volume 6</h2>
         
         <div class="extra">
-          <p>Access the online catalog pages <a href="part_finder.php?pl=1">HERE</a></p>
+          <p>Access the online catalog pages <%= link_to 'HERE', product_line_parts_path('high-performance-transmission') %></p>
         </div>
       </li>
       
@@ -95,7 +95,7 @@
         <img src="/images/catalogs/tc-catalog-chinese.jpg" alt="TC Catalog in Chinese" width="133" height="188" align="top">
         
         <div class="extra">
-          <p>To download TC catalog in Chinese click <a href="/downloads/catalogs/tc-catalog-chinese-3.pdf">here</a> (3.3MB PDF)</p>
+          <p>To download TC catalog in Chinese click <a href="/downloads/catalogs/tc-catalog-chinese-3.pdf" class="pdf">here</a> (3.3MB PDF)</p>
         </div>
       </li>
       
@@ -115,6 +115,10 @@
         <a href="/downloads/catalogs/sonnax-trans-report_v1n1.pdf"><img src="/images/catalogs/transreportv1n1.gif" alt="Transmission Report" width="145" height="188"></a>
         <h2>Transmission Report</h2>
         <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_report, @catalog_request.catalogs_hash.include?(@catalogs.transmission_report) %>
+        
+        <div class="extra">
+          <p>Click here to <%= link_to 'view the Transmission Report (3MB PDF)', '/downloads/catalogs/sonnax-trans-report_v1n1.pdf', :class => 'pdf' %></p>
+        </div>
       </li>
     </ul>    
   </fieldset>
