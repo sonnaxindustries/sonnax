@@ -9,9 +9,11 @@
     </ul>
   </div>
   
-  <% if @parts.any? %>
-  <%= render :partial => 'product_lines/torque_converter/new_parts', :locals => { :product_line => @product_line, :parts => @parts } %>
-  <% else %>
-  <%= render :partial => 'product_lines/torque_converter/no_parts', :locals => { :product_line => @product_line } %>
-  <% end %>
+  <div class="parts-wrapper">
+    <% if @parts.any? %>
+      <%= render :partial => 'product_lines/torque_converter/new_parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+    <% else %>
+      <%= render :partial => 'product_lines/torque_converter/no_parts', :locals => { :product_line => @product_line } %>
+    <% end %>
+  </div>
 </div>

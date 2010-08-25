@@ -24,7 +24,9 @@
       </div>
     </fieldset>
     <% end %>
-
+  </div>
+  
+  <div class="search group">
     <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
     <fieldset>
       <legend>Search</legend>
@@ -50,9 +52,11 @@
     </ul>
   </div>
   
-  <% if @parts.any? %>
-  <%= render :partial => 'product_lines/torque_converter/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
-  <% else %>
-  <%= render :partial => 'product_lines/torque_converter/no_parts', :locals => { :product_line => @product_line } %>
-  <% end %>
+  <div class="parts-wrapper">
+    <% if @parts.any? %>
+      <%= render :partial => 'product_lines/torque_converter/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+    <% else %>
+      <%= render :partial => 'product_lines/torque_converter/no_parts', :locals => { :product_line => @product_line } %>
+    <% end %>
+  </div>
 </div>

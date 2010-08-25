@@ -8,11 +8,13 @@
     </ul>
   </div>
   
-  <% if @parts.any? %>
-    <%= render :partial => 'product_lines/transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
-  <% else %>
-    <%= render :partial => 'product_lines/transmission/no_parts', :locals => { :product_line => @product_line } %>
-  <% end %>
+  <div class="parts-wrapper">
+    <% if @parts.any? %>
+      <%= render :partial => 'product_lines/transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+    <% else %>
+      <%= render :partial => 'product_lines/transmission/no_parts', :locals => { :product_line => @product_line } %>
+    <% end %>
+  </div>
   
   <%= link_to 'Find a Distributor', distributor_by_country_path('USA') %>
 </div>

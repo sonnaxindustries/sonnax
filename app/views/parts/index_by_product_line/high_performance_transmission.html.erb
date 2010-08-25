@@ -24,7 +24,9 @@
       </div>
     </fieldset>
     <% end %>
-
+  </div>
+  
+  <div class="search group">
     <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
     <fieldset>
       <legend>Search</legend>
@@ -42,15 +44,11 @@
     <% end %>
   </div>
   
-  <div class="options group">
-    <ul>
-      <li><%= link_to 'Go to 42RE Transmission Specialties Parts List', '#' %></li>
-    </ul>
+  <div class="parts-wrapper">
+    <% if @parts.any? %>
+      <%= render :partial => 'product_lines/high_performance_transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+    <% else %>
+      <%= render :partial => 'product_lines/high_performance_transmission/no_parts', :locals => { :product_line => @product_line } %>
+    <% end %>
   </div>
-  
-  <% if @parts.any? %>
-    <%= render :partial => 'product_lines/high_performance_transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
-  <% else %>
-    <%= render :partial => 'product_lines/high_performance_transmission/no_parts', :locals => { :product_line => @product_line } %>
-  <% end %>
 </div>
