@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {  
   // CART
   $('div#cart ul.cart-options a.update').live('click', function(e) {
@@ -32,6 +30,53 @@ $(document).ready(function() {
   })
   // END CART
   
+  // PRODUCT LINES
+  $('div#product-line form div.make-selector select').live('change', function(e) {
+    console.log('Changing the Make...');
+    var $elem = $(this);
+    $('div#product-line form div.unit-selector select').val('');
+    
+    $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
+    
+    var $form = $elem.closest('form');
+    $.ajax({
+      url: $form.attr('action'),
+      type: $form.attr('method'),
+      data: $form.serialize(),
+      dataType: 'json',
+      success: function(response) {
+        $elem.siblings('div.indicator').remove();
+        $('div#product-line form div.unit-selector select').html(response.unit_select_options);
+        
+        var domId = $('div.parts-wrapper');
+        $(domId).html(response.no_parts_partial);
+      }
+    })
+    e.preventDefault();
+  });
+  
+  $('div#product-line form div.unit-selector select').live('change', function(e) {
+    console.log('Changing the Unit...');
+    var $elem = $(this);
+    
+    $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
+    var $form = $elem.closest('form');
+    $.ajax({
+      url: $form.attr('action'),
+      type: $form.attr('type'),
+      data: $form.serialize(),
+      dataType: 'json',
+      success: function(response) {
+        $elem.siblings('div.indicator').remove();
+        var domId = $('div.parts-wrapper');
+        $(domId).html(response.parts_partial);
+      }
+    })
+
+    e.preventDefault();
+  });
+  // END PRODUCT LINES
+  
   //-- Technical Library
   $.tablesorter.addParser({
     id: 'mm-yyyy',
@@ -62,13 +107,6 @@ $(document).ready(function() {
 
   $(document).trigger('tablesorter-initialize');
 
-  $('div#product-line form div.make_selector select').live('change', function(e) {
-    var $elem = $(this);
-    $('div#product-line form div.unit-selector select').val('');
-    
-    $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-  });
-
   $('div.publication-list form div.subject-selector select').live('change', function(e) {
     var $elem = $(this);
     $('div.publication-list form div.make-selector select').val('');
@@ -92,49 +130,6 @@ $(document).ready(function() {
     });
     e.preventDefault();
   });
-  
-  $('div#product-line form div.make-selector select').live('change', function(e) {
-    var $elem = $(this);
-    $('div#product-line form div.unit-selector select').val('');
-    
-    $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-    
-    var $form = $elem.closest('form');
-    $.ajax({
-      url: $form.attr('action'),
-      type: $form.attr('method'),
-      data: $form.serialize(),
-      dataType: 'json',
-      success: function(response) {
-        $elem.siblings('div.indicator').remove();
-        $('div#product-line form div.unit-selector select').html(response.unit_select_options);
-        //var domId = "#" + response.dom_id;
-        //$(domId).html(response.parts_partial);
-      }
-    })
-    e.preventDefault();
-  });
-  
-  $('div#product-line form div.unit-selector select').live('change', function(e) {
-    var $elem = $(this);
-    
-    $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-    var $form = $elem.closest('form');
-    $.ajax({
-      url: $form.attr('action'),
-      type: $form.attr('type'),
-      data: $form.serialize(),
-      dataType: 'json',
-      success: function(response) {
-        $elem.siblings('div.indicator').remove();
-        //var domId = "#" + response.dom_id;
-        var domId = $('div#no-parts');
-        $(domId).replaceWith(response.parts_partial);
-      }
-    })
-
-    e.preventDefault();
-  })
 
   $('div.publication-list form div.make-selector select').live('change', function(e) {
     var $elem = $(this);
@@ -179,6 +174,6 @@ $(document).ready(function() {
       }
     });
     e.preventDefault();
-  })
+  });
   //-- /Technical Library
 })
