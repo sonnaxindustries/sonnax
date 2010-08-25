@@ -32,7 +32,7 @@ $(document).ready(function() {
   
   // PRODUCT LINES
   $('div#product-line form div.make-selector select').live('change', function(e) {
-    console.log('Changing the Make...');
+    $('div.search div#search-options div.search-terms input[type="text"]').val('');
     var $elem = $(this);
     $('div#product-line form div.unit-selector select').val('');
     
@@ -56,7 +56,6 @@ $(document).ready(function() {
   });
   
   $('div#product-line form div.unit-selector select').live('change', function(e) {
-    console.log('Changing the Unit...');
     var $elem = $(this);
     
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
