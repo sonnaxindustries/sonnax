@@ -2,9 +2,17 @@ class Admin::ProductLine < ProductLine
   has_many :units, :class_name => 'Admin::Unit'
   named_scope :list, :order => 'created_at DESC'
   
+  def self.inheritance_column
+      '_not_valid' #NOTE: This gets set here to avoid trying to use the STI class of Admin::ProductLine
+    end
+  
   class << self
     def detail!(id)
       self.find_by_id!(id)
+    end
+    
+    def base_class
+      ProductLine
     end
     
     def options
