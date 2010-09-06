@@ -17,3 +17,4 @@ Gemfile.lock
 config/*.sphinx.conf
 db/sphinx/**/*
 log/*.pid
+.rvmrc
