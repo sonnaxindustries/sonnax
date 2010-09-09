@@ -15,7 +15,12 @@
         <% else %>
           <%= publication.title %>
         <% end %>
-        <%= pdf_details(publication) %>
+        
+        <% if publication.pdf? %>
+        <span class="pdf-size">
+          <%= link_to(image_tag('icons/pdf.gif', :alt => 'Download PDF'), publication.pdf.url, :class => 'download') %> <span class="filesize">(<%= number_to_human_size(publication.pdf_file_size) %>)</span>
+        </span>
+        <% end %>
       </td>
       <td class="authors"><%= publication_authors_list(publication) %></td>
       <td class="published-date"><%= publication_published_at(publication) %></td>
