@@ -1,7 +1,7 @@
 <h1><%= @title.title %></h1>
 
 <% if @title.published_at? %>
-  <p class="published">Published on <%= publication_published_at(@title) %></p>
+  <p class="published">Published <%= publication_published_at(@title) %></p>
 <% end %>
 
 <% if @title.authors? %>
