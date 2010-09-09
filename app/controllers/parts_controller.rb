@@ -82,14 +82,12 @@ class PartsController < ApplicationController
       params[:q]
     end
     
-    #@parts = Part.search(search_term, :with => { :product_line_id => @product_line.id })
-    @parts = Part.search_by_filter(search_term, :product_line => @product_line)
+    @parts = @product_line.search_parts(search_term)
     
     @makes = @product_line.associated_makes
     @units = @product_line.associated_units
     
-    presenter_object = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
-    @form_presenter = presenter_object.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units)
+    @form_presenter = @product_line.new_form_presenter(:parts => @parts, :makes => @makes, :units => @units)
     
     search_path = search_product_line_parts_path(@product_line.url_friendly)
     @search_form_presenter = SearchFormPresenter.new(:search_terms => search_term, :url => search_path)

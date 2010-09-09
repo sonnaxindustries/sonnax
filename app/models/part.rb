@@ -212,13 +212,18 @@ class Part < ActiveRecord::Base
       product_line_id = attrs.delete(:product_line)
       part_id         = attrs.delete(:part)
       part_name       = attrs.delete(:part_name)
+      order_by        = attrs.delete(:order)
 
       select      = "DISTINCT(p.id), pl.name, p.part_number, p.description, p.notes, p.item, p.is_new_item, p.ref_code, p.ref_code_sort"
       from        = "parts p"
       order       = "CAST(uc.code_on_reference_figure AS DECIMAL(10,1)) DESC, p.part_number"
       joins       = []
       conditions  = []
-
+      
+      if !order_by.blank?
+        order = order_by
+      end
+      
       if !product_line_id.blank?
         conditions << ["pl.id = ?", product_line_id]
       end
