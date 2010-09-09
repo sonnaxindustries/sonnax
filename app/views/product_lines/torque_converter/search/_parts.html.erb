@@ -16,8 +16,8 @@
         <td class="description"><%= part.description %></td>
         <td class="make"><%= part.make.name if part.make? %></td>
         <td class="units">
-          <% if part.units.any? %>
-            <%= part.units.map { |u| link_to(u.name, filter_product_line_parts_path(product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+          <% if part.ordered_units.any? %>
+            <%= part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
           <% end %>
         </td>
         <td class="quantity"><% if part.part_number? %><input type="text" size="2"><% end %></td>

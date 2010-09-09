@@ -14,6 +14,7 @@ class Part < ActiveRecord::Base
   
   has_many :unit_components, :dependent => :destroy
   has_many :units, :through => :unit_components
+  has_many :ordered_units, :through => :unit_components, :order => 'name ASC', :source => :unit
   
   define_index do
     indexes :part_number, :sortable => true

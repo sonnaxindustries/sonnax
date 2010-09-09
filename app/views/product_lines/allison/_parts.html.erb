@@ -15,8 +15,8 @@
         <td class="description"><%= part.description %></td>
         <td class="type"><%= part.part_type.name %></td>
         <td class="units">
-          <% if part.units.any? %>
-            <%= part.units.map { |u| link_to(u.name, filter_product_line_parts_path(product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+          <% if part.ordered_units.any? %>
+            <%= part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
           <% end %>
         </td>
       </tr>

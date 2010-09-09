@@ -12,6 +12,8 @@ class Unit < ActiveRecord::Base
   has_many :publications, :through => :publication_titles_units
   
   named_scope :list
+  
+  named_scope :ordered, lambda { |o| { :order => o }}
   # named_scope :in_category, lambda { |category| 
   #   { 
   #     :select => 'DISTINCT(ptu.unit_id), units.*',
