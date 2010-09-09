@@ -10,7 +10,7 @@ class PartAssetType < ActiveRecord::Base
   
   class << self
     def seeds
-      ['Photo', 'Announcement', 'Instructions', 'Technical Bulletin', 'VB Fix'].each { |t| self.create(:name => t) }
+      ['Photo', 'Part Summary', 'Instructions', 'Technical Bulletin', 'VB Fix'].each { |t| self.create(:name => t) }
     end
     
     def photo
