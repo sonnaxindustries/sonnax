@@ -25,14 +25,17 @@
           <p><%= image_tag part.primary_photo.photo.asset.url(:medium) %></p>
         <% end %>
         <p><strong>Featured Product:</strong> <%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
-        <p><strong>Make:</strong> <%= link_to part.make.name, '#' %></p>
+        <p><strong>Make:</strong> <%= part.make.name %></p>
         <p>
           <strong>Unit:</strong> 
-          <% if part.units.any? %>
-            <%= part.units.map(&:name).join(', ') %>
+          <% if part.ordered_units.any? %>
+            <%= part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(@product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
           <% end %>
         </p>
-        <p class="description"><%= part.notes %></p>
+        <div class="description">
+          <p><%= part.description %></p>
+          <p><%= part.notes %></p>
+        </div>
       </div>
       <% end %>
     </div>
