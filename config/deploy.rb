@@ -15,6 +15,7 @@ set :scm_verbose, :true
 set :user, 'root'
 set :use_sudo, false
 set :deploy_via, :remote_cache
+set :keep_releases, 3
 
 set :shared_host, '74.50.61.9'
 
