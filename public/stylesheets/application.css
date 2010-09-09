@@ -1412,6 +1412,30 @@ div#cart h2 {
   font-size: 14px;
   margin: 10px 0 7px 0;
 }
+div#cart div.cart-options {
+  width: 765px;
+  float: right;
+  margin-bottom: 10px;
+}
+div#cart div.cart-options ul {
+  float: right;
+}
+div#cart div.cart-options li {
+  float: left;
+  margin-left: 4px;
+  line-height: 1;
+}
+div#cart div.cart-options li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  display: block;
+  padding: 4px 8px;
+  border: 1px solid #133d8d;
+}
+div#cart div.cart-options li a:hover {
+  background-color: #133d8d;
+  color: #fff;
+}
 /* =SPEED ORDER */
 div#speed-order h2 {
   font-size: 14px;

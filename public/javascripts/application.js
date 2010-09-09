@@ -2,7 +2,7 @@ var changeEvt = $.browser.msie ? "click" : "change";
 
 $(document).ready(function() {  
   // CART
-  $('div#cart ul.cart-options a.update').live('click', function(e) {
+  $('div#cart div.cart-options ul a.update').live('click', function(e) {
     var $elem = $(this);
     var $form = $('div#cart form');
     
