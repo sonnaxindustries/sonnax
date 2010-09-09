@@ -24,26 +24,25 @@ class PartsController < ApplicationController
 
     params[:filter].reverse_merge!(:product_line => @product_line) if params[:filter]
     
-    form_presenter = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
-    collection_presenter = "ProductLine::%s::CollectionPresenter" % [@product_line.url_friendly.underscore.classify]
-    
-    @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
-    @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
+    @form_presenter = @product_line.new_form_presenter(:parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+    @collection_presenter = @product_line.new_collection_presenter(:parts => @parts, :make => @make, :unit => @unit)
 
     if params[:filter] && !params[:filter][:make].blank? && params[:filter][:unit].blank?
       @make = Make.find(params[:filter][:make])
       @parts = []
-      @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
-      @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+      
+      @form_presenter = @product_line.new_form_presenter(:parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+      @collection_presenter = @product_line.new_collection_presenter(:parts => @parts, :make => @make, :unit => @unit)
     end
     
     if params[:filter] && !params[:filter][:make].blank? && !params[:filter][:unit].blank?
       @make = Make.find(params[:filter][:make])
       @unit = Unit.find(params[:filter][:unit])  
-      @parts = Part.find_by_filter(params[:filter] || {})
-
-      @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
-      @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+      @parts = @product_line.parts_by_filter(params[:filter] || {})
+      #@parts = Part.find_by_filter(params[:filter] || {})
+      
+      @form_presenter = @product_line.new_form_presenter(:parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+      @collection_presenter = @product_line.new_collection_presenter(:parts => @parts, :make => @make, :unit => @unit)
     end
         
     search_path = search_product_line_parts_path(@product_line.url_friendly)
@@ -69,7 +68,7 @@ class PartsController < ApplicationController
   end
   
   def recent
-    @parts = @product_line.parts.recent
+    @parts = @product_line.recent_parts
     
     template_file = "parts/index_by_product_line/recent/%s" % [@product_line.url_friendly.underscore]
     render template_file

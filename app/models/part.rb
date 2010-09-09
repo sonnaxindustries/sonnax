@@ -31,6 +31,7 @@ class Part < ActiveRecord::Base
   end
   
   named_scope :recent, :conditions => ["parts.is_new_item = ?", true]
+  named_scope :ordered, lambda { |order| { :order => order }}
   named_scope :old, :conditions => ["parts.is_new_item = ?", false]
   named_scope :featured, :conditions => ["parts.is_featured = ?", true]
   named_scope :random_featured, :conditions => ["parts.is_featured = ?", true], :limit => 1, :order => 'RAND()'
@@ -51,12 +52,17 @@ class Part < ActiveRecord::Base
       unit_id         = attrs.delete(:unit)
       product_line_id = attrs.delete(:product_line)
       part_id         = attrs.delete(:part)
+      order_by        = attrs.delete(:order)
       
       select      = "DISTINCT(m.id) AS make_id"
       from        = "parts p"
       order       = "m.name"
       joins       = []
       conditions  = []
+      
+      if !order_by.blank?
+        order = order_by
+      end
       
       if !product_line_id.blank?
         conditions << ["pl.id = ?", product_line_id]
@@ -150,12 +156,17 @@ class Part < ActiveRecord::Base
       product_line_id = attrs.delete(:product_line)
       part_id         = attrs.delete(:part)
       part_name       = attrs.delete(:part_name)
+      order_by        = attrs.delete(:order)
       
       select      = "p.id, pl.name, p.part_number, p.description, p.notes, p.item, p.is_new_item, u.name as Unit, uc.code_on_reference_figure, m.name AS Make, p.part_type_id, p.ref_code, p.ref_code_sort"
       from        = "parts p"
       order       = "CAST(uc.code_on_reference_figure AS DECIMAL(10,1)) DESC, p.part_number" #previously p.part_number + 0 to be numeric
       joins       = []
       conditions  = []
+      
+      if !order_by.blank?
+        order = order_by
+      end
       
       if !product_line_id.blank?
         conditions << ["pl.id = ?", product_line_id]
