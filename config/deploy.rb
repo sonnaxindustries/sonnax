@@ -72,4 +72,5 @@ end
 
 
 after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages'
+after 'deploy', 'deploy:cleanup'
 #after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
