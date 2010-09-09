@@ -8,14 +8,32 @@
           <%= image_tag @part.primary_photo.photo.asset.url(:medium) %>
         <% end %>
       </div>
-      
-      <div class="description group">
-        <%= @part.description %>
-      </div>
     </div>
   </div>
   
   <div id="col-2">
+    <div class="info">
+      <div class="meta">
+        <div class="part-number"><strong>Part Number:</strong> <%= @part.part_number %></div>
+
+        <div class="description">
+          <p><%= @part.description %></p>
+          <p><%= @part.notes %></p>
+        </div>
+      </div>
+      
+      <div class="make-unit">
+        <% if @part.make? %>
+        <strong><%= @part.make.name %>: </strong> 
+        <% end %>
+        
+        <% if @part.ordered_units.any? %>
+          <%= @part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(@part.product_line.url_friendly, :"filter[make]" => @part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+        <% end %>
+      </div>
+      
+      
+    </div>
     <div class="resources">
       <h2>Resources</h2>
       <% if @part.part_assets.resources.any? %>

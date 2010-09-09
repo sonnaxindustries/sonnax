@@ -1260,6 +1260,10 @@ div#part h2 {
   font-size: 14px;
   margin: 10px 0 0 0;
 }
+div#part div#col-2 div.meta,
+div#part div#col-2 div.make-unit {
+  margin-bottom: 10px;
+}
 div#part div#col-2 div.resources h2 {
   margin-top: 0;
 }
