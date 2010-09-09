@@ -2,11 +2,16 @@
   <h1><%= @part.part_number %></h1>
   
   <div id="col-1">
-    <div class="description">
-      <% if @part.primary_photo? %>
-        <%= image_tag @part.primary_photo.photo.asset.url(:medium) %>
-      <% end %>
-      <%= @part.description %>
+    <div class="details">
+      <div class="photo">
+        <% if @part.primary_photo? %>
+          <%= image_tag @part.primary_photo.photo.asset.url(:medium) %>
+        <% end %>
+      </div>
+      
+      <div class="description group">
+        <%= @part.description %>
+      </div>
     </div>
   </div>
   
@@ -15,7 +20,7 @@
       <h2>Resources</h2>
       <% if @part.part_assets.resources.any? %>
         <% @part.part_assets.resources.each do |pa| %>
-        <li><%= link_to pa.part_asset_type.name, pa.asset.asset.url %> (PDF)</li>
+        <li><%= link_to pa.part_asset_type.name, pa.asset.asset.url %> <span class="filesize">(<%= number_to_human_size(pa.asset.asset_file_size) %> PDF)</span></li>
         <% end %>
       <% end %>
     </div>
@@ -23,8 +28,7 @@
     <div class="more-information">
       <h2>More Information</h2>
       <ul>
-        <li><%= link_to "High Performance Transmission Part Finder", '#' %></li>
-        <li><%= link_to "High Performance Distributor", high_performance_distributors_path %></li>
+        <li><%= link_to "Find a Distributor", high_performance_distributors_path %></li>
       </ul>
     </div>
   </div>

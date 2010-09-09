@@ -201,6 +201,10 @@ a.email {
   padding-left: 22px;
   background: transparent url('/images/icons/email.png') 0 0 no-repeat;
 }
+span.filesize {
+  font-size: 10px;
+  color: #666;
+}
 .inactive,
 .even .inactive {
   color: #ddd;
@@ -1255,6 +1259,16 @@ div#payment-and-shipping ul li {
 div#part h2 {
   font-size: 14px;
   margin: 10px 0 0 0;
+}
+div#part div#col-2 div.resources h2 {
+  margin-top: 0;
+}
+div#part div.details div.photo {
+  border: 2px solid #00548e;
+  padding: 1px;
+}
+div#part div.details div.description {
+  margin-top: 10px;
 }
 div.parts,
 div#no-parts {
