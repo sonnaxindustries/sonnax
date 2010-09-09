@@ -86,7 +86,7 @@
         <%= f.select :shipping_method, @shipping_types, :selected => @default_shipping_option %>
       </div>
       
-      <div class="text round-quantities">
+      <div class="text checkbox round-quantities">
         <%= f.error_message_on :should_round_quantities %>
         <%= f.check_box :should_round_quantities %> <%= f.label :should_round_quantities, 'Please round my order quantities to suit standard packaged quantities' %>
       </div>

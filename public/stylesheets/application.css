@@ -201,6 +201,13 @@ a.email {
   padding-left: 22px;
   background: transparent url('/images/icons/email.png') 0 0 no-repeat;
 }
+div.checkbox {
+  margin: 5px 0;
+}
+div.checkbox input {
+  float: left;
+  margin-right: 5px;
+}
 span.filesize {
   font-size: 10px;
   color: #666;
