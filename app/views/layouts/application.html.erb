@@ -1,3 +1,101 @@
+<<<<<<< HEAD
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="content-language" content="en-us">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <title>Sonnax - Aftermarket replacement transmission, torque converter, and high performance automotive parts</title>
+    <meta name= "MSSmartTagsPreventParsing" content="true">
+    <meta name="description" content="Sonnax Transmissions.">
+    <meta name="keywords" content="sonnax, transmissions">
+    <meta name="author" content="Sonnax">
+    <meta name="reply-to" content="info@sonnax.com">
+    <meta name="copyright" content="<%= Time.now.year %> Sonnax">
+    <meta name="google-site-verification" content="#">
+    <meta name="y_key" content="#">
+    <meta http-equiv="imagetoolbar" content="false">
+    <%= stylesheet_link_tag 'reset', 'application' %>
+    
+    <!--[if IE 6]>
+      <%= stylesheet_link_tag 'ie6' %>
+    <![endif]-->
+    
+    <!--[if IE 7]>
+      <%= stylesheet_link_tag 'ie7' %>
+    <![endif]-->
+    
+  </head>
+  
+  <body id="home">
+    <div id="container" class="group">
+      <div id="container-inner">
+        <div id="masthead">
+          <h1><%= link_to 'Sonnax', root_path %></h1>
+          <ul class="group">
+            <li class="home"><%= link_to 'Home', root_path %></li>
+            <li class="product-lines">
+              <%= link_to 'Product Lines', product_lines_path %>
+              <ul>
+                 <li><%= link_to 'Transmission', transmission_path %></li>
+                 <li><%= link_to 'Torque Converter &amp; HP Converter', torque_converter_path %></li>
+                 <li><%= link_to 'High Performance Transmission', high_performance_transmission_path %></li>
+                 <li><%= link_to 'Allison&reg;', allison_path %></li>
+                 <li><%= link_to 'Ring Gears', ring_gears_path %></li>
+                 <li><%= link_to 'Harley-Davidson&reg;', harley_davidson_path %></li>
+                 <li><%= link_to 'Driveline', driveline_path %></li>
+                 <li class="last"><%= link_to 'Power Train Savers', power_train_savers_path %></li>
+              </ul>
+            </li>
+            <li class="search"><%= link_to 'Quick Search', quick_search_path %></li>
+            <li class="technical-library">
+              <%= link_to 'Technical Library', technical_library_path %>
+              <ul>
+                <li><%= link_to 'Transmission', technical_library_detail_path('transmission') %></li>
+                <li class="last"><%= link_to 'Converter', technical_library_detail_path('converter') %></li>
+              </ul>
+            </li>
+              
+            <li class="news-and-events"><%= link_to 'News &amp; Events', news_and_events_path %></li>
+            <li class="about-us">
+              <%= link_to 'About Us', about_us_path %>
+              <ul>
+                <li><%= link_to 'History/Mission', history_mission_path %></li>
+                <li><%= link_to 'Sonnax International', international_info_path %></li>
+                <li><%= link_to 'TASC Force &trade;', tasc_force_path %></li>
+                <li><%= link_to 'Catalog Request', new_catalog_request_path %></li>
+                <li><%= link_to 'Career Opportunities', career_opportunities_path %></li>
+                <li><%= link_to 'Terms &amp; Conditions', terms_and_conditions_path %></li>
+                <li class="last"><%= link_to 'Contact Us', new_contact_path %></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div id="wrapper" class="group">
+          <div id="wrapper-inner" class="group">
+            <%= yield %>
+          </div>
+        </div>
+
+        <div id="extra" class="group">
+          <p class="addr">Sonnax &#8211; 1 Automatic Drive &#8211; Bellows Falls &#8211; Vermont &#8211; 05101-0440</p>
+          <p class="communication">900-843-2600 &#8211; 802-463-9722 &#8211; <%= mail_to 'info@sonnax.com' %></p>
+        </div>
+      </div>
+    </div>
+    
+    <div id="disclaimer" class="group">
+      <p>&copy; <%= Date.today.year %> Sonnax Industries, Inc. Sonnax Transmission, Torque Converter, Performance, Driveline, Allison &reg; Replacement Parts for automotive aftermarket rebuilders.</p>
+    </div>
+    <%= javascript_include_tag 'jquery-1.4.2.min.js' %>
+    <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
+    <%= javascript_include_tag 'utilities' %>
+    <%= javascript_include_tag 'tracking' %>
+    <%= javascript_include_tag 'application' %>
+  </body>
+=======
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
   "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
@@ -94,4 +192,5 @@
     <%= javascript_include_tag 'tracking' %>
     <%= javascript_include_tag 'application' %>
   </body>
+>>>>>>> edc95d844257b399276afe4282d12f1e82d00ab8
 </html>
