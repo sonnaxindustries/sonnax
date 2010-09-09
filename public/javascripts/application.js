@@ -32,7 +32,7 @@ $(document).ready(function() {
   })
   // END CART
   
-  // PRODUCT LINES
+  // PRODUCT LINES  
   $('div#product-line form div.make-selector select').live(changeEvt, function(e) {
     $('div.search div#search-options div.search-terms input[type="text"]').val('');
     var $elem = $(this);

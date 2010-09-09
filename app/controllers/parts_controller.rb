@@ -33,7 +33,6 @@ class PartsController < ApplicationController
     if params[:filter] && !params[:filter][:make].blank? && params[:filter][:unit].blank?
       @make = Make.find(params[:filter][:make])
       @parts = []
-      #@parts = Part.find_by_filter(params[:filter] || {})
       @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
       @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
     end
@@ -44,7 +43,7 @@ class PartsController < ApplicationController
       @parts = Part.find_by_filter(params[:filter] || {})
 
       @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
-      @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)    
+      @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
     end
         
     search_path = search_product_line_parts_path(@product_line.url_friendly)
