@@ -1,6 +1,6 @@
 class Admin::ProductLine < ProductLine
   has_many :units, :class_name => 'Admin::Unit'
-  named_scope :list, :order => 'created_at DESC'
+  named_scope :list, :order => 'sort_order ASC, name ASC'
   
   def self.inheritance_column
       '_not_valid' #NOTE: This gets set here to avoid trying to use the STI class of Admin::ProductLine
