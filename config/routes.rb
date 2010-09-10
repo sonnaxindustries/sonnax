@@ -92,6 +92,8 @@ ActionController::Routing::Routes.draw do |map|
     product_line.torque_converter '/torque-converter', :action => 'torque_converter'
     product_line.ring_gears '/ring-gears', :action => 'ring_gears'
     product_line.ring_gears_parts '/ring-gears/parts', :action => 'ring_gears_parts'
+    product_line.ring_gears_millimeter_parts '/ring-gears/millimeter-parts', :action => 'ring_gears_millimeter_parts'
+    product_line.ring_gears_inches_parts '/ring-gears/inches-parts', :action => 'ring_gears_inches_parts'
     product_line.high_performance_transmission '/high-performance-transmission', :action => 'high_performance_transmission'
     product_line.driveline '/driveline', :action => 'driveline'
     product_line.driveline_parts '/driveline/parts', :action => 'driveline_parts'

@@ -15,12 +15,6 @@ module Admin::PublicationTitlesHelper
     end
   end
   
-  def pdf_details(publication)
-    if publication.pdf?
-      "<span class=\"pdf-size\"><img src=\"/images/icons/pdf.gif\" alt=\"%s\"> (%s)</span>" % [publication.title, number_to_human_size(publication.pdf_file_size)]
-    end
-  end
-  
   def publication_authors_list(publication)
     if publication.authors?
       publication.authors.map { |author| author.full_name }.to_sentence
