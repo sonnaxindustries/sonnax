@@ -10,9 +10,8 @@
     </div>
     
     <ul>
-      <li><%= link_to 'Ring Gears Part Finder (Millimeters)', ring_gears_millimeter_parts_path %></li>
-      <li><%= link_to 'Ring Gears Part Finder (Inches)', ring_gears_inches_parts_path %></li>
-      <li><%= link_to 'Ring Gears Part Finder', product_line_parts_path(@product_line.url_friendly) %></li>
+      <li><%= link_to 'Ring Gear Parts (listed in millimeters)', ring_gears_millimeter_parts_path %></li>
+      <li><%= link_to 'Ring Gear Parts (listed in inches)', ring_gears_inches_parts_path %></li>
       <li><%= mail_to 'webrg@sonnax.com', 'Email for Quote and Information', :class => 'email' %></li>
     </ul>
   </div>
