@@ -11,13 +11,13 @@ class Import::Excel::Publication
     end
 
     def import!
-      # tables = %w( publication_categories_titles publication_titles_units_makes publication_titles_authors publication_titles_product_lines publication_titles_subjects publication_titles_types publication_titles_keywords publication_keyword_types publication_keywords publication_categories publication_authors publication_titles publication_types publication_subjects )
-      # 
-      # puts 'Dropping the old tables of information....'
-      # tables.each do |tbl|
-      #   stmt = "TRUNCATE %s" % [tbl]
-      #   ActiveRecord::Base.connection.execute(stmt)
-      # end
+      tables = %w( publication_categories_titles publication_titles_units_makes publication_titles_authors publication_titles_product_lines publication_titles_subjects publication_titles_types publication_titles_keywords publication_keyword_types publication_keywords publication_categories publication_authors publication_titles publication_types publication_subjects )
+      
+      puts 'Dropping the old tables of information....'
+      tables.each do |tbl|
+        stmt = "TRUNCATE %s" % [tbl]
+        ActiveRecord::Base.connection.execute(stmt)
+      end
 
       klass = self.new
       puts 'Importing authors...'
@@ -220,7 +220,7 @@ class Import::Excel::Publication
     end
 
     def pdf_file_exists?
-      File.exists?(File.join(Rails.root, 'public', 'file_conversions', 'tech-articles', self.pdf_filename))
+      File.exists?(File.join(Rails.root, 'public', 'file_conversions', 'tech-articles', self.pdf_filename)) if self.pdf_filename?
     end
 
     def pdf
@@ -322,7 +322,7 @@ class Import::Excel::Publication
 
   def initialize
     #@file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', 'publication_data.xls')
-    @file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', 'publication_data_trans_070110.xls')
+    @file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', 'publication_data_transmission_091610.xls')
     self.setup_sheet!
   end
 
