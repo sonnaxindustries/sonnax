@@ -10,3 +10,10 @@ div#masthead ul li ul {
 div#masthead li:hover {  
   position: static;  
 }
+div#home div.iso-registered {
+  width: 700px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #00548e;
+  text-align: center;
+}
