@@ -106,9 +106,34 @@ class ProductLine < ActiveRecord::Base
     self.units.any?
   end
   
+  # NOTE: This was used for the initial import, and can be removed post launch
+  def type_name
+    name_to_cast = case self.name
+    when 'High Performance Transmission'
+      'High Performance Transmission'
+    when 'Torque Converter &amp; HP Converter'
+      'Converter'
+    when 'Transmission'
+      'Transmission'
+    when 'Ring Gears'
+      'Ring Gear'
+    when 'Allison&reg;'
+      'Allison'
+    when 'Power Train Savers&reg;'
+      'Power Train Saver'
+    when 'High Performance Torque Converter'
+      'High Performance Converter'
+    when 'Driveline'
+      'Driveline'
+    else
+      self.name
+    end
+    
+    type_name = name_to_cast.extend(Helper::String).to_type_name
+  end
+  
   def generate_type!
-    type_name = self.name.extend(Helper::String).to_type_name
-    "ProductLines::%s" % [type_name]
+    "ProductLines::%s" % [self.type_name]
   end
   
   def generate_url_friendly!
