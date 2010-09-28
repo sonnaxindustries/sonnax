@@ -317,6 +317,6 @@ class Part < ActiveRecord::Base
   end
   
   def primary_photo?
-    !self.primary_photo.blank?
+    !self.primary_photo.blank? && self.primary_photo.photo?
   end
 end

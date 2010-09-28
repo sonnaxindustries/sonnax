@@ -9,6 +9,10 @@ class PartAsset < ActiveRecord::Base
   named_scope :photos, :conditions => { :part_asset_type_id => PartAssetType.photo }
   named_scope :resources, :conditions => ["part_asset_type_id NOT IN (?)", PartAssetType.photo]
   
+  def photo?
+    !self.photo.blank?
+  end
+  
   def validate
     self.errors.add(:part, 'Please provide a Part ID') unless self.part_id?
     self.errors.add(:part_asset, 'Please provide a Part Asset Type') unless self.part_asset_type_id?
