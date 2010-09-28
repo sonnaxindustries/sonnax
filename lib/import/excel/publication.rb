@@ -9,17 +9,29 @@ class Import::Excel::Publication
         :correction     => 'Correction'
       }
     end
+    
+    def import_all!(options={})
+      #self.import!(:drop_tables => true, :file_name => 'publication_data_TC_091610.xls')
+      self.import!(:drop_tables => true, :file_name => 'publication_data_transmission_091610.xls')
+    end
 
-    def import!
-      tables = %w( publication_categories_titles publication_titles_units_makes publication_titles_authors publication_titles_product_lines publication_titles_subjects publication_titles_types publication_titles_keywords publication_keyword_types publication_keywords publication_categories publication_authors publication_titles publication_types publication_subjects )
+    def import!(options={})
+      drop_tables = options.delete(:drop_tables)
+      file_name   = options.delete(:file_name)
       
-      puts 'Dropping the old tables of information....'
-      tables.each do |tbl|
-        stmt = "TRUNCATE %s" % [tbl]
-        ActiveRecord::Base.connection.execute(stmt)
+      should_drop_tables = if drop_tables then true else false end
+      
+      if should_drop_tables
+        tables = %w( publication_categories_titles publication_titles_units_makes publication_titles_authors publication_titles_product_lines publication_titles_subjects publication_titles_types publication_titles_keywords publication_keyword_types publication_keywords publication_categories publication_authors publication_titles publication_types publication_subjects )
+      
+        puts 'Dropping the old tables of information....'
+        tables.each do |tbl|
+          stmt = "TRUNCATE %s" % [tbl]
+          ActiveRecord::Base.connection.execute(stmt)
+        end
       end
 
-      klass = self.new
+      klass = self.new(file_name)
       puts 'Importing authors...'
       klass.import_authors!
 
@@ -180,6 +192,10 @@ class Import::Excel::Publication
     def type
       PublicationType.find_by_title(self.publication_type)
     end
+    
+    def type?
+      !self.type.blank?
+    end
 
     def publication_subject
       @publication_subject ||= @attributes[:publication_subject]
@@ -196,7 +212,6 @@ class Import::Excel::Publication
     def date
       return nil if @attributes[:date].blank?
       @date ||= @attributes[:date]
-      #@date ||= Date.parse(@attributes[:date])
     end
 
     def author_name
@@ -320,9 +335,9 @@ class Import::Excel::Publication
     end
   end
 
-  def initialize
-    #@file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', 'publication_data.xls')
-    @file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', 'publication_data_transmission_091610.xls')
+  def initialize(filename = nil)
+    file_to_import = filename || 'publication_data_transmission_091610.xls'
+    @file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', file_to_import)
     self.setup_sheet!
   end
 
@@ -357,7 +372,7 @@ class Import::Excel::Publication
       record_object.subjects << record.subject if record.subject? && !record_object.subjects.include?(record.subject)
 
       puts "Attaching publication (%s) to type..." % [record_object.title]
-      record_object.types << record.type unless record_object.types.include?(record.type)
+      record_object.types << record.type if record.type? && !record_object.types.include?(record.type)
 
       puts "Attaching publication (%s) to product line..." % [record_object.title]
       record_object.product_lines << record.product_line unless record_object.product_lines.include?(record.product_line)

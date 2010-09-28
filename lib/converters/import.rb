@@ -7,9 +7,14 @@ class Converters::Import
       # Rake task to pull down 'old' assets (where mine are symlinked)
       # cap sonnax:assets:pull_old
 
-      puts 'Running the rake tasks to destroy local assets'
+      puts 'Running the rake tasks to destroy local assets...'
       `rake sonnax:assets:destroy`
       
+      puts 'Running the task to empty the assets table...'
+      Converters::Asset.truncate!
+      Converters::PartAsset.truncate!
+      
+      puts '-----------------------------------'
       puts 'Converting data...'
       
       puts 'Converting the Users...'
