@@ -1,18 +1,19 @@
 <div id="product-line" class="ring-gears">
-  <div id="col-1">
-    <%= image_tag('ringgear.jpg', :width => 365, :height => 398, :alt => 'Ring Gears') %>
-  </div>
   
-  <div id="col-2">
+  <div id="col-1">
     <h1><%= @product_line.name %></h1>
     <div class="description">
       <p>Sonnax ring gears are available for common automotive flexplate and flywheel applications as well as for torque converter applications. They are manufactured in compliance with Sonnax designs, precisely formed and heat-treated, and machined on the faces to eliminate the undesirable stress concentrations found in many "pressed" rings.</p>
     </div>
     
     <ul>
-      <li><%= link_to 'Ring Gear Parts (listed in millimeters)', ring_gears_millimeter_parts_path %></li>
-      <li><%= link_to 'Ring Gear Parts (listed in inches)', ring_gears_inches_parts_path %></li>
-      <li><%= mail_to 'webrg@sonnax.com', 'Email for Quote and Information', :class => 'email' %></li>
+      <li><%= link_to 'Ring Gear Parts Listing (millimeters)', ring_gears_millimeter_parts_path %></li>
+      <li><%= link_to 'Ring Gear Parts Listing (inches)', ring_gears_inches_parts_path %></li>
+      <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path, :class => 'email' %></li>
+      <li><%= link_to 'Contact Us', new_contact_path %></li>
     </ul>
+  </div>
+  <div id="col-2">
+    <%= image_tag('ringgear.jpg', :width => 365, :height => 398, :alt => 'Ring Gears') %>
   </div>
 </div>

@@ -159,7 +159,7 @@ strong {
   left: auto;
 }
 h1 {
-  font-size: 26px;
+  font-size: 22px;
 }
 sup {
   vertical-align: top;
@@ -240,7 +240,7 @@ div#page {
   margin-right: 15px;
 }
 div#page h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 6px;
 }
 a.new-item {
@@ -571,6 +571,7 @@ div#solenoids div#col-2 {
 }
 h3 {
   font-weight: bold;
+  font-size: 14px;
 }
 h2,
 div#solenoids h2,
@@ -581,7 +582,7 @@ div#solenoids ol li strong {
   line-height: 1.3;
 }
 div#solenoids h2 {
-  font-size: 18px;
+  font-size: 16px;
 }
 div#solenoids h3 {
   font-size: 14px;
@@ -679,7 +680,7 @@ div#history-and-mission div#col-2 {
 }
 /* =NEWSLETTER */
 div#subscribe-to-newsletter h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 6px 0;
 }
 div#subscribe-to-newsletter div.cc-form {
@@ -698,7 +699,7 @@ div#subscribe-to-newsletter div.cc-form div.submit {
 }
 /* =INSIDER */
 div#insider h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 6px 0;
 }
 div#insider ul.benefits {
@@ -742,7 +743,7 @@ div#directions strong {
 }
 div#directions h2 {
   margin: 6px 0;
-  font-size: 14px;
+  font-size: 16px;
 }
 div#directions h1,
 div#directions div.map {
@@ -791,7 +792,7 @@ div#tasc-force div#col-2 {
 }
 div#tasc-force h2 {
   margin: 6px 0;
-  font-size: 14px;
+  font-size: 16px;
 }
 div.photo em.caption {
   line-height: 1.5;
@@ -1044,7 +1045,7 @@ div#product-line ul a {
   font-weight: bold;
 }
 div#product-line h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 10px 0 7px 0;
 }
 div.allison div#col-1 {
@@ -1128,7 +1129,7 @@ div.harley-davidson div#col-2 {
   width: 350px;
 }
 div#harley-distributors h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 6px 0;
 }
 div#harley-distributors table {
@@ -1156,7 +1157,7 @@ div#customer-testimonials ul li {
 /* =NEWS */
 div#events h2,
 div#news h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 10px 0 2px 0;
 }
 div#news,
@@ -1205,7 +1206,7 @@ div#publication-glossary dt {
 }
 /* =TECHNICAL LIBRARY */
 div#technical-library h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 15px 0 0 0;
 }
 div#technical-library {
@@ -1245,7 +1246,7 @@ div.dvd {
 }
 /* =HOW TO ORDER */
 div#how-to-order h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 15px 0 0 0;
 }
 div#how-to-order ol li {
@@ -1253,7 +1254,7 @@ div#how-to-order ol li {
 }
 /* =PAYMENT AND SHIPPING */
 div#payment-and-shipping h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 15px 0 0 0;
 }
 div#payment-and-shipping ul {
@@ -1264,7 +1265,7 @@ div#payment-and-shipping ul li {
 }
 /* =PART */
 div#part h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 10px 0 0 0;
 }
 div#part div#col-2 div.meta,
@@ -1398,7 +1399,7 @@ div#quick-search div {
   margin-bottom: 15px;
 }
 div#quick-search h2 {
-  font-size: 14px;
+  font-size: 16px;
 }
 div#quick-search div ul li {
   background: transparent url('/images/icons/bullet_blue.png') 0 50% no-repeat;
@@ -1409,14 +1410,14 @@ div#quick-search div.search-parts form div.submit input {
 }
 /* =NO SEARCH RESULTS */
 div#no-search-results h2 {
-  font-size: 14px;
+  font-size: 16px;
 }
 /* =CART */
 div#cart {
   margin-right: 15px;
 }
 div#cart h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 10px 0 7px 0;
 }
 div#cart div.cart-options {
@@ -1445,7 +1446,7 @@ div#cart div.cart-options li a:hover {
 }
 /* =SPEED ORDER */
 div#speed-order h2 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 10px 0 7px 0;
 }
 div#speed-order strong {

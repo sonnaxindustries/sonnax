@@ -2,23 +2,19 @@
   <div id="col-1">
     <h1><%= @product_line.name %></h1>
     <div class="description">
-      <p>Sonnax, a leading supplier to the automotive aftermarket, is pleased to offer over-torque protection with Power Train Savers<sup>&reg;</sup>.</p>
       <p>The Power Train Saver protects your complete drive train, prevents gear, shaft and axle damage, and virtually eliminates down time.</p>
       <p>The Power Train Saver unit is welded permanently into your driveshaft. Carefully calibrated fuse sets are then chosen and installed to match your vehicle specs and type of service. In an over-torque situation, before driveline damage occurs, the fuses will shear, allowing the unit to freewheel while all major components and driveshaft remain intact. Simply replace the Torque Fuse<sup>&reg;</sup> set and get your vehicle back into service.</p>
     </div>
     
     <ul>
-      <li><%= link_to 'Download Parts Catalog', '/downloads/power-train-savers/pts-online-catalog.pdf', :class => 'pdf' %></li>
-      <li><%= link_to 'Installation Instructions', '/downloads/power-train-savers/pts-instructions.pdf', :class => 'pdf' %></li>
-      <li><%= link_to 'View our Demonstration Video <sup>1</sup>', '/videos/power-train-savers/pts-sonnax.wmv', :class => 'wmv' %></li>
-      <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path %></li>
-      <li><%= link_to 'Frequently Asked Questions', power_train_savers_faq_path %></li>
-      <li><%= link_to 'Customer Testimonials', power_train_savers_testimonies_path %></li>
+       <li>Power Train Saver Parts Listing</li>
+      <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path, :class => 'email' %></li>
       <li><%= link_to 'Contact Us', new_contact_path %></li>
     </ul>
     
     <div class="note">
-      <h2>Note</h2>
+      <%= link_to 'View our Demonstration Video <sup>1</sup>', '/videos/power-train-savers/pts-sonnax.wmv', :class => 'wmv' %>
+	  <h2>Note</h2>
       <p><sup>1</sup> Windows Media Player is required to play the video. <%= link_to 'Download Windows Media Player now', 'http://www.microsoft.com/windows/windowsmedia/player/9series', :rel => 'external' %>.</p>
     </div>
   </div>
