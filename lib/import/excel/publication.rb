@@ -11,8 +11,8 @@ class Import::Excel::Publication
     end
     
     def import_all!(options={})
-      #self.import!(:drop_tables => true, :file_name => 'publication_data_TC_091610.xls')
-      self.import!(:drop_tables => true, :file_name => 'publication_data_transmission_091610.xls')
+      self.import!(:drop_tables => true, :file_name => 'publication_data_TC_091610.xls')
+      self.import!(:file_name => 'publication_data_transmission_091610.xls')
     end
 
     def import!(options={})
@@ -121,13 +121,13 @@ class Import::Excel::Publication
     end
 
     class << self
-      def find_by_name(name)
-        record = Import::Excel::Publication.new.categories.select { |cat| cat.title == name }
+      def find_by_name(spreadsheet, name)
+        record = Import::Excel::Publication.new(spreadsheet.document_name).categories.select { |cat| cat.title == name }
         return record.first unless record.blank?
       end
 
-      def find_by_title_name(name)
-        record = Import::Excel::Publication.new.categories.select { |cat| cat.title_name == name }
+      def find_by_title_name(spreadsheet, name)
+        record = Import::Excel::Publication.new(spreadsheet.document_name).categories.select { |cat| cat.title_name == name }
         return record.first unless record.blank?
       end
     end
@@ -172,17 +172,25 @@ class Import::Excel::Publication
     def title
       @title ||= @attributes[:title]
     end
+    
+    def spreadsheet
+      @spreadsheet ||= @attributes[:spreadsheet]
+    end
 
     def publication_category
       @publication_category ||= @attributes[:publication_category]
     end
 
     def publication_category_object
-      Import::Excel::Publication::Category.find_by_title_name(self.publication_category)
+      Import::Excel::Publication::Category.find_by_title_name(self.spreadsheet, self.publication_category)
     end
 
     def category
       PublicationCategory.find_by_name(self.publication_category_object.title)
+    end
+    
+    def category?
+      !self.category.blank?
     end
 
     def publication_type
@@ -334,20 +342,17 @@ class Import::Excel::Publication
       }
     end
   end
+  
+  attr_accessor :file_name, :document_name
 
   def initialize(filename = nil)
-    file_to_import = filename || 'publication_data_transmission_091610.xls'
-    @file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', file_to_import)
+    @document_name = filename || 'publication_data_transmission_091610.xls'
+    @file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', @document_name)
     self.setup_sheet!
   end
 
   def setup_sheet!
     #self.workbook.default_sheet = self.publications_worksheet
-  end
-
-  def import!
-    self.records.each do |publication|
-    end
   end
 
   def workbook
@@ -366,7 +371,7 @@ class Import::Excel::Publication
     self.records.each do |record|
       record_object = PublicationTitle.find_by_title(record.title)
       puts "Attaching publication (%s) to category..." % [record_object.title]
-      record_object.categories << record.category unless record_object.categories.include?(record.category)
+      record_object.categories << record.category if record.category? && !record_object.categories.include?(record.category)
 
       puts "Attaching publication (%s) to subject..." % [record_object.title]
       record_object.subjects << record.subject if record.subject? && !record_object.subjects.include?(record.subject)
@@ -529,6 +534,8 @@ class Import::Excel::Publication
     @record_objects = []
     (self.start_row..self.workbook.last_row).each_with_index do |index,row|
       @record_objects << Row.new(
+                               :spreadsheet           => self,
+                               :spreadsheet_id        => self.workbook.cell(index, 0),
                                :title_id              => self.workbook.cell(index, 1),
                                :publication_category  => self.workbook.cell(index, 2),
                                :publication_type      => self.workbook.cell(index, 3),
