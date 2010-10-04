@@ -2,7 +2,7 @@ class Admin::Make < Make
   has_many :units_makes, :dependent => :destroy, :class_name => 'Admin::UnitsMake'
   has_many :units, :through => :units_makes
   
-  named_scope :list, :order => 'created_at DESC'
+  named_scope :list, :order => 'name ASC'
   
   class << self
     def options
