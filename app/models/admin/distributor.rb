@@ -1,5 +1,5 @@
 class Admin::Distributor < Distributor
-  named_scope :list, :order => 'created_at DESC'
+  named_scope :list, :order => 'name ASC'
   
   define_index do
     indexes :name, :sortable => true

@@ -18,7 +18,7 @@ class Admin::PublicationTitle < PublicationTitle
     def list(params={})
       options = {
         :page => (params[:page] || 1),
-        :order => 'created_at DESC'
+        :order => 'title ASC'
       }
 
       self.paginate(options)
