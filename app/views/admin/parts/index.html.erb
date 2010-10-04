@@ -24,7 +24,6 @@
       <thead>
         <tr>
           <th>Part Number</th>
-          <th>Name</th>
           <th>Item</th>
           <th class="options"></th>
         </tr>
@@ -33,7 +32,6 @@
         <% @parts.each do |part| %>
         <tr id="<%= dom_id(part) %>">
           <td><%= part.part_number %></td>
-          <td><%= part.name %></td>
           <td><%= part.item %></td>
           <td class="options">
             <ul>
