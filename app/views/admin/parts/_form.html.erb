@@ -1,12 +1,6 @@
 <fieldset>
   <legend>Part Information</legend>
-  
-  <div class="text name">
-    <%= f.error_message_on :name %>
-    <%= f.label :name, 'Name' %>
-    <%= f.text_field :name %>
-  </div>
-  
+    
   <div class="checkbox is-featured">
     <%= f.error_message_on :is_featured %>
     <%= f.check_box :is_featured %> <%= f.label :is_featured, 'Make this a featured part' %>
