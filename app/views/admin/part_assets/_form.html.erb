@@ -1,0 +1,35 @@
+<fieldset>
+  <legend>Resource Information</legend>
+  
+  <div class="select part-asset-type">
+    <%= f.error_message_on :part_asset_type_id %>
+    <%= f.select :part_asset_type_id, @part_asset_types %>
+  </div>
+  
+  <div class="text name">
+    <%= f.error_message_on :name %>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="textarea description">
+    <%= f.error_message_on :description %>
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, :cols => 30, :rows => 10 %>
+  </div>
+  
+  <div class="file-upload text asset">
+    <% if @part_asset.asset? %>
+    <div id="<%= dom_id(@part_asset, :asset) %>">
+      <p><strong>Current Attachment</strong></p>
+      <%= link_to 'View Current Attachment', @part_asset.asset.asset.url %>
+    </div>
+    <% end %>
+    
+    <% f.fields_for :asset do |a| %>
+      <%= a.error_message_on :asset %>
+      <%= a.label :asset, 'Attachment' %>
+      <%= a.file_field :asset %>
+    <% end %>
+  </div>
+</fieldset>

@@ -1,4 +1,14 @@
 class Admin::Part < Part
+  has_many :part_assets, :class_name => 'Admin::PartAsset', :dependent => :destroy
+  has_many :assets, :through => :part_assets
+  
+  def part_assets?
+    self.part_assets.any?
+  end
+  
+  def assets?
+    self.assets.any?
+  end
   
   define_index do
     indexes :part_number, :sortable => true

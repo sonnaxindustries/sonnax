@@ -1,0 +1,9 @@
+<h1>Add a new Resource to <%= @part.part_number %></h1>
+
+<% form_for :part_asset, @part_asset, :url => admin_part_part_assets_path(@part), :html => { :multipart => true } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', edit_admin_part_path(@part), :class => 'cancel' %>
+  </div>
+<% end %>

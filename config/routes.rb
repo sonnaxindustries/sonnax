@@ -3,7 +3,9 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace(:admin) do |admin|
     admin.dashboard '/', :controller => 'base', :action => 'dashboard'
     admin.resources :product_lines, :as => 'product-lines'
-    admin.resources :parts, :member => { :remove_photo => :delete }
+    admin.resources :parts, :member => { :remove_photo => :delete } do |p|
+      p.resources :part_assets, :as => 'assets'
+    end
     admin.resources :units
     admin.resources :makes
     admin.resources :reference_figures, :as => 'reference-figures', :member => { :remove_avatar => :delete }
