@@ -15,6 +15,10 @@ class Admin::ReferenceFigure < ReferenceFigure
       self.find_by_id!(id)
     end
     
+    def options
+      self.all.map { |p| [p.name, p.id] }
+    end
+    
     def per_page
       25
     end

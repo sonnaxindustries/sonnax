@@ -13,6 +13,12 @@
     <%= f.select :product_line_id, @product_line_options %>
   </div>
   
+  <div class="select reference-figure">
+    <%= f.error_message_on :reference_figure_id %>
+    <%= f.label :reference_figure_id, 'Reference Figure' %>
+    <%= f.select :reference_figure_id, @reference_figure_options %>
+  </div>
+  
   <div class="textarea description">
     <%= f.error_message_on :description %>
     <%= f.label :description, 'Description' %>
