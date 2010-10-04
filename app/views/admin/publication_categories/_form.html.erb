@@ -7,12 +7,6 @@
     <%= f.text_field :name %>
   </div>
   
-  <div class="select parent-category">
-    <%= f.error_message_on :parent_id %>
-    <%= f.label :parent_id, 'Parent Category' %>
-    <%= f.select :parent_id, @publication_category.options, :include_blank => '-- Choose a parent category --' %>
-  </div>
-  
   <div class="textarea description">
     <%= f.error_message_on :description %>
     <%= f.label :description, 'Description' %>
