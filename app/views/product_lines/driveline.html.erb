@@ -1,18 +1,20 @@
 <div id="product-line" class="driveline">
   <div id="col-1">
-    <%= image_tag('driveline.jpg', :width => 398, :height => 398, :alt => 'Driveline') %>
-  </div>
-  
-  <div id="col-2">
     <h1>Driveline</h1>
     <div class="description">
       <p>Sonnax is proud to offer a full line of aluminum Driveline components, engineered for improved assembly, outstanding performance and greater durability. Our weld yolks are constructed from high-quality T6061 aluminum. Sonnax also offers aluminum driveline tubing by Alcoa.</p>
-      <p>Sonnax is also the exclusive distributor of light-duty Power Train Savers® and Torque Fuses®, which are designed to prevent overtorque damage to differentials, axles, and driveshafts.
+      <p>Sonnax is also the exclusive distributor of light-duty Power Train Savers<sup>&reg;</sup> and Torque Fuses<sup>&reg;</sup>, which are designed to prevent overtorque damage to differentials, axles, and driveshafts.
       </p>
     </div>
     
     <ul>
-      <li><%= link_to 'Driveline<sup>&reg;</sup> Part Finder', product_line_parts_path(@product_line.url_friendly) %></li>
+      <li><%= link_to 'Parts Listing', product_line_parts_path(@product_line.url_friendly) %></li>
+      <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path, :class => 'email' %></li>
+      <li><%= link_to 'Contact Us', new_contact_path %></li>
     </ul>
+  </div>
+  
+  <div id="col-2">
+    <%= image_tag('driveline.jpg', :width => 398, :height => 398, :alt => 'Driveline') %>
   </div>
 </div>
