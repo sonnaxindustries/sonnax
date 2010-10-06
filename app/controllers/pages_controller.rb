@@ -69,13 +69,6 @@ class PagesController < ApplicationController
   def publication_glossary
   end
   
-  def speed_order
-    @cart = find_cart
-    @speed_order = SpeedOrder.new
-    @product_line_options = ProductLine.speed_order_options
-    @selected_product_line = ProductLine.torque_converter
-  end
-  
   def static_page
     page_template = "pages/static/%s" % [params[:template]]
     render page_template

@@ -49,11 +49,13 @@ ActionController::Routing::Routes.draw do |map|
     page.power_train_savers_testimonies '/power-train-savers-testimonies', :action => 'pts_testimonies'
     page.power_train_savers_faq '/power-train-savers-faq', :action => 'pts_faq'
     page.publication_glossary '/publication-glossary', :action => 'publication_glossary'
-    page.speed_order '/speed-order', :action => 'speed_order'
     page.connect '/page/:template', :action => 'static_page'
   end
   
-  map.add_speed_order '/speed-order/add', :controller => 'cart', :action => 'add_speed_order'
+  map.with_options(:controller => 'speed_orders') do |so|
+    so.add_speed_order '/speed-order/add', :action => 'create'
+    so.speed_order '/speed-order', :action => 'new'
+  end
   
   map.resource :user_session
   map.resource :account, :controller => "users"
