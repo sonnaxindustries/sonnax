@@ -6,6 +6,18 @@
   <h2>To Use Speed Order Form</h2>
   <p>To use Sonnax speed ordering, please fill in the part number and quantity fields for each item, then click the Add To Cart button. If you also use the Torque Converter online catalog pages to order converter parts, these parts will be combined with Speed Ordered parts in the same Order Cart for you to review, update and send to Sonnax.</p>
   <p>You can order from more than one product line on the same order; however, you can only select from one product line at a time. Select the first product line, enter those part numbers and add them to the Cart, then click Continue Speed Order, and select the next product line. All ordered items will be compiled in the Order Cart for your review prior to submitting the order.</p>
+  
+  <% if flash[:errors] %>
+  <div class="notice">
+    <p>
+      <ul>
+        <% @cart.errors.each do |err| %>
+        <li><%= err.message %></li>
+        <% end %>
+      </ul>
+    </p>
+  </div>
+  <% end %>
     
   <% form_for :speed_order, @speed_order, :url => add_speed_order_path do |f| %>
     

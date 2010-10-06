@@ -9,6 +9,16 @@ class SpeedOrdersController < ApplicationController
   def create
     @cart = find_cart
     @cart.add_multiple_speed_order_parts(params[:speed_order])
-    redirect_to(cart_path)
+    
+    if @cart.valid?
+      redirect_to(cart_path)
+    else
+      @cart = find_cart
+      @speed_order = SpeedOrder.new
+      @product_line_options = ProductLine.speed_order_options
+      @selected_product_line = ProductLine.find(params[:speed_order][:product_line_id])
+      flash[:errors] = @cart.errors
+      render_new
+    end
   end
 end

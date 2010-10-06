@@ -1,9 +1,18 @@
 #TODO: Refactor
 class Cart
-  attr_reader :parts
+  class Error
+    attr_accessor :part_number, :message
+    
+    def initialize(part_number, message)  
+      @part_number = part_number
+      @message = message
+    end
+  end
+  attr_reader :parts, :errors
   
   def initialize
     @parts = []
+    @errors = []
   end
   
   class << self
@@ -35,19 +44,34 @@ class Cart
     end
   end
   
+  def valid?
+    !self.errors?
+  end
+  
+  def errors?
+    self.errors.size > 0
+  end
+
   def add_multiple_speed_order_parts(parts_hash)
-    product_line_id = parts_hash['product_line_id'].to_i
+    @errors = []
+    product_line_id = parts_hash['product_line_id'].to_i   
+    product_line = ProductLine.find(product_line_id) 
     part_orders = parts_hash['parts'].values.flatten
     
     part_orders.each do |part|
+
       quantity = part['quantity'].to_i
       part_number = part['part_number']
 
       if quantity > 0
+        
         part_record = Part.find_by_part_number_and_product_line_id(part_number, product_line_id)
         
         if part_record
           self.add_part(part_record, quantity)
+        else
+          error_message = "Part %s could not be found in %s" % [part_number, product_line.name]
+          self.errors << Cart::Error.new(part_number, error_message)
         end
       end
     end
