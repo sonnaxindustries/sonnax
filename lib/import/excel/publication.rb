@@ -336,6 +336,7 @@ class Import::Excel::Publication
 
     def to_params
       {
+        :spreadsheet_id => self.id,
         :title => self.title,
         :pdf => self.pdf,
         :published_at => self.date
@@ -535,7 +536,7 @@ class Import::Excel::Publication
     (self.start_row..self.workbook.last_row).each_with_index do |index,row|
       @record_objects << Row.new(
                                :spreadsheet           => self,
-                               :spreadsheet_id        => self.workbook.cell(index, 0),
+                               :spreadsheet_id        => self.workbook.cell(index, 1),
                                :title_id              => self.workbook.cell(index, 1),
                                :publication_category  => self.workbook.cell(index, 2),
                                :publication_type      => self.workbook.cell(index, 3),
