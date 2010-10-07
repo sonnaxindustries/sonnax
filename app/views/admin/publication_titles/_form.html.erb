@@ -22,7 +22,7 @@
   <div class="date published-at">
     <%= f.error_message_on :published_at %>
     <%= f.label :published_at, 'Date Published' %>
-    <%= f.date_select :published_at, :discard_day => true, :order => [:month, :year], :prompt => { :day => 'Select day', :year => 'Select year' } %>
+    <%= f.date_select :published_at, :discard_day => true, :order => [:month, :year], :start_year => 1981, :end_year => (Time.now.year + 10), :prompt => { :day => 'Select day', :year => 'Select year' } %>
   </div>
   
   <div class="file-upload text pdf">
