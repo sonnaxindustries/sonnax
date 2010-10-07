@@ -57,7 +57,7 @@ class Converters::Import
       Converters::UnitComponent.run!
       
       puts 'Updating Eleanoras Password...'
-      User.find_by_login('ep').update_attributes(:password>> User.find_by_login('ep').update_attributes(:password => 's0nn4x', :password_confirmation => 's0nn4x')
+      User.find_by_login('ep').update_attributes(:password => 's0nn4x', :password_confirmation => 's0nn4x')
       
       # Once this is all completed, we need to:
       # 1. Push the new database to the remote server
