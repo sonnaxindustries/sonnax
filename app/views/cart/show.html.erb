@@ -6,6 +6,18 @@
   </div>
   <% end %>
   
+  <% if flash[:errors] %>
+  <div class="notice">
+    <p>
+      <ul>
+        <% @cart.errors.each do |err| %>
+        <li><%= err.message %></li>
+        <% end %>
+      </ul>
+    </p>
+  </div>
+  <% end %>
+  
   <% if @cart.parts? %>
   <p><%= link_to 'Empty Shopping Cart', empty_cart_cart_path, :confirm => 'Are you sure you want to empty your cart?' %></p>
     

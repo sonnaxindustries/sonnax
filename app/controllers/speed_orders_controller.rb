@@ -18,7 +18,7 @@ class SpeedOrdersController < ApplicationController
       @product_line_options = ProductLine.speed_order_options
       @selected_product_line = ProductLine.find(params[:speed_order][:product_line_id])
       flash[:errors] = @cart.errors
-      render_new
+      redirect_to(cart_path)
     end
   end
 end
