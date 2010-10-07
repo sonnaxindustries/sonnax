@@ -16,7 +16,7 @@
   <div class="select reference-figure">
     <%= f.error_message_on :reference_figure_id %>
     <%= f.label :reference_figure_id, 'Reference Figure' %>
-    <%= f.select :reference_figure_id, @reference_figure_options %>
+    <%= f.select :reference_figure_id, @reference_figure_options, :include_blank => ' -- None -- ' %>
   </div>
   
   <div class="textarea description">
