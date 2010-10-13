@@ -9,6 +9,7 @@
       <li><%= link_to 'Part and Application Finder', product_line_parts_path(@product_line.url_friendly) %></li>
       <li><%= link_to 'New Parts', recent_product_line_parts_path(@product_line.url_friendly) %></li>
       <li><%= link_to 'Distributors', distributor_by_country_path('USA') %></li>
+      <li><%= link_to 'To Order', speed_order_path %></li>
       <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path, :class => 'email' %></li>
       <li><%= link_to 'Contact Us', new_contact_path %></li>
     </ul>

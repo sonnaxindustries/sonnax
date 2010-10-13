@@ -268,8 +268,17 @@ form div.textarea textarea {
   color: #666;
 }
 /* -- =DISTRIBUTORS -- */
+/* -- =PRODUCTS TABLES -- */
 table.base {
   margin-bottom: 15px;
+}
+div.ring-gears table.base tbody td.number,
+div.ring-gears table.base thead th.number {
+	text-align:right;
+	padding-right: 12px;
+}
+div.ring-gears table.base thead th {
+	padding-right: 12px;
 }
 table.base thead th,
 #distributors table thead th {
@@ -284,6 +293,14 @@ table.base tbody td,
   padding: 3px 2px;
   border-bottom: 1px solid #ddd;
 }
+/* -- =Non-MDB TABLES -- */
+#harley-davidson table.static tbody td {
+  line-height: 1.7;
+  font-size: 12px;
+  padding: 3px 2px;
+  border-bottom: 3px solid #00548e;
+}
+
 /* -- =LINKS -- */
 a {
   color: #00548e;
@@ -672,11 +689,11 @@ div#history-and-mission p {
 }
 div#history-and-mission div#col-1 {
   float: left;
-  width: 365px;
+  width: 390px;
 }
 div#history-and-mission div#col-2 {
   float: right;
-  width: 390px;
+  width: 365px;
 }
 /* =NEWSLETTER */
 div#subscribe-to-newsletter h2 {
@@ -745,9 +762,9 @@ div#directions h2 {
   margin: 6px 0;
   font-size: 16px;
 }
-div#directions h1,
 div#directions div.map {
-  text-align: center;
+  text-align: left;
+  padding-left: 20px;
 }
 div#directions ul li {
   margin-left: 20px;
@@ -759,15 +776,6 @@ div#contact dt {
 }
 div#contact form {
   margin: 15px 0 0 0;
-}
-/* =INTERNATIONALINFO */
-div#international-info p {
-  margin: 10px 0;
-}
-div#international-info ul.options {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
 }
 /* =CAREERS */
 div#career-opportunities h2 {
@@ -794,7 +802,8 @@ div#tasc-force h2 {
   margin: 6px 0;
   font-size: 16px;
 }
-div.photo em.caption {
+div.photo em.caption,
+div.photosm em.caption {
   line-height: 1.5;
   color: #00548e;
   font-size: 10px;
@@ -1099,6 +1108,11 @@ div.ring-gears div#col-2 {
   margin-right: 15px;
   width: 350px;
 }
+/*= PL-INTERNATIONAL */
+div.international div#col {
+  float: left;
+  width: 715px;
+}
 /*= PL-DRIVELINE */
 div.driveline div#col-1 {
   float: left;
@@ -1126,12 +1140,12 @@ div.power-train-savers div#col-2 {
 /*= PL-HARLEYDAVIDSON */
 div.harley-davidson div#col-1 {
   float: left;
-  width: 365px;
+  width: 415px;
 }
 div.harley-davidson div#col-2 {
   float: right;
   margin-right: 15px;
-  width: 350px;
+  width: 300px;
 }
 div#harley-distributors h2 {
   font-size: 16px;
@@ -1188,6 +1202,9 @@ div#news ul.articles li ul li {
   border: none;
   padding: 0;
   margin: 0;
+}
+div#news div.photosm {
+  width: 250px;
 }
 div#news div.photo {
   width: 600px;
@@ -1314,79 +1331,124 @@ table.parts tbody td {
 div.torque-converter table.parts th.reference-number,
 div.torque-converter table.parts td.reference-number {
   width: 70px;
-  padding-left: 10px;
+  padding-left: 4px;
+  line-height: 1.0;
 }
 div.torque-converter table.parts th.item {
+  padding-left: 8px;
   width: 167px;
 }
 div.torque-converter table.parts td.item {
+  padding-left: 8px;
   font-weight: bold;
+  line-height: 1.0;
 }
+div.torque-converter table.parts td.description,
+div.torque-converter table.parts td.make,
+div.torque-converter table.parts td.part-number {
+  padding-left: 8px;
+  line-height: 1.0;
+	}
 div.torque-converter table.parts th.description {
+  padding-left: 8px;
   width: 317px;
 }
 div.torque-converter table.parts th.part-number {
   width: 105px;
-  padding-right: 4px;
+  padding-left: 8px;
 }
 div.torque-converter div.recent table.parts th.part-number,
 div.torque-converter div.recent table.parts td.part-number {
-  padding-left: 10px;
+  padding-left: 8px;
 }
 
 /* =TRANSMISSION PARTS */
 div.transmission table.parts th.part-number,
 div.transmission table.parts td.part-number {
-  width: 118px;
-  padding-left: 10px;
+  width: 100px;
+  padding-left: 4px;
+  line-height: 1.0;
 }
 div.transmission table.parts th.notes {
+  padding-left: 8px;
   width: 140px;
 }
+div.transmission table.parts td.make,
+div.transmission table.parts td.description {
+  padding-left: 8px;
+  line-height: 1.0;
+}
+div.transmission table.parts td.notes {
+  padding-left: 8px;
+  line-height: 1.0;
+}
 div.transmission table.parts th.make {
+  padding-left: 8px;
   width: 110px;
 }
 div.transmission table.parts th.description {
-  width: 165px;
-}
-div.transmission table.parts th.part-number {
-  width: 86px;
-  margin-right: 4px;
+  padding-left: 8px;
+  width: 183px;
 }
 
 /* =HIGH PERFORMANCE TRANSMISSION PARTS */
 div.high-performance-transmission table.parts th.ref-code,
 div.high-performance-transmission table.parts td.ref-code {
-  width: 100px;
-  padding-left: 10px;
+  width: 85px;
+  padding-left: 4px;
+  line-height: 1.0;
 }
-div.high-performance-transmission table.parts th.notes {
-  width: 140px;
+div.high-performance-transmission table.parts td.notes,
+div.high-performance-transmission table.parts td.make,
+div.high-performance-transmission table.parts td.description {
+  padding-left: 8px;
+  line-height: 1.0;
+}
+div.high-performance-transmission table.parts th.notes,
+div.high-performance-transmission table.parts td.notes{
+  width: 150px;
+  padding-left: 8px;
 }
 div.high-performance-transmission table.parts th.make {
+  padding-left: 8px;
   width: 70px;
 }
 div.high-performance-transmission table.parts th.description {
-  width: 108px;
+  padding-left: 8px;
+  width: 113px;
 }
-div.high-performance-transmission table.parts th.part-number {
+div.high-performance-transmission table.parts th.part-number,
+div.high-performance-transmission table.parts td.part-number {
+  padding-left: 8px;
   width: 95px;
 }
 
 /* =ALLISON PARTS */
 div.allison table.parts th.type {
+  padding-left: 8px;
   width: 110px;
 }
 div.allison table.parts th.oem-part-number {
+  padding-left: 8px;
   width: 112px;
 }
 div.allison table.parts th.description {
+  padding-left: 8px;
   width: 280px;
 }
 div.allison table.parts th.part-number {
   width: 110px;
-  padding-left: 10px;
+  padding-left: 4px;
 }
+div.allison table.parts td.type,
+div.allison table.parts td.oem-part-number,
+div.allison table.parts td.description,
+div.allison table.parts td.part-number {
+  width: 110px;
+  padding-left: 4px;
+  line-height: 1.0;
+}
+
 /* =CATALOG REQUEST */
 div#catalog-request form ul {
   float: left;

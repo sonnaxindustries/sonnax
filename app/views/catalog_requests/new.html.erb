@@ -9,115 +9,108 @@
     <%= f.error_message_on :catalogs_hash %>
     <ul class="catalogs group">
       <li>
-        <img src="/images/catalogs/ts7cover-cd.jpg" alt="Transmission Specialties&reg; Catalog, Volume 7" width="155" height="160">
-        <h2>Transmission Specialties<sup>&reg;</sup> Catalog, Volume 7 on CD Available Now!</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_volume_7, @catalog_request.catalogs_hash.include?(@catalogs.ts_volume_7) %>
+        <img src="/images/catalogs/TransmissionCover.jpg" alt="Transmission Products Catalog, Volume 8">
+        <h2>Transmission Products Catalog, Volume 8<br>
+        Catalog: <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_volume_8, @catalog_request.catalogs_hash.include?(@catalogs.ts_volume_8) %>
+        &nbsp;CD: <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_volume_8, @catalog_request.catalogs_hash.include?(@catalogs.ts_volume_8_cd) %></h2>
+        <div class="extra">
+          <p>For up-to-date  listing use the <%= link_to 'Part and Application Finder', product_line_parts_path('transmission') %></p>
+        </div>
       </li>
-      
+
       <li>
-        <img src="/images/catalogs/diagnostic-guide-cover-web.jpg" alt="Transmission Specialties&reg; Diagnostic Guide" width="144" height="186">
-        <h2>Transmission Specialties<sup>&reg;</sup> Diagnostic Guide</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_diagnostic_guide, @catalog_request.catalogs_hash.include?(@catalogs.ts_diagnostic_guide) %>
-      </li>
-      
-      <li>
-        <img src="/images/catalogs/DVD-catalog-page.jpg" alt="Valve Body Training DVD" width="144" height="144">
-        <h2>Valve Body Training DVD</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.valve_body_training, @catalog_request.catalogs_hash.include?(@catalogs.valve_body_training) %>
-      </li>
-      
-      <li>
-        <img src="/images/catalogs/NPA.jpg" alt="Transmission Specialties New Product Advisory Feb 2009" width="144" height="188">
-        <h2>Transmission Specialties<sup>&reg;</sup> New Product Advisory</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_new_product_advisory, @catalog_request.catalogs_hash.include?(@catalogs.ts_new_product_advisory) %>
+        <img src="/images/catalogs/2006-tcpc-cover.jpg" alt="Torque Converter Parts Catalog, Volume 6">
+        <h2>Torque Converter Parts Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.Torque_Converter_Catalog, @catalog_request.catalogs_hash.include?(@catalogs.Torque_Converter_Catalog) %></h2>
         
         <div class="extra">
-          <p>Access New Parts since Volume 7 Catalog <%= link_to 'HERE', recent_product_line_parts_path('transmission') %></p>
+          <p>For up-to-date listing use the <%= link_to 'Part and Application Finder', product_line_parts_path('torque-converter') %></p>
+        </div>
+      </li>
+
+      <li>
+        <img src="/images/catalogs/allison-vol2-cover-photo.jpg" alt="Allison Replacement Parts">
+        <h2>Allison Replacement Parts Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.allison_replacement_parts, @catalog_request.catalogs_hash.include?(@catalogs.allison_replacement_parts) %></h2>
+        
+        <div class="extra">
+          <p>For up-to-date listing use the <%= link_to 'Part and Application Finder', product_line_parts_path('allison') %></p>
         </div>
       </li>
       
       <li>
-        <img src="/images/catalogs/2006-tcpc-cover.jpg" alt="Torque Converter Catalog, Volume 6" width="144" height="188">
-        <h2>Torque Converter Catalog, Volume 6</h2>
+        <img src="/images/catalogs/PTS-catalog-thumbnail.png" alt="Power Train Savers Products Catalog">
+        <h2>Power Train Savers Products Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.pts_catalog, @catalog_request.catalogs_hash.include?(@catalogs.pts_catalog) %></h2>
         
         <div class="extra">
-          <p>You can access the online catalog pages <%= link_to 'HERE', product_line_parts_path('torque-converter') %></p>
+          <p>For up-to-date listing see the Parts Listing</p>
         </div>
       </li>
       
       <li>
-        <img src="/images/catalogs/2006_h_p_cover_web.jpg" alt="High Performance Catalog, Volume 6" width="144" height="185">
-        <h2>High Performance Catalog, Volume 6</h2>
+        <img src="/images/catalogs/driveline-thumb.png" alt="Driveline Catalog">
+        <h2>Driveline Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.driveline_catalog, @catalog_request.catalogs_hash.include?(@catalogs.driveline_catalog) %></h2>
         
         <div class="extra">
-          <p>Access the online catalog pages <%= link_to 'HERE', product_line_parts_path('high-performance-transmission') %></p>
+          <p>For up-to-date listing see the Parts Listing</p>
         </div>
       </li>
       
       <li>
-        <img src="/images/catalogs/allison-vol2-cover-photo.jpg" alt="Allison Replacement Parts" width="144" height="189">
-        <h2>Allison Replacement Parts</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.allison_replacement_parts, @catalog_request.catalogs_hash.include?(@catalogs.allison_replacement_parts) %>
-      </li>
-      
-      <li>
-        <img src="/images/catalogs/PTS-catalog-thumbnail.png" alt="PowerTrainSavers Catalog" width="144" height="186">
-        <h2>PowerTrainSavers<sup>&reg;</sup> Catalog, 2009</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.pts_catalog, @catalog_request.catalogs_hash.include?(@catalogs.pts_catalog) %>
-      </li>
-      
-      <li>
-        <img src="/images/catalogs/driveline-thumb.png" alt="Driveline Brochure" width="144" height="186">
-        <h2>Driveline Brochure</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.driveline_brochure, @catalog_request.catalogs_hash.include?(@catalogs.driveline_brochure) %>
-      </li>
-      
-      <li>
-        <img src="/images/catalogs/2006-spanish-diagnosticD1.jpg" alt="Diagnostic Guide en Espa&ntilde;ol" width="144" height="186">
-        <h2>Diagnostic Guide en Espa&ntilde;ol</h2>
+        <img src="/images/catalogs/ringgear-cover-web.jpg" alt="Ring Gear Spec Sheet">
+        <h2>Ring Gear Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.rg_spec_sheet, @catalog_request.catalogs_hash.include?(@catalogs.rg_spec_sheet) %></h2>
         
         <div class="extra">
-          <p>Get one from a <%= link_to 'Transmission Specialties Distributor', distributor_by_country_path('USA') %></p>
+          <p>For up-to-date listing see the Parts Listing</p>
         </div>
       </li>
       
       <li>
-        <img src="/images/catalogs/Spanish-TS3.jpg" alt="Transmission Specialties&reg; en Espa&ntilde;ol" width="144" height="187">
-        <h2>Transmission Specialties<sup>&reg;</sup> en Espa&ntilde;ol</h2>
-      </li>
-      
-      <li>
-        <img src="/images/catalogs/chinese_cover.jpg" alt="Transmission Specialties&reg; in Chinese" width="144" height="189">
-        <h2>Transmission Specialties<sup>&reg;</sup> in Chinese</h2>
-      </li>
-      
-      <li>
-        <img src="/images/catalogs/tc-catalog-chinese.jpg" alt="TC Catalog in Chinese" width="133" height="188" align="top">
+        <img src="/images/catalogs/HarleyDavidsonCover.gif" alt="Harley-Davidson&reg; Catalog">
+        <h2>Harley-Davidson<sup>&reg;</sup> Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.hd_catalog, @catalog_request.catalogs_hash.include?(@catalogs.hd_catalog) %></h2>
         
         <div class="extra">
-          <p>To download TC catalog in Chinese click <a href="/downloads/catalogs/tc-catalog-chinese-3.pdf" class="pdf">here</a> (3.3MB PDF)</p>
+          <p>For up-to-date listing see the Parts Listing</p>
         </div>
       </li>
       
       <li>
-        <img src="/images/catalogs/harley-flyer-cover-web.jpg" alt="Harley-Davidson&reg; Catalog" width="144" height="188">
-        <h2>Harley-Davidson<sup>&reg;</sup> Catalog</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.hd_catalog, @catalog_request.catalogs_hash.include?(@catalogs.hd_catalog) %>
+        <img src="/images/catalogs/DVD-catalog-page.jpg" alt="Valve Body Training DVD">
+        <h2>Valve Body Training DVD <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.valve_body_training, @catalog_request.catalogs_hash.include?(@catalogs.valve_body_training) %></h2>
+        
+      </li>
+
+      <li>
+        <img src="/images/catalogs/Spanish-TS3.jpg" alt="Transmission Specialties&reg; en Espa&ntilde;ol">
+        <h2>Transmission Specialties<sup>&reg;</sup> en Espa&ntilde;ol <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_espanol, @catalog_request.catalogs_hash.include?(@catalogs.transmission_espanol) %></h2>
+        
       </li>
       
       <li>
-        <img src="/images/catalogs/ringgear-cover-web.jpg" alt="Ring Gear Spec Sheet" width="144" height="188">
-        <h2>Ring Gear Spec Sheet</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.rg_spec_sheet, @catalog_request.catalogs_hash.include?(@catalogs.rg_spec_sheet) %>
+        <img src="/images/catalogs/2006-spanish-diagnosticD1.jpg" alt="Diagnostic Guide en Espa&ntilde;ol">
+        <h2>Diagnostic Guide en Espa&ntilde;ol <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.diagnostic_espanol, @catalog_request.catalogs_hash.include?(@catalogs.diagnostic_espanol) %></h2>
+        
       </li>
       
       <li>
-        <a href="/downloads/catalogs/sonnax-trans-report_v1n1.pdf"><img src="/images/catalogs/transreportv1n1.gif" alt="Transmission Report" width="145" height="188"></a>
-        <h2>Transmission Report</h2>
-        <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_report, @catalog_request.catalogs_hash.include?(@catalogs.transmission_report) %>
+        <img src="/images/catalogs/chinese_cover.jpg" alt="Transmission Specialties&reg; in Chinese">
+        <h2>Transmission Specialties<sup>&reg;</sup> in Chinese <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_chinese, @catalog_request.catalogs_hash.include?(@catalogs.transmission_chinese) %></h2>
+        
+      </li>
+      
+      <li>
+        <img src="/images/catalogs/tc-catalog-chinese.jpg" alt="TC Catalog in Chinese" align="top">
         
         <div class="extra">
-          <p>Click here to <%= link_to 'view the Transmission Report (3MB PDF)', '/downloads/catalogs/sonnax-trans-report_v1n1.pdf', :class => 'pdf' %></p>
+          <p><%= link_to 'Download ', '/downloads/catalogs/tc-catalog-chinese-3.pdf', :class => 'pdf' %> Torque Converter Catalog in Chinese (3.3MB PDF)</p>
+        </div>
+      </li>
+      
+      <li>
+        <a href="/downloads/catalogs/sonnax-trans-report_v1n1.pdf"><img src="/images/catalogs/transreportv1n1.gif" alt="Transmission Report"></a>
+        <h2>Transmission Report<%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_report, @catalog_request.catalogs_hash.include?(@catalogs.transmission_report) %></h2>
+        
+        
+        <div class="extra">
+          <p><%= link_to 'Download ', '/downloads/catalogs/sonnax-trans-report_v1n1.pdf', :class => 'pdf' %> the latest Transmission Report (3MB PDF)</p>
         </div>
       </li>
     </ul>    
