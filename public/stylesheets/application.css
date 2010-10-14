@@ -272,6 +272,7 @@ form div.textarea textarea {
 table.base {
   margin-bottom: 15px;
 }
+
 div.ring-gears table.base tbody td.number,
 div.ring-gears table.base thead th.number {
 	text-align:right;
@@ -293,14 +294,52 @@ table.base tbody td,
   padding: 3px 2px;
   border-bottom: 1px solid #ddd;
 }
-/* -- =Non-MDB TABLES -- */
-#harley-davidson table.static tbody td {
-  line-height: 1.7;
-  font-size: 12px;
-  padding: 3px 2px;
-  border-bottom: 3px solid #00548e;
+/* -- =Static Product TABLES -- */
+table.static {
+  margin-bottom: 15px;
 }
 
+div.harley-davidson table.static tbody td.number,
+div.harley-davidson table.static thead th.number {
+	text-align:right;
+	padding-right: 12px;
+}
+div.harley-davidson table.static thead th {
+	padding-right: 12px;
+	vertical-align:bottom;
+}
+div.harley-davidson table.static thead th.sonnax-no,
+div.harley-davidson table.static thead th.oem-no {
+	width: 150px;
+}
+div.harley-davidson table.static thead th.title {
+	width: 300px;
+}
+div.harley-davidson table.static tbody tr.blue {
+	background-color: #cad6df;
+}
+table.static thead th,
+#harley-davidson table thead th {
+  font-weight: bold;
+  padding: 0px 5px;
+  border-bottom: 2px solid #666;
+  border-collapse: collapse;
+}
+table.static tbody td,
+div.harley-davidson table.static tbody td {
+  line-height: 1.2;
+  font-size: 12px;
+  padding: 3px 5px;
+  border-bottom: 1px solid #ddd;
+}
+div.harley-davidson table.static tbody td.description,
+div.harley-davidson table.static tbody td.col {
+  line-height: 1.7;
+  font-size: 12px;
+  padding: 0px 5px;
+  border-bottom: 1px solid #ddd;
+  border-right: 2px solid #666;
+}
 /* -- =LINKS -- */
 a {
   color: #00548e;
