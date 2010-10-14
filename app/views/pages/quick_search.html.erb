@@ -8,6 +8,8 @@
       <% @product_line_parts.each do |product_line| %>
         <li><%= link_to product_line.name, product_line_parts_path(product_line.url_friendly) %></li>
       <% end %>
+      <li><%= link_to 'Harley Davidson', harley_davidson_parts_path %></li>
+      <li><%= link_to 'Power Train Savers', power_train_savers_parts_path %></li>
     </ul>
     <% end %>
   </div>
