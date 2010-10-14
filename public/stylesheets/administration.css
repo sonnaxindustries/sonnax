@@ -1,6 +1,11 @@
 div.user-options {
   float: right;
 }
+a.destroy-html {
+  float: right;
+  padding-right: 15px;
+  font-weight: bold;
+}
 #col-1 {
   clear: both;
   float: left;
