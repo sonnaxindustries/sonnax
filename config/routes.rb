@@ -105,6 +105,7 @@ ActionController::Routing::Routes.draw do |map|
     product_line.harley_davidson '/harley-davidson', :action => 'harley_davidson'
     product_line.harley_davidson_parts '/harley-davidson/parts', :action => 'harley_davidson_parts'
     product_line.power_train_savers '/power-train-savers', :action => 'power_train_savers'
+    product_line.power_train_savers_parts '/power-train-saves/parts', :action => 'power_train_savers_parts'
   end
   
   #NOTE: Allison is organized differently, since it is also a Make. Therefore, we want to catch the route and push to it's own controller
