@@ -17,15 +17,13 @@
   
   <div id="col-2">
     <% if @product_line.featured_parts.any? %>
-    <div class="featured">
-      <h2>Featured Part</h2>
-      
+    <div class="featured">      
       <% @product_line.featured_parts.each do |part| %>
       <div class="part">
         <% if part.primary_photo? %>
           <p><%= image_tag part.primary_photo.photo.asset.url(:medium) %></p>
         <% end %>
-        <p><strong>Featured Product:</strong> <%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
+        <p><%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
         <p><strong>Make:</strong> <%= part.make.name %></p>
         <p>
           <strong>Unit:</strong> 
