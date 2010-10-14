@@ -1300,6 +1300,9 @@ div#technical-library ul.publications li a:hover {
   color: #00548e;
   background: #ddd;
 }
+img.reference-figure {
+  float: right;
+}
 div.dvd {
   margin: 15px 0;
   padding-left: 80px;
@@ -1344,6 +1347,7 @@ div#part div.details div.description {
 }
 div.parts,
 div#no-parts {
+  clear: both;
   1height: 300px;
   margin-top: 30px;
   margin-right: 15px;
