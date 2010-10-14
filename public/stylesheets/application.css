@@ -1305,10 +1305,11 @@ div#part div.details div.description {
 }
 div.parts,
 div#no-parts {
-  height: 300px;
+  1height: 300px;
+  margin-top: 30px;
   margin-right: 15px;
-  overflow: auto;
-  border: 1px solid #000;
+  1overflow: auto;
+  1border: 1px solid #000;
 }
 div#no-parts {
   font-size: 18px;
