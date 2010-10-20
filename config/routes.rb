@@ -35,7 +35,7 @@ ActionController::Routing::Routes.draw do |map|
     page.tasc_force '/tasc-force', :action => 'tasc_force'
     page.career_opportunities '/career-opportunities', :action => 'career_opportunities'
     page.news_and_events '/news-and-events', :action => 'news_and_events'
-    page.news_list '/news', :action => 'news'
+    page.news_5_10_10 '/news_5_10_10', :action => 'news_5_10_10'
     page.events_list '/events', :action => 'events'
     page.international_shipping_and_payment '/international-shipping-and-payment-options', :action => 'international_shipping_and_payment'
     page.sonnax_insider '/sonnax-insider', :action => 'sonnax_insider'

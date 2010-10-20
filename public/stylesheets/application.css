@@ -165,6 +165,9 @@ sup {
   vertical-align: top;
   font-size: 9px;
 }
+ul.indented {
+	padding: 0 0 5px 20px;
+}
 body div.notice {
   font-weight: bold;
   line-height: 1;
@@ -273,14 +276,6 @@ table.base {
   margin-bottom: 15px;
 }
 
-div.ring-gears table.base tbody td.number,
-div.ring-gears table.base thead th.number {
-	text-align:right;
-	padding-right: 12px;
-}
-div.ring-gears table.base thead th {
-	padding-right: 12px;
-}
 table.base thead th,
 #distributors table thead th {
   font-weight: bold;
@@ -298,7 +293,73 @@ table.base tbody td,
 table.static {
   margin-bottom: 15px;
 }
-
+div.power-train-savers table.static tbody td.number,
+div.ring-gears table.static tbody td.number {
+	text-align:right;
+	padding-right: 18px;
+  border-right: 1px solid #666;
+}
+div.ring-gears table.static tbody td {
+  border-right: 1px solid #666;
+}
+div.ring-gears table.static tbody td.end {
+  border-right: 0;
+}
+div.ring-gears table.static tbody td.r-line {
+  border-right: 1px solid #666;
+}
+div.power-train-savers table.static tbody td.series {
+	vertical-align:middle;
+	border-bottom: 2px solid #666;
+	border-right: 2px solid #666;
+}
+div.power-train-savers table.static tbody td.capacity {
+	vertical-align:bottom;
+	border-bottom: 1px solid #666;
+	border-left: 1px solid #666;
+}
+div.power-train-savers table.static tbody td.capacityBottom {
+	vertical-align:bottom;
+	border-bottom: 2px solid #666;
+	border-left: 1px solid #666;
+}
+div.power-train-savers table.static tbody td.mid {
+	vertical-align:bottom;
+	border-bottom: 1px solid #666;
+}
+div.power-train-savers table.static tbody td.midBottom {
+	vertical-align:bottom;
+	border-bottom: 2px solid #666;
+}
+div.ring-gears table.static thead th.number {
+	text-align:center;
+	padding-left 3px;
+	line-height: 1.2;
+  border-right: 1px solid #666;
+  vertical-align: bottom;
+}
+div.ring-gears table.static thead th {
+	padding-right: 12px;
+	line-height: 1.2;
+  vertical-align: bottom;
+  border-right: 1px solid #666;
+}
+div.power-train-savers table.static thead th.end {
+	padding-right: 12px;
+	line-height: 1.2;
+  vertical-align: bottom;
+  border-right: 0;
+}
+div.ring-gears table.static thead th.end {
+	border-right: 0px;
+}
+div.power-train-savers table.static thead th.col {
+	border-right: 2px solid #666;
+	vertical-align:bottom;
+}
+div.power-train-savers table.static thead th.colLarge {
+	vertical-align:bottom;
+}
 div.harley-davidson table.static tbody td.number,
 div.harley-davidson table.static thead th.number {
 	text-align:right;
@@ -315,8 +376,15 @@ div.harley-davidson table.static thead th.oem-no {
 div.harley-davidson table.static thead th.title {
 	width: 300px;
 }
-div.harley-davidson table.static tbody tr.blue {
+div.harley-davidson table.static tbody tr.blue,
+div.driveline table.static tbody tr.blue,
+div.ring-gears table.static tbody tr.blue,
+div.power-train-savers table.static tbody tr.blue {
 	background-color: #cad6df;
+}
+div.harley-davidson table.static tbody td.last,
+div.ring-gears table.static tbody td.last {
+	border-bottom: 1px solid #666;
 }
 table.static thead th,
 #harley-davidson table thead th {
@@ -330,16 +398,29 @@ div.harley-davidson table.static tbody td {
   line-height: 1.2;
   font-size: 12px;
   padding: 3px 5px;
-  border-bottom: 1px solid #ddd;
 }
-div.harley-davidson table.static tbody td.description,
 div.harley-davidson table.static tbody td.col {
   line-height: 1.7;
   font-size: 12px;
   padding: 0px 5px;
-  border-bottom: 1px solid #ddd;
   border-right: 2px solid #666;
 }
+div.harley-davidson table.static tbody td.collast {
+  line-height: 1.7;
+  font-size: 12px;
+  padding: 0px 5px;
+  border-right: 2px solid #666;
+	border-bottom: 1px solid #666;
+}
+
+div.harley-davidson table.static tbody td.description {
+  line-height: 1.7;
+  font-size: 12px;
+  padding: 0px 5px;
+  border-bottom: 1px solid #666;
+  border-right: 2px solid #666;
+}
+
 /* -- =LINKS -- */
 a {
   color: #00548e;
@@ -443,6 +524,22 @@ div.publication-list table thead th {
   font-size: 14px;
   border-bottom: 2px solid #ddd;
 }
+
+/* =TECH LIBRARY */
+div.publication-body p.body {
+	padding-right: 5px;
+}
+div.publication-body p.credits {
+	border-top: #00548e 1px solid;
+	padding: 5px;
+	line-height: 1.5;
+	font-style: italic;
+}
+img.articleimage {
+	border: #00548e 1px solid;
+	padding: 5px;
+}
+
 /* =TABLES */
 table.tablesorter thead tr .header {
 	background-image: url(/images/icons/bg.gif);
@@ -1092,6 +1189,17 @@ div#product-line div.valve-body-layouts a {
 div#product-line ul a {
   font-weight: bold;
 }
+div#product-line ul li.bullets {
+  line-height: 1.0;
+  list-style: disc;
+  margin: 0 0 5px 25px;
+}
+div#product-line ul.bullets {
+  line-height: 1.0;
+  list-style: disc;
+  margin: 0 0 10px 25px;
+}
+
 div#product-line h2 {
   font-size: 16px;
   margin: 10px 0 7px 0;
@@ -1212,52 +1320,73 @@ div#customer-testimonials ul li {
   margin-bottom: 20px;
 
 }
-/* =NEWS */
-div#events h2,
-div#news h2 {
-  font-size: 16px;
-  margin: 10px 0 2px 0;
+/* =NEWS-AND-EVENTS */
+div#news-and-events div#col-1 {
+  width: 550px;
+  float: left;
+  padding-right: 15px;
+  border-right: 1px solid #666;
 }
-div#news,
-div#events {
-  margin-right: 15px;
+div#news-and-events div#col-2 {
+  float: right;
+  width: 195px;
+  padding-right: 10px;
+  padding-left: 5px;
 }
-div#events ul.articles,
-div#news ul.articles {
-  margin-top: 20px;
+div#news-and-events li.enventlist {
+  line-height: 1.2;
 }
-div#events ul.articles li,
-div#news ul.articles li {
-  margin-bottom: 15px;
-  padding-bottom: 7px;
-  border-bottom: 1px solid #ddd;
+div#news-and-events p.event {
+  line-height: 1.2;
+  font-size: 10px;
 }
-div#events ul.articles li.last,
-div#news ul.articles li.last {
-  border-bottom: none;
+div#news-and-events a.eventname {
+  line-height: 1.2;
+  font-weight:bold;
 }
-div#events ul.articles li ul li,
-div#news ul.articles li ul li {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-div#news div.photosm {
-  width: 250px;
-}
-div#news div.photo {
-  width: 600px;
-}
-div#news div.photo img {
-  border: 2px solid #ddd;
-  padding: 2px;
-}
-div#events em.published-date,
+div#news-and-events em.date,
 div#news em.published-date {
   font-size: 10px;
-  font-style: italic;
   color: #666;
 }
+div#news-and-events img.Rphoto {
+	border: 0;
+	float: right;
+	padding-left: 10px;
+}
+div#news-and-events ul {
+	padding: 0 0 8px 8px;
+}
+div#news-and-events li {
+	line-height: 1.0;
+	padding: 0 0 3px 0;
+}
+div#news-and-events li.enventlist {
+	line-height: 1.3;
+	padding: 0 0 8px 0;
+}
+
+/* =NEWS */
+div#news div#col-1 {
+  width: 495px;
+  float: left;
+  padding-right: 15px;
+}
+div#news div#col-2 {
+  float: right;
+  width: 250px;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+div#news em.caption {
+  color: #00548e;
+  line-height: 1.5;
+  font-size: 10px;
+  font-style: italic;
+  padding-right: 5px;
+}
+
+
 /* =PUBLICATION GLOSSARY */
 div#publication-glossary dt {
   font-weight: bold;
