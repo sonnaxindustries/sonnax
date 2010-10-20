@@ -1402,6 +1402,18 @@ div#technical-library h2 {
 div#technical-library {
   margin-right: 15px;
 }
+div.reference-figure {
+  margin-top: -150px;
+  float: right;
+  margin-right: 15px;
+}
+div.reference-figure img.reference-figure {
+  float: left;
+}
+div.reference-figure a.view-full {
+  float: left;
+  clear: both;
+}
 div#technical-library div.note {
   width: 730px;
 }

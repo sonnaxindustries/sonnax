@@ -1,6 +1,8 @@
 <% if @unit %>
+<div class="reference-figure">
   <%= image_tag @unit.reference_figure.avatar.url(:medium), :class => 'reference-figure' %>
-  <%= link_to 'View Full Size', @unit.reference_figure.avatar.url, :rel => 'external' %>
+  <%= link_to 'View Full Size', @unit.reference_figure.avatar.url, :rel => 'external', :class => 'view-full' %>
+</div>
 <% end %>
 
 <% form_for :cart, @cart, :url => add_multiple_cart_path do |f| %>
