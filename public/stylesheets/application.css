@@ -1354,6 +1354,11 @@ div#news-and-events img.Rphoto {
 	float: right;
 	padding-left: 10px;
 }
+div#news-and-events img.Lphoto {
+	border: 0;
+	float: left;
+	padding-right: 10px;
+}
 div#news-and-events ul {
 	padding: 0 0 8px 8px;
 }
@@ -1440,6 +1445,9 @@ div#technical-library ul.publications li a {
 div#technical-library ul.publications li a:hover {
   color: #00548e;
   background: #ddd;
+}
+img.reference-figure {
+  float: right;
 }
 div.dvd {
   margin: 15px 0;
