@@ -1,6 +1,12 @@
 var changeEvt = $.browser.msie ? "click" : "change";
 
 $(document).ready(function() {  
+  //enlarge images
+  $('a[rel="external"]').live('click', function(e) {
+    window.open($(this).attr('href'));
+    e.preventDefault();
+  });
+  
   // CART
   $('div#cart div.cart-options ul a.update').live('click', function(e) {
     var $elem = $(this);
