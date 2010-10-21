@@ -46,12 +46,31 @@ namespace(:deploy) do
   task(:symlink_pages, :roles => :app) do
     run('ln -s /var/www/rails/sonnax/shared/pages/ /var/www/rails/sonnax/current/app/views/pages/static')
   end
+  
+  namespace(:publication) do
+    desc 'Symlink the publication images (Transmission)'
+    task(:symlink_transmission, :roles => :app) do
+      symlink_dir = '/var/www/rails/sonnax/current/public/images/technical-library'
+      rmdir_cmd = "rm -rf %s" % [symlink_dir]
+      mkdir_cmd = "mkdir %s" % [symlink_dir]
+      run(rmdir_cmd)
+      run(mkdir_cmd)
+      run('ln -s /var/www/rails/sonnax/shared/system/pages/ts_articles /var/www/rails/sonnax/current/public/images/technical-library/transmission')
+    end
+  end
+  
+  
 end
 
 #NOTE: This only needs to be run once, then we will pull down from production on subsequent calls
 desc 'Copy local images to shared folder on the server'
 task(:copy_shared) do
   run_locally("scp -r /users/nateklaiber/sites/sonnax/public/system/* root@206.123.113.157:#{shared_path}/system/")
+end
+
+desc 'Copy local pages'
+task(:copy_shared_pages) do
+  run_locally("scp -r /users/nateklaiber/sites/sonnax/public/system/pages/* root@sonnax.com:#{shared_path}/system/pages")
 end
 
 namespace :rake do  
@@ -71,6 +90,6 @@ def rake(*tasks)
 end
 
 
-after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages'
+after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages', 'deploy:publication:symlink_transmission'
 after 'deploy', 'deploy:cleanup'
 #after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
