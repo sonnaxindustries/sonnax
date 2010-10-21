@@ -1,7 +1,9 @@
 var changeEvt = $.browser.msie ? "click" : "change";
 
 $(document).ready(function() {  
-  //enlarge images
+  $("a[rel*=fancybox]").fancybox();
+  
+  // open external windows
   $('a[rel="external"]').live('click', function(e) {
     window.open($(this).attr('href'));
     e.preventDefault();
@@ -74,9 +76,11 @@ $(document).ready(function() {
       data: $form.serialize(),
       dataType: 'json',
       success: function(response) {
+        console.log('attached');
         $elem.siblings('div.indicator').remove();
         var domId = $('div.parts-wrapper');
         $(domId).html(response.parts_partial);
+        $("a[rel*=fancybox]").fancybox();
       }
     })
 
