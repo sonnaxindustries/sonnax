@@ -1,19 +1,19 @@
 var changeEvt = $.browser.msie ? "click" : "change";
 
-$(document).ready(function() {  
+$(document).ready(function() {
   $("a[rel*=fancybox]").fancybox();
-  
+
   // open external windows
   $('a[rel="external"]').live('click', function(e) {
     window.open($(this).attr('href'));
     e.preventDefault();
   });
-  
+
   // CART
   $('div#cart div.cart-options ul a.update').live('click', function(e) {
     var $elem = $(this);
     var $form = $('div#cart form');
-    
+
     $.ajax({
       url: $elem.attr('href'),
       type: 'PUT',
@@ -25,7 +25,7 @@ $(document).ready(function() {
     })
     e.preventDefault();
   });
-  
+
   $('div#cart div.cart-container a.remove').live('click', function(e) {
     var $elem = $(this);
     $.ajax({
@@ -39,15 +39,15 @@ $(document).ready(function() {
     e.preventDefault();
   })
   // END CART
-  
-  // PRODUCT LINES  
+
+  // PRODUCT LINES
   $('div#product-line form div.make-selector select').live(changeEvt, function(e) {
     $('div.search div#search-options div.search-terms input[type="text"]').val('');
     var $elem = $(this);
     $('div#product-line form div.unit-selector select').val('');
-    
+
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-    
+
     var $form = $elem.closest('form');
     $.ajax({
       url: $form.attr('action'),
@@ -57,17 +57,17 @@ $(document).ready(function() {
       success: function(response) {
         $elem.siblings('div.indicator').remove();
         $('div#product-line form div.unit-selector select').html(response.unit_select_options);
-        
+
         var domId = $('div.parts-wrapper');
         $(domId).html(response.no_parts_partial);
       }
     })
     e.preventDefault();
   });
-  
+
   $('div#product-line form div.unit-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
-    
+
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
     var $form = $elem.closest('form');
     $.ajax({
@@ -76,7 +76,6 @@ $(document).ready(function() {
       data: $form.serialize(),
       dataType: 'json',
       success: function(response) {
-        console.log('attached');
         $elem.siblings('div.indicator').remove();
         var domId = $('div.parts-wrapper');
         $(domId).html(response.parts_partial);
@@ -87,7 +86,7 @@ $(document).ready(function() {
     e.preventDefault();
   });
   // END PRODUCT LINES
-  
+
   //-- Technical Library
   $.tablesorter.addParser({
     id: 'mm-yyyy',
@@ -105,7 +104,7 @@ $(document).ready(function() {
     },
     type: 'numeric'
   });
-  
+
   $(document).bind('tablesorter-initialize', function() {
     $("div.publications table").tablesorter({
       headers:
@@ -118,8 +117,8 @@ $(document).ready(function() {
 
   $(document).trigger('tablesorter-initialize');
 
-  
-  
+
+
   $('div.publication-list form div.subject-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
     $('div.publication-list form div.make-selector select').val('');
