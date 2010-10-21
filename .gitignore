@@ -18,3 +18,6 @@ config/*.sphinx.conf
 db/sphinx/**/*
 log/*.pid
 .rvmrc
+
+#symlinked paths for images in publications
+public/images/technical-library/**/*
