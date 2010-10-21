@@ -1345,7 +1345,8 @@ div#news-and-events a.eventname {
   font-weight:bold;
 }
 div#news-and-events em.date,
-div#news em.published-date {
+div#news em.date,
+div#news-archive {
   font-size: 10px;
   color: #666;
 }
@@ -1359,10 +1360,22 @@ div#news-and-events img.Lphoto {
 	float: left;
 	padding-right: 10px;
 }
-div#news-and-events ul {
+div#news-archive img.Rphoto {
+	border: 0;
+	float: right;
+	padding: 0 10px 0 10px;
+}
+div#news-archive img.Lphoto {
+	border: 0;
+	float: left;
+	padding: 0 10px 0 10px;
+}
+div#news-and-events ul,
+div#news-archive ul {
 	padding: 0 0 8px 8px;
 }
-div#news-and-events li {
+div#news-and-events li,
+div#news-archive li {
 	line-height: 1.0;
 	padding: 0 0 3px 0;
 }
@@ -1390,7 +1403,6 @@ div#news em.caption {
   font-style: italic;
   padding-right: 5px;
 }
-
 
 /* =PUBLICATION GLOSSARY */
 div#publication-glossary dt {
