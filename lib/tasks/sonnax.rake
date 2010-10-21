@@ -1,6 +1,16 @@
 namespace :s do
   task :repro => 'sonnax:repro'
   
+  namespace :publications do
+    desc 'Symlink the images (Transmission)'
+    task(:symlink_publication_images) do
+      local_symlink_dir = '/users/nateklaiber/sites/sonnax/public/images/technical-library/'
+      mkdir_cmd = "mkdir %s" % [local_symlink_dir]
+      system(mkdir_cmd) unless File.directory?(local_symlink_dir) && File.exists?(local_symlink_dir)
+      system('ln -s /users/nateklaiber/sites/sonnax/public/system/pages/ts_articles /users/nateklaiber/sites/sonnax/public/images/technical-library/transmission')
+    end
+  end
+  
   namespace :db do
     task :pull => 'sonnax:database:pull'
     task :push => 'sonnax:database:push'
