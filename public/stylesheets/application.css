@@ -163,7 +163,8 @@ h1 {
 }
 sup {
   vertical-align: top;
-  font-size: 9px;
+  font-size: small;
+  text-decoration: none;
 }
 ul.indented {
 	padding: 0 0 5px 20px;
