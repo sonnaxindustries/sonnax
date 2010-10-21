@@ -2,6 +2,12 @@ require File.join(File.dirname(__FILE__)) + '/cap_helper'
 
 Capistrano::Configuration.instance.load do  
   namespace :s do
+    namespace :pages do
+      desc 'Pull in the new pages'
+      task(:pull) do
+        run_locally('rsync --recursive --times --rsh=ssh --compress --human-readable --progress root@sonnax.com:/var/www/rails/sonnax/shared/system/pages/ public/system/pages/')
+      end
+    end
     namespace :db do
       desc "Pull database from remote server and copy into local..."
       task :pull do
