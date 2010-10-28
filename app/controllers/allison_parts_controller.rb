@@ -34,7 +34,6 @@ class AllisonPartsController < ApplicationController
     @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
 
     if params[:filter] && !params[:filter][:unit].blank?    
-      raise params[:filter].inspect
       @parts = Part.find_by_filter(params[:filter] || {})
       @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
       @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
