@@ -20,4 +20,4 @@ log/*.pid
 .rvmrc
 
 #symlinked paths for images in publications
-public/images/technical-library/**/*
+public/images/technical-library/*
