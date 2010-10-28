@@ -4,7 +4,9 @@
     <div class="description">
       <p>Sonnax transmission parts feature carefully designed, innovative solutions that address common complaints and help rebuilders salvage expensive automatic transmissions and valve bodies. In addition, Sonnax offers many transmission and valve body parts for the latest automotive aftermarket units; direct replacement parts with proven track records; excellent product information; in-depth phone and online technical support; and a global network of knowledgeable transmission parts distributors.</p>
     </div>
-    
+    <!-- <div id="cores">
+      <%= link_to(image_tag('solenoid-cores.gif', :alt => 'Solenoid Core Purchase Program'), new_solenoid_path) %>
+    </div> -->
     <ul>
       <li><%= link_to 'Part and Application Finder', product_line_parts_path(@product_line.url_friendly) %></li>
       <li><%= link_to 'New Parts', recent_product_line_parts_path(@product_line.url_friendly) %></li>
@@ -12,7 +14,10 @@
       <li><%= link_to 'To Order', speed_order_path %></li>
       <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path, :class => 'email' %></li>
       <li><%= link_to 'Contact Us', new_contact_path %></li>
+      <li><%= link_to 'Solenoid Core Purchase Program', new_solenoid_path %></li>
     </ul>
+	
+
   </div>
   
   <div id="col-2">

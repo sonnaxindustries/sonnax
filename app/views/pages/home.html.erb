@@ -8,25 +8,25 @@
       <ul>
         <li>
           <h3><%= link_to 'Transmission Parts', transmission_path %></h3>
-          <%= link_to(image_tag('ts-parts.jpg', :alt => 'Transmission Parts'), '#') %>
+          <%= link_to(image_tag('ts-parts.jpg', :alt => 'Transmission Parts'), transmission_path) %>
           <p>Sonnax transmission parts are known in the automatic transmission repair industry for effectively restoring full operation of automatic transmissions and salvaging expensive valve bodies. The Transmission Specialties product catalog has become the de facto industry instruction manual, guiding builders from transmission complaints to product solutions. Popular Sure Cure<sup>&reg;</sup> kits provide the key products to repair a particular unit.</p>
         </li>
 
         <li>
           <h3><%= link_to 'Torque Converter Parts', torque_converter_path %></h3>
-          <%= link_to(image_tag('tc-parts.jpg', :alt => 'Torque Converter Parts'), '#') %>
-          <p>Sonnax is the acknowledged global leader in the manufacture and distribution of torque converter components for standard and high performance converters. A full line of components ranges from precisely machined billet-steel converter covers to the smallest washer or o-ring. Torque converter remanufacturers worldwide confide in Sonnax to provide superior products, the highest level of customer service, and responsive technical support.</p>
+          <%= link_to(image_tag('tc-parts.jpg', :alt => 'Torque Converter Parts'), torque_converter_path) %>
+          <p>Sonnax is the acknowledged global leader in the manufacture and distribution of torque converter components for standard and high performance converters. A full line of components ranges from precisely machined billet-steel converter covers to the smallest washer or O-ring. Torque converter remanufacturers worldwide confide in Sonnax to provide superior products, the highest level of customer service, and responsive technical support.</p>
         </li>
 
         <li>
-          <h3><%= link_to "Power Train Savers&reg;", power_train_savers_path %></h3>
-          <%= link_to(image_tag('driveline-parts.jpg', :alt => 'Driveline Parts'), '#') %>
+          <h3><%= link_to "Power Train Savers<sup>&reg;</sup>", power_train_savers_path %></h3>
+          <%= link_to(image_tag('driveline-parts.jpg', :alt => 'Driveline Parts'), power_train_savers_path) %>
           <p>The Power Train Saver is a patented drivetrain protection device that mounts into your existing driveshaft. Once installed, this device prevents over-torque damage that can ruin differentials, gears, axles and driveshafts. In an over-torque situation, our precisely calibrated Torque Fuses<sup>&reg;</sup> shear before drivetrain damage occurs, while the unit design holds the driveshaft in place, saving costly repairs and downtime.</p>
         </li>
 
         <li>
           <h3><%= link_to "High Performance Parts", high_performance_transmission_path %></h3>
-          <%= link_to(image_tag('hp-parts.jpg', :alt => 'High Performance Parts'), '#') %>
+          <%= link_to(image_tag('hp-parts.jpg', :alt => 'High Performance Parts'), high_performance_transmission_path) %>
           <p>Sonnax provides high performance components for automatic transmissions and torque converters for racing and other extreme service conditions. A full line of components for the Powerglide transmission, a longtime staple of performance racing, is complemented by a growing line of enhanced products for other popular heavy duty, performance applications. Sonnax also offers informed technical support to builders in selecting parts to fit their performance requirements.</p>
         </li>
       </ul>
@@ -34,33 +34,26 @@
   </div>
 
   <div id="col-2" class="group">
-    <div id="cores">
-      <%= link_to(image_tag('solenoid-cores.gif', :alt => 'Solenoid Core Purchase Program'), new_solenoid_path) %>
-    </div>
-
     <div id="insider-intro">
       <h4>Become a Sonnax Insider</h4>
       <p>Get the scoop on new Sonnax products, industry happenings and technical resources!</p>
       <%= link_to 'Learn More...', insider_path, :class => 'more' %>
     </div>
 
-    <div id="espanol">
+    <!-- <div id="espanol">
       <h4><%= link_to 'Información en Español', technical_library_path %></h4>
+    </div> -->
+
+    <div class="social-media group">
+      <div class="facebook">
+	  	<%= link_to image_tag('Facebook_web.gif', :alt => 'Find us on Facebook'), 'http://www.facebook.com/pages/Sonnax/98769428353', :rel => 'external', :class => 'facebook' %>
+      </div>
     </div>
+
+
   </div>
 
   <div id="col-3">
-    <div class="social-media group">
-      <div class="facebook">
-        <%= image_tag('facebook-32x32.png', :alt => 'Join us on Facebook') %>
-        <%= link_to 'Join the Sonnax Facebook Community', 'http://www.facebook.com/pages/Sonnax/98769428353', :rel => 'external', :class => 'facebook' %>
-      </div>
-      
-      <div class="twitter">
-        <%= image_tag('twitter-32x32.png', :alt => 'Follow us on Twitter') %>
-        <%= link_to 'Follow Sonnax on Twitter', 'http://www.twitter.com/sonnax', :rel => 'external', :class => 'twitter' %>
-      </div>
-    </div>
 
     <div class="iso-registered group">
       <p><%= link_to 'Sonnax Industries is an ISO 9001: 2008 Registered Company', 'downloads/ISO90012008CERTIFICATE.pdf' %></p>

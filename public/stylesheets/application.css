@@ -163,7 +163,8 @@ h1 {
 }
 sup {
   vertical-align: top;
-  font-size: 9px;
+  font-size: small;
+  text-decoration: none;
 }
 ul.indented {
 	padding: 0 0 5px 20px;
@@ -525,19 +526,87 @@ div.publication-list table thead th {
   border-bottom: 2px solid #ddd;
 }
 
-/* =TECH LIBRARY */
+/* =TECH LIBRARY ARTICLES*/
+table.article {
+  margin-bottom: 15px;
+}
+table.article thead th {
+  vertical-align: bottom;
+  border-bottom: solid 2px #666;
+  padding: 0 10px 0 10px;
+}
+table.article tbody td {
+  vertical-align: bottom;
+  border-right: solid 1px #666;
+  border-bottom: solid 1px #666;
+  padding: 0 10px 0 10px;
+}
 div.publication-body p.body {
 	padding-right: 5px;
+	line-height: 1.5;
 }
 div.publication-body p.credits {
 	border-top: #00548e 1px solid;
 	padding: 5px;
+	margin-top: 20px;
 	line-height: 1.5;
 	font-style: italic;
 }
+div.publication-body p.note {
+	padding-right: 5px;
+	font-style: italic;
+	line-height: 1.5;
+}
+div.publication-body p.partnumber {
+	font-weight: bold;
+}
+div.publication-body p.title {
+	color: #00458e;
+	font-size: 16px;
+	font-weight: bold;
+}
+div.publication-body ul.articlelist {
+	list-style: disc;
+}
+div.publication-body ul.articlelist li {
+	list-style: disc;
+	margin-left: 30px;
+	margin-bottom: 5px;
+	line-height: 1.5;
+}
+div.publication-body ol.articleordlist {
+	list-style: decimal;
+}
+div.publication-body ol.articleordlist li {
+	list-style: decimal;
+	margin-left: 30px;
+	margin-bottom: 5px;
+	line-height: 1.5;
+}
+div.publication-body p.subtitle {
+	color: #00458e;
+	font-size: 14px;
+	font-weight: bold;
+}
+div.publication-body p.subtitle2 {
+	font-size: 14px;
+}
+img.articleimageleft {
+	border: #00548e 1px solid;
+	padding: 0;
+	margin: 3px 10px 3px 0px;
+	float: left;
+}
 img.articleimage {
 	border: #00548e 1px solid;
-	padding: 5px;
+	padding: 0;
+	margin: 10px 0px 10px 0px;
+}
+img.articleimageright {
+	border: #00548e 1px solid;
+	padding: 0;
+	margin: 3px 10px 3px 15px;
+	float: right;
 }
 
 /* =TABLES */
@@ -605,7 +674,6 @@ div#home div#col-2 {
   width: 160px;
   float: right;
 }
-  div#home div#col-2 div#cores,
   div#home div#col-2 div#insider-intro,
   div#home div#col-2 div#espanol {
     margin-bottom: 45px;
@@ -1235,6 +1303,10 @@ div.transmission div#col-2 {
   float: right;
   margin-right: 15px;
   width: 350px;
+}
+div.transmission div#col-1 div#cores{
+  float: right;
+  margin-bottom: 15px;
 }
 div.torque-converter div#col-1 {
   float: left;
