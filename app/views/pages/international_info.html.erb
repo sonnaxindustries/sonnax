@@ -3,13 +3,13 @@
   <div id="col">
     <h1>Sonnax International</h1>
     <div class="description">
-      <p>Sonnax supports a network of distributors and rebuilders worldwide with quality products, excellent service and technical resources, including technical bulletins, rebuilding seminars and catalogs in English, Spanish and Chinese. Our international sales team is multi-lingual and works closely with customers, end users and Sonnax product line managers and technical support staff, to anticipate and respond to inquiries and meet diverse product line needs of a global marketplace. For more information and to contact the international team, send an email to <%= mail_to 'internationalsalesteam@sonnax.com' %></p>
+      <p>Sonnax supports a network of distributors and rebuilders worldwide with quality products, excellent service and technical resources, including technical bulletins, rebuilding seminars and catalogs in English, Spanish and Chinese. Our international sales team is multi-lingual and works closely with customers, end users and Sonnax product line managers and technical support staff, to anticipate and respond to inquiries and meet diverse product line needs of a global marketplace.</p>
     </div>
     
     <ul>
       <li><%= link_to 'Distributors', distributor_by_country_path('Australia') %></li>
       <li><%= link_to 'Payment &amp; Shipment Options', international_shipping_and_payment_path %></li>
-      <li>Informaci&oacute;n en Espa&ntilde;ol</li>
+      <!-- <li>Informaci&oacute;n en Espa&ntilde;ol</li> -->
       <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path, :class => 'email' %></li>
       <li><%= link_to 'Contact Us', new_contact_path %></li>
     </ul>
