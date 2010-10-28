@@ -39,7 +39,6 @@ class PartsController < ApplicationController
       @make = Make.find(params[:filter][:make])
       @unit = Unit.find(params[:filter][:unit])  
       @parts = @product_line.parts_by_filter(params[:filter] || {})
-      #@parts = Part.find_by_filter(params[:filter] || {})
       
       @form_presenter = @product_line.new_form_presenter(:parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
       @collection_presenter = @product_line.new_collection_presenter(:parts => @parts, :make => @make, :unit => @unit)
