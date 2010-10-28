@@ -34,9 +34,11 @@ class AllisonPartsController < ApplicationController
     @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
 
     if params[:filter] && !params[:filter][:unit].blank?    
-      @parts = Part.find_by_filter(params[:filter] || {})
-      @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
-      @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+      @unit = Unit.find(params[:filter][:unit])
+      @parts = @product_line.parts_by_filter(params[:filter] || {})
+      
+      @form_presenter = @product_line.new_form_presenter(:parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+      @collection_presenter = @product_line.new_collection_presenter(:parts => @parts, :make => @make, :unit => @unit)
     end
 
     search_path = search_product_line_parts_path(@product_line.url_friendly)
