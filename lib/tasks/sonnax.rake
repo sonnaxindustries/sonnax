@@ -9,6 +9,14 @@ namespace :s do
       system(mkdir_cmd) unless File.directory?(local_symlink_dir) && File.exists?(local_symlink_dir)
       system('ln -s /users/nateklaiber/sites/sonnax/public/system/pages/ts_articles /users/nateklaiber/sites/sonnax/public/images/technical-library/transmission')
     end
+    
+    desc 'Symlink the images (Torque Converter)'
+    task(:symlink_torque_converter_images) do
+      local_symlink_dir = '/users/nateklaiber/sites/sonnax/public/images/technical-library/'
+      mkdir_cmd = "mkdir %s" % [local_symlink_dir]
+      system(mkdir_cmd) unless File.directory?(local_symlink_dir) && File.exists?(local_symlink_dir)
+      system('ln -s /users/nateklaiber/sites/sonnax/public/system/pages/tc_articles /users/nateklaiber/sites/sonnax/public/images/technical-library/torque-converter')
+    end
   end
   
   namespace :db do
