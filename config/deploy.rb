@@ -49,23 +49,29 @@ namespace(:deploy) do
   
   #NOTE: These need to be fixed, to only create the path if it doesn't already exist
   namespace(:publication) do
-    desc 'Symlink the publication images (Transmission)'
-    task(:symlink_transmission, :roles => :app) do
+    desc "Symlink All..."
+    task(:symlink_all) do
+      create_directory
+      symlink_transmission
+      symlink_torque_converter
+    end
+    
+    desc 'Ensure the directory exists...'
+    task(:create_directory) do
       symlink_dir = '/var/www/rails/sonnax/current/public/images/technical-library'
       rmdir_cmd = "rm -rf %s" % [symlink_dir]
       mkdir_cmd = "mkdir %s" % [symlink_dir]
       run(rmdir_cmd)
       run(mkdir_cmd)
+    end
+    
+    desc 'Symlink the publication images (Transmission)'
+    task(:symlink_transmission, :roles => :app) do
       run('ln -s /var/www/rails/sonnax/shared/system/pages/ts_articles /var/www/rails/sonnax/current/public/images/technical-library/transmission')
     end
     
     desc 'Symlink the publication images (Torque Converter)'
     task(:symlink_torque_converter, :roles => :app) do
-      symlink_dir = '/var/www/rails/sonnax/current/public/images/technical-library'
-      #rmdir_cmd = "rm -rf %s" % [symlink_dir]
-      #mkdir_cmd = "mkdir %s" % [symlink_dir]
-      #run(rmdir_cmd)
-      #run(mkdir_cmd)
       run('ln -s /var/www/rails/sonnax/shared/system/pages/tc_articles /var/www/rails/sonnax/current/public/images/technical-library/torque-converter')
     end
   end
@@ -101,6 +107,6 @@ def rake(*tasks)
 end
 
 
-after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages', 'deploy:publication:symlink_transmission'
+after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages', 'deploy:publication:symlink_all'
 after 'deploy', 'deploy:cleanup'
 #after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
