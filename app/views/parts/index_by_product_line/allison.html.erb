@@ -9,7 +9,7 @@
         <div class="make-units">
           <div class="unit-selector">
             <%= f.label :unit, 'Unit:' %>
-            <%= f.select :unit, @form_presenter.unit_options, :include_blank => '-- Select Unit --' %>
+            <%= f.select :unit, @form_presenter.unit_options, :include_blank => '-- Select Unit --', :selected => @form_presenter.unit_id %>
           </div>
         </div>
 
