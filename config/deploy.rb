@@ -47,6 +47,7 @@ namespace(:deploy) do
     run('ln -s /var/www/rails/sonnax/shared/pages/ /var/www/rails/sonnax/current/app/views/pages/static')
   end
   
+  #NOTE: These need to be fixed, to only create the path if it doesn't already exist
   namespace(:publication) do
     desc 'Symlink the publication images (Transmission)'
     task(:symlink_transmission, :roles => :app) do
@@ -56,6 +57,16 @@ namespace(:deploy) do
       run(rmdir_cmd)
       run(mkdir_cmd)
       run('ln -s /var/www/rails/sonnax/shared/system/pages/ts_articles /var/www/rails/sonnax/current/public/images/technical-library/transmission')
+    end
+    
+    desc 'Symlink the publication images (Torque Converter)'
+    task(:symlink_torque_converter, :roles => :app) do
+      symlink_dir = '/var/www/rails/sonnax/current/public/images/technical-library'
+      #rmdir_cmd = "rm -rf %s" % [symlink_dir]
+      #mkdir_cmd = "mkdir %s" % [symlink_dir]
+      #run(rmdir_cmd)
+      #run(mkdir_cmd)
+      run('ln -s /var/www/rails/sonnax/shared/system/pages/tc_articles /var/www/rails/sonnax/current/public/images/technical-library/torque-converter')
     end
   end
   
