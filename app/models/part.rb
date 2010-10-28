@@ -158,7 +158,7 @@ class Part < ActiveRecord::Base
       part_name       = attrs.delete(:part_name)
       order_by        = attrs.delete(:order)
       
-      select      = "p.id, pl.name, p.part_number, p.description, p.notes, p.item, p.is_new_item, u.name as Unit, uc.code_on_reference_figure, m.name AS Make, p.part_type_id, p.ref_code, p.ref_code_sort"
+      select      = "p.id, pl.name, p.part_number, p.oem_part_number, p.description, p.notes, p.item, p.is_new_item, u.name as Unit, uc.code_on_reference_figure, m.name AS Make, p.part_type_id, p.ref_code, p.ref_code_sort"
       from        = "parts p"
       order       = "CAST(uc.code_on_reference_figure AS DECIMAL(10,1)) DESC, p.part_number" #previously p.part_number + 0 to be numeric
       joins       = []
@@ -214,7 +214,7 @@ class Part < ActiveRecord::Base
       part_name       = attrs.delete(:part_name)
       order_by        = attrs.delete(:order)
 
-      select      = "DISTINCT(p.id), pl.name, p.part_number, p.description, p.notes, p.item, p.is_new_item, p.ref_code, p.ref_code_sort"
+      select      = "DISTINCT(p.id), pl.name, p.part_type_id, p.part_number, p.oem_part_number, p.description, p.notes, p.item, p.is_new_item, p.ref_code, p.ref_code_sort"
       from        = "parts p"
       order       = "CAST(uc.code_on_reference_figure AS DECIMAL(10,1)) DESC, p.part_number"
       joins       = []
@@ -253,6 +253,7 @@ class Part < ActiveRecord::Base
 
       conditions << ["u.name IS NOT NULL AND m.id IS NOT NULL"]
       conditions << ["p.part_number LIKE ?", "#{keyword}%"]
+
 
       self.all(:select => select,
                :from => from,
