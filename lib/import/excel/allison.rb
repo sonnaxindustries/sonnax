@@ -6,6 +6,12 @@ class Import::Excel::Allison
   class << self
     def import!
       klass = self.new
+      
+      puts 'Attaching Allison parts to unit makes...'
+      klass.import_unit_makes!
+      
+      puts "Attaching Allison parts to unit components..."
+      klass.import_unit_components!
     end
   end
   
@@ -45,6 +51,10 @@ class Import::Excel::Allison
     def units_make?
       UnitsMake.exists?(:unit_id => self.unit.id, :make_id => self.make.id)
     end
+    
+    def unit_component?
+      UnitComponent.exists?(:unit_id => self.unit.id, :part_id => self.part.id)
+    end
   end
   
   attr_accessor :file_name, :document_name
@@ -68,6 +78,18 @@ class Import::Excel::Allison
 
   def publications_worksheet
     @publications_worksheet ||= self.workbook.sheets[2]
+  end
+  
+  def import_unit_makes!
+    self.records.each do |record|
+      UnitsMake.create!(:unit => record.unit, :make => record.make) unless record.units_make?
+    end
+  end
+  
+  def import_unit_components!
+    self.records.each do |record|
+      UnitComponent.create!(:unit => record.unit, :part => record.part) unless record.unit_component?
+    end
   end
 
   def records
