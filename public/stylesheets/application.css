@@ -163,7 +163,7 @@ h1 {
 }
 sup {
   vertical-align: top;
-  font-size: small;
+  font-size: 9px;
   text-decoration: none;
 }
 ul.indented {
@@ -233,12 +233,14 @@ span.pdf-size {
   font-size: 11px;
   vertical-align: middle;
 }
-ul.article-list {
+div#news-and-events ul.article-list {
   margin-bottom: 10px;
-  list-style: disc;
+  list-style-type:disc;
 }
-ul.article-list li {
+div#news-and-events ul.article-list li {
   margin-left: 15px;
+  list-style-type:disc;
+  line-height:normal;
 }
 div#page {
   margin-right: 15px;
