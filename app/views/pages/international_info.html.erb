@@ -11,7 +11,7 @@
       <li><%= link_to 'Payment &amp; Shipment Options', international_shipping_and_payment_path %></li>
       <!-- <li>Informaci&oacute;n en Espa&ntilde;ol</li> -->
       <li><%= link_to 'Email Sign Up', subscribe_to_email_newsletter_path, :class => 'email' %></li>
-      <li><%= link_to 'Contact Us', new_contact_path %></li>
+      <li><%= link_to 'Contact Us', new_contact_path(:department_id => 2) %></li>
     </ul>
   </div>
 </div>

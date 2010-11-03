@@ -1,4 +1,6 @@
-class Contact < ActiveRecord::Base
+require 'ostruct'
+class Contact < ActiveRecord::Base  
+  DEPARTMENTS = [1, 2]
   
   def validate
     errors.add(:name, 'Please provide a name') unless self.name?
@@ -12,4 +14,27 @@ class Contact < ActiveRecord::Base
   def valid_email_address?
     self.email? && Format::Email.valid?(self.email)
   end
+  
+  def email_settings
+    settings = case self.department_id
+    when 1
+      { 
+        :subject => '[Sonnax] General Contact',
+        :recipients => ['nate@theklaibers.com', 'ep@sonnax.com']
+      }
+    when 2
+      {
+        :subject => '[Sonnax] International Contact',
+        :recipients => ['nate@theklaibers.com', 'ep@sonnax.com']
+      }
+    else
+      { 
+        :subject => '[Sonnax] General Contact',
+        :recipients => ['nate@theklaibers.com', 'ep@sonnax.com']
+      }
+    end
+    @email_settings ||= OpenStruct.new(settings)
+  end
+  
+  
 end

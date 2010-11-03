@@ -11,6 +11,7 @@
   </dl>
 
   <% form_for :contact, @contact, :url => contact_path do |f| %>
+    <%= f.hidden_field :department_id %>
     <fieldset>
       <legend>Your Information</legend>
 

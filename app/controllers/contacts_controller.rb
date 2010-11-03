@@ -1,6 +1,9 @@
 class ContactsController < ApplicationController
   def new
-    @contact = Contact.new
+    contact_params = {
+      :department_id => (params[:department_id] || 1)
+    }
+    @contact = Contact.new(contact_params)
   end
   
   def create
