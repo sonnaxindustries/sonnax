@@ -21,3 +21,4 @@ log/*.pid
 
 #symlinked paths for images in publications
 public/images/technical-library/*
+tags

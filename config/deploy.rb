@@ -1,7 +1,7 @@
 require 'config/recipes/passenger'
 require 'config/recipes/sonnax'
 require 'config/recipes/bundler'
-require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/deploy/capistrano.rb'
+#require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/deploy/capistrano.rb'
 
 set :application, "sonnax"
 set :repository, 'git@github.com:nateklaiber/sonnax.git'
@@ -28,7 +28,7 @@ role :db, '74.50.61.9', :primary => true
 #   set :deploy_to, "/var/www/rails/sonnax"
 #   set :application, "sonnax"
 #   set :app, "theklaibers.com"
-#   set :db, "theklaibers.com"  
+#   set :db, "theklaibers.com"
 # end
 
 namespace(:deploy) do
@@ -36,18 +36,17 @@ namespace(:deploy) do
   task(:copy_db_config) do
     run("cp #{shared_path}/database.yml #{current_path}/config/database.yml")
   end
-  
+
   desc 'Set the proper permissions for the system folder for uploads'
   task(:fix_paperclip_permissions) do
     run("chmod -R 777 #{current_path}/public/system/")
   end
-  
+
   desc 'Symlink the static pages directory'
   task(:symlink_pages, :roles => :app) do
     run('ln -s /var/www/rails/sonnax/shared/pages/ /var/www/rails/sonnax/current/app/views/pages/static')
   end
-  
-  #NOTE: These need to be fixed, to only create the path if it doesn't already exist
+
   namespace(:publication) do
     desc "Symlink All..."
     task(:symlink_all) do
@@ -55,7 +54,7 @@ namespace(:deploy) do
       symlink_transmission
       symlink_torque_converter
     end
-    
+
     desc 'Ensure the directory exists...'
     task(:create_directory) do
       symlink_dir = '/var/www/rails/sonnax/current/public/images/technical-library'
@@ -64,19 +63,19 @@ namespace(:deploy) do
       run(rmdir_cmd)
       run(mkdir_cmd)
     end
-    
+
     desc 'Symlink the publication images (Transmission)'
     task(:symlink_transmission, :roles => :app) do
       run('ln -s /var/www/rails/sonnax/shared/system/pages/ts_articles /var/www/rails/sonnax/current/public/images/technical-library/transmission')
     end
-    
+
     desc 'Symlink the publication images (Torque Converter)'
     task(:symlink_torque_converter, :roles => :app) do
       run('ln -s /var/www/rails/sonnax/shared/system/pages/tc_articles /var/www/rails/sonnax/current/public/images/technical-library/torque-converter')
     end
   end
-  
-  
+
+
 end
 
 #NOTE: This only needs to be run once, then we will pull down from production on subsequent calls
@@ -90,12 +89,12 @@ task(:copy_shared_pages) do
   run_locally("scp -r /users/nateklaiber/sites/sonnax/public/system/pages/* root@sonnax.com:#{shared_path}/system/pages")
 end
 
-namespace :rake do  
-  desc "Run a task on a remote server."  
-  # run like: cap staging rake:invoke task=a_certain_task  
-  task :invoke do  
-    run("cd #{deploy_to}/current; /usr/bin/rake #{ENV['task']} RAILS_ENV=#{rails_env}")  
-  end  
+namespace :rake do
+  desc "Run a task on a remote server."
+  # run like: cap staging rake:invoke task=a_certain_task
+  task :invoke do
+    run("cd #{deploy_to}/current; /usr/bin/rake #{ENV['task']} RAILS_ENV=#{rails_env}")
+  end
 end
 
 def rake(*tasks)
