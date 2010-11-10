@@ -3,6 +3,11 @@ var changeEvt = $.browser.msie ? "click" : "change";
 $(document).ready(function() {
   $("a[rel*=fancybox]").fancybox();
 
+  $('a.print').live('click', function() {
+    window.print();
+    return false;
+  });
+
   // open external windows
   $('a[rel="external"]').live('click', function(e) {
     window.open($(this).attr('href'));
