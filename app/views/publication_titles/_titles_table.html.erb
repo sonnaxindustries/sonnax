@@ -10,16 +10,12 @@
     <% publications.each do |publication| %>
     <tr class="<%= cycle('even', 'odd') %>">
       <td class="article">
-        <% if publication.html_file? %>
+        <% if publication.html_file? && publication.pdf? %>
           <%= link_to publication.title, publication_category_publication_title_path(category.url_friendly, publication.url_friendly) %> 
+        <% elsif !publication.html_file? && publication.pdf? %>
+          <%= link_to publication.title, publication.pdf.url, :class => 'download pdf' %> 
         <% else %>
           <%= publication.title %>
-        <% end %>
-        
-        <% if publication.pdf? %>
-        <span class="pdf-size">
-          <%= link_to(image_tag('icons/pdf.gif', :alt => 'Download PDF'), publication.pdf.url, :class => 'download') %> <span class="filesize">(<%= number_to_human_size(publication.pdf_file_size) %>)</span>
-        </span>
         <% end %>
       </td>
       <td class="authors"><%= publication_authors_list(publication) %></td>
