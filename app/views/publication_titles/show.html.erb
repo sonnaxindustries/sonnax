@@ -1,3 +1,6 @@
+<div class="print-friendly">
+  <%= link_to 'View Printer Friendly', '#', :class => 'print' %>
+</div>
 <h1><%= @title.title %></h1>
 
 <% if @title.published_at? %>
@@ -12,11 +15,6 @@
 <% if @title.description? %>
   <p><strong>Description:</strong> <%= @title.description %></p>
 <% end %>  
-
-<% if @title.pdf? %>
-  <h2>Download</h2>
-  <p><%= link_to @title.title, @title.pdf.url, :class => 'download' %> <span class="filesize">(<%= number_to_human_size(@title.pdf_file_size, :precision => 2) %>)</span></p>
-<% end %>
 
 <% if @title.html_file? %>
   <div class="publication-body">

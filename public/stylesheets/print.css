@@ -1,0 +1,19 @@
+body {
+  font: normal 14px/1.7 Georgia,sans-serif;
+}
+#masthead h1 a {
+  background: url('/images/header.jpg') 100% 0 no-repeat;
+  display: block;
+  height: 120px;
+  text-indent: -9999px;
+}
+#masthead ul {
+  display: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.print-friendly {
+  display: none;
+}

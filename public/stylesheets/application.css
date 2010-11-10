@@ -1808,3 +1808,11 @@ div#new-parts div#no-parts {
   overflow: auto;
   border: 1px solid #000;
 }
+.print {
+  background: transparent url('/images/icons/note_go.png') 0 0 no-repeat;
+  padding-left: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  float: right;
+  margin-right: 15px;
+}
