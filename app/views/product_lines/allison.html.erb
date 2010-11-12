@@ -24,7 +24,8 @@
         <% if part.primary_photo? %>
           <p><%= image_tag part.primary_photo.photo.asset.url(:medium) %></p>
         <% end %>
-        <p><%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
+        <p><strong>Part Name:</strong> <%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
+        <p><strong>Part Number:</strong> <%= part.part_number %></p>
         <p><strong>Make:</strong> <%= part.make.name %></p>
         <p>
           <strong>Unit:</strong> 
