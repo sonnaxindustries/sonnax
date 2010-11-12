@@ -4,12 +4,7 @@
 <h1><%= @title.title %></h1>
 
 <% if @title.published_at? %>
-  <p class="published">Published <%= publication_published_at(@title) %></p>
-<% end %>
-
-<% if @title.authors? %>
-  <h2>Author(s)</h2>
-  <p><%= @title.authors.map { |a| link_to a.full_name, publication_author_path(a) }.to_sentence %></p>
+  <p class="published">Published <%= publication_published_at(@title) %><% if @title.authors? %>, by <%= @title.authors.map { |a| link_to a.full_name, publication_author_path(a) }.to_sentence %><% end %></p>
 <% end %>
 
 <% if @title.description? %>
