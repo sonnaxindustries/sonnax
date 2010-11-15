@@ -1,19 +1,6 @@
 <div id="quick-search">
   <h1>Quick Search</h1>
 
-  <div class="by-make-unit">
-    <h2>Quick Search by application (Make, Unit, Series, etc.)</h2>
-    <% if @product_line_parts.any? %>
-    <ul>
-      <% @product_line_parts.each do |product_line| %>
-        <li><%= link_to product_line.name, product_line_parts_path(product_line.url_friendly) %></li>
-      <% end %>
-      <li><%= link_to 'Harley Davidson', harley_davidson_parts_path %></li>
-      <li><%= link_to 'Power Train Savers', power_train_savers_parts_path %></li>
-    </ul>
-    <% end %>
-  </div>
-
   <div class="search-parts">
     <h2>Quick Search by Sonnax part number</h2>
     <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
@@ -32,6 +19,20 @@
     </fieldset>
     <% end %>
   </div>
+
+  <div class="by-make-unit">
+    <h2>Quick Search by application (Make, Unit, Series, etc.)</h2>
+    <% if @product_line_parts.any? %>
+    <ul>
+      <% @product_line_parts.each do |product_line| %>
+        <li><%= link_to product_line.name, product_line_parts_path(product_line.url_friendly) %></li>
+      <% end %>
+      <li><%= link_to 'Harley Davidson', harley_davidson_parts_path %></li>
+      <li><%= link_to 'Power Train Savers', power_train_savers_parts_path %></li>
+    </ul>
+    <% end %>
+  </div>
+
 
   <div class="new-products">
     <h2>Quick Search by New Products</h2>
