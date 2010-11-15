@@ -22,7 +22,7 @@ class ProductLines::Transmission < ProductLine
   end
   
   def search_parts(search_term)
-    Part.search_by_filter(search_term, :product_line => @self)
+    Part.search_by_filter(search_term, :product_line => self)
   end
 
   def parts_by_filter(options={})
