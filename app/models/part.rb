@@ -1,4 +1,5 @@
 class Part < ActiveRecord::Base
+  class NoSearchResults < StandardError; end
   belongs_to :part_type
   belongs_to :product_line
   
@@ -206,6 +207,64 @@ class Part < ActiveRecord::Base
 
     end
     
+    def search_by_filter!(keyword, attrs={})
+      make_id         = attrs.delete(:make)
+      unit_id         = attrs.delete(:unit)
+      product_line_id = attrs.delete(:product_line)
+      part_id         = attrs.delete(:part)
+      part_name       = attrs.delete(:part_name)
+      order_by        = attrs.delete(:order)
+
+      select      = "DISTINCT(p.id), p.product_line_id, pl.name, p.part_type_id, p.part_number, p.oem_part_number, p.description, p.notes, p.item, p.is_new_item, p.ref_code, p.ref_code_sort"
+      from        = "parts p"
+      order       = "CAST(uc.code_on_reference_figure AS DECIMAL(10,1)) DESC, p.part_number"
+      joins       = []
+      conditions  = []
+      
+      if !order_by.blank?
+        order = order_by
+      end
+      
+      if !product_line_id.blank?
+        conditions << ["pl.id = ?", product_line_id]
+      end
+
+      if !make_id.blank?
+        conditions << ["m.id = ?", make_id]
+      end
+
+      if !unit_id.blank?
+        conditions << ["u.id = ?", unit_id]
+      end
+
+      if !part_id.blank?
+        conditions << ["p.id = ?", part_id]
+      end
+
+      if !part_name.blank?
+        part_name_filter = "%s%" % [part_name]
+        conditions << ["p.part_number LIKE (?)", part_name_filter]
+      end
+
+      joins << "LEFT JOIN product_lines pl ON pl.id = p.product_line_id"
+      joins << "LEFT JOIN unit_components uc ON uc.part_id = p.id"
+      joins << "LEFT JOIN units u ON u.id = uc.unit_id"
+      joins << "LEFT JOIN units_makes um ON um.unit_id = u.id"
+      joins << "LEFT JOIN makes m ON um.make_id = m.id"
+
+      conditions << ["u.name IS NOT NULL AND m.id IS NOT NULL"]
+      conditions << ["p.part_number LIKE ?", "#{keyword}%"]
+
+
+      results = self.all(:select => select,
+               :from => from,
+               :joins => joins.join(' '),
+               :conditions => conditions.extend(Helper::Array).to_conditions,
+               :order => order)
+      raise Part::NoSearcchResults if !results
+      results
+    end
+
     def search_by_filter(keyword, attrs={})
       make_id         = attrs.delete(:make)
       unit_id         = attrs.delete(:unit)

@@ -1,5 +1,5 @@
 class PartsController < ApplicationController
-  before_filter :retrieve_product_line, :except => [:search_single]
+  before_filter :retrieve_product_line, :except => [:search_single, :quick_search]
   
   def index
     @parts = []
@@ -102,6 +102,22 @@ class PartsController < ApplicationController
     end
   end
   
+  def quick_search
+    begin
+      @parts = Part.search_by_filter!(params[:search][:q])
+      @search_form_presenter = SearchFormPresenter.new(:search_terms => params[:search][:q], :url => search_single_part_path)
+
+      respond_to do |wants|
+        wants.html do
+          render :action => :quick_search
+        end
+      end
+    rescue Part::NoSearchResults 
+      @search_form_presenter = SearchFormPresenter.new(:search_terms => params[:search][:q], :url => search_single_part_path)
+      render :template => 'parts/no_search_results.html.erb'
+    end
+  end
+
   def search_single
     begin
       @part = Part.find_single!(params[:search][:q])
