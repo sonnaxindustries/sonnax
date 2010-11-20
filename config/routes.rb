@@ -144,6 +144,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => 'pages', :action => 'home'
   
+  map.connect '/part_finder.php', :controller => 'part_finder', :action => 'redirect'
+  map.connect '/part_summary.php', :controller => 'part_finder', :action => 'part_summary_redirect'
   #map.connect '*path' , :controller => 'redirects' , :action => 'check'
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'
