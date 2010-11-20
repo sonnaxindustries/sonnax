@@ -1,18 +1,18 @@
 <div id="news-and-events">
   <h1>Sonnax News Archive</h1>
 	<div class="news-archive">
-		<img src="/images/catalogs/HarleyDavidsonCoverThumb.jpg" alt="Transmission Products Catalog Volume 8" class="Rphoto">
+		<%= link_to(image_tag('catalogs/HarleyDavidsonCoverThumb.jpg', :alt => 'Harley Davidson Replacement Bearings', :class => 'Rphoto'), new_catalog_request_path) %>
 		<h3>Harley Davidson<sup>&reg;</sup> Replacement Parts Catalog <em class="date">9/17/10</em></h3>
 <p>An new catalog featuring Sonnax Harley Davidson replacement bearings and rollers is now available. <%= link_to 'Click here', new_catalog_request_path %> to request a catalog or contact us for more information.</p>
 
 		<h3>Converter Clutch Kit Price Reduction <em class="date">9/1/10</em></h3>
-		<img src="/images/news-and-events/BW-RK-1.jpg" alt="Converter Clutch Kit" class="Rphoto">
-		<p>Effective September 2010, discounted pricing is available on the Borg Warner 310mm Multi-Plate Converter Clutch Kit BW-RK-1. Additional discounts are offered for bulk quantities. Contact your Sonnax representative or use our <%= link_to 'online form', new_contact_path %> to request more information.</p>
+		<%= link_to image_tag('news-and-events/BW-RK-1.jpg', :class => 'Rphoto'), '/product-lines/torque-converter/parts/3239' %>
+		<p>Effective September 2010, discounted pricing is available on the Borg Warner 310mm Multi-Plate Converter Clutch Kit <%= link_to 'BW-RK-1', '/product-lines/torque-converter/parts/3239' %>. Additional discounts are offered for bulk quantities. Contact your Sonnax representative or use our <%= link_to 'online form', new_contact_path %> to request more information.</p>
 
 		<h3>TASC Force Tech Tip <em class="date">9/1/10</em></h3>
-		<p>Read up on Controller Area Network systems in "A Box in a CAN" by Sonnax TASC Force member Serge Martin, the newest article in the Sonnax Technical Library.</p>
-
-		<img src="images/catalogs/transreportv1n1.gif" alt="Converter Clutch Kit" class="Rphoto">
+		<p>Read up on Controller Area Network systems in "<a href="/publications/transmission/titles/a-box-in-a-can">A Box in a CAN</a>" by Sonnax TASC Force member Serge Martin, the newest article in the Sonnax Technical Library.</p>
+		
+		<%= link_to(image_tag('catalogs/transreportv1n1.gif', :alt => 'Converter Clutch Kit', :class => 'Rphoto'), insider_path) %>
 		<h3>New Transmission Newsletter <em class="date">6/2/10</em></h3>
 		<p>Calling all transmission rebuilders! We recently mailed out our first <%= link_to 'Transmission Report', insider_path %> newsletter, previously known as the Sonnax Transmission Technical Bulletin. If you didn't get the newsletter, <%= link_to 'click here', new_catalog_request_path %> to request a copy (U.S. only) or read the latest edition online.</p>
 
