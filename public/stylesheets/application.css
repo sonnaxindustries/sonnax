@@ -1807,10 +1807,10 @@ div#speed-order em {
 /* =NEW PARTS */
 div#new-parts div.parts,
 div#new-parts div#no-parts {
-  height: 300px;
+  1height: 300px;
   margin-right: 15px;
-  overflow: auto;
-  border: 1px solid #000;
+  1overflow: auto;
+  1border: 1px solid #000;
 }
 .print {
   background: transparent url('/images/icons/note_go.png') 0 0 no-repeat;
