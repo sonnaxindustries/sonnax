@@ -27,6 +27,7 @@
         </div>
       </li>
 
+<!-- 
       <li>
         <img src="/images/catalogs/AllisonCover.jpg" alt="Allison Replacement Parts">
         <h2>Allison Replacement Parts Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.allison_replacement_parts, @catalog_request.catalogs_hash.include?(@catalogs.allison_replacement_parts) %></h2>
@@ -35,13 +36,14 @@
           <p>For up-to-date listing use the <%= link_to 'Part and Application Finder', product_line_parts_path('allison') %></p>
         </div>
       </li>
+	  -->
       
       <li>
         <img src="/images/catalogs/PTSCover.png" alt="Power Train Savers Products Catalog">
         <h2>Power Train Savers Products Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.pts_catalog, @catalog_request.catalogs_hash.include?(@catalogs.pts_catalog) %></h2>
         
         <div class="extra">
-          <p>For up-to-date listing see the Parts Listing</p>
+          <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('power-train-savers') %></p>
         </div>
       </li>
       
@@ -50,25 +52,27 @@
         <h2>Driveline Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.driveline_catalog, @catalog_request.catalogs_hash.include?(@catalogs.driveline_catalog) %></h2>
         
         <div class="extra">
-          <p>For up-to-date listing see the Parts Listing</p>
+          <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('driveline') %></p>
         </div>
       </li>
-      
+
+<!--       
       <li>
         <img src="/images/catalogs/RingGearCover.jpg" alt="Ring Gear Spec Sheet">
         <h2>Ring Gear Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.rg_spec_sheet, @catalog_request.catalogs_hash.include?(@catalogs.rg_spec_sheet) %></h2>
         
         <div class="extra">
-          <p>For up-to-date listing see the Parts Listing</p>
+          <p>For up-to-date part information see the Parts Listing</p>
         </div>
       </li>
+	  -->
       
       <li>
         <img src="/images/catalogs/HarleyDavidsonCover.gif" alt="Harley-Davidson&reg; Catalog">
         <h2>Harley-Davidson<sup>&reg;</sup> Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.hd_catalog, @catalog_request.catalogs_hash.include?(@catalogs.hd_catalog) %></h2>
         
         <div class="extra">
-          <p>For up-to-date listing see the Parts Listing</p>
+          <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('harley-davidson') %></p>
         </div>
       </li>
       
@@ -78,6 +82,7 @@
         
       </li>
 
+<!--
       <li>
         <img src="/images/catalogs/SpanishTransmissionCover.jpg" alt="Transmission Specialties&reg; en Espa&ntilde;ol">
         <h2>Transmission Specialties<sup>&reg;</sup> en Espa&ntilde;ol <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_espanol, @catalog_request.catalogs_hash.include?(@catalogs.transmission_espanol) %></h2>
@@ -95,6 +100,7 @@
         <h2>Transmission Specialties<sup>&reg;</sup> in Chinese <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_chinese, @catalog_request.catalogs_hash.include?(@catalogs.transmission_chinese) %></h2>
         
       </li>
+-->
       
       <li>
         <img src="/images/catalogs/ChineseTCCover.jpg" alt="TC Catalog in Chinese" align="top">
@@ -110,7 +116,7 @@
         
         
         <div class="extra">
-          <p><%= link_to 'Download ', '/downloads/catalogs/sonnax-trans-report_v1n2.pdf', :class => 'pdf' %> the latest Transmission Report (4.25MB PDF)</p>
+          <p><%= link_to 'Download ', '/downloads/catalogs/sonnax-trans-report_v1n2.pdf', :class => 'pdf' %> the latest Transmission Report (4.27MB PDF)</p>
         </div>
       </li>
     </ul>    

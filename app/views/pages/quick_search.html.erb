@@ -2,7 +2,6 @@
   <h1>Quick Search</h1>
 
   <div class="search-parts">
-    <h2>Quick Search by Sonnax part number</h2>
     <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
     <fieldset>
       <legend>Search</legend>
@@ -18,23 +17,23 @@
       </div>
     </fieldset>
     <% end %>
+<p>	<%= link_to 'Find A Distributor', distributor_by_country_path('USA') %>
+</p>
   </div>
 
   <div class="by-make-unit">
-    <h2>Quick Search by application (Make, Unit, Series, etc.)</h2>
+    <h2>Application (Make, Unit, Series, etc.)</h2>
     <% if @product_line_parts.any? %>
     <ul>
       <% @product_line_parts.each do |product_line| %>
         <li><%= link_to product_line.name, product_line_parts_path(product_line.url_friendly) %></li>
       <% end %>
-      <li><%= link_to 'Harley Davidson', harley_davidson_parts_path %></li>
-      <li><%= link_to 'Power Train Savers', power_train_savers_parts_path %></li>
     </ul>
     <% end %>
   </div>
 
 
-  <div class="new-products">
+ <!-- <div class="new-products">
     <h2>Quick Search by New Products</h2>
     <% if @product_line_new_parts.any? %>
     <ul>
@@ -43,7 +42,7 @@
       <% end %>
     </ul>
     <% end %>
-  </div>
+  </div> -->
 </div>
 
 

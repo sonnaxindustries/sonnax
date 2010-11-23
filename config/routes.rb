@@ -28,6 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options(:controller => 'pages') do |page|
     page.valve_body_layouts '/valve-body-layouts', :action => 'valve_body_layouts'
     page.insider '/insider', :action => 'insider'
+    page.sonnax_insider '/insider', :action => 'insider'
     page.terms_and_conditions '/terms-and-conditions', :action => 'terms_and_conditions'
     page.directions '/directions', :action => 'directions'
     page.history_mission '/history-and-mission', :action => 'history_and_mission'
@@ -51,7 +52,6 @@ ActionController::Routing::Routes.draw do |map|
     page.news_archive '/news_archive', :action => 'news_archive'
     page.events_list '/events', :action => 'events'
     page.international_shipping_and_payment '/international-shipping-and-payment-options', :action => 'international_shipping_and_payment'
-    page.sonnax_insider '/sonnax-insider', :action => 'sonnax_insider'
     page.harley_distributors '/harley-davidson-distributors', :action => 'harley_distributors'
     page.high_performance_distributors '/high-performance-distributors', :action => 'hp_distributors'
     page.subscribe_to_email_newsletter '/subscribe-to-email-newsletter', :action => 'subscribe_to_email_newsletter' 
@@ -118,7 +118,7 @@ ActionController::Routing::Routes.draw do |map|
     product_line.harley_davidson '/harley-davidson', :action => 'harley_davidson'
     product_line.harley_davidson_parts '/harley-davidson/parts', :action => 'harley_davidson_parts'
     product_line.power_train_savers '/power-train-savers', :action => 'power_train_savers'
-    product_line.power_train_savers_parts '/power-train-saves/parts', :action => 'power_train_savers_parts'
+    product_line.power_train_savers_parts '/power-train-savers/parts', :action => 'power_train_savers_parts'
   end
   
   #NOTE: Allison is organized differently, since it is also a Make. Therefore, we want to catch the route and push to it's own controller
