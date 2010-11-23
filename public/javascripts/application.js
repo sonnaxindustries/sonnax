@@ -110,6 +110,8 @@ $(document).ready(function() {
     type: 'numeric'
   });
 
+  $('#distributors table').tablesorter();
+
   $(document).bind('tablesorter-initialize', function() {
     $("div.publications table").tablesorter({
       headers:
