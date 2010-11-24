@@ -261,7 +261,7 @@ class Part < ActiveRecord::Base
                :joins => joins.join(' '),
                :conditions => conditions.extend(Helper::Array).to_conditions,
                :order => order)
-      raise Part::NoSearcchResults if !results
+      raise Part::NoSearchResults if results.blank?
       results
     end
 
