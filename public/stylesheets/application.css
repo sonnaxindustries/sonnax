@@ -1820,3 +1820,8 @@ div#new-parts div#no-parts {
   float: right;
   margin-right: 15px;
 }
+div.separator em {
+  font-weight: bold;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}

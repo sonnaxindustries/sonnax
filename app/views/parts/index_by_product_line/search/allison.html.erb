@@ -1,7 +1,7 @@
 <div id="product-line" class="allison">
   <h1><%= @product_line.name %></h1>
   
-  <div class="search-and-filter group">
+  <div class="filter group">
     <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
     <fieldset>
       <legend>Filtering Options</legend>
@@ -21,6 +21,9 @@
     <% end %>
   </div>
   
+  <div class="separator">
+    <em>or</em>  
+  </div>
   <div class="search group">
     <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
     <fieldset>
