@@ -52,6 +52,10 @@
       <li><%= link_to 'Valve Body Layouts', valve_body_layouts_path %></li>
     </ul>
   </div>
+
+  <div class="note">
+    <em>If you don't see the part you are looking for, please <%= link_to 'click here to search our High Performance transmission product line', product_line_parts_path('high-performance-transmission') %></em>
+  </div>
   
   <div class="parts-wrapper">
     <% if @parts.any? %>

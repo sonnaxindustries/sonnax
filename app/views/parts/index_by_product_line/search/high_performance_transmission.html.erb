@@ -46,6 +46,9 @@
     </fieldset>
     <% end %>
   </div>
+  <div class="note">
+    <em>If you don't see the part you are looking for, please <%= link_to 'click here to search our Transmission product line', product_line_parts_path('transmission') %></em>
+  </div>
   
   <div class="parts-wrapper">
     <% if @parts.any? %>

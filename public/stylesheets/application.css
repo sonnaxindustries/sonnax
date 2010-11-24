@@ -192,6 +192,9 @@ div.note {
   margin: 15px 0;
   width: 100%;
 }
+div#product-line div.note {
+  width: 93%;
+}
 a.pdf {
   padding-left: 17px;
   background: transparent url('/images/icons/pdf-12x12.gif') 0 0 no-repeat;
