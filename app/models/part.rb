@@ -253,7 +253,7 @@ class Part < ActiveRecord::Base
       joins << "LEFT JOIN makes m ON um.make_id = m.id"
 
       conditions << ["u.name IS NOT NULL AND m.id IS NOT NULL"]
-      conditions << ["p.part_number LIKE ?", "#{keyword}%"]
+      conditions << ["p.part_number LIKE ?", "#{keyword.strip}%"]
 
 
       results = self.all(:select => select,

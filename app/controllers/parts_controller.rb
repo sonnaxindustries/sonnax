@@ -43,10 +43,10 @@ class PartsController < ApplicationController
       @form_presenter = @product_line.new_form_presenter(:parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
       @collection_presenter = @product_line.new_collection_presenter(:parts => @parts, :make => @make, :unit => @unit)
     end
-        
+
     search_path = search_product_line_parts_path(@product_line.url_friendly)
     @search_form_presenter = SearchFormPresenter.new(:search_terms => '', :url => search_path)
-    
+
     respond_to do |wants|
       wants.html do
         template_file = "parts/index_by_product_line/%s" % [@product_line.url_friendly.underscore]
@@ -81,7 +81,7 @@ class PartsController < ApplicationController
       params[:q]
     end
     
-    @parts = @product_line.search_parts(search_term)
+    @parts = @product_line.search_parts(search_term.strip)
     
     @makes = @product_line.associated_makes
     @units = @product_line.associated_units
