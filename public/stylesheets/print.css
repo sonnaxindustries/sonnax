@@ -17,3 +17,38 @@ a {
 .print-friendly {
   display: none;
 }
+
+img.articleimageleft {
+	border: #00548e 1px solid;
+	padding: 0;
+	margin: 3px 10px 3px 0px;
+	float: left;
+}
+img.articleimage {
+	border: #00548e 1px solid;
+	padding: 0;
+	margin: 10px 0px 10px 0px;
+}
+img.articleimageright {
+	border: #00548e 1px solid;
+	padding: 0;
+	margin: 3px 10px 3px 15px;
+	float: right;
+}
+.print {
+  background: transparent url('/images/icons/printer.png') 0 0 no-repeat;
+  padding-left: 20px;
+  text-transform: uppercase;
+  font-family: Helvetica,sans-serif;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  text-decoration: none;
+}
+.print-cta {
+  background-color: #eee;
+  display: block;
+  padding: 5px 10px;
+  border: 2px solid #ddd;
+  float: right;
+  margin-right: 15px;
+}

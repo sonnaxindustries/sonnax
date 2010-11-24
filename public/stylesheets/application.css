@@ -1815,7 +1815,7 @@ div#new-parts div#no-parts {
   1overflow: auto;
   1border: 1px solid #000;
 }
-.print {
+.print-view {
   background: transparent url('/images/icons/note_go.png') 0 0 no-repeat;
   padding-left: 20px;
   font-weight: bold;
