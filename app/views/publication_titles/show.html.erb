@@ -1,7 +1,4 @@
 <%= render :partial => 'layouts/shared/print.html.erb', :locals => { :print_url => publication_title_path(@title, :format => 'print') } %>
-<div class="print-friendly">
-  <%= link_to 'View Printer Friendly', publication_title_path(@title, :format => 'print'), :class => 'print-view', :rel => 'external' %>
-</div>
 <h1><%= @title.title %></h1>
 
 <% if @title.published_at? %>
