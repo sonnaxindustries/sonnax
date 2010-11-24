@@ -76,12 +76,12 @@ class PartsController < ApplicationController
   def search
 
     search_term = if params[:search] && !params[:search][:q].blank?
-      params[:search][:q]
+      params[:search][:q].strip
     elsif params[:q]
-      params[:q]
+      params[:q].strip
     end
     
-    @parts = @product_line.search_parts(search_term.strip)
+    @parts = @product_line.search_parts(search_term)
     
     @makes = @product_line.associated_makes
     @units = @product_line.associated_units
