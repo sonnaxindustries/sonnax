@@ -11,13 +11,16 @@ class Import::Excel::Publication
     end
 
     def import!
-      # tables = %w( publication_categories_titles publication_titles_units_makes publication_titles_makes publication_titles_units publication_titles_authors publication_titles_product_lines publication_titles_subjects publication_titles_types publication_titles_keywords publication_keyword_types publication_keywords publication_categories publication_authors publication_titles publication_types publication_subjects )
-      # 
-      # puts 'Dropping the old tables of information....'
-      # tables.each do |tbl|
-      #   stmt = "TRUNCATE %s" % [tbl]
-      #   ActiveRecord::Base.connection.execute(stmt)
-      # end
+#      tables = %w( publication_categories_titles publication_titles_units_makes publication_titles_makes publication_titles_units publication_titles_authors publication_titles_product_lines publication_titles_subjects publication_titles_types publication_titles_keywords publication_keyword_types publication_keywords publication_categories publication_authors publication_titles publication_types publication_subjects )
+#
+#      puts 'Dropping the old tables of information....'
+#      tables.each do |tbl|
+#        stmt = "TRUNCATE %s" % [tbl]
+#        ActiveRecord::Base.connection.execute(stmt)
+#      end
+
+#      puts 'Copying the sonnaflow charts into tech articles'
+#      `rake s:publications:cp_sonnaflow_charts`
 
       klass = self.new
       puts 'Importing authors...'
@@ -330,8 +333,8 @@ class Import::Excel::Publication
   end
 
   def initialize
-    @file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', 'publication_data_TC_101210.xls')
-    #@file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', 'publication_data_transmission_101210.xls')
+    @file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', 'publication_data_transmissions.xls')
+    #@file_name = File.join(Rails.root, 'lib', 'import', 'excel', 'docs', 'publication_data_torque_converter.xls')
     self.setup_sheet!
   end
 

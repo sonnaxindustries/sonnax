@@ -2,6 +2,13 @@ namespace :s do
   task :repro => 'sonnax:repro'
   
   namespace :publications do
+    desc 'Copy the sonnaflow charts into the tech-articles'
+    task(:cp_sonnaflow_charts) do
+      sonnaflow_charts = '/users/nateklaiber/sites/sonnax/public/file-conversions/sonnaflow-charts/*'
+      tech_articles = '/users/nateklaiber/sites/sonnax/public/tech-articles/'
+      move_cmd = "cp -r %s %s" % [sonnaflow_charts, tech_articles]
+    end
+
     desc 'Symlink the images (Transmission)'
     task(:symlink_publication_images) do
       local_symlink_dir = '/users/nateklaiber/sites/sonnax/public/images/technical-library/'
