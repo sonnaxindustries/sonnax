@@ -1,50 +1,52 @@
 <div id="product-line" class="torque-converter">
-  <h1><%= @product_line.name %> Part and Application Finder</h1>
+  <h1><%= @product_line.name %> <em>Part and Application Finder</em></h1>
   
-  <div class="filter group">
-    <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
-    <fieldset>
-      <legend>Filtering Options</legend>
-      <div id="filter-options" class="group">
-        <div class="make-units">
-          <div class="make-selector">
-            <%= f.label :make, 'Make:' %>
-            <%= f.select :make, @form_presenter.make_options, :selected => @form_presenter.make_id, :include_blank => '-- Select Make --' %>
+  <div class="options-wrapper group">
+    <div class="filter group">
+      <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+      <fieldset>
+        <legend>Filtering Options</legend>
+        <div id="filter-options" class="group">
+          <div class="make-units">
+            <div class="make-selector">
+              <%= f.label :make, 'Make:' %>
+              <%= f.select :make, @form_presenter.make_options, :selected => @form_presenter.make_id, :include_blank => '-- Select Make --' %>
+            </div>
+            
+            <div class="unit-selector">
+              <%= f.label :unit, 'Unit:' %>
+              <%= f.select :unit, @form_presenter.unit_options, :selected => @form_presenter.unit_id, :include_blank => '-- Select Unit --' %>
+            </div>
           </div>
-          
-          <div class="unit-selector">
-            <%= f.label :unit, 'Unit:' %>
-            <%= f.select :unit, @form_presenter.unit_options, :selected => @form_presenter.unit_id, :include_blank => '-- Select Unit --' %>
+  
+          <div class="submit">
+            <%= f.submit 'Filter' %>
           </div>
         </div>
-
+      </fieldset>
+      <% end %>
+    </div>
+    <div class="separator">
+      <em>or</em>  
+    </div>
+    
+    <div class="search group">
+      <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+      <fieldset>
+        <legend>Search</legend>
+        <div id="search-options" class="group">
+          <div class="search-terms">
+            <%= f.label :q, 'Part No.:' %>
+            <%= f.text_field :q %>
+          </div>
+        </div>
+  
         <div class="submit">
-          <%= f.submit 'Filter' %>
+          <%= f.submit 'Search' %>
         </div>
-      </div>
-    </fieldset>
-    <% end %>
-  </div>
-  <div class="separator">
-    <em>or</em>  
-  </div>
-  
-  <div class="search group">
-    <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
-    <fieldset>
-      <legend>Search</legend>
-      <div id="search-options" class="group">
-        <div class="search-terms">
-          <%= f.label :q, 'Search Part Number:' %>
-          <%= f.text_field :q %>
-        </div>
-      </div>
-
-      <div class="submit">
-        <%= f.submit 'Search' %>
-      </div>
-    </fieldset>
-    <% end %>
+      </fieldset>
+      <% end %>
+    </div>
   </div>
   
   <div class="options group">

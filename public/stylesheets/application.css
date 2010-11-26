@@ -63,7 +63,8 @@ img.Rphoto {
   width: 100%;
 }
 #wrapper-inner {
-  padding: 35px 3px 30px 17px;
+  padding: 35px 17px 30px 17px;
+  width: 95%;
   float: left;
 }
 #masthead h1 a {
@@ -187,6 +188,7 @@ body div.notice p {
   padding-left: 20px;
 }
 div.note {
+  clear: both;
   background: #eee;
   padding: 10px 15px;
   border: 1px solid #ddd;
@@ -443,6 +445,35 @@ a {
   height: 0;
   clear: both;
   visibility: hidden;
+}
+div.options-wrapper {
+  float: left;
+  margin: 20px 0;
+}
+div.filter {
+  float: left;
+  width: 300px;
+}
+div.separator {
+  float: left;
+  width: 50px;
+}
+div.search {
+  float: left;
+  width: 390px;
+}
+div.options-wrapper label {
+  font-weight: bold;
+  float: left;
+}
+div.filter label {
+  width: 50px;
+}
+div.search label {
+  width: 70px;
+}
+div.search div.submit {
+  float: left;
 }
 /* -- TECHNICAL LIBRARY --*/
 div.indicator {
@@ -1247,6 +1278,15 @@ div.featured img {
   border: 0px;
   padding: 1px;
   background-color: #ffffff;
+}
+div#product-line h1 {
+  line-height: 1.5;
+}
+div#product-line h1 em {
+  font-size: 0.6em;
+  display: block;
+  color: #666;
+  font-style: normal;
 }
 div#product-line div.featured h2 {
   margin: 0 0 10px 0;
