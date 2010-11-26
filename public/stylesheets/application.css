@@ -64,6 +64,7 @@ img.Rphoto {
 }
 #wrapper-inner {
   padding: 35px 3px 30px 17px;
+  float: left;
 }
 #masthead h1 a {
   background: url('/images/header.jpg') 100% 0 no-repeat;
