@@ -73,7 +73,11 @@ class ProductLine < ActiveRecord::Base
   end
   
   def unescaped_name
-    CGI.unescapeHTML(self.name)
+    CGI.unescapeHTML(self.escape_ampersand)
+  end
+
+  def escape_ampersand
+    self.name.gsub(/\&reg;/, " (R)")
   end
   
   def associated_units(attrs={})
