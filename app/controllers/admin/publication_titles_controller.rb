@@ -1,6 +1,6 @@
 class Admin::PublicationTitlesController < Admin::BaseController
   before_filter :retrieve_publication_title, :only => [:edit, :update, :destroy, :remove_pdf]
-  before_filter :retrieve_subject_options, :only => [:edit, :update, :new, :create]
+  before_filter :retrieve_subject_options, :retrieve_author_options, :only => [:edit, :update, :new, :create]
   
   def index
     @publication_titles = Admin::PublicationTitle.list(params)
@@ -81,5 +81,9 @@ private
 
   def retrieve_subject_options
     @subject_options = Admin::PublicationSubject.options
+  end
+
+  def retrieve_author_options
+    @author_options = Admin::PublicationAuthor.options
   end
 end

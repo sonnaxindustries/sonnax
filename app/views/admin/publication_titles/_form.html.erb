@@ -63,3 +63,22 @@
 	<% end -%>
 </fieldset>
 <% end %>
+
+
+<% if @author_options.any? %>
+<fieldset>
+	<legend>Author Information</legend>
+	<p>The authors that this title will be attached to.</p>
+	<%= hidden_field_tag "publication_title[author_ids][]", '' %>
+	<% content_tag :div, :class => 'authors' do -%>
+		<% @author_options.each do |s| -%>
+			<% div_for s do %>
+				<label>
+					<%= check_box_tag "publication_title[author_ids][]", s.id, @publication_title.authors.include?(s) %>
+					<%= s.full_name %>
+				</label>
+			<% end -%>
+		<% end -%>
+	<% end -%>
+</fieldset>
+<% end %>
