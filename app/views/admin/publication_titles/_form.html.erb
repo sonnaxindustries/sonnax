@@ -37,3 +37,20 @@
     <%= f.file_field :pdf %>
   </div>
 </fieldset>
+<% if @subject_options.any? %>
+<fieldset>
+	<legend>Subject Information</legend>
+	<p>The subjects that this title will be attached to.</p>
+	<%= hidden_field_tag "publication_title[subject_ids][]", '' %>
+	<% content_tag :div, :class => 'subjects' do -%>
+		<% @subject_options.each do |s| -%>
+			<% div_for s do %>
+				<label>
+					<%= check_box_tag "publication_title[subject_ids][]", s.id, @publication_title.subjects.include?(s) %>
+					<%= s.title %>
+				</label>
+			<% end -%>
+		<% end -%>
+	<% end -%>
+</fieldset>
+<% end %>

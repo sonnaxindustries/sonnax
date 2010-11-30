@@ -5,6 +5,10 @@ class Admin::PublicationSubject < PublicationSubject
     def detail!(id)
       self.find_by_id!(id)
     end
+
+    def options
+      self.list
+    end
   end
 
   def to_param
