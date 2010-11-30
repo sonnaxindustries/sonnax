@@ -90,8 +90,12 @@ class PublicationTitle < ActiveRecord::Base
   end
   
   def html_file
-    filename = self.html_file_paths.select { |path| File.exists?(path) }.first
-    File.read(filename)
+    if self.html_content?
+      self.html_content
+    else
+      filename = self.html_file_paths.select { |path| File.exists?(path) }.first
+      File.read(filename)
+    end
   end
 
   def product_lines?

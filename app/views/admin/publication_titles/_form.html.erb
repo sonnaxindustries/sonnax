@@ -37,6 +37,15 @@
     <%= f.file_field :pdf %>
   </div>
 </fieldset>
+<fieldset>
+  <legend>HTML Content</legend>
+
+  <div class="text html-content">
+    <%= f.error_message_on :html_content %>
+    <%= f.label :html_content, 'HTML Content' %>
+    <%= f.text_area :html_content, :cols => 50, :rows => 20 %>
+  </div>
+</fieldset>
 <% if @subject_options.any? %>
 <fieldset>
 	<legend>Subject Information</legend>
