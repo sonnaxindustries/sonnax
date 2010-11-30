@@ -12,6 +12,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :distributors
     admin.resources :publication_titles, :as => 'publications', :member =>  { :remove_pdf => :delete }
     admin.resources :publication_categories, :as => 'publication-categories'
+    admin.resources :publication_subjects, :as => 'publication-subjects'
+    admin.resources :publication_authors, :as => 'publication-authors'
     admin.resources :users
     
     admin.search_units '/search/units/', :controller => 'units', :action => 'search'

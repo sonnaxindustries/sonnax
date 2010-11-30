@@ -116,6 +116,8 @@ body#reference-figures-home ul li#reference-figure-nav,
 body#distributors-home ul li#distributor-nav,
 body#publication-titles-home ul li#publication-title-nav,
 body#publication-categories-home ul li#publication-category-nav,
+body#publication-authors-home ul li#publication-author-nav,
+body#publication-subjects-home ul li#publication-subject-nav,
 body#users-home ul li#user-nav {
   background-color: #ddd;
 }
