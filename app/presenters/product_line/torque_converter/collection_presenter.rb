@@ -17,9 +17,17 @@ class ProductLine::TorqueConverter::CollectionPresenter
   def make
     @make ||= @attributes[:make]
   end
+
+  def make?
+    !self.make.blank?
+  end
   
   def unit
     @unit ||= @attributes[:unit]
+  end
+
+  def unit?
+    !self.unit.blank?
   end
   
   def reference_number
@@ -46,6 +54,14 @@ class ProductLine::TorqueConverter::CollectionPresenter
                      :parts => parts,
                      :parts_count => parts_count,
                      :multiple_parts? => has_multiple_parts)
+    end
+  end
+
+  def redirect_url
+    if self.make? && !self.unit?
+      filter_product_line_parts_path(self.product_line.url_friendly, :"filter[make]" => self.make.id)
+    elsif self.make? && self.unit?
+      filter_product_line_parts_path(self.product_line.url_friendly, :"filter[make]" => self.make.id, :"filter[unit]" => self.unit.id)
     end
   end
 end

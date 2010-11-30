@@ -55,11 +55,11 @@ $(document).ready(function() {
       data: $form.serialize(),
       dataType: 'json',
       success: function(response) {
-        $elem.siblings('div.indicator').remove();
-        $('div#product-line form div.unit-selector select').html(response.unit_select_options);
-
-        var domId = $('div.parts-wrapper');
-        $(domId).html(response.no_parts_partial);
+        window.location = response.redirect_url;
+        //$elem.siblings('div.indicator').remove();
+        //$('div#product-line form div.unit-selector select').html(response.unit_select_options);
+        //var domId = $('div.parts-wrapper');
+        //$(domId).html(response.no_parts_partial);
       }
     })
     e.preventDefault();
@@ -76,10 +76,11 @@ $(document).ready(function() {
       data: $form.serialize(),
       dataType: 'json',
       success: function(response) {
-        $elem.siblings('div.indicator').remove();
-        var domId = $('div.parts-wrapper');
-        $(domId).html(response.parts_partial);
-        $("a[rel*=fancybox]").fancybox();
+        window.location = response.redirect_url; 
+        //$elem.siblings('div.indicator').remove();
+        //var domId = $('div.parts-wrapper');
+        //$(domId).html(response.parts_partial);
+        //$("a[rel*=fancybox]").fancybox();
       }
     })
 

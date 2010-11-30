@@ -34,6 +34,7 @@ class AllisonPartsController < ApplicationController
     @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
 
     if params[:filter] && !params[:filter][:unit].blank?    
+      @make = Make.allison
       @unit = Unit.find(params[:filter][:unit])
       @parts = @product_line.parts_by_filter(params[:filter] || {})
       
@@ -53,9 +54,10 @@ class AllisonPartsController < ApplicationController
       wants.json do
         parts_template_file = "product_lines/%s/parts.html.erb" % [@product_line.url_friendly.underscore]
         render :json => {
-          :dom_id => dom_id(@product_line, :parts),
-          :unit_select_options => render_to_string(:partial => 'product_lines/unit_options.html.erb', :locals => { :unit_options => @form_presenter.unit_options }),
-          :parts_partial => render_to_string(:partial => parts_template_file, :locals => { :product_line => @product_line, :parts => @parts })
+          :redirect_url => @collection_presenter.redirect_url
+         # :dom_id => dom_id(@product_line, :parts),
+         # :unit_select_options => render_to_string(:partial => 'product_lines/unit_options.html.erb', :locals => { :unit_options => @form_presenter.unit_options }),
+         # :parts_partial => render_to_string(:partial => parts_template_file, :locals => { :product_line => @product_line, :parts => @parts })
         }
       end
     end

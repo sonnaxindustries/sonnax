@@ -27,7 +27,7 @@ class ProductLine::TorqueConverter::FormPresenter
   
   def unit_options
     if self.make?
-      self.product_line.unit_options(:make => self.make).unshift(['-- Select Unit --', ''])
+      self.product_line.unit_options(:make => self.make)
     else
       self.units.map { |unit| [unit.name, unit.id] }
     end
