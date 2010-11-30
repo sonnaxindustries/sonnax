@@ -58,11 +58,6 @@ class PartsController < ApplicationController
         no_parts_template_file = "product_lines/%s/no_parts.html.erb" % [@product_line.url_friendly.underscore]
         render :json => {
           :redirect_url => @collection_presenter.redirect_url
-          #:redirect_url => filter_product_line_parts_path(@product_line.url_friendly, :"filter[make]" => params[:filter][:make], :"filter[unit]" => params[:filter][:unit])
-          #:dom_id => dom_id(@product_line, :parts),
-          #:unit_select_options => render_to_string(:partial => 'product_lines/unit_options.html.erb', :locals => { :unit_options => @form_presenter.unit_options }),
-          #:no_parts_partial => render_to_string(:partial => no_parts_template_file, :locals => { :product_line => @product_line }),
-          #:parts_partial => render_to_string(:partial => parts_template_file, :locals => { :product_line => @product_line, :parts => @parts })
         }
       end
     end
