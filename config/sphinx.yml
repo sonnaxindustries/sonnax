@@ -1,5 +1,9 @@
 development:
   min_infix_len: 2
+  bin_path: '/usr/local/bin'
+  mem_limit: 128M
 
 production:
   min_infix_len: 2
+  bin_path: '/usr/local/bin'
+  mem_limit: 128M
