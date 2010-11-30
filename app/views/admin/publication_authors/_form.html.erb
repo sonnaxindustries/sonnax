@@ -1,0 +1,24 @@
+<fieldset>
+  <legend>Author Information</legend>
+  
+  <div class="text first-name">
+    <%= f.error_message_on :first_name %>
+    <%= f.label :first_name, 'First Name' %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="text last-name">
+    <%= f.error_message_on :last_name %>
+    <%= f.label :last_name, 'Last Name' %>
+    <%= f.text_field :last_name %>
+  </div>
+  
+  
+  <div class="text full-name">
+    <%= f.error_message_on :full_name %>
+    <%= f.label :full_name, 'Full Name' %>
+    <%= f.text_field :full_name %>
+  </div>
+
+</fieldset>
+

@@ -1,0 +1,29 @@
+<div id="publication-categories">
+  <h1>Publication Authors</h1>
+
+  <div class="add-new"><%= link_to 'Add New Author', new_admin_publication_author_path, :class => 'create' %></div>
+  <% if @publication_authors.any? %>
+    <table cellpadding="0" cellspacing="0" summary="Listing of Publication Authors" width="100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th class="options"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @publication_authors.each do |publication_author| %>
+        <tr id="<%= dom_id(publication_author) %>">
+          <td><%= publication_author.full_name %></td>
+          <td class="options">
+            <ul>
+              <li><%= link_to 'Edit', edit_admin_publication_author_path(publication_author), :class => 'edit' %></li>
+            </ul>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+  <p>There are no Publication Authors.</p>
+  <% end %>
+</div>
