@@ -46,6 +46,26 @@
     <%= f.text_area :html_content, :cols => 50, :rows => 20 %>
   </div>
 </fieldset>
+
+
+<% if @category_options.any? %>
+<fieldset>
+	<legend>Category Information</legend>
+	<p>The categories that this title will be attached to.</p>
+	<%= hidden_field_tag "publication_title[category_ids][]", '' %>
+	<% content_tag :div, :class => 'categories' do -%>
+		<% @category_options.each do |s| -%>
+			<% div_for s do %>
+				<label>
+					<%= check_box_tag "publication_title[category_ids][]", s.id, @publication_title.categories.include?(s) %>
+					<%= s.name %>
+				</label>
+			<% end -%>
+		<% end -%>
+	<% end -%>
+</fieldset>
+<% end %>
+
 <% if @subject_options.any? %>
 <fieldset>
 	<legend>Subject Information</legend>

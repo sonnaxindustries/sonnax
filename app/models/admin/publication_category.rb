@@ -12,6 +12,10 @@ class Admin::PublicationCategory < PublicationCategory
       self.find_by_id!(id)
     end
     
+    def list_options
+      self.list
+    end
+
     def options
       self.all.map { |cat| [cat.name, cat.id] }
     end
