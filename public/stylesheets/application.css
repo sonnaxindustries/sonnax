@@ -450,6 +450,13 @@ div.options-wrapper {
   float: left;
   margin: 20px 0;
 }
+div.torque-converter div.options-wrapper,
+div.torque-converter div.options-wrapper div.separator,
+div.torque-converter div.options-wrapper div.search,
+div.torque-converter div.options-wrapper div.filter {
+  float: none;
+  width: auto;
+}
 div.filter {
   float: left;
   width: 300px;
