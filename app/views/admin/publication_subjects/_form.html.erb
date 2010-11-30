@@ -1,0 +1,17 @@
+<fieldset>
+  <legend>Subject Information</legend>
+  
+  <div class="text title">
+    <%= f.error_message_on :title %>
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="textarea description">
+    <%= f.error_message_on :description %>
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, :cols => 30, :rows => 10 %>
+  </div>
+  
+</fieldset>
+

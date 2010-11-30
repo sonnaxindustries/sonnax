@@ -1,0 +1,9 @@
+<h1>Add a new Subject</h1>
+<% form_for :publication_subject, @publication_subject, :url => admin_publication_subjects_path do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_publication_subjects_path, :class => 'cancel' %>
+  </div>
+<% end %>
+
