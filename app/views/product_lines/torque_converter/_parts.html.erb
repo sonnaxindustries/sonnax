@@ -1,4 +1,4 @@
-<% if @unit %>
+<% if @unit && @unit.reference_figure? %>
 <div class="reference-figure">
   <%= link_to(image_tag(@unit.reference_figure.avatar.url(:medium), :class => 'reference-figure', :alt => @unit.name), @unit.reference_figure.avatar.url, :rel => 'fancybox') %>
   <%= link_to 'View Full Size', @unit.reference_figure.avatar.url, :rel => 'fancybox', :class => 'view-full' %>
