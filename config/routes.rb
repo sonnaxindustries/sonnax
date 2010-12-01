@@ -2,7 +2,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace(:admin) do |admin|
     admin.dashboard '/', :controller => 'base', :action => 'dashboard'
-    admin.resources :product_lines, :as => 'product-lines'
     admin.resources :parts, :member => { :remove_photo => :delete } do |p|
       p.resources :part_assets, :as => 'assets'
     end
@@ -15,7 +14,21 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :publication_subjects, :as => 'publication-subjects'
     admin.resources :publication_authors, :as => 'publication-authors'
     admin.resources :users
-    
+    admin.resources :unit_components, :as => 'unit-components'
+
+
+    #NOTE: Allison is organized differently, since it is also a Make. Therefore, we want to catch the route and push to it's own controller
+    admin.with_options(:controller => 'allison_parts') do |ap|
+      ap.connect '/product-lines/4/parts', :action => 'index'
+      ap.connect '/product-lines/4/parts/filter', :action => 'filter'
+      ap.connect '/product-lines/4/parts/recent', :action => 'recent'
+      ap.connect '/product-lines/4/parts/search', :action => 'search'
+    end
+
+    admin.resources :product_lines, :as => 'product-lines' do |pl|
+      pl.resources :parts, :controller => 'parts_manager', :collection => { :recent => :get, :search => :get, :filter => :get }
+    end
+    admin.parts_manager '/parts-manager', :controller => 'parts_manager', :action => 'index'
     admin.search_units '/search/units/', :controller => 'units', :action => 'search'
     admin.search_distributors '/search/distributors/', :controller => 'distributors', :action => 'search'
     admin.search_parts '/search/parts', :controller => 'parts', :action => 'search'
