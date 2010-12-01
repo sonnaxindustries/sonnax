@@ -76,7 +76,7 @@
 			<% div_for s do %>
 				<label>
 					<%= check_box_tag "publication_title[subject_ids][]", s.id, @publication_title.subjects.include?(s) %>
-					<%= s.title %>
+          <%= s.title %> (<%= s.categories.map(&:name).to_sentence %>)
 				</label>
 			<% end -%>
 		<% end -%>
