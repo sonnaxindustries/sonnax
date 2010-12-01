@@ -1,0 +1,18 @@
+<div id="product-line" class="torque-converter">
+  <h1>New Parts for <%= @product_line.name %></h1>
+  
+  <div class="options group">
+    <ul>
+      <li><%= link_to 'Speed Order Form', speed_order_path %></li>
+      <li><%= link_to 'Details Section', '/downloads/torque-converter/details.pdf', :class => 'pdf' %></li>
+    </ul>
+  </div>
+  
+  <div class="parts-wrapper">
+    <% if @parts.any? %>
+      <%= render :partial => 'product_lines/torque_converter/new_parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+    <% else %>
+      <%= render :partial => 'product_lines/torque_converter/no_parts', :locals => { :product_line => @product_line } %>
+    <% end %>
+  </div>
+</div>

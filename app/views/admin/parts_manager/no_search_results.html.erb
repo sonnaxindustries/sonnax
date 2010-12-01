@@ -1,0 +1,23 @@
+<div id="no-search-results">
+  <h1>Search Parts</h1>
+  <p>There were no parts found for your search. Please try again.</p>
+
+  <div class="search-parts">
+    <h2>Quick Search by Sonnax part number</h2>
+    <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+    <fieldset>
+      <legend>Search</legend>
+      <div id="search-options" class="group">
+        <div class="search-terms">
+          <%= f.label :q, 'Search Part Number:' %>
+          <%= f.text_field :q %>
+        </div>
+      </div>
+
+      <div class="submit">
+        <%= f.submit 'Search' %>
+      </div>
+    </fieldset>
+    <% end %>
+  </div>
+</div>

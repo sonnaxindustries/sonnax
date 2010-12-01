@@ -1,0 +1,41 @@
+<% form_for :cart, @cart, :url => add_multiple_cart_path do |f| %>
+<div id="<%= dom_id(product_line, :parts) %>" class="parts search recent group">
+  <table cellpadding="0" class="parts" summary="Listing of Parts for <%= product_line.name %>">
+    <thead>
+      <th class="part-number">Part Number</th>
+      <th class="item">Item</th>
+      <th class="description">Description</th>
+      <th class="make">Make</th>
+      <th class="units">Units</th>
+      <th class="quantity">Quantity</th>
+    </thead>
+    <tbody>
+      <% @parts.each_with_index do |part,i| %>
+      <tr>
+        <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part), :class => part_class(part) %></td>
+        <td class="item"><%= part.item %></td>
+        <td class="description"><%= part.description %></td>
+        <td class="make"><%= part.make.name if part.make? %></td>
+        <td class="units">
+          <% if part.ordered_units.any? %>
+            <%= part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+          <% end %>
+        </td>
+        <td class="quantity">
+          <% if part.part_number? %> 
+            <%= hidden_field_tag "cart[parts][#{i}][][part_id]", part.id %>
+            <%= hidden_field_tag "cart[parts][#{i}][][part_number]", part.part_number %>
+            <%= text_field_tag "cart[parts][#{i}][][quantity]", '', :size => 2 %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<ul class="ordering-options">
+  <li><%= link_to 'View Cart', cart_path %></li>
+  <li><%= f.submit 'Add to Cart' %></li>
+</ul>
+<% end %>

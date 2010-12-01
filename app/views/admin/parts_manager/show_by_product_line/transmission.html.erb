@@ -1,0 +1,53 @@
+<div id="part" class="transmission">
+  <h1><%= @part.part_number %></h1>
+  
+  <div id="col-1">
+    <div class="details">
+      <div class="photo">
+        <% if @part.primary_photo? %>
+          <%= image_tag @part.primary_photo.photo.asset.url(:medium) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div id="col-2">
+    <div class="info">
+      <div class="meta">
+        <div class="part-number"><strong>Part Number:</strong> <%= @part.part_number %></div>
+
+        <div class="description">
+          <p><%= @part.description %></p>
+        </div>
+      </div>
+      
+      <div class="make-unit">
+        <% if @part.make? %>
+        <strong><%= @part.make.name %>: </strong> 
+        <% end %>
+        
+        <% if @part.ordered_units.any? %>
+          <%= @part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(@part.product_line.url_friendly, :"filter[make]" => @part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+        <% end %>
+      </div>
+      
+      
+    </div>
+    <div class="resources">
+      <h2>Resources</h2>
+      <% if @part.part_assets.resources.any? %>
+        <% @part.part_assets.resources.each do |pa| %>
+        <li><%= link_to pa.part_asset_type.name, pa.asset.asset.url %> <span class="filesize">(<%= number_to_human_size(pa.asset.asset_file_size) %> PDF)</span></li>
+        <% end %>
+      <% end %>
+    </div>
+    
+    <div class="more-information">
+      <h2>More Information</h2>
+      <ul>
+        <li><%= link_to "Find a Distributor", distributors_path %></li>
+      </ul>
+    </div>
+
+  </div>
+</div>

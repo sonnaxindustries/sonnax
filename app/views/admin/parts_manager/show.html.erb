@@ -1,0 +1,23 @@
+<div id="part">
+  <h1><%= @part.part_number %></h1>
+  
+  <div id="col-1">
+    <div class="description">
+      <% if @part.primary_photo? %>
+        <%= image_tag @part.primary_photo.photo.asset.url(:medium) %>
+      <% end %>
+      <%= @part.description %>
+    </div>
+  </div>
+  
+  <div id="col-2">
+    <div class="resources">
+      <h2>Resources</h2>
+      <% if @part.part_assets.resources.any? %>
+        <% @part.part_assets.resources.each do |pa| %>
+        <li><%= link_to pa.part_asset_type.name, pa.asset.asset.url %> (<%= number_to_human_size(pa.asset.asset_file_size) %> PDF)</li>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

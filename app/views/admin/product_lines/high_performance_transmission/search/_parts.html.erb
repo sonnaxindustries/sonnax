@@ -1,0 +1,28 @@
+<div id="<%= dom_id(product_line, :parts) %>" class="parts group">
+  <table cellpadding="0" summary="Listing of Parts for <%= product_line.name %>" class="parts" width="100%">
+    <thead>
+      <th class="ref-code">Reference</th>
+      <th class="part-number">Part Number</th>
+      <th class="description">Description</th>
+      <th class="notes">Item Notes</th>
+      <th class="make">Make</th>
+      <th class="units">Units</th>
+    </thead>
+    <tbody>
+      <% parts.each do |part| %>
+      <tr>
+        <td class="ref-code"><%= part.ref_code %></td>
+        <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part), :class => part_class(part) %></td>
+        <td class="description"><%= part.description %></td>
+        <td class="notes"><%= part.notes %></td>
+        <td class="make"><%= part.make.name if part.make? %></td>
+        <td class="units">
+          <% if part.ordered_units.any? %>
+            <%= part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

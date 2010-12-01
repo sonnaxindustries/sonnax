@@ -1,0 +1,68 @@
+<div id="product-line" class="driveline">
+  <h1><%= @product_line.name %></h1>
+  
+  <div class="search-and-filter group">
+    <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+    <fieldset>
+      <legend>Filtering Options</legend>
+      <div id="attributes">
+        <div class="series-selector">
+          <%= f.label :series, 'Driveline Series:' %>
+          <%= f.select :series, @form_presenter.series_options, :include_blank => '-- Select --' %>
+        </div>
+        
+        <div class="tube-diameter-selector">
+          <%= f.label :tube_diameter, 'Tube Diameter:' %>
+          <%= f.select :tube_diameter, @form_presenter.tube_diameter_options, :include_blank => '-- Select --' %>
+        </div>
+
+        <div class="submit">
+          <%= f.submit 'Filter' %>
+        </div>
+      </div>
+    </fieldset>
+    <% end %>
+  </div>
+  
+  <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+  <fieldset>
+    <legend>Search</legend>
+    <div id="search-options" class="group">
+      <div class="search-terms">
+        <%= f.label :q, 'Search Part Number:' %>
+        <%= f.text_field :q %>
+      </div>
+    </div>
+
+    <div class="submit">
+      <%= f.submit 'Search' %>
+    </div>
+  </fieldset>
+  <% end %>
+</div>
+
+  <% if @parts.any? %>
+  <div id="<%= dom_id(@product_line, :parts) %>" class="parts group">
+    <table cellpadding="0" summary="Listing of Parts for <%= @product_line.name %>">
+      <thead>
+        <th>Part Number</th>
+        <th>Industry Number</th>
+        <th>Driveline Series</th>
+        <th>Tube Diameter</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <% @parts.each do |part| %>
+        <tr>
+          <td><%= part.part_number %></td>
+          <td>{industry_number}</td>
+          <td>{driveline_series}</td>
+          <td>{tube_diameter}</td>
+          <td><%= part.description %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+</div>

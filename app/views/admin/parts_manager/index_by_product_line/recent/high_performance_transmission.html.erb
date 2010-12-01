@@ -1,0 +1,12 @@
+<div id="product-line" class="high-performance-transmission">
+  <h1>New Parts for <%= @product_line.name %></h1>
+  <p>This list will change as new product arrives so please check back frequently.</p>
+
+  <div clss="parts-wrapper">
+    <% if @parts.any? %>
+      <%= render :partial => 'product_lines/high_performance_transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+    <% else %>
+      <%= render :partial => 'product_lines/high_performance_transmission/no_parts', :locals => { :product_line => @product_line } %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+
+<div id="<%= dom_id(product_line, :parts) %>" class="parts group">
+  <table cellpadding="0" class="parts" summary="Listing of Parts for <%= product_line.name %>">
+    <thead>
+      <th class="reference-number">Ref. No</th>
+      <th class="item">Item</th>
+      <th class="description">Description</th>
+      <th class="part-number">Part Number</th>
+      <th class="actions">&nbsp;</th>
+    </thead>
+    <tbody>
+      <% @collection_presenter.parts_by_reference_number.each do |p| %>
+        <tr>
+          <td rowspan="<%= p.parts_count %>" class="reference-number"><%= p.reference_number %></td>
+        <% p.parts.each_with_index do |part,i| %>
+          <% if (p.multiple_parts? && i > 0) %>
+          </tr>
+          <tr class="multiple-parts">
+          <% end %>
+          <td class="item"><%= part.item %></td>
+          <td class="description"><%= part.description %></td>
+          <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part), :class => part_class(part) %></td>
+          <td><%= link_to 'Remove from Unit', admin_unit_component_path(Admin::UnitComponent.find_by_unit_id_and_part_id(@unit, part.id)), :method => :delete, :confirm => 'Are you sure you want to remove this part from this unit?' %></td>
+          <% end %>
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>
+</div>

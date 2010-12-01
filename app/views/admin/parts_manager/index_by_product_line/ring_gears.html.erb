@@ -1,0 +1,54 @@
+<div id="product-line" class="ring-gears">
+  <h1>Parts for <%= @product_line.name %></h1>
+  
+  <div class="filter group">
+    <% form_for :filter, @form_presenter, :url => @form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+    <fieldset>
+      <legend>Filtering Options</legend>
+      <div id="attributes">
+        <div class="teeth-selector">
+          <%= f.label :number_of_teeth, 'Number of Teeth:' %>
+          <%= f.select :number_of_teeth, @form_presenter.teeth_options, :include_blank => '-- Select --' %>
+        </div>
+
+        <div class="submit">
+          <%= f.submit 'Filter' %>
+        </div>
+      </div>
+    </fieldset>
+    <% end %>
+  </div>
+
+  <% if @parts.any? %>
+  <div id="<%= dom_id(@product_line, :parts) %>" class="parts group">
+    <table cellpadding="0" summary="Listing of Parts for <%= @product_line.name %>">
+      <thead>
+        <th>Product Number</th>
+        <th>Application</th>
+        <th>OEM Number</th>
+        <th>Number of Teeth</th>
+        <th>O.D.</th>
+        <th>ID</th>
+        <th>Pitch</th>
+        <th>Thick</th>
+        <th>Chamfer</th>
+      </thead>
+      <tbody>
+        <% @parts.each do |part| %>
+        <tr>
+          <td><%= part.part_number %></td>
+          <td>{application}</td>
+          <td><%= part.oem_part_number %></td>
+          <td><%= part.part_attributes.by_attribute_type('no_of_teeth').first.attr_value %></td>
+          <td><%= part.part_attributes.by_attribute_type('outer_diameter').first.attr_value %></td>
+          <td><%= part.part_attributes.by_attribute_type('inner_diameter').first.attr_value %></td>
+          <td><%= part.part_attributes.by_attribute_type('pitch').first.attr_value %></td>
+          <td><%= part.part_attributes.by_attribute_type('thick').first.attr_value %></td>
+          <td><%= part.part_attributes.by_attribute_type('chamfer').first.attr_value %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+</div>
