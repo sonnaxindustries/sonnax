@@ -30,6 +30,16 @@ class PublicationSubject < ActiveRecord::Base
   def publications?
     self.publications.any?
   end
+
+  def categories
+    self.class.find(:all, 
+                    :select => 'DISTINCT(pct.publication_category_id), pc.name',
+                    :from => 'publication_titles_subjects pts',
+                    :joins => "LEFT JOIN publication_titles pt ON pt.id = pts.publication_title_id
+                               LEFT JOIN publication_categories_titles pct ON pct.publication_title_id = pt.id
+                               LEFT JOIN publication_categories pc ON pc.id = pct.publication_category_id",
+                    :conditions => ["pts.publication_subject_id = ?", self.id])
+  end
   
   def to_param
     self.url_friendly
