@@ -1,2 +1,2 @@
-class ProductLines::HighPerformanceConverter < Admin::ProductLine
+class Admin::ProductLines::HighPerformanceConverter < Admin::ProductLine
 end

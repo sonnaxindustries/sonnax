@@ -1,2 +1,2 @@
-class ProductLines::RingGear < ProductLine
+class Admin::ProductLines::RingGear < Admin::ProductLine
 end

@@ -1,2 +1,2 @@
-class ProductLines::Driveline < ProductLine
+class Admin::ProductLines::Driveline < Admin::ProductLine
 end
