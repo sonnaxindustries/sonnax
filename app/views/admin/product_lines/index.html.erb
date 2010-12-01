@@ -14,7 +14,7 @@
       <tbody>
         <% @product_lines.each do |product_line| %>
         <tr id="<%= dom_id(product_line) %>">
-          <td><%= product_line.name %></td>
+          <td><%= product_line.name %> <% if DB_EDITABLE.include?(product_line.id) %><span><%= link_to 'Manage Parts', admin_product_line_parts_path(product_line.id) %></span><% end %></td>
           <td><%= product_line.published_status %></td>
           <td><%= product_line.sort_order %></td>
           <td class="options">

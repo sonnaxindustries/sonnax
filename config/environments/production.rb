@@ -26,3 +26,4 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+DB_EDITABLE = [1,2,3,4]
