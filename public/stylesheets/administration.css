@@ -19,6 +19,8 @@ a.destroy-html {
 }
 #wrapper-inner {
   padding-top: 10px;
+  float: left;
+  width: 96%
 }
 #col-1 ul li {
   border-bottom: 1px solid #ddd;
