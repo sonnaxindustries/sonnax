@@ -6,7 +6,6 @@
       <th class="description">Description</th>
       <th class="make">Make</th>
       <th class="units">Units</th>
-      <th class="quantity">Quantity</th>
     </thead>
     <tbody>
       <% @parts.each do |part| %>
@@ -17,21 +16,11 @@
         <td class="make"><%= part.make.name if part.make? %></td>
         <td class="units">
           <% if part.ordered_units.any? %>
-            <%= part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+            <%= part.ordered_units.map { |u| link_to(u.name, filter_admin_product_line_parts_path(product_line.id, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
           <% end %>
         </td>
-        <td class="quantity"><% if part.part_number? %><input type="text" size="2"><% end %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-
-<% if @unit %>
-  <%= image_tag @unit.reference_figure.avatar.url(:original) %>
-<% end %>
-
-<ul class="ordering-options">
-  <li><%= link_to 'View Cart', '#' %></li>
-  <li><input type="submit" name="submit" value="Add to Cart"></li>
-</ul>

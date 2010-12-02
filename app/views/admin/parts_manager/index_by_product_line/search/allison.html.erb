@@ -46,9 +46,9 @@
   
   <div class="parts-wrapper">
     <% if @parts.any? %>
-      <%= render :partial => 'product_lines/allison/search/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+      <%= render :partial => 'admin/product_lines/allison/search/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
     <% else %>
-      <%= render :partial => 'parts/index_by_product_line/search/no_results', :locals => { :product_line => @product_line } %>
+      <%= render :partial => 'admin/parts/index_by_product_line/search/no_results', :locals => { :product_line => @product_line } %>
     <% end %>
   </div>
 </div>
