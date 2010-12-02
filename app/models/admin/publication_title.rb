@@ -4,6 +4,7 @@ class Admin::PublicationTitle < PublicationTitle
     indexes description
     
     has published_at, created_at, updated_at
+    set_property :delta => :delayed
   end
   
   class << self

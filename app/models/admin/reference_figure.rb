@@ -8,6 +8,7 @@ class Admin::ReferenceFigure < ReferenceFigure
     indexes :name, :sortable => true
     
     has created_at, updated_at
+    set_property :delta => :delayed
   end
   
   class << self

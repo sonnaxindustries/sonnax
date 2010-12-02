@@ -29,6 +29,7 @@ class Part < ActiveRecord::Base
     where "parts.part_number <> ''"
     
     has created_at, updated_at, part_type_id, product_line_id
+    set_property :delta => :delayed
   end
   
   named_scope :recent, :conditions => ["parts.is_new_item = ?", true]

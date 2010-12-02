@@ -14,6 +14,7 @@ class UnitComponent < ActiveRecord::Base
     
     has code_on_reference_figure
     has part_id, unit_id, created_at, updated_at
+    set_property :delta => :delayed
   end
   
   class << self

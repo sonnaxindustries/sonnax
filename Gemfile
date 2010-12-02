@@ -9,6 +9,7 @@ gem "will_paginate",          "2.3.12"
 gem "authlogic",              "2.1.3"
 gem "riddle",                 "1.1.0"
 gem "thinking-sphinx",        "1.3.17", :require => 'thinking_sphinx'
+gem "ts-delayed-delta",       "1.1.1", :require => 'thinking_sphinx/deltas/delayed_delta'
 gem "liquid",                 "2.0.0"
 gem "acts_as_tree",           "0.1.1"
 gem "spreadsheet",            "0.6.4.1"

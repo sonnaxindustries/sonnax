@@ -14,6 +14,7 @@ class Distributor < ActiveRecord::Base
     indexes website_url
     
     has created_at, updated_at
+    set_property :delta => :delayed
   end
   
   class << self

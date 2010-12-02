@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101130025109) do
+ActiveRecord::Schema.define(:version => 20101202202057) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -89,9 +89,25 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
   add_index "countries", ["code"], :name => "index_countries_on_code", :unique => true
   add_index "countries", ["url_friendly"], :name => "index_countries_on_url_friendly", :unique => true
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["locked_by"], :name => "delayed_jobs_locked_by"
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "distributors", :force => true do |t|
-    t.string   "name",                   :null => false
-    t.string   "url_friendly",           :null => false
+    t.string   "name",                                     :null => false
+    t.string   "url_friendly",                             :null => false
     t.string   "phone_number"
     t.string   "website_url"
     t.datetime "created_at"
@@ -101,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
     t.string   "country"
     t.string   "email"
     t.boolean  "has_multiple_locations"
+    t.boolean  "delta",                  :default => true, :null => false
   end
 
   add_index "distributors", ["url_friendly"], :name => "index_distributors_on_url_friendly", :unique => true
@@ -119,11 +136,12 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
   add_index "line_items", ["part_id"], :name => "index_line_items_on_part_id"
 
   create_table "makes", :force => true do |t|
-    t.string   "name",         :limit => 150, :null => false
-    t.string   "key_name",     :limit => 150, :null => false
-    t.string   "url_friendly", :limit => 150, :null => false
+    t.string   "name",         :limit => 150,                   :null => false
+    t.string   "key_name",     :limit => 150,                   :null => false
+    t.string   "url_friendly", :limit => 150,                   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "delta",                       :default => true, :null => false
   end
 
   add_index "makes", ["key_name"], :name => "index_makes_on_key_name", :unique => true
@@ -223,6 +241,7 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
     t.integer  "product_line_id",                    :null => false
     t.boolean  "is_featured",     :default => false
     t.boolean  "is_new_item",     :default => false
+    t.boolean  "delta",           :default => true,  :null => false
   end
 
   add_index "parts", ["is_featured"], :name => "index_parts_on_is_featured"
@@ -278,6 +297,7 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
     t.datetime "updated_at"
     t.text     "description"
     t.string   "type",                           :null => false
+    t.boolean  "delta",        :default => true, :null => false
   end
 
   add_index "product_lines", ["is_active"], :name => "index_product_lines_on_is_active"
@@ -352,8 +372,8 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
   add_index "publication_subjects", ["url_friendly"], :name => "index_publication_subjects_on_url_friendly", :unique => true
 
   create_table "publication_titles", :force => true do |t|
-    t.string   "title",            :null => false
-    t.string   "url_friendly",     :null => false
+    t.string   "title",                              :null => false
+    t.string   "url_friendly",                       :null => false
     t.text     "description"
     t.string   "pdf_file_name"
     t.integer  "pdf_file_size"
@@ -365,6 +385,7 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
     t.datetime "updated_at"
     t.integer  "spreadsheet_id"
     t.text     "html_content"
+    t.boolean  "delta",            :default => true, :null => false
   end
 
   add_index "publication_titles", ["url_friendly"], :name => "index_publication_titles_on_url_friendly", :unique => true
@@ -484,7 +505,7 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
   add_index "redirects", ["old_url"], :name => "index_redirects_on_old_url", :unique => true
 
   create_table "reference_figures", :force => true do |t|
-    t.string   "name",                       :null => false
+    t.string   "name",                                         :null => false
     t.string   "avatar_file_name"
     t.integer  "avatar_file_size"
     t.string   "avatar_content_type"
@@ -495,6 +516,7 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
     t.datetime "exploded_view_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "delta",                      :default => true, :null => false
   end
 
   create_table "roles", :force => true do |t|
@@ -548,8 +570,8 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
   add_index "states", ["url_friendly"], :name => "index_states_on_url_friendly", :unique => true
 
   create_table "unit_components", :force => true do |t|
-    t.integer  "unit_id",                                 :null => false
-    t.integer  "part_id",                                 :null => false
+    t.integer  "unit_id",                                    :null => false
+    t.integer  "part_id",                                    :null => false
     t.integer  "display_order",            :default => 1
     t.integer  "indent",                   :default => 0
     t.string   "code_on_reference_figure"
@@ -561,6 +583,7 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
     t.string   "driveline_series"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "delta",                    :default => true, :null => false
   end
 
   add_index "unit_components", ["part_id"], :name => "index_unit_components_on_part_id"
@@ -568,12 +591,13 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
   add_index "unit_components", ["unit_id"], :name => "index_unit_components_on_unit_id"
 
   create_table "units", :force => true do |t|
-    t.integer  "product_line_id",     :null => false
+    t.integer  "product_line_id",                       :null => false
     t.integer  "reference_figure_id"
-    t.string   "name",                :null => false
+    t.string   "name",                                  :null => false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "delta",               :default => true, :null => false
   end
 
   add_index "units", ["product_line_id"], :name => "index_units_on_product_line_id"
@@ -589,7 +613,6 @@ ActiveRecord::Schema.define(:version => 20101130025109) do
   end
 
   add_index "units_makes", ["make_id"], :name => "index_units_makes_on_make_id"
-  add_index "units_makes", ["unit_id", "make_id"], :name => "by_unit", :unique => true
   add_index "units_makes", ["unit_id"], :name => "index_units_makes_on_unit_id"
 
   create_table "users", :force => true do |t|

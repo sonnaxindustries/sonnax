@@ -17,6 +17,7 @@ class Admin::Part < Part
     indexes part_type.name, :as => :part_type_name
     
     has created_at, updated_at, product_line_id, part_type_id
+    set_property :delta => :delayed
   end
   
   class << self

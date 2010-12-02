@@ -33,6 +33,7 @@ class PublicationTitle < ActiveRecord::Base
     indexes description
 
     has created_at, updated_at
+    set_property :delta => :delayed
   end
 
   class << self
