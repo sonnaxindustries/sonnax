@@ -1,4 +1,4 @@
-class Admin::PartAssetsController < ApplicationController
+class Admin::PartAssetsController < Admin::BaseController
   before_filter :retrieve_part, :retrieve_part_asset_types
   
   def new
@@ -11,6 +11,7 @@ class Admin::PartAssetsController < ApplicationController
   
   def create
     begin
+      params[:part_asset].reverse_merge!(:part_id => params[:part_id])
       @part_asset = Admin::PartAsset.new(params[:part_asset])
       @part_asset.save!
       flash_and_redirect(edit_admin_part_path(@part), 'Resource has been created')
