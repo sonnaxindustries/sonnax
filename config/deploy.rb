@@ -1,7 +1,7 @@
 require 'config/recipes/passenger'
 require 'config/recipes/sonnax'
 require 'config/recipes/bundler'
-#require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/deploy/capistrano.rb'
+require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/deploy/capistrano.rb'
 
 set :application, "sonnax"
 set :repository, 'git@github.com:nateklaiber/sonnax.git'
@@ -108,4 +108,4 @@ end
 
 after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages', 'deploy:publication:symlink_all'
 after 'deploy', 'deploy:cleanup'
-#after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
+after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
