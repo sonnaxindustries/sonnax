@@ -29,6 +29,7 @@ ActionController::Routing::Routes.draw do |map|
 
     admin.resources :product_lines, :as => 'product-lines' do |pl|
       pl.resources :parts, :controller => 'parts_manager', :collection => { :recent => :get, :search => :get, :filter => :get }
+      pl.unit_part_search '/unit/:unit_id/part-search', :controller => 'units', :action => 'search_parts'
     end
     admin.parts_manager '/parts-manager', :controller => 'parts_manager', :action => 'index'
     admin.search_units '/search/units/', :controller => 'units', :action => 'search'

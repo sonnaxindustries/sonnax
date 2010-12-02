@@ -14,6 +14,10 @@ class SearchFormPresenter
   def unit_id
     @unit_id ||= @attributes[:unit_id]
   end
+
+  def product_line_id
+    @product_line_id ||= @attributes[:product_line_id]
+  end
   
   def q
     self.search_terms
