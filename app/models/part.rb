@@ -375,6 +375,11 @@ class Part < ActiveRecord::Base
   def primary_photo
     self.part_assets.photos.first
   end
+
+  def primary_photo_src=(val)
+    asset = Asset.create(:asset => val)
+    self.part_assets.photos.build(:asset => asset)
+  end
   
   def primary_photo?
     !self.primary_photo.blank? && self.primary_photo.photo?

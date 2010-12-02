@@ -33,4 +33,8 @@ class Admin::Part < Part
       self.paginate(options)
     end
   end
+  def primary_photo_src=(val)
+    asset = Admin::Asset.create(:asset => val)
+    self.part_assets.photos.create(:asset => asset)
+  end
 end
