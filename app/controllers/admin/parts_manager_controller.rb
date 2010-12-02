@@ -20,7 +20,8 @@ class Admin::PartsManagerController < Admin::BaseController
     @makes = @product_line.associated_makes
     @units = []
     @parts = []
-    @make, @unit = nil
+    @make = nil
+    @unit = nil
 
     params[:filter].reverse_merge!(:product_line => @product_line) if params[:filter]
     
