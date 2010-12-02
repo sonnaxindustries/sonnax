@@ -1,6 +1,19 @@
 class Admin::UnitComponentsController < Admin::BaseController
   before_filter :retrieve_unit_component, :only => [:edit, :update, :destroy]
 
+  def quick_create
+    begin
+      @unit_component = Admin::UnitComponent.new(params[:unit_component])
+      @unit_component.save!
+      unit = Unit.find(params[:unit_component][:unit_id])
+      part = Part.find(params[:unit_component][:part_id])
+      redirect_path = filter_admin_product_line_parts_path(unit.product_line.id, :"filter[make]" => part.make.id, :"filter[unit]" => unit.id)
+      flash_and_redirect(redirect_path, 'Part has been added')
+    rescue ActiveRecord::RecordInvalid
+      render_404
+    end
+  end
+
   def destroy
     @unit_component.destroy
 

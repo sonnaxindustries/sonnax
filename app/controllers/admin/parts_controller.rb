@@ -20,7 +20,7 @@ class Admin::PartsController < Admin::BaseController
     begin
       @unit = Unit.find_by_id!(params[:search][:unit_id])
       @parts = Part.search_by_filter!(params[:search][:q])
-      @search_form_presenter = SearchFormPresenter.new(:unit_id => params[:search][:unit_id], :search_terms => params[:search][:q], :url => search_single_part_path)
+      @search_form_presenter = SearchFormPresenter.new(:unit_id => params[:search][:unit_id], :search_terms => params[:search][:q], :url => admin_search_single_part_path)
 
       respond_to do |wants|
         wants.html do
@@ -28,7 +28,7 @@ class Admin::PartsController < Admin::BaseController
         end
       end
     rescue Part::NoSearchResults 
-      @search_form_presenter = SearchFormPresenter.new(:search_terms => params[:search][:q], :url => search_single_part_path)
+      @search_form_presenter = SearchFormPresenter.new(:unit_id => params[:search][:unit_id], :search_terms => params[:search][:q], :url => admin_search_single_part_path)
       render :template => 'admin/parts/no_search_results.html.erb'
     end
   end

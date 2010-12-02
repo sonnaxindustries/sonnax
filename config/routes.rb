@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :publication_subjects, :as => 'publication-subjects'
     admin.resources :publication_authors, :as => 'publication-authors'
     admin.resources :users
-    admin.resources :unit_components, :as => 'unit-components'
+    admin.resources :unit_components, :as => 'unit-components', :collection => { :quick_create => :get }
 
     admin.unit_part_search '/unit/:unit_id/part-search', :controller => 'units', :action => 'search_parts'
     admin.search_single_part '/search-by-part-number', :controller => 'parts', :action => 'quick_search'

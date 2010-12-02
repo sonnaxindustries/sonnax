@@ -40,7 +40,7 @@
                   <tr class="multiple-parts">
                   <% end %>
                     <td><%= part.product_line.name %></td>
-                    <td><%= link_to 'Add Part', '#' %>
+                    <td><%= link_to 'Add Part', quick_create_admin_unit_components_path(:"unit_component[unit_id]" => @search_form_presenter.unit_id, :"unit_component[part_id]" => part.id) %>
                 <% end %>
               </tr>
             <% end %>
