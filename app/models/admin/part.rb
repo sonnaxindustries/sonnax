@@ -35,6 +35,6 @@ class Admin::Part < Part
   end
   def primary_photo_src=(val)
     asset = Admin::Asset.create(:asset => val)
-    self.part_assets.photos.create(:asset => asset)
+    self.part_assets.photos.build(:asset => asset)
   end
 end
