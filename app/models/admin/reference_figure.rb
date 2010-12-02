@@ -26,7 +26,7 @@ class Admin::ReferenceFigure < ReferenceFigure
     def list(params={})
       options = {
         :page => (params[:page] || 1),
-        :order => 'created_at DESC'
+        :order => 'name ASC'
       }
 
       self.paginate(options)
