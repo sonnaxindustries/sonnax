@@ -17,7 +17,7 @@
         <td class="make"><%= part.make.name if part.make? %></td>
         <td class="units">
           <% if part.ordered_units.any? %>
-            <%= part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+            <%= part.ordered_units.map { |u| link_to(u.name, filter_admin_product_line_parts_path(product_line.id, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
           <% end %>
         </td>
         <td><%= link_to 'Remove from Unit', admin_unit_component_path(Admin::UnitComponent.find_by_unit_id_and_part_id(@unit, part.id)), :method => :delete, :confirm => 'Are you sure you want to remove this part from this unit?' %></td>
