@@ -1,3 +1,6 @@
 <div id="no-parts">
   <p>Use the menus above to select a <strong>Make</strong> and <strong>Unit</strong> to view parts.</p>
+  <% if unit %>
+    <%= link_to 'Add Part to Unit', admin_product_line_unit_part_search_path(product_line, unit) %>
+  <% end %>
 </div>

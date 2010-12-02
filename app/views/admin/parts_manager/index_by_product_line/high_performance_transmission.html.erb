@@ -52,7 +52,7 @@
     <% if @parts.any? %>
       <%= render :partial => 'admin/product_lines/high_performance_transmission/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
     <% else %>
-      <%= render :partial => 'admin/product_lines/high_performance_transmission/no_parts', :locals => { :product_line => @product_line } %>
+      <%= render :partial => 'admin/product_lines/high_performance_transmission/no_parts', :locals => { :unit => @form_presenter.unit, :product_line => @product_line } %>
     <% end %>
   </div>
 </div>
