@@ -25,12 +25,12 @@ class Admin::AllisonPartsController < Admin::BaseController
     @unit = nil
 
     params[:filter].reverse_merge!(:product_line => @product_line) if params[:filter]
-    params[:filter].reverse_merge!(:make => Make.find_by_url_friendly('allison')) if params[:filter]
+    params[:filter].reverse_merge!(:make => @make) if params[:filter]
     
-    form_presenter = "ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
-    collection_presenter = "ProductLine::%s::CollectionPresenter" % [@product_line.url_friendly.underscore.classify]
+    form_presenter = "Admin::ProductLine::%s::FormPresenter" % [@product_line.url_friendly.underscore.classify]
+    collection_presenter = "Admin::ProductLine::%s::CollectionPresenter" % [@product_line.url_friendly.underscore.classify]
     
-    @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+    @form_presenter = form_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :makes => @makes, :units => @units, :unit => @unit)
     @collection_presenter = collection_presenter.constantize.new(:product_line => @product_line, :parts => @parts, :make => @make, :unit => @unit)
 
     if params[:filter] && !params[:filter][:unit].blank?    
@@ -38,7 +38,7 @@ class Admin::AllisonPartsController < Admin::BaseController
       @unit = Unit.find(params[:filter][:unit])
       @parts = @product_line.parts_by_filter(params[:filter] || {})
       
-      @form_presenter = @product_line.new_form_presenter(:parts => @parts, :makes => @makes, :units => @units, :make => @make, :unit => @unit)
+      @form_presenter = @product_line.new_form_presenter(:parts => @parts, :makes => @makes, :units => @units, :unit => @unit)
       @collection_presenter = @product_line.new_collection_presenter(:parts => @parts, :make => @make, :unit => @unit)
     end
 

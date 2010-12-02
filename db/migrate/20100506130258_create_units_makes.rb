@@ -10,7 +10,6 @@ class CreateUnitsMakes < ActiveRecord::Migration
     
     add_index :units_makes, :unit_id
     add_index :units_makes, :make_id
-    add_index :units_makes, [:unit_id, :make_id], :unique => true, :name => 'by_unit'
   end
 
   def self.down
