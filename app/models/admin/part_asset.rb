@@ -16,4 +16,10 @@ class Admin::PartAsset < PartAsset
   def asset?
     !self.asset.blank?
   end
+
+  def asset_src=(val)
+    asset_obj = Admin::Asset.create(:asset => val)
+    self.update_attributes(:asset => asset_obj)
+    #self.create_asset(:asset => val)
+  end
 end

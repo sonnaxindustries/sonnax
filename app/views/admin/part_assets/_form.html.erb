@@ -26,7 +26,7 @@
     </div>
     <% end %>
     
-    <% f.fields_for :asset do |a| %>
+    <% f.fields_for :asset_src do |a| %>
       <%= a.error_message_on :asset %>
       <%= a.label :asset, 'Attachment' %>
       <%= a.file_field :asset %>
