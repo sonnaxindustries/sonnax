@@ -10,6 +10,10 @@ class SearchFormPresenter
   def url
     @url ||= @attributes[:url]
   end
+
+  def unit_id
+    @unit_id ||= @attributes[:unit_id]
+  end
   
   def q
     self.search_terms

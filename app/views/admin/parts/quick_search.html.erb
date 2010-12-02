@@ -1,0 +1,52 @@
+<div id="search-results">
+  <h1>Search for a part to add to <%= @unit.name %></h1>
+
+  <div class="search-parts">
+    <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
+    <fieldset>
+      <legend>Search</legend>
+      <%= f.hidden_field :unit_id %>
+      <div id="search-options" class="group">
+        <div class="search-terms">
+          <%= f.label :q, 'Search Part Number:' %>
+          <%= f.text_field :q %>
+        </div>
+      </div>
+
+      <div class="submit">
+        <%= f.submit 'Search' %>
+      </div>
+    </fieldset>
+    <% end %>
+  </div>
+
+  <div class="parts-wrapper">
+    <% if @parts.any? %>
+      <div id="grouped-results" class="parts group">
+        <table cellpadding="0" summary="Search Results for Part"" class="parts" width="100%">
+          <thead>
+            <th class="part-number">Part Number</th>
+            <th class="product-line">Product Line</th>
+            <th class="actions">&nbsp;</th>
+          </thead>
+          <tbody>
+            <% @parts.group_by(&:part_number).sort.reverse.each do |grp| %>
+              <% parts_count = grp[1].size %>
+              <tr>
+                <td rowspan="<%= parts_count %>"><%= grp[0] %></td>
+                <% grp[1].sort_by(&:product_line_id).reverse.each_with_index do |part, i| %>
+                  <% if parts_count > 1 && i >0 %>
+                  </tr>
+                  <tr class="multiple-parts">
+                  <% end %>
+                    <td><%= part.product_line.name %></td>
+                    <td><%= link_to 'Add Part', '#' %>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

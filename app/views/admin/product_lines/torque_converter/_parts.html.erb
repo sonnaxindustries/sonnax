@@ -1,5 +1,7 @@
-
 <div id="<%= dom_id(product_line, :parts) %>" class="parts group">
+  <% if @unit %>
+    <%= link_to 'Add Part to Unit', admin_unit_part_search_path(@unit) %>
+  <% end %>
   <table cellpadding="0" class="parts" summary="Listing of Parts for <%= product_line.name %>">
     <thead>
       <th class="reference-number">Ref. No</th>

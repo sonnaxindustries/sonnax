@@ -18,6 +18,15 @@ class Admin::UnitsController < Admin::BaseController
 
   def edit
   end
+
+  def search_parts
+    begin
+      @unit = Unit.find_by_id!(params[:unit_id])
+      @search_form_presenter = SearchFormPresenter.new(:unit_id => params[:unit_id], :q => [], :url => admin_search_single_part_path)
+    rescue ActiveRecord::RecordNotFound
+      render_404
+    end
+  end
   
   def create
     begin

@@ -16,7 +16,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users
     admin.resources :unit_components, :as => 'unit-components'
 
-    admin.new_unit_component '/unit-component/:unit_id/unit/:part_id', :controller => 'unit_components', :action => 'new'
+    admin.unit_part_search '/unit/:unit_id/part-search', :controller => 'units', :action => 'search_parts'
+    admin.search_single_part '/search-by-part-number', :controller => 'parts', :action => 'quick_search'
 
     #NOTE: Allison is organized differently, since it is also a Make. Therefore, we want to catch the route and push to it's own controller
     admin.with_options(:controller => 'allison_parts') do |ap|
