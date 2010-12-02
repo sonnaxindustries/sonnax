@@ -25,7 +25,7 @@ class ProductLine::Allison::FormPresenter
     if self.make?
       self.product_line.unit_options(:make => self.make)
     else
-      self.units.map { |unit| [unit.name, unit.id] }
+      self.product_line.unit_options(:make => Make.allison)
     end
   end
   
