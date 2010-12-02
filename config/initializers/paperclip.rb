@@ -5,9 +5,10 @@ Paperclip.interpolates(:resource_name) do |attachment, style|
 end
 
 if Rails.env.development?
-  Paperclip.options[:command_path] = '/opt/local/bin/' 
+  Paperclip.options[:command_path] = '/opt/local/bin' 
 else 
-  Paperclip.options[:command_path] = '/usr/local/bin/' 
+  Paperclip.options[:command_path] = '/usr/local/bin' 
 end
 
 Paperclip.options[:log_command] = true
+Paperclip.options[:swallow_stderr] = false
