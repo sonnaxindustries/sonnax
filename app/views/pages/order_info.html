@@ -1,0 +1,8 @@
+<div id="product-line" class="transmission">
+  <h1><%= @product_line.name %></h1>
+	<div id="speed-order">
+          <h1>To Order</h1>
+          <p>To purchase Sonnax parts, prospective buyers for Sonnax transmission or high performance transmission parts should contact a <%= link_to 'Transmission Distributor', distributor_by_country_path('USA') %>. For other product lines, please <%= link_to 'Contact Us', new_contact_path %> for account requirements.</p>
+          <p>If you are an <em>Authorized Customer</em>, you may <%= link_to 'click here', speed_order_path(:from => @product_line.id) %> to use our Speed Order Form.</p>
+	</div>
+</div>

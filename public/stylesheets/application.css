@@ -576,6 +576,7 @@ div.publication-list table thead th {
 /* =TECH LIBRARY ARTICLES*/
 table.article {
   margin-bottom: 15px;
+  border:  #00548e 1px solid;
 }
 table.article thead th {
   vertical-align: bottom;
@@ -588,9 +589,22 @@ table.article tbody td {
   border-bottom: solid 1px #666;
   padding: 0 10px 0 10px;
 }
+div.publication-body td.articlefigure {
+	font-weight: bold;
+	text-align: right;
+	padding-right: 10px;
+	border: 1px;
+	vertical-align: bottom;
+}
 div.publication-body p.body {
 	padding-right: 5px;
 	line-height: 1.5;
+}
+div.publication-body table.static {
+  margin-bottom: 15px;
+}
+div.publication-body p.partnumber {
+	font-weight: bold;
 }
 div.publication-body p.credits {
 	border-top: #00548e 1px solid;
@@ -637,6 +651,7 @@ div.publication-body p.subtitle {
 }
 div.publication-body p.subtitle2 {
 	font-size: 14px;
+	font-weight: bold;
 }
 img.articleimageleft {
 	border: #00548e 1px solid;
@@ -1458,9 +1473,9 @@ div#news-and-events div#col-1 {
 }
 div#news-and-events div#col-2 {
   float: right;
-  width: 195px;
-  padding-right: 10px;
-  padding-left: 5px;
+  width: 180px;
+  padding-right: 5px;
+  padding-left: 10px;
 }
 div#news-and-events li.enventlist {
   line-height: 1.2;

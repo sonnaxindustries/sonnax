@@ -75,6 +75,7 @@ ActionController::Routing::Routes.draw do |map|
     page.subscribe_to_email_newsletter '/subscribe-to-email-newsletter', :action => 'subscribe_to_email_newsletter' 
     page.about_us '/about-us', :action => 'about_us'
     page.how_to_order '/how-to-order', :action => 'how_to_order'
+    page.order_info '/order_info', :action => 'order_info'
     page.quick_search '/quick-search', :action => 'quick_search'
     page.technical_information '/technical-information', :action => 'technical_information'
     page.power_train_savers_testimonies '/power-train-savers-testimonies', :action => 'pts_testimonies'
