@@ -1,0 +1,55 @@
+<fieldset>
+  <legend>Unit Component Information</legend>
+  
+  
+  <div class="plain-text">
+    <p>Unit Name: <%= unit_component.unit.name %></p>
+    <p>Part Number: <%= unit_component.part.part_number %></p>
+    <p>Item: <%= unit_component.part.item %></p>
+    <p>Component ID: <%= unit_component.id %></p>
+    <p>Component Type: Part</p>
+    <p>Part ID: <%= unit_component.part_id %></p>
+  </div>
+
+  <div class="text code-on-reference-figure">
+    <%= f.error_message_on :code_on_reference_figure %>
+    <%= f.label :code_on_reference_figure, 'Code on Reference Figure' %>
+    <%= f.text_field :code_on_reference_figure, :size => 4 %>
+  </div>
+
+  <div class="textarea description">
+    <%= f.error_message_on :description %>
+    <%= f.label :description, 'Component Description' %>
+    <%= f.text_area :description, :cols => 50, :rows => 5 %>
+  </div>
+
+  <div class="textarea notes">
+    <%= f.error_message_on :notes %>
+    <%= f.label :notes, 'Component Notes' %>
+    <%= f.text_area :notes, :cols => 50, :rows => 5 %>
+  </div>
+
+  <div class="text steel-driveshaft-tube-od">
+    <%= f.error_message_on :steel_driveshaft_tube_od %>
+    <%= f.label :steel_driveshaft_tube_od, 'Steel Driveshaft Tube OD' %>
+    <%= f.text_field :steel_driveshaft_tube_od %>
+  </div>
+
+  <div class="text torque-fuse-options">
+    <%= f.error_message_on :torque_fuse_options %>
+    <%= f.label :torque_fuse_options, 'Torque Fuse Options' %>
+    <%= f.text_field :torque_fuse_options %>
+  </div>
+
+  <div class="text pts-series">
+    <%= f.error_message_on :pts_series %>
+    <%= f.label :pts_series, 'PTS Series' %>
+    <%= f.text_field :pts_series %>
+  </div>
+  
+  <div class="text driveline-series">
+    <%= f.error_message_on :driveline_series %>
+    <%= f.label :driveline_series, 'Driveline Series' %>
+    <%= f.text_field :driveline_series %>
+  </div>
+</fieldset>

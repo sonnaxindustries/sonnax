@@ -1,6 +1,19 @@
 class Admin::UnitComponentsController < Admin::BaseController
   before_filter :retrieve_unit_component, :only => [:edit, :update, :destroy]
 
+  def edit
+    
+  end
+
+  def update
+    begin
+      @unit_component.update_attributes!(params[:unit_component])
+      flash_and_redirect(admin_product_lines_path, 'Unit Component has been updated')
+    rescue ActiveRecord::RecordInvalid
+      render_edit
+    end
+  end
+
   def quick_create
     begin
       @unit_component = Admin::UnitComponent.new(params[:unit_component])

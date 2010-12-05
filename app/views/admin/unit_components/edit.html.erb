@@ -1,0 +1,8 @@
+<h1>Edit Unit Component</h1>
+<% form_for :unit_component, @unit_component, :url => admin_unit_component_path(@unit_component), :html => { :method => :put } do |f| %>
+  <%= render :partial => 'form', :locals => { :unit_component => @unit_component, :f => f } %>
+  
+  <div class="submit">
+    <%= f.submit 'Save' %>
+  </div>
+<% end %>
