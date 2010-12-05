@@ -48,7 +48,7 @@
     <% if @parts.any? %>
       <%= render :partial => 'admin/product_lines/allison/search/parts', :locals => { :product_line => @product_line, :parts => @parts } %>
     <% else %>
-      <%= render :partial => 'admin/parts/index_by_product_line/search/no_results', :locals => { :product_line => @product_line } %>
+      <%= render :partial => 'admin/parts_manager/index_by_product_line/search/no_results', :locals => { :product_line => @product_line } %>
     <% end %>
   </div>
 </div>
