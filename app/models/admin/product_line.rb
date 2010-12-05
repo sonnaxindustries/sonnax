@@ -19,7 +19,16 @@ class Admin::ProductLine < ProductLine
       self.all.map { |p| [p.name, p.id] }
     end
   end
+
+  def associated_units(attrs={})
+    attrs.merge!(:product_line => self)
+    Admin::Unit.options_for(attrs)
+  end
   
+  def unit_options(attrs={})
+    self.associated_units(attrs).map { |unit| [unit.name, unit.id] }
+  end
+
   def published_status
     if self.is_active? then 'Active' else 'Inactive' end
   end

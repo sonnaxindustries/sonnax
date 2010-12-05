@@ -33,5 +33,32 @@ class Admin::Unit < Unit
 
       self.paginate(options)
     end
+
+    def options_for(attrs={})
+      make_id             = attrs.delete(:make)
+      product_line_id     = attrs.delete(:product_line)
+
+      select = "DISTINCT(u.id), u.name"
+      from   = "units u"
+      order  = "u.name"
+      conditions = []
+      joins      = []
+
+      if !make_id.blank?
+        conditions << ["um.make_id = ?", make_id]
+      end
+
+      if !product_line_id.blank?
+        conditions << ["u.product_line_id = ?", product_line_id]
+      end
+
+      joins << "INNER JOIN units_makes um ON u.id = um.unit_id"
+
+      self.all(:select => select,
+               :from => from,
+               :joins => joins.join(' '),
+               :conditions => conditions.extend(Helper::Array).to_conditions,
+               :order => order)
+    end
   end
 end
