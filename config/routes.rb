@@ -148,7 +148,7 @@ ActionController::Routing::Routes.draw do |map|
     ap.connect '/product-lines/allison/parts/search', :action => 'search'
   end
   
-  map.resources :product_lines, :as => 'product-lines' do |pl|
+  map.resources :product_lines, :as => 'product-lines', :member => { :order_info => :get } do |pl|
     pl.resources :parts, :collection => { :recent => :get, :search => :get, :filter => :get }
   end
   

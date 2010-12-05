@@ -1,5 +1,14 @@
 class ProductLinesController < ApplicationController
   
+  def order_info
+    begin
+      @product_line = ProductLine.detail!(params[:id])
+      render :template => 'pages/order_info'
+    rescue ActiveRecord::RecordNotFound
+      render_404
+    end
+  end
+
   def transmission
     begin
       @product_line = ProductLine.transmission
