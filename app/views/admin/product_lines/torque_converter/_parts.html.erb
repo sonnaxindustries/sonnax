@@ -13,8 +13,8 @@
     <tbody>
       <% @collection_presenter.parts_by_reference_number.each do |p| %>
         <tr>
-          <td rowspan="<%= p.parts_count %>" class="reference-number"><%= p.reference_number %></td>
         <% p.parts.each_with_index do |part,i| %>
+          <td rowspan="<%= p.parts_count %>" class="reference-number"><%= link_to p.reference_number, edit_admin_unit_component_path(Admin::UnitComponent.find_by_unit_id_and_part_id(@unit.id, part.id)) %></td>
           <% if (p.multiple_parts? && i > 0) %>
           </tr>
           <tr class="multiple-parts">
