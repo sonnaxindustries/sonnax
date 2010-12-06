@@ -1,0 +1,28 @@
+<div id="<%= dom_id(product_line, :parts) %>" class="parts group">
+  <table cellpadding="0" summary="Listing of Parts for <%= product_line.name %>" class="parts" width="100%">
+    <thead>
+      <th class="part-number">Part Number</th>
+      <th class="item">Item</th>
+      <th class="description">Description</th>
+      <th class="make">Make</th>
+      <th class="units">Units</th>
+      <th class="actions">&nbsp;</th>
+    </thead>
+    <tbody>
+      <% parts.each do |part| %>
+      <tr>
+        <td class="part-number"><%= link_to 'None', edit_admin_part_path(part), :class => part_class(part) %></td>
+        <td class="description"><%= part.description %></td>
+        <td class="item">Item</td>
+        <td class="make"><%= part.make.name if part.make? %></td>
+        <td class="units">
+          <% if part.ordered_units.any? %>
+            <%= part.ordered_units.map { |u| link_to(u.name, filter_admin_product_line_parts_path(product_line.id, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+          <% end %>
+        </td>
+        <td><%#= link_to 'Remove from Unit', admin_unit_component_path(Admin::UnitComponent.find_by_unit_id_and_part_id(@unit, part.id)), :method => :delete, :confirm => 'Are you sure you want to remove this part from this unit?' %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

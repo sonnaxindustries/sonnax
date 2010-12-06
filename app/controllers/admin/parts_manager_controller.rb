@@ -1,6 +1,10 @@
 class Admin::PartsManagerController < Admin::BaseController
   before_filter :retrieve_product_line, :except => [:search_single, :quick_search]
   
+  def labels
+    @parts = @product_line.labels
+  end
+
   def index
     @parts = []
     @units = []    

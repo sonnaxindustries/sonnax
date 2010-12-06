@@ -1,4 +1,10 @@
 class Admin::ProductLines::Converter < Admin::ProductLine
+
+  def labels
+    self.parts.find(:all,
+                    :conditions => ["part_number IS NULL OR part_number = ''"])
+  end
+
   def form_presenter
     "Admin::ProductLine::%s::FormPresenter" % [interpolated_name]
   end

@@ -1,0 +1,9 @@
+<h1>Labels</h1>
+
+<div class="parts-wrapper">
+    <% if @parts.any? %>
+      <%= render :partial => 'admin/product_lines/torque_converter/label_parts', :locals => { :product_line => @product_line, :parts => @parts } %>
+    <% else %>
+      <p>No labels found</p>
+    <% end %>
+  </div>
