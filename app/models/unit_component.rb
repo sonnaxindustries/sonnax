@@ -31,4 +31,8 @@ class UnitComponent < ActiveRecord::Base
     self.errors.add(:unit_id, 'Please provide a Unit') unless self.unit_id?
     self.errors.add(:part_id, 'Please provide a Part') unless self.part_id?
   end
+
+  def before_save
+    self.code_on_reference_figure = 0 unless self.code_on_reference_figure?
+  end
 end
