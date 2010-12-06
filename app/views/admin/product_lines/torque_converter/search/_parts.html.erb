@@ -10,7 +10,7 @@
     <tbody>
       <% @parts.each do |part| %>
       <tr>
-        <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part), :class => part_class(part) %></td>
+        <td class="part-number"><%= link_to part.part_number, edit_admin_part_path(part), :class => part_class(part) %></td>
         <td class="item"><%= part.item %></td>
         <td class="description"><%= part.description %></td>
         <td class="make"><%= part.make.name if part.make? %></td>

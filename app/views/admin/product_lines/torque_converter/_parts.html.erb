@@ -21,7 +21,7 @@
           <% end %>
           <td class="item"><%= part.item %></td>
           <td class="description"><%= part.description %></td>
-          <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part), :class => part_class(part) %></td>
+          <td class="part-number"><%= link_to part.part_number, edit_admin_part_path(part.id), :class => part_class(part) %></td>
           <td><%= link_to 'Remove from Unit', admin_unit_component_path(Admin::UnitComponent.find_by_unit_id_and_part_id(@unit, part.id)), :method => :delete, :confirm => 'Are you sure you want to remove this part from this unit?' %></td>
           <% end %>
         </tr>
