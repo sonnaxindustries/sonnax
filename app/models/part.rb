@@ -326,6 +326,13 @@ class Part < ActiveRecord::Base
     end
   end
 
+  def units_for_make(make)
+    self.class.find_units_by_filter(:make => make, :part => self)
+  end
+
+  def unit_component_for_unit(unit)
+    self.unit_components.find_by_unit_id(unit)
+  end
   
   def make
     begin

@@ -1,9 +1,15 @@
 class Admin::ProductLines::Converter < Admin::ProductLine
 
   def labels
-    self.parts.find(:all,
-                    :conditions => ["part_number IS NULL OR part_number = ''"],
-                    :order => 'item ASC')
+    Part.find(:all,
+              :select => 'DISTINCT(m.id) AS make_id, m.name AS make_name, p.*',
+              :from => 'parts p',
+              :joins => "LEFT JOIN product_lines pl ON pl.id = p.product_line_id
+                         LEFT JOIN unit_components uc ON uc.part_id = p.id
+                         LEFT JOIN units_makes um ON um.unit_id = uc.unit_id
+                         LEFT JOIN makes m ON m.id = um.make_id",
+              :conditions => ["part_number = '' AND m.id IS NOT NULL AND p.product_line_id = ?", self],
+              :order => 'item ASC, m.name ASC')
   end
 
   def form_presenter
