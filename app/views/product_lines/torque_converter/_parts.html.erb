@@ -25,7 +25,7 @@
           <tr class="multiple-parts">
           <% end %>
           <td class="item"><%= part.item %></td>
-          <td class="description"><%= part.description %></td>
+          <td class="description"><%= part.unit_component_for_unit(@unit).description %></td>
           <td class="part-number"><%= link_to part.part_number, product_line_part_path(product_line.url_friendly, part), :class => part_class(part) %></td>
           <td class="quantity">
             <% if part.part_number? %> 
