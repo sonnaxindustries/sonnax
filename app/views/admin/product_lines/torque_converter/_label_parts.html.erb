@@ -13,7 +13,7 @@
       <tr>
         <td class="part-number"><%= link_to 'None', edit_admin_part_path(part), :class => part_class(part) %></td>
         <td class="description"><%= part.description %></td>
-        <td class="item">Item</td>
+        <td class="item"><%= part.item %></td>
         <td class="make"><%= part.make.name if part.make? %></td>
         <td class="units">
           <% if part.ordered_units.any? %>

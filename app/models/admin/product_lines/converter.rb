@@ -2,7 +2,8 @@ class Admin::ProductLines::Converter < Admin::ProductLine
 
   def labels
     self.parts.find(:all,
-                    :conditions => ["part_number IS NULL OR part_number = ''"])
+                    :conditions => ["part_number IS NULL OR part_number = ''"],
+                    :order => 'item ASC')
   end
 
   def form_presenter
