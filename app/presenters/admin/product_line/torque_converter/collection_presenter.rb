@@ -42,6 +42,11 @@ class Admin::ProductLine::TorqueConverter::CollectionPresenter
   
   def multiple_parts?
   end
+
+  def labels_by_make
+    # This will be used to list out the labels, each by make, then by associated units
+    
+  end
   
   def parts_by_reference_number
     self.sorted_and_grouped_parts.map do |part| 

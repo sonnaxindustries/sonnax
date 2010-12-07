@@ -12,20 +12,17 @@
     </thead>
     <tbody>
       <% @collection_presenter.parts_by_reference_number.each do |p| %>
-        <tr>
         <% p.parts.each_with_index do |part,i| %>
-          <td rowspan="<%= p.parts_count %>" class="reference-number"><%= link_to p.reference_number, edit_admin_unit_component_path(Admin::UnitComponent.find_by_unit_id_and_part_id(@unit.id, part.id)) %></td>
-          <% if (p.multiple_parts? && i > 0) %>
-          </tr>
-          <tr class="multiple-parts">
-          <% end %>
+        <tr>
+          <% unit_component = Admin::UnitComponent.find_by_unit_id_and_part_id(@unit.id, part.id) %>
+          <td class="reference-number"><%= link_to p.reference_number, edit_admin_unit_component_path(unit_component) %></td>
           <td class="item"><%= part.item %></td>
-          <td class="description"><%= part.description %></td>
+          <td class="description"><%= unit_component.description %></td>
           <td class="part-number"><%= link_to part.part_number, edit_admin_part_path(part.id), :class => part_class(part) %></td>
           <td><%= link_to 'Remove from Unit', admin_unit_component_path(Admin::UnitComponent.find_by_unit_id_and_part_id(@unit, part.id)), :method => :delete, :confirm => 'Are you sure you want to remove this part from this unit?' %></td>
-          <% end %>
         </tr>
         
+          <% end %>
       <% end %>
     </tbody>
   </table>
