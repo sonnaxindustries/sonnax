@@ -1,9 +1,32 @@
 <h1><%= @author.full_name %></h1>
 
+<div class ="publication-list">
 <% if @author.publications? %>
-  <ul>
-  <% @author.publications.each do |publication| %>
-    <li><%= link_to publication.title, publication_title_path(publication.url_friendly) %></li>
-  <% end %>
-  </ul>
+<table cellpadding="0" cellspacing="0" width="100%" class="tablesorter" summary="Listing of transmission technical library publications">
+  <thead>
+    <tr>
+      <th class="article">Article</th>
+      <th class="authors">Author</th>
+      <th class="published-date">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @author.publications.each do |publication| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td class="article">
+        <% if publication.html_file? && publication.pdf? %>
+          <%= link_to publication.title, publication_title_path(publication.url_friendly) %> 
+        <% elsif !publication.html_file? && publication.pdf? %>
+          <%= link_to publication.title, publication.pdf.url, :class => 'download pdf', :rel => 'external' %> 
+        <% else %>
+          <%= publication.title %>
+        <% end %>
+      </td>
+      <td class="authors"><%= publication_authors_list(publication) %></td>
+      <td class="published-date"><%= publication_published_at(publication) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>
+</div>
