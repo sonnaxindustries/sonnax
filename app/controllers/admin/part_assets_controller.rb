@@ -20,6 +20,17 @@ class Admin::PartAssetsController < Admin::BaseController
     end
   end
 
+  def update
+    begin
+      params[:part_asset].reverse_merge!(:part_id => params[:part_id])
+      @part_asset = @part.part_assets.find(params[:id])
+      @part_asset.update_attributes!(params[:part_asset])
+      flash_and_redirect(edit_admin_part_path(@part), 'Resource has been updated')
+    rescue ActiveRecord::RecordInvalid
+      render_edit
+    end
+  end
+
 private
   def retrieve_part
     begin

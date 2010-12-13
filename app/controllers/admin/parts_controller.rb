@@ -1,5 +1,5 @@
 class Admin::PartsController < Admin::BaseController
-  before_filter :retrieve_part, :only => [:edit, :update, :destroy]
+  before_filter :retrieve_part, :only => [:edit, :update, :destroy, :remove_photo]
   before_filter :retrieve_product_line_options, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :retrieve_part_type_options, :only => [:new, :create, :edit, :update, :destroy]
   
@@ -30,6 +30,18 @@ class Admin::PartsController < Admin::BaseController
     rescue Part::NoSearchResults 
       @search_form_presenter = SearchFormPresenter.new(:product_line_id => params[:search][:product_line_id], :unit_id => params[:search][:unit_id], :search_terms => params[:search][:q], :url => admin_search_single_part_path)
       render :template => 'admin/parts/no_search_results.html.erb'
+    end
+  end
+
+  def remove_photo
+    @part.primary_photo.destroy
+
+    respond_to do |wants|
+      wants.json do
+        render :json => {
+          :id_to_remove => dom_id(@part, :primary_photo)
+        }
+      end
     end
   end
 
