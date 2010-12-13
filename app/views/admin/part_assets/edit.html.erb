@@ -1,6 +1,6 @@
 <h1>Edit: <%= @part_asset.name %></h1>
 
-<% form_for :part_asset, @part_asset, :url => admin_part_part_assets_path(@part), :html => { :multipart => true } do |f| %>
+<% form_for :part_asset, @part_asset, :url => admin_part_part_asset_path(@part, @part_asset), :html => { :method => :put, :multipart => true } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   
   <div class="submit">
