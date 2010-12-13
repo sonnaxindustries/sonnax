@@ -35,7 +35,18 @@ class Admin::Part < Part
     end
   end
   def primary_photo_src=(val)
-    asset = Admin::Asset.create(:asset => val)
-    self.part_assets.photos.build(:asset => asset)
+    filename = val
+    pa = self.primary_photo
+    if self.new_record?
+      asset_obj = Admin::Asset.create(:asset => filename)
+      self.part_assets.create(:part_asset_type_id => 1, :asset => asset_obj)
+    else
+      if self.primary_photo?
+        pa.asset.update_attributes(:asset => filename)
+      else
+        asset_obj = Admin::Asset.create(:asset => filename)
+        self.part_assets.create(:part_asset_type_id => 1, :asset => asset_obj)
+      end
+    end
   end
 end
