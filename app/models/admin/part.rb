@@ -1,4 +1,6 @@
 class Admin::Part < Part
+  attr_accessor :primary_photo_src
+
   has_many :part_assets, :class_name => 'Admin::PartAsset', :dependent => :destroy
   has_many :assets, :through => :part_assets
   
@@ -34,15 +36,19 @@ class Admin::Part < Part
       self.paginate(options)
     end
   end
+
   def primary_photo_src=(val)
-    filename = val
-    pa = self.primary_photo
+    @primary_photo_src = val
+  end
+
+  def after_save
+    filename = @primary_photo_src
     if self.new_record?
       asset_obj = Admin::Asset.create(:asset => filename)
-      self.part_assets.create(:part_asset_type_id => 1, :asset => asset_obj)
+      self.part_assets.build(:part_asset_type_id => 1, :asset => asset_obj)
     else
       if self.primary_photo?
-        pa.asset.update_attributes(:asset => filename)
+        self.primary_photo.asset.update_attributes(:asset => filename)
       else
         asset_obj = Admin::Asset.create(:asset => filename)
         self.part_assets.create(:part_asset_type_id => 1, :asset => asset_obj)
