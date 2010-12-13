@@ -19,7 +19,8 @@ class Admin::PartsController < Admin::BaseController
   def quick_search
     begin
       @unit = Unit.find_by_id!(params[:search][:unit_id])
-      @parts = Part.search_by_filter!(params[:search][:q], :product_line => params[:search][:product_line_id])
+      #@parts = Part.search_by_filter!(params[:search][:q], :product_line => params[:search][:product_line_id])
+      @parts = Admin::Part.search_by_product_line!(params[:search][:q], params[:search][:product_line_id])
       @search_form_presenter = SearchFormPresenter.new(:product_line_id => params[:search][:product_line_id], :unit_id => params[:search][:unit_id], :search_terms => params[:search][:q], :url => admin_search_single_part_path)
 
       respond_to do |wants|
@@ -27,7 +28,7 @@ class Admin::PartsController < Admin::BaseController
           render :action => :quick_search
         end
       end
-    rescue Part::NoSearchResults 
+    rescue Admin::Part::NoSearchResults 
       @search_form_presenter = SearchFormPresenter.new(:product_line_id => params[:search][:product_line_id], :unit_id => params[:search][:unit_id], :search_terms => params[:search][:q], :url => admin_search_single_part_path)
       render :template => 'admin/parts/no_search_results.html.erb'
     end
