@@ -60,17 +60,19 @@ class Admin::Part < Part
 
   def after_save
     filename = @primary_photo_src
-    if self.new_record?
-      asset_obj = PartPhoto.create(:asset => filename)
-      self.photos.build(:asset => asset_obj)
-    else
-      if self.primary_photo?
-        self.primary_photo.photo.update_attributes(:asset => filename)
-      else
+    if filename
+      if self.new_record?
         asset_obj = PartPhoto.create(:asset => filename)
-        PartAsset.create(:part_id => self.id,
-                         :part_asset_type_id => 1,
-                         :asset_id => asset_obj.id)
+        self.photos.build(:asset => asset_obj)
+      else
+        if self.primary_photo?
+          self.primary_photo.photo.update_attributes(:asset => filename)
+        else
+          asset_obj = PartPhoto.create(:asset => filename)
+          PartAsset.create(:part_id => self.id,
+                           :part_asset_type_id => 1,
+                           :asset_id => asset_obj.id)
+        end
       end
     end
   end
