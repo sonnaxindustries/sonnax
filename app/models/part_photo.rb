@@ -1,7 +1,7 @@
 class PartPhoto < ActiveRecord::Base
   set_table_name 'assets'
   
-  default_scope :conditions => ["assets.asset_content_type IN ('image/jpeg', 'image/jpg', 'image/gif', 'image/png')"]
+  #default_scope :conditions => ["assets.asset_content_type IN ('image/jpeg', 'image/jpg', 'image/gif', 'image/png')"]
   
   has_many :part_assets, :foreign_key => 'asset_id'
   has_many :parts, :through => :part_assets

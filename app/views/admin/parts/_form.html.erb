@@ -69,7 +69,7 @@
     <% if @part.primary_photo? %>
     <p><strong>Current Photo of the Part</strong></p>
     <div class="avatar" id="<%= dom_id(@part, :primary_photo) %>">
-      <%= image_tag @part.primary_photo.asset.asset.url, :class => 'photo' %>
+      <%= image_tag @part.primary_photo.asset.asset.url(:medium), :class => 'photo' %>
       <p class="remove-photo"><%= link_to 'Remove Photo', remove_photo_admin_part_path(@part), :class => 'destroy' %></p>
     </div>
     <% end %>

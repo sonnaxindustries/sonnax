@@ -10,8 +10,6 @@ class Part < ActiveRecord::Base
   has_many :part_assets, :dependent => :destroy
   has_many :assets, :through => :part_assets
   
-  # has_many :part_photos, :dependent => :destroy
-  # has_many :photos, :through => :part_photos
   
   has_many :unit_components, :dependent => :destroy
   has_many :units, :through => :unit_components
@@ -383,7 +381,8 @@ class Part < ActiveRecord::Base
   end
   
   def primary_photo
-    self.part_assets.photos.first
+    #self.part_assets.photos.first
+    self.part_assets.photos.last
   end
 
   def primary_photo_src=(val)

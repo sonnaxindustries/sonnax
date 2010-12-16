@@ -4,6 +4,8 @@ class Admin::Part < Part
 
   has_many :part_assets, :class_name => 'Admin::PartAsset', :dependent => :destroy
   has_many :assets, :through => :part_assets
+  has_many :photo_assets, :class_name => 'Admin::PartAsset', :conditions => ["part_asset_type_id = 1"], :dependent => :destroy
+  has_many :photos, :through => :photo_assets, :class_name => 'PartPhoto'
 
   class << self
     def search_by_product_line!(search, product_line)
@@ -59,14 +61,16 @@ class Admin::Part < Part
   def after_save
     filename = @primary_photo_src
     if self.new_record?
-      asset_obj = Admin::Asset.create(:asset => filename)
-      self.part_assets.build(:part_asset_type_id => 1, :asset => asset_obj)
+      asset_obj = PartPhoto.create(:asset => filename)
+      self.photos.build(:asset => asset_obj)
     else
       if self.primary_photo?
-        self.primary_photo.asset.update_attributes(:asset => filename)
+        self.primary_photo.photo.update_attributes(:asset => filename)
       else
-        asset_obj = Admin::Asset.create(:asset => filename)
-        self.part_assets.create(:part_asset_type_id => 1, :asset => asset_obj)
+        asset_obj = PartPhoto.create(:asset => filename)
+        PartAsset.create(:part_id => self.id,
+                         :part_asset_type_id => 1,
+                         :asset_id => asset_obj.id)
       end
     end
   end

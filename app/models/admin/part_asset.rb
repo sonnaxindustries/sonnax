@@ -4,6 +4,7 @@ class Admin::PartAsset < PartAsset
   belongs_to :part, :class_name => 'Admin::Part'
   belongs_to :part_asset_type, :class_name => 'Admin::PartAssetType'
   belongs_to :asset, :class_name => 'Admin::Asset'
+  belongs_to :photo, :class_name => 'PartPhoto', :foreign_key => 'asset_id'
   
   accepts_nested_attributes_for :asset
   
