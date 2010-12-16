@@ -8,7 +8,7 @@ class Admin::PartsController < Admin::BaseController
   end
   
   def search
-    @parts = Admin::Part.search(params[:q], :page => params[:page])
+    @parts = Admin::Part.search(params[:q], :page => params[:page], :retry_stale => true)
     render :action => :index
   end
 

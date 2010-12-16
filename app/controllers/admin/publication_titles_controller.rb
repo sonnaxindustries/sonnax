@@ -7,7 +7,7 @@ class Admin::PublicationTitlesController < Admin::BaseController
   end
   
   def search
-    @publication_titles = Admin::PublicationTitle.search(params[:q], :page => params[:page])
+    @publication_titles = Admin::PublicationTitle.search(params[:q], :page => params[:page], :retry_stale => true)
     render :action => :index
   end
 

@@ -8,7 +8,7 @@ class Admin::UnitsController < Admin::BaseController
   end
   
   def search
-    @units = Admin::Unit.search(params[:q], :page => params[:page])
+    @units = Admin::Unit.search(params[:q], :page => params[:page], :retry_stale => true)
     render :action => :index
   end
 

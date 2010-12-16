@@ -6,7 +6,7 @@ class Admin::ReferenceFiguresController < Admin::BaseController
   end
   
   def search
-    @reference_figures = Admin::ReferenceFigure.search(params[:q], :page => params[:page])
+    @reference_figures = Admin::ReferenceFigure.search(params[:q], :page => params[:page], :retry_stale => true)
     render :action => :index
   end
 

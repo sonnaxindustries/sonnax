@@ -7,7 +7,7 @@ class Admin::DistributorsController < Admin::BaseController
   end
   
   def search
-    @distributors = Admin::Distributor.search(params[:q], :page => params[:page])
+    @distributors = Admin::Distributor.search(params[:q], :page => params[:page], :retry_stale => true)
     render :action => :index
   end
 
