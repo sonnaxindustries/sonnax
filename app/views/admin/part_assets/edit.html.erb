@@ -1,4 +1,7 @@
 <h1>Edit: <%= @part_asset.name %></h1>
+<ul>
+  <li><%= link_to 'Delete', admin_part_part_asset_path(@part, @part_asset), :class => 'destroy-html', :method => :delete, :confirm => 'Are you sure you want to destroy this Part Asset?' %></li>
+</ul>
 
 <% form_for :part_asset, @part_asset, :url => admin_part_part_asset_path(@part, @part_asset), :html => { :method => :put, :multipart => true } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>

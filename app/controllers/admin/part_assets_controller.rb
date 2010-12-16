@@ -31,6 +31,23 @@ class Admin::PartAssetsController < Admin::BaseController
     end
   end
 
+  def destroy
+    @part_asset = @part.part_assets.find(params[:id])
+    @part_asset.destroy
+
+
+    respond_to do |wants|
+      wants.html do
+        flash_and_redirect(edit_admin_part_path(@part), 'Attachment has been removed')
+      end
+      wants.json do
+        render :json => {
+          :id_to_remove => dom_id(@part_asset)
+        }
+      end
+    end
+  end
+
 private
   def retrieve_part
     begin
