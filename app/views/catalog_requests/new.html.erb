@@ -48,8 +48,8 @@
       </li>
       
       <li>
-        <img src="/images/catalogs/DrivelineCover.jpg" alt="Driveline Catalog">
-        <h2>Driveline Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.driveline_catalog, @catalog_request.catalogs_hash.include?(@catalogs.driveline_catalog) %></h2>
+		<%= link_to image_tag('catalogs/DrivelineCover.jpg', :alt => 'Driveline Catalog Vol. 3'), '/downloads/catalogs/sonnax-Driveline-Catalog-Vol3.pdf' %>
+		<h2><%= link_to 'Driveline Catalog Vol. 3', ('/downloads/catalogs/sonnax-Driveline-Catalog-Vol3.pdf'), :class => 'pdf' %> <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.driveline_catalog, @catalog_request.catalogs_hash.include?(@catalogs.driveline_catalog) %></h2>
         
         <div class="extra">
           <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('driveline') %></p>
@@ -68,8 +68,9 @@
 	  -->
       
       <li>
-        <img src="/images/catalogs/HarleyDavidsonCover.gif" alt="Harley-Davidson&reg; Catalog">
-        <h2>Harley-Davidson<sup>&reg;</sup> Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.hd_catalog, @catalog_request.catalogs_hash.include?(@catalogs.hd_catalog) %></h2>
+		<%= link_to image_tag('catalogs/HarleyDavidsonCover.gif', :alt => 'Harley-Davidson<sup>&reg;</sup> Replacement Bearings Catalog'), '/downloads/catalogs/sonnax-Harley-Davidson-Replacement-Bearings-Catalog.pdf' %>
+		<h2><%= link_to 'Harley-Davidson<sup>&reg;</sup> Replacement Bearings Catalog', ('/downloads/catalogs/sonnax-Harley-Davidson-Replacement-Bearings-Catalog.pdf'), :class => 'pdf' %>
+		<%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.hd_catalog, @catalog_request.catalogs_hash.include?(@catalogs.hd_catalog) %></h2>
         
         <div class="extra">
           <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('harley-davidson') %></p>
