@@ -20,17 +20,17 @@ class Contact < ActiveRecord::Base
     when 1
       { 
         :subject => '[Sonnax] General Contact',
-        :recipients => ['nate@theklaibers.com', 'ep@sonnax.com']
+        :recipients => ['nate@theklaibers.com', 'ep@sonnax.com', 'info@sonnax.com']
       }
     when 2
       {
         :subject => '[Sonnax] International Contact',
-        :recipients => ['nate@theklaibers.com', 'ep@sonnax.com']
+        :recipients => ['nate@theklaibers.com', 'ep@sonnax.com', 'internationalsalesteam@sonnax.com']
       }
     else
       { 
         :subject => '[Sonnax] General Contact',
-        :recipients => ['nate@theklaibers.com', 'ep@sonnax.com']
+        :recipients => ['nate@theklaibers.com', 'ep@sonnax.com', 'info@sonnax.com']
       }
     end
     @email_settings ||= OpenStruct.new(settings)
