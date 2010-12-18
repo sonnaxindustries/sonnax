@@ -18,7 +18,8 @@ class ProductLines::Converter < ProductLine
   end
 
   def recent_parts
-    self.parts.recent.ordered('parts.part_number ASC')
+    #self.parts.recent.ordered('parts.part_number ASC')
+    Part.find_by_filter_new(:product_line => self, :recent_only => true, :order => 'p.part_number ASC')
   end
 
   def search_parts(keyword)
