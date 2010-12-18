@@ -10,7 +10,6 @@ class Email::ContactPresenter
   end
   
   def subject
-    #'[Sonnax] General Contact'
     self.entry.email_settings.subject
   end
   
@@ -20,7 +19,6 @@ class Email::ContactPresenter
   
   def recipients
     self.entry.email_settings.recipients
-    #['nate@theklaibers.com', 'ep@sonnax.com']
   end
   
   def sent_on
