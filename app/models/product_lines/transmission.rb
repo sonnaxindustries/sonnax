@@ -27,7 +27,7 @@ class ProductLines::Transmission < ProductLine
 
   def parts_by_filter(options={})
     options.reverse_merge!(:product_line => self) 
-    @parts ||= Part.find_by_filter(options || {})
+    @parts ||= Part.find_by_filter_new(options || {})
   end
 
 private
