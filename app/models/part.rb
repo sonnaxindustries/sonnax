@@ -157,6 +157,7 @@ class Part < ActiveRecord::Base
       part_id         = attrs.delete(:part)
       part_name       = attrs.delete(:part_name)
       order_by        = attrs.delete(:order)
+      recent_only     = attrs.delete(:recent_only) || false
 
       # Had to change this, as associated units/makes were messing up
       #select      = "p.id, pl.name, p.part_number, p.oem_part_number, p.description, p.notes, p.item, p.is_new_item, u.name as Unit, uc.code_on_reference_figure, m.name AS Make, p.part_type_id, p.ref_code, p.ref_code_sort"
@@ -170,6 +171,10 @@ class Part < ActiveRecord::Base
       
       if !order_by.blank?
         order = order_by
+      end
+
+      if recent_only
+        conditions << ["p.is_new_item = ?", true]
       end
       
       if !product_line_id.blank?
