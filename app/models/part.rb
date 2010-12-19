@@ -150,7 +150,7 @@ class Part < ActiveRecord::Base
       units = Unit.find(ids_list, :order => 'name')
     end
 
-    def find_by_filter_new(attrs={})
+   def find_by_filter_new(attrs={})
       make_id         = attrs.delete(:make)
       unit_id         = attrs.delete(:unit)
       product_line_id = attrs.delete(:product_line)
@@ -393,6 +393,14 @@ class Part < ActiveRecord::Base
 
   def unit_component_for_unit(unit)
     self.unit_components.find_by_unit_id(unit)
+  end
+
+  def makes
+    @makes ||= Part.find_by_filter_new(:part_name => self.part_number).inject([]) { |ar,val| ar << OpenStruct.new(:make_name => val.make_name, :make_id => val.make_id); ar }
+  end
+
+  def makes?
+    self.makes.any?
   end
   
   def make

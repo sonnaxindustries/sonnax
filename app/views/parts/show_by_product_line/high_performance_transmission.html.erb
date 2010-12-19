@@ -23,13 +23,19 @@
       </div>
       
       <div class="make-unit">
-        <% if @part.make? %>
-        <strong><%= @part.make.name %>: </strong> 
+        <% if @part.makes? %>
+          <ul>
+          <% @part.makes.each do |make| %>
+            <li>
+            <strong><%= make.make_name %>: </strong> 
+            <% if @part.units_for_make(make.make_id).any? %>
+              <%= @part.units_for_make(make.make_id).map { |u| link_to(u.name, filter_product_line_parts_path(@part.product_line.url_friendly, :"filter[make]" => make.make_id, :"filter[unit]" => u.id)) }.join(', ') %>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
         <% end %>
         
-        <% if @part.ordered_units.any? %>
-          <%= @part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(@part.product_line.url_friendly, :"filter[make]" => @part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
-        <% end %>
       </div>
       
       
