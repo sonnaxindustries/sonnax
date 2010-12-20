@@ -1,7 +1,5 @@
 <div id="product-line" class="ring-gears">
-  <div class="print-friendly">
-    <%= link_to 'View Printer Friendly', '#', :class => 'print' %>
-  </div>
+<%= render :partial => 'layouts/shared/print.html.erb', :locals => { :print_url => ring_gears_millimeter_parts_path(:format => 'print') } %>
 <h1>Ring Gears</h1>
 <h4><a href="#Flywheel">Stock Flywheel/Flexplate</a>, <a href="#TC">Stock Torque Converter</a> and <a href="#Special">Special Order</a></h4>
   <a name="Flywheel"><h2>Stock Flywheel/Flexplate Ring Gears</h2></a>

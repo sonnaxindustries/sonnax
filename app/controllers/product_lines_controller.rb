@@ -29,11 +29,49 @@ class ProductLinesController < ApplicationController
   end
   
   def harley_davidson_parts
+    respond_to do |wants|
+      wants.html
+      wants.print do
+        render :template => "product_lines/harley_davidson_parts.html.erb", :layout => 'print.html.erb'
+      end
+    end
   end
   
   def power_train_savers
     begin
       @product_line = ProductLine.power_train_savers
+    rescue ActiveRecord::RecordInvalid
+      render_404
+    end
+  end
+
+  def ring_gears_millimeter_parts
+    begin
+      @product_line = ProductLine.ring_gears
+
+      respond_to do |wants|
+        wants.html
+        wants.print do
+          render :template => "product_lines/ring_gears_millimeter_parts.html.erb", :layout => 'print.html.erb'
+        end
+      end
+
+    rescue ActiveRecord::RecordInvalid
+      render_404
+    end
+  end
+
+  def ring_gears_inches_parts
+    begin
+      @product_line = ProductLine.ring_gears
+
+      respond_to do |wants|
+        wants.html
+        wants.print do
+          render :template => "product_lines/ring_gears_inches_parts.html.erb", :layout => 'print.html.erb'
+        end
+      end
+
     rescue ActiveRecord::RecordInvalid
       render_404
     end
@@ -55,6 +93,34 @@ class ProductLinesController < ApplicationController
     end
   end
   
+  def power_train_savers_parts
+    begin
+      @product_line = ProductLine.power_train_savers
+      respond_to do |wants|
+        wants.html
+        wants.print do
+          render :template => "product_lines/power_train_savers_parts.html.erb", :layout => 'print.html.erb'
+        end
+      end
+    rescue ActiveRecord::RecordNotFound
+      render_404
+    end
+  end
+
+  def driveline_parts
+    begin
+      @product_line = ProductLine.driveline
+      respond_to do |wants|
+        wants.html
+        wants.print do
+          render :template => "product_lines/driveline_parts.html.erb", :layout => 'print.html.erb'
+        end
+      end
+    rescue ActiveRecord::RecordNotFound
+      render_404
+    end
+  end
+
   def driveline
     begin
       @product_line = ProductLine.driveline
