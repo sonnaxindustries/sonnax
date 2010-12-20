@@ -485,6 +485,9 @@ div.filter label {
 div.search label {
   width: 70px;
 }
+div.search #search-options {
+  float: left;
+}
 div.search div.submit {
   float: left;
 }
@@ -521,7 +524,7 @@ div.publication-list form label {
 }
 div.publication-list div.make-units {
   float: left;
-  width: 49%;
+  width: 39%;
 }
 div.publication-list div.make-units .make-selector {
   padding-bottom: 10px;

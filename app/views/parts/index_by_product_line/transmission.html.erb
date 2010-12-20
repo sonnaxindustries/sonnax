@@ -35,7 +35,7 @@
       <% form_for :search, @search_form_presenter, :url => @search_form_presenter.url, :html => { :method => :get, :class => 'group' } do |f| %>
       <fieldset>
         <legend>Search</legend>
-        <div id="search-options" class="group">
+        <div id="search-options">
           <div class="search-terms">
             <%= f.label :q, 'Part No.:' %>
             <%= f.text_field :q %>
