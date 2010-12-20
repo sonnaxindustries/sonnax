@@ -5,7 +5,13 @@ if($.browser.msie) {
 }
 
 $(document).ready(function() {
-  $("a[rel*=fancybox]").fancybox();
+  $("a[rel*=fancybox]").click(function(e) {
+    var $elem = $(this);
+    var imageSource = $elem.attr('href');
+    var options = "resizeable=yes, toolbar=no, directories=no, location=no, status=yes, menubar=no, scrollbars=no, width=400, height=400";
+    window.open(imageSource, 'ReferenceFigure', options);
+    e.preventDefault();
+  });
 
   $('a.print').live('click', function() {
     window.print();
