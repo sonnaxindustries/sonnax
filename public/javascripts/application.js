@@ -1,4 +1,8 @@
-var changeEvt = $.browser.msie ? "click" : "change";
+if($.browser.msie) {
+  var changeEvt = "click";
+}else {
+  var changeEvt = "change";
+}
 
 $(document).ready(function() {
   $("a[rel*=fancybox]").fancybox();
@@ -44,6 +48,9 @@ $(document).ready(function() {
   $('div#product-line form div.make-selector select').live(changeEvt, function(e) {
     $('div.search div#search-options div.search-terms input[type="text"]').val('');
     var $elem = $(this);
+    if ($elem.val() == '') {
+      return;
+    }
     $('div#product-line form div.unit-selector select').val('');
 
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
@@ -63,6 +70,9 @@ $(document).ready(function() {
 
   $('div#product-line form div.unit-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
+    if ($elem.val() == '') {
+      return;
+    }
 
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
     var $form = $elem.closest('form');
@@ -116,6 +126,9 @@ $(document).ready(function() {
 
   $('div.publication-list form div.subject-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
+    if ($elem.val() == '') {
+      return;
+    }
     $('div.publication-list form div.make-selector select').val('');
     $('div.publication-list form div.unit-selector select').val('');
 
@@ -140,6 +153,9 @@ $(document).ready(function() {
 
   $('div.publication-list form div.make-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
+    if ($elem.val() == '') {
+      return;
+    }
     $('div.publication-list form div.subject-selector select').val('');
     $('div.publication-list form div.unit-selector select').val('');
 
@@ -164,6 +180,9 @@ $(document).ready(function() {
 
   $('div.publication-list form div.unit-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
+    if ($elem.val() == '') {
+      return;
+    }
     $('div.publication-list form div.subject-selector select').val('');
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
 
