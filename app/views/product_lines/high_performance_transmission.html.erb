@@ -23,15 +23,18 @@
         <% if part.primary_photo? %>
           <p><%= image_tag part.primary_photo.photo.asset.url(:medium) %></p>
         <% end %>
-        <p><strong>Part Name:</strong> <%= link_to part.name, product_line_part_path(@product_line.url_friendly, part) %></p>
+        <p><%= link_to part.description, product_line_part_path(@product_line.url_friendly, part) %></p>
         <p><strong>Part Number:</strong> <%= part.part_number %></p>
-        <p><strong>Make:</strong> <%= part.make.name %></p>
-        <p>
-          <strong>Unit:</strong> 
-          <% if part.ordered_units.any? %>
-            <%= part.ordered_units.map { |u| link_to(u.name, filter_product_line_parts_path(@product_line.url_friendly, :"filter[make]" => part.make.id, :"filter[unit]" => u.id)) }.join(', ') %>
+        <% if part.makes? %>
+          <% part.makes.each do |make| %>
+            <p>
+            <strong><%= make.make_name %>: </strong> 
+            <% if part.units_for_make(make.make_id).any? %>
+              <%= part.units_for_make(make.make_id).map { |u| link_to(u.name, filter_product_line_parts_path(part.product_line.url_friendly, :"filter[make]" => make.make_id, :"filter[unit]" => u.id)) }.join(', ') %>
+            <% end %>
+            </p>
           <% end %>
-        </p>
+        <% end %>
         <div class="description">
           <p><%= part.description %></p>
           <p><%= part.notes %></p>
