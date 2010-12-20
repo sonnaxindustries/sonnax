@@ -452,8 +452,8 @@ class Part < ActiveRecord::Base
   end
   
   def primary_photo
-    self.part_assets.photos.first
-    #self.part_assets.photos.last
+    #self.part_assets.photos.first
+    self.part_assets.photos.last
   end
 
   def primary_photo_src=(val)
