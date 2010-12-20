@@ -126,18 +126,18 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options(:controller => 'product_lines', :path_prefix => '/product-lines') do |product_line|
     product_line.transmission '/transmission', :action => 'transmission'
     product_line.torque_converter '/torque-converter', :action => 'torque_converter'
-    product_line.ring_gears '/ring-gears', :action => 'ring_gears'
+    product_line.ring_gears '/ring-gears.:format', :action => 'ring_gears'
     product_line.ring_gears_parts '/ring-gears/parts', :action => 'ring_gears_parts'
-    product_line.ring_gears_millimeter_parts '/ring-gears/millimeter-parts', :action => 'ring_gears_millimeter_parts'
-    product_line.ring_gears_inches_parts '/ring-gears/inches-parts', :action => 'ring_gears_inches_parts'
+    product_line.ring_gears_millimeter_parts '/ring-gears/millimeter-parts.:format', :action => 'ring_gears_millimeter_parts'
+    product_line.ring_gears_inches_parts '/ring-gears/inches-parts.:format', :action => 'ring_gears_inches_parts'
     product_line.high_performance_transmission '/high-performance-transmission', :action => 'high_performance_transmission'
     product_line.driveline '/driveline', :action => 'driveline'
-    product_line.driveline_parts '/driveline/parts', :action => 'driveline_parts'
+    product_line.driveline_parts '/driveline/parts.:format', :action => 'driveline_parts'
     product_line.allison '/allison', :action => 'allison' #NOTE: Move to allison_parts_controller.rb
     product_line.harley_davidson '/harley-davidson', :action => 'harley_davidson'
-    product_line.harley_davidson_parts '/harley-davidson/parts', :action => 'harley_davidson_parts'
+    product_line.harley_davidson_parts '/harley-davidson/parts.:format', :action => 'harley_davidson_parts'
     product_line.power_train_savers '/power-train-savers', :action => 'power_train_savers'
-    product_line.power_train_savers_parts '/power-train-savers/parts', :action => 'power_train_savers_parts'
+    product_line.power_train_savers_parts '/power-train-savers/parts.:format', :action => 'power_train_savers_parts'
   end
   
   #NOTE: Allison is organized differently, since it is also a Make. Therefore, we want to catch the route and push to it's own controller
