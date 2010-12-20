@@ -8,8 +8,12 @@ class PublicationTitlesController < ApplicationController
     begin
       @title = PublicationTitle.detail!(params[:id])
 
+      params.reverse_merge!(:format => 'html') unless params[:format]
+
       respond_to do |wants|
-        wants.html
+        wants.html do
+          render :template => 'publication_titles/show.html.erb'
+        end
         wants.print do
           render :template => 'publication_titles/show.html.erb', :layout => 'print.html.erb'
         end
