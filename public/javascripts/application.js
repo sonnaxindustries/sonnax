@@ -50,11 +50,15 @@ $(document).ready(function() {
   })
   // END CART
 
+  var $selectedMake = $('div#product-line form div.make-selector select option:selected');
+  var $selectedUnit = $('div#product-line form div.unit-selector select option:selected');
+
   // PRODUCT LINES
   $('div#product-line form div.make-selector select').live(changeEvt, function(e) {
     $('div.search div#search-options div.search-terms input[type="text"]').val('');
     var $elem = $(this);
-    if ($elem.val() == '') {
+    var $selected = $(this).attr('selected', 'selected');
+    if ($elem.val() == $selectedMake.val() || $elem.val() == '') {
       return;
     }
     $('div#product-line form div.unit-selector select').val('');
@@ -76,7 +80,7 @@ $(document).ready(function() {
 
   $('div#product-line form div.unit-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
-    if ($elem.val() == '') {
+    if ($elem.val() == $selectedUnit.val() || $elem.val() == '') {
       return;
     }
 
