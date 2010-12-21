@@ -14,6 +14,8 @@
           <%= link_to publication.title, publication_category_publication_title_path(category.url_friendly, publication.url_friendly) %> 
         <% elsif !publication.html_file? && publication.pdf? %>
           <%= link_to publication.title, publication.pdf.url, :class => 'download pdf', :rel => 'external' %> 
+        <% elsif publication.html_file? && !publication.pdf? %>
+          <%= link_to publication.title, publication_category_publication_title_path(category.url_friendly, publication.url_friendly) %> 
         <% else %>
           <%= publication.title %>
         <% end %>

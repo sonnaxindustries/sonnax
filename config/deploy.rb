@@ -39,7 +39,7 @@ namespace(:deploy) do
 
   desc 'Set the proper permissions for the system folder for uploads'
   task(:fix_paperclip_permissions) do
-    run("chmod -R 777 #{current_path}/public/system/")
+    #run("chmod -R 755 #{current_path}/public/system/")
   end
 
   desc 'Symlink the static pages directory'
