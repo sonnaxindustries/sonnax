@@ -8,7 +8,7 @@ $(document).ready(function() {
   $("a[rel*=fancybox]").click(function(e) {
     var $elem = $(this);
     var imageSource = $elem.attr('href');
-    var options = "resizeable=yes, toolbar=no, directories=no, location=no, status=yes, menubar=no, scrollbars=no, width=400, height=400";
+    var options = "resizeable=yes, toolbar=no, directories=no, location=no, status=yes, menubar=no, scrollbars=no, width=500, height=500";
     window.open(imageSource, 'ReferenceFigure', options);
     e.preventDefault();
   });
