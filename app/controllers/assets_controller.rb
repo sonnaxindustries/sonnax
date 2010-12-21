@@ -3,13 +3,7 @@ class AssetsController < ApplicationController
     begin
       full_filename = "%s.%s" % [params[:filename], params[:format]]
       record = Asset.find_by_asset_file_name!(full_filename)
-      streaming_options = {
-        :filename => record.asset_file_name,
-        :type => record.asset_content_type,
-        :status => 200,
-        :disposition => 'inline'
-      }
-      send_data(record.asset.path)
+      redirect_to(record.asset.url, :host => 'http://www.sonnax.com', :code => 301)
     rescue ActiveRecord::RecordNotFound
       render_404
     end
