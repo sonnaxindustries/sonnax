@@ -9,15 +9,13 @@ class CatalogRequest < ActiveRecord::Base
     
     def catalogs_hash
       {
-        :ts_volume_7 => "Transmission Specialties<sup>&reg;</sup> Catalog, Volume 7 on CD",
-        :ts_diagnostic_guide => "Transmission Specialties Diagnostic Guide",
+        :ts_volume_8 => "Transmission Products Catalog, Volume 8",
+        :ts_volume_8_cd => "Transmission Products Catalog, Volume 8 on CD",
+        :torque_converter_catalog => "Torque Converter Parts Catalog, Volume 6",
         :valve_body_training => "Valve Body Training DVD",
-        :ts_new_product_advisory => "Transmission Specialties New Product Advisory",
-        :allison_replacement_parts => "Allison Replacement Parts",
         :pts_catalog => "PowerTrainSavers<sup>&reg;</sup> Catalog, 2009",
-        :driveline_brochure => "Driveline Brochure",
+        :driveline_catalog => "Driveline Catalog, Volume 3",
         :hd_catalog => "Harley Davidson<sup>&reg;</sup> Catalog",
-        :rg_spec_sheet => "Ring Gear Spec Sheet",
         :transmission_report => "Transmission Report"
       }
     end

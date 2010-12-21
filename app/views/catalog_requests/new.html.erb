@@ -5,7 +5,7 @@
   <% form_for :catalog_request, @catalog_request, :url => catalog_request_path do |f| %>
   <fieldset>
     <legend>Catalog Information</legend>
-    
+
     <%= f.error_message_on :catalogs_hash %>
     <ul class="catalogs group">
       <li>
@@ -20,124 +20,78 @@
 
       <li>
         <img src="/images/catalogs/TCCover.jpg" alt="Torque Converter Parts Catalog, Volume 6">
-        <h2>Torque Converter Parts Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.Torque_Converter_Catalog, @catalog_request.catalogs_hash.include?(@catalogs.Torque_Converter_Catalog) %></h2>
-        
+        <h2>Torque Converter Parts Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.torque_converter_catalog, @catalog_request.catalogs_hash.include?(@catalogs.torque_converter_catalog) %></h2>
+
         <div class="extra">
           <p>For up-to-date listing use the <%= link_to 'Part and Application Finder', product_line_parts_path('torque-converter') %></p>
         </div>
       </li>
 
-<!-- 
-      <li>
-        <img src="/images/catalogs/AllisonCover.jpg" alt="Allison Replacement Parts">
-        <h2>Allison Replacement Parts Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.allison_replacement_parts, @catalog_request.catalogs_hash.include?(@catalogs.allison_replacement_parts) %></h2>
-        
-        <div class="extra">
-          <p>For up-to-date listing use the <%= link_to 'Part and Application Finder', product_line_parts_path('allison') %></p>
-        </div>
-      </li>
-	  -->
-      
       <li>
         <img src="/images/catalogs/PTSCover.png" alt="Power Train Savers Products Catalog">
         <h2>Power Train Savers Products Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.pts_catalog, @catalog_request.catalogs_hash.include?(@catalogs.pts_catalog) %></h2>
-        
+
         <div class="extra">
           <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('power-train-savers') %></p>
         </div>
       </li>
-      
+
       <li>
 		<%= link_to image_tag('catalogs/DrivelineCover.jpg', :alt => 'Driveline Catalog Vol. 3'), '/downloads/catalogs/sonnax-Driveline-Catalog-Vol3.pdf' %>
 		<h2><%= link_to 'Driveline Catalog Vol. 3', ('/downloads/catalogs/sonnax-Driveline-Catalog-Vol3.pdf'), :class => 'pdf' %> <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.driveline_catalog, @catalog_request.catalogs_hash.include?(@catalogs.driveline_catalog) %></h2>
-        
+
         <div class="extra">
           <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('driveline') %></p>
         </div>
       </li>
 
-<!--       
-      <li>
-        <img src="/images/catalogs/RingGearCover.jpg" alt="Ring Gear Spec Sheet">
-        <h2>Ring Gear Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.rg_spec_sheet, @catalog_request.catalogs_hash.include?(@catalogs.rg_spec_sheet) %></h2>
-        
-        <div class="extra">
-          <p>For up-to-date part information see the Parts Listing</p>
-        </div>
-      </li>
-	  -->
-      
       <li>
 		<%= link_to image_tag('catalogs/HarleyDavidsonCover.gif', :alt => 'Harley-Davidson<sup>&reg;</sup> Replacement Bearings Catalog'), '/downloads/catalogs/sonnax-Harley-Davidson-Replacement-Bearings-Catalog.pdf' %>
 		<h2><%= link_to 'Harley-Davidson<sup>&reg;</sup> Replacement Bearings Catalog', ('/downloads/catalogs/sonnax-Harley-Davidson-Replacement-Bearings-Catalog.pdf'), :class => 'pdf' %>
 		<%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.hd_catalog, @catalog_request.catalogs_hash.include?(@catalogs.hd_catalog) %></h2>
-        
+
         <div class="extra">
           <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('harley-davidson') %></p>
         </div>
       </li>
-      
+
       <li>
         <img src="/images/catalogs/ValveBodyTraining.jpg" alt="Valve Body Training DVD">
         <h2>Valve Body Training DVD <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.valve_body_training, @catalog_request.catalogs_hash.include?(@catalogs.valve_body_training) %></h2>
-        
       </li>
 
-<!--
-      <li>
-        <img src="/images/catalogs/SpanishTransmissionCover.jpg" alt="Transmission Specialties&reg; en Espa&ntilde;ol">
-        <h2>Transmission Specialties<sup>&reg;</sup> en Espa&ntilde;ol <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_espanol, @catalog_request.catalogs_hash.include?(@catalogs.transmission_espanol) %></h2>
-        
-      </li>
-      
-      <li>
-        <img src="/images/catalogs/SpanishDiagnosticCover.jpg" alt="Diagnostic Guide en Espa&ntilde;ol">
-        <h2>Diagnostic Guide en Espa&ntilde;ol <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.diagnostic_espanol, @catalog_request.catalogs_hash.include?(@catalogs.diagnostic_espanol) %></h2>
-        
-      </li>
-      
-      <li>
-        <img src="/images/catalogs/ChineseTransmissionCover.jpg" alt="Transmission Specialties&reg; in Chinese">
-        <h2>Transmission Specialties<sup>&reg;</sup> in Chinese <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_chinese, @catalog_request.catalogs_hash.include?(@catalogs.transmission_chinese) %></h2>
-        
-      </li>
--->
-      
       <li>
         <img src="/images/catalogs/ChineseTCCover.jpg" alt="TC Catalog in Chinese" align="top">
-        
         <div class="extra">
           <p><%= link_to 'Download ', '/downloads/catalogs/tc-catalog-chinese-3.pdf', :class => 'pdf' %> Torque Converter Catalog in Chinese (3.3MB PDF)</p>
         </div>
       </li>
-      
+
       <li>
         <a href="/downloads/catalogs/sonnax-trans-report_v1n2.pdf"><img src="/images/catalogs/TransmissionReport.gif" alt="Transmission Report"></a>
         <h2>Transmission Report<%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_report, @catalog_request.catalogs_hash.include?(@catalogs.transmission_report) %></h2>
-        
-        
         <div class="extra">
           <p><%= link_to 'Download ', '/downloads/catalogs/sonnax-trans-report_v1n2.pdf', :class => 'pdf' %> the latest Transmission Report (4.27MB PDF)</p>
         </div>
       </li>
-    </ul>    
+    </ul>
   </fieldset>
-  
+
   <fieldset>
     <legend>Your Information</legend>
-    
+
     <div class="text name">
       <%= f.error_message_on :name %>
       <%= f.label :name, '<span class="required">*</span> Name' %>
       <%= f.text_field :name %>
     </div>
-    
+
     <div class="text company">
       <%= f.error_message_on :company %>
       <%= f.label :company, '<span class="required">*</span> Company' %>
       <%= f.text_field :company %>
     </div>
-    
+
     <div class="text type-of-business">
       <%= f.error_message_on :type_of_business %>
       <%= f.label :type_of_business, '<span class="required">*</span> Type of Business' %>
