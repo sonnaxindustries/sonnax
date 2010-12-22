@@ -12,7 +12,7 @@
         <img src="/images/catalogs/TransmissionCover.jpg" alt="Transmission Products Catalog, Volume 8">
         <h2>Transmission Products Catalog, Volume 8<br>
         Catalog: <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_volume_8, @catalog_request.catalogs_hash.include?(@catalogs.ts_volume_8) %>
-        &nbsp;CD: <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_volume_8, @catalog_request.catalogs_hash.include?(@catalogs.ts_volume_8_cd) %></h2>
+        &nbsp;CD: <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_volume_8_cd, @catalog_request.catalogs_hash.include?(@catalogs.ts_volume_8_cd) %></h2>
         <div class="extra">
           <p>For up-to-date  listing use the <%= link_to 'Part and Application Finder', product_line_parts_path('transmission') %></p>
         </div>
