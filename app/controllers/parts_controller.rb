@@ -54,10 +54,9 @@ class PartsController < ApplicationController
       end
       
       wants.json do
-        parts_template_file = "product_lines/%s/parts.html.erb" % [@product_line.url_friendly.underscore]
-        no_parts_template_file = "product_lines/%s/no_parts.html.erb" % [@product_line.url_friendly.underscore]
+        redirect_url = "%s://%s%s" % [request.scheme, request.host_with_port, @collection_presenter.redirect_url]
         render :json => {
-          :redirect_url => @collection_presenter.redirect_url
+          :redirect_url => redirect_url
         }
       end
     end

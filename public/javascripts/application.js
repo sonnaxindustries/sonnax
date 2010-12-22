@@ -72,10 +72,10 @@ $(document).ready(function() {
       data: $form.serialize(),
       dataType: 'json',
       success: function(response) {
-        window.location = response.redirect_url;
+        window.location.replace(response.redirect_url);
       }
     })
-    e.preventDefault();
+    return false;
   });
 
   $('div#product-line form div.unit-selector select').live(changeEvt, function(e) {
@@ -88,15 +88,22 @@ $(document).ready(function() {
     var $form = $elem.closest('form');
     $.ajax({
       url: $form.attr('action'),
-      type: $form.attr('type'),
+      type: $form.attr('method'),
       data: $form.serialize(),
       dataType: 'json',
       success: function(response) {
-        window.location = response.redirect_url; 
+        if ($.browser.msie) {
+          var hiddenUrl = $('body').append('<input type="hidden" name="__redirect__" value="' + response.redirect_url + '">')
+          var redirectUrl = $('input[name="__redirect__"]');
+          window.location.replace(redirectUrl.val());
+        } else {
+          window.location.replace(response.redirect_url);
+        }
       }
     })
-
     e.preventDefault();
+    e.stopPropagation();
+    return false;
   });
   // END PRODUCT LINES
 
