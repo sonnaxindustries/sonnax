@@ -32,6 +32,14 @@ role :db, '74.50.61.9', :primary => true
 # end
 
 namespace(:deploy) do
+  desc "Reset search indexes"
+  task(:re_index) do
+    run("cd #{current_path} && RAILS_ENV=production /usr/local/bin/rake ts:rebuild")
+    run("cd #{current_path}/log && chmod 755 searchd.production.pid")
+    run("cd #{current_path} && script/delayed_job stop")
+    run("cd #{current_path} && script/delayed_job start")
+  end
+  
   desc 'Move the database.yml file'
   task(:copy_db_config) do
     run("cp #{shared_path}/database.yml #{current_path}/config/database.yml")
@@ -107,5 +115,5 @@ end
 
 
 after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages', 'deploy:publication:symlink_all'
-after 'deploy', 'deploy:cleanup'
+after 'deploy', 'deploy:cleanup', 'deploy:re_index'
 after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
