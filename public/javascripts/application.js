@@ -53,6 +53,22 @@ $(document).ready(function() {
   var $selectedMake = $('div#product-line form div.make-selector select option:selected');
   var $selectedUnit = $('div#product-line form div.unit-selector select option:selected');
 
+  $('div#product-line form').bind('submit', function(e) {
+    var $form = $(this);
+
+    $.ajax({
+      url: $form.attr('action'),
+      type: $form.attr('method'),
+      data: $form.serialize(),
+      dataType: 'json',
+      async: 'false',
+      success: function(response) {
+        window.location.replace(response.redirect_url);
+      }
+    })
+    return false;
+  });
+
   // PRODUCT LINES
   $('div#product-line form div.make-selector select').live(changeEvt, function(e) {
     $('div.search div#search-options div.search-terms input[type="text"]').val('');
@@ -64,17 +80,8 @@ $(document).ready(function() {
     $('div#product-line form div.unit-selector select').val('');
 
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-
     var $form = $elem.closest('form');
-    $.ajax({
-      url: $form.attr('action'),
-      type: $form.attr('method'),
-      data: $form.serialize(),
-      dataType: 'json',
-      success: function(response) {
-        window.location.replace(response.redirect_url);
-      }
-    })
+    $form.trigger('submit');
     return false;
   });
 
@@ -86,23 +93,7 @@ $(document).ready(function() {
 
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
     var $form = $elem.closest('form');
-    $.ajax({
-      url: $form.attr('action'),
-      type: $form.attr('method'),
-      data: $form.serialize(),
-      dataType: 'json',
-      success: function(response) {
-        if ($.browser.msie) {
-          var hiddenUrl = $('body').append('<input type="hidden" name="__redirect__" value="' + response.redirect_url + '">')
-          var redirectUrl = $('input[name="__redirect__"]');
-          window.location.replace(redirectUrl.val());
-        } else {
-          window.location.replace(response.redirect_url);
-        }
-      }
-    })
-    e.preventDefault();
-    e.stopPropagation();
+    $form.trigger('submit');
     return false;
   });
   // END PRODUCT LINES
