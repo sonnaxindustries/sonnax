@@ -92,8 +92,9 @@ $(document).ready(function() {
     }
 
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-    var $form = $elem.closest('form');
-    $form.trigger('submit');
+    window.location.replace($elem.attr('value'));
+    //var $form = $elem.closest('form');
+    //$form.trigger('submit');
     return false;
   });
   // END PRODUCT LINES

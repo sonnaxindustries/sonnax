@@ -23,7 +23,7 @@ class ProductLine::HighPerformanceTransmission::FormPresenter
   
   def unit_options
     if self.make?
-      self.product_line.unit_options(:make => self.make)
+      self.product_line.associated_units(:make => self.make).map { |u| [u.name, filter_product_line_parts_path(self.product_line.url_friendly, :"filter[make]" => self.make.id, :"filter[unit]" => u.id)] }
     else
       self.units.map { |unit| [unit.name, unit.id] }
     end
@@ -46,7 +46,11 @@ class ProductLine::HighPerformanceTransmission::FormPresenter
   end
   
   def unit_id
-    if self.unit? then self.unit.id else nil end
+    if self.unit?
+      filter_product_line_parts_path(self.product_line.url_friendly, :"filter[make]" => self.make.id, :"filter[unit]" => self.unit.id)
+    else 
+      nil
+    end
   end
   
   def make
