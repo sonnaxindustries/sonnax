@@ -53,9 +53,18 @@ $(document).ready(function() {
   var $selectedMake = $('div#product-line form div.make-selector select option:selected');
   var $selectedUnit = $('div#product-line form div.unit-selector select option:selected');
 
-  $('div#product-line form').bind('submit', function(e) {
-    var $form = $(this);
+  // PRODUCT LINES
+  $('div#product-line form div.make-selector select').live(changeEvt, function(e) {
+    $('div.search div#search-options div.search-terms input[type="text"]').val('');
+    var $elem = $(this);
+    var $selected = $(this).attr('selected', 'selected');
+    if ($elem.val() == $selectedMake.val() || $elem.val() == '') {
+      return;
+    }
+    $('div#product-line form div.unit-selector select').val('');
 
+    $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
+    var $form = $elem.closest('form');
     $.ajax({
       url: $form.attr('action'),
       type: $form.attr('method'),
@@ -69,22 +78,6 @@ $(document).ready(function() {
     return false;
   });
 
-  // PRODUCT LINES
-  $('div#product-line form div.make-selector select').live(changeEvt, function(e) {
-    $('div.search div#search-options div.search-terms input[type="text"]').val('');
-    var $elem = $(this);
-    var $selected = $(this).attr('selected', 'selected');
-    if ($elem.val() == $selectedMake.val() || $elem.val() == '') {
-      return;
-    }
-    $('div#product-line form div.unit-selector select').val('');
-
-    $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
-    var $form = $elem.closest('form');
-    $form.trigger('submit');
-    return false;
-  });
-
   $('div#product-line form div.unit-selector select').live(changeEvt, function(e) {
     var $elem = $(this);
     if ($elem.val() == $selectedUnit.val() || $elem.val() == '') {
@@ -93,8 +86,6 @@ $(document).ready(function() {
 
     $elem.after('<div class="indicator"><img src="/images/ajax/indicator-small.gif"></div>');
     window.location.replace($elem.attr('value'));
-    //var $form = $elem.closest('form');
-    //$form.trigger('submit');
     return false;
   });
   // END PRODUCT LINES
