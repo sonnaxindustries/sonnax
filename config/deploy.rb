@@ -36,8 +36,8 @@ namespace(:deploy) do
   task(:re_index) do
     run("cd #{current_path} && RAILS_ENV=production /usr/local/bin/rake ts:rebuild")
     run("cd #{current_path}/log && chmod 755 searchd.production.pid")
-    run("cd #{current_path} && script/delayed_job stop")
-    run("cd #{current_path} && script/delayed_job start")
+    run("cd #{current_path} && RAILS_ENV=production script/delayed_job stop")
+    run("cd #{current_path} && RAILS_ENV=production script/delayed_job start")
   end
   
   desc 'Move the database.yml file'
@@ -112,6 +112,29 @@ def rake(*tasks)
     run "if [ -d #{release_path} ]; then cd #{release_path}; else cd #{current_path}; fi; #{rake} RAILS_ENV=#{rails_env} #{t}"
   end
 end
+
+# Bluepill related tasks
+after "deploy:update", "bluepill:delayed_job:quit", "bluepill:delayed_job:start"
+namespace :bluepill do
+  namespace :delayed_job do
+    desc "Stop processes that bluepill is monitoring and quit bluepill"
+    task :quit, :roles => [:app] do
+      run "bluepill delayed_job stop"
+      run "bluepill delayed_job quit"
+    end
+
+    desc "Load bluepill configuration and start it"
+    task :start, :roles => [:app] do
+      run "bluepill load /root/bluepill/delayed_job.pill"
+    end
+
+    desc "Prints bluepills monitored processes statuses"
+    task :status, :roles => [:app] do
+      run "bluepill delayed_job status"
+    end
+  end
+end
+
 
 
 after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages', 'deploy:publication:symlink_all'
