@@ -16,6 +16,10 @@ gem "spreadsheet",            "0.6.4.1"
 gem "rubyzip",                "0.9.4"
 gem "roo",                    "1.9.3"
 
+group :development do
+  gem "metric_fu"
+end
+
 group :test do
   gem "rspec",                "1.3.0"
   gem "rspec-rails",          "1.3.2"
