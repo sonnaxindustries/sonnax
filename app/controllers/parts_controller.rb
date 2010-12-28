@@ -52,12 +52,14 @@ class PartsController < ApplicationController
         template_file = "parts/index_by_product_line/%s" % [@product_line.url_friendly.underscore]
         render template_file
       end
-      
+
       wants.json do
         redirect_url = "%s://%s%s" % [request.scheme, request.host_with_port, @collection_presenter.redirect_url]
+        text_to_eval = "window.location.replace('%s');" % [redirect_url]
         render :json => {
+          :script => text_to_eval,
           :redirect_url => redirect_url
-        }
+        }, :content_type => 'application/x-javascript'
       end
     end
   end
