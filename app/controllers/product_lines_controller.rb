@@ -29,6 +29,7 @@ class ProductLinesController < ApplicationController
   end
   
   def harley_davidson_parts
+    params.reverse_merge!(:format => 'html') unless params[:format]
     respond_to do |wants|
       wants.html
       wants.print do
@@ -48,6 +49,7 @@ class ProductLinesController < ApplicationController
   def ring_gears_millimeter_parts
     begin
       @product_line = ProductLine.ring_gears
+      params.reverse_merge!(:format => 'html') unless params[:format]
 
       respond_to do |wants|
         wants.html
@@ -64,6 +66,7 @@ class ProductLinesController < ApplicationController
   def ring_gears_inches_parts
     begin
       @product_line = ProductLine.ring_gears
+      params.reverse_merge!(:format => 'html') unless params[:format]
 
       respond_to do |wants|
         wants.html
@@ -94,6 +97,7 @@ class ProductLinesController < ApplicationController
   end
   
   def power_train_savers_parts
+    params.reverse_merge!(:format => 'html') unless params[:format]
     begin
       @product_line = ProductLine.power_train_savers
       respond_to do |wants|
@@ -108,6 +112,7 @@ class ProductLinesController < ApplicationController
   end
 
   def driveline_parts
+    params.reverse_merge!(:format => 'html') unless params[:format]
     begin
       @product_line = ProductLine.driveline
       respond_to do |wants|
