@@ -23,10 +23,9 @@ class Admin::ProductLine::Allison::FormPresenter
   
   def unit_options
     if self.make?
-      #self.product_line.unit_options(:make => self.make)
-      self.units.map { |unit| [unit.name, unit.id] }
+      self.product_line.associated_units(:make => self.make).map { |u| [u.name, filter_admin_product_line_parts_path(self.product_line.id, :"filter[make]" => self.make.id, :"filter[unit]" => u.id)] }
     else
-      self.units.map { |unit| [unit.name, unit.id] }
+      self.product_line.associated_units(:make => self.make).map { |u| [u.name, filter_admin_product_line_parts_path(self.product_line.id, :"filter[make]" => self.make.id, :"filter[unit]" => u.id)] }
     end
   end
   
@@ -47,11 +46,15 @@ class Admin::ProductLine::Allison::FormPresenter
   end
   
   def unit_id
-    if self.unit? then self.unit.id else nil end
+    if self.unit?
+      filter_admin_product_line_parts_path(self.product_line.id, :"filter[make]" => self.make.id, :"filter[unit]" => self.unit.id)
+    else 
+      nil
+    end
   end
   
   def make
-    @make ||= @attributes[:make]
+    @make ||= Admin::Make.allison
   end
   
   def make?
