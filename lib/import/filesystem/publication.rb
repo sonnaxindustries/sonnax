@@ -1,3 +1,4 @@
+# NOTE: This was a one time script, running it twice will do nothing
 class Import::Filesystem::Publication
   attr_accessor :publication
 

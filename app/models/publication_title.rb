@@ -78,25 +78,12 @@ class PublicationTitle < ActiveRecord::Base
     end
   end
   
-  def html_filename
-    "%s.html" % [self.spreadsheet_id.to_s]
-  end
-  
-  def html_file_paths
-    [File.join(Rails.root, 'public', 'system', 'pages', 'tc_articles', self.html_filename), File.join(Rails.root, 'public', 'system', 'pages', 'ts_articles', self.html_filename)]
-  end
-  
   def html_file?
-    self.html_file_paths.any? { |path| File.exists?(path) }
+    self.html_content?
   end
   
   def html_file
-    if self.html_content?
-      self.html_content
-    else
-      filename = self.html_file_paths.select { |path| File.exists?(path) }.first
-      File.read(filename)
-    end
+    self.html_content if self.html_content?
   end
 
   def product_lines?
