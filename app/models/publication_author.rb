@@ -5,7 +5,7 @@ class PublicationAuthor < ActiveRecord::Base
 
   class << self
     def detail!(id)
-      self.find_by_id!(id, :include => [:ordered_publications])
+      self.find_by_id!(id, :include => [ {:ordered_publications => [:authors]}, { :publications => [:authors]}])
     end
 
     def options
