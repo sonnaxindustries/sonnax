@@ -1,7 +1,7 @@
 require 'config/recipes/passenger'
 require 'config/recipes/sonnax'
 require 'config/recipes/bundler'
-require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/deploy/capistrano.rb'
+#require 'vendor/bundler_gems/gems/thinking-sphinx-1.3.17/lib/thinking_sphinx/deploy/capistrano.rb'
 
 set :application, "sonnax"
 set :repository, 'git@github.com:nateklaiber/sonnax.git'
@@ -30,6 +30,14 @@ role :db, '74.50.61.9', :primary => true
 #   set :app, "theklaibers.com"
 #   set :db, "theklaibers.com"
 # end
+
+task :staging do
+  role :web, "staging.sonnax.com"
+  set :deploy_to, "/var/www/rails/sonnax_staging"
+  set :app, "staging.sonnax.com"
+  set :db, "staging.sonnax.com"
+  set :branch, 'staging'
+end
 
 namespace(:deploy) do
   desc "Reset search indexes"
@@ -137,6 +145,7 @@ end
 
 
 
-after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages', 'deploy:publication:symlink_all'
+after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions'
+#after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:symlink_pages', 'deploy:publication:symlink_all'
 after 'deploy', 'deploy:cleanup', 'deploy:re_index'
 after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
