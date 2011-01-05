@@ -2,6 +2,11 @@ class PagesController < ApplicationController
   
   def home
   end
+
+  def test_exception
+    str = "raise ActionController::Session::CookieStore::CookieOverflow"
+    render eval(str), :status => 500
+  end
   
   def history_and_mission
   end
