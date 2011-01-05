@@ -11,6 +11,7 @@ Rails::Initializer.run do |config|
   config.active_record.observers = :solenoid_program_observer, :contact_observer, :catalog_request_observer, :order_observer
 
   config.time_zone = 'UTC'
+  config.action_controller.session_store = :active_record_store
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
