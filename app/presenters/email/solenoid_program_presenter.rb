@@ -18,7 +18,7 @@ class Email::SolenoidProgramPresenter
   end
   
   def recipients
-    ['nate@theklaibers.com', 'ep@sonnax.com', 'cores@sonnax.com']
+    ['ep@sonnax.com', 'cores@sonnax.com']
   end
   
   def sent_on
