@@ -170,6 +170,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/instructions/:filename.:format', :controller => 'assets', :action => 'show'
   map.connect '/announcements/:filename.:format', :controller => 'assets', :action => 'show'
   map.connect '/tech-articles/:filename.:format', :controller => 'publication_titles', :action => 'download'
+  map.connect '/test-exception', :controller => 'pages', :action => 'test_exception'
   #map.connect '*path' , :controller => 'redirects' , :action => 'check'
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'
