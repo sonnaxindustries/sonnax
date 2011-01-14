@@ -18,7 +18,7 @@ class Email::CatalogRequestPresenter
   end
   
   def recipients
-    ['nate@theklaibers.com', 'sonnaxlit@sonnax.com']
+    ['sonnaxlit@sonnax.com']
   end
   
   def sent_on

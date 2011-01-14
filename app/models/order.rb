@@ -3,15 +3,20 @@ class Order < ActiveRecord::Base
   has_many :line_items, :dependent => :destroy
   has_many :parts, :through => :line_items
   
-  SHIPPING_METHODS = { :ups_ground  => 'UPS Ground', 
-                       :ups_3_day   => 'UPS 3rd Day Select',
-                       :ups_2day    => 'UPS 2nd Day',
-                       :ups_next    => 'UPS Next Day'
+  SHIPPING_METHODS = { :ups_ground        => 'UPS Ground', 
+                       :ups_3_day         => 'UPS 3rd Day Select',
+                       :ups_2day          => 'UPS 2nd Day',
+                       :ups_next          => 'UPS Next Day',
+                       :freight_forwarder => 'Freight Forwarder',
+                       :ups_express       => 'UPS Express',
+                       :ups_expedited     => 'UPS Expedited',
+                       :fedex_priority    => 'Fedex Priority',
+                       :fedex_economy     => 'Fedex Economy'
                       }
 
   class << self
     def shipping_method_options
-      self::SHIPPING_METHODS.map { |f| [f[1], f[0].to_s] }.reverse
+      self::SHIPPING_METHODS.map { |f| [f[1], f[0].to_s] }.sort.reverse
     end
     
     def default_shipping_option
