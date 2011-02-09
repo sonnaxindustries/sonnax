@@ -15,7 +15,7 @@ gem "acts_as_tree",           "0.1.1"
 gem "spreadsheet",            "0.6.4.1"
 gem "rubyzip",                "0.9.4"
 gem "roo",                    "1.9.3"
-gem "exception_notification"
+#gem "exception_notification"
 
 group :development do
   gem "metric_fu"

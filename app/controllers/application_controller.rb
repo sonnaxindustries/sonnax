@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  include ExceptionNotification::Notifiable
-  include ExceptionNotification::ConsiderLocal
+  #include ExceptionNotification::Notifiable
+  #include ExceptionNotification::ConsiderLocal
   helper :all
   protect_from_forgery :secret => 'a19f3cb7872b8ea775172c6dc0c055beef263d71085ce962671a957aa7fa7a7df156f97f375eb9d87b85ccaf3c774db552f071b6f0e325e4d46e0b7bdebb367f'
 
