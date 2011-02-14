@@ -1,5 +1,6 @@
 source "http://gemcutter.org"
 
+gem "hoe",                    "2.8.0"
 gem "tzinfo"
 gem "mysql",                  "2.8.1"
 gem "rails",                  "2.3.5"
@@ -10,11 +11,11 @@ gem "authlogic",              "2.1.3"
 gem "riddle",                 "1.1.0"
 gem "thinking-sphinx",        "1.3.17", :require => 'thinking_sphinx'
 gem "ts-delayed-delta",       "1.1.1", :require => 'thinking_sphinx/deltas/delayed_delta'
-gem "liquid",                 "2.0.0"
+#gem "liquid",                 "2.0.0"
 gem "acts_as_tree",           "0.1.1"
-gem "spreadsheet",            "0.6.4.1"
-gem "rubyzip",                "0.9.4"
-gem "roo",                    "1.9.3"
+#gem "spreadsheet",            "0.6.4.1"
+#gem "rubyzip",                "0.9.4"
+#gem "roo",                    "1.9.3"
 #gem "exception_notification"
 
 group :development do
