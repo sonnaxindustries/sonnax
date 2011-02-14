@@ -18,4 +18,4 @@ config.action_mailer.raise_delivery_errors = false
 
 DB_EDITABLE = [1,2,3,4]
 
-ExceptionNotification::Notifier.exception_recipients = %w(nate@theklaibers.com)
+#ExceptionNotification::Notifier.exception_recipients = %w(nate@theklaibers.com)
