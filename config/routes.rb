@@ -43,7 +43,7 @@ ActionController::Routing::Routes.draw do |map|
   map.prototype_detail '/prototype/:name', :controller => 'prototypes', :action => 'show'
   map.prototype_validation '/prototype/validation/:part_number', :controller => 'prototypes', :action => 'validation'
   
-  map.resources :road_show, :as => 'road-show'
+  map.resources :road_show, :as => 'roadshow'
 
   map.with_options(:controller => 'pages') do |page|
     page.valve_body_layouts '/valve-body-layouts', :action => 'valve_body_layouts'
