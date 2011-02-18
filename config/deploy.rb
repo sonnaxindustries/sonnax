@@ -145,7 +145,7 @@ end
 
 
 
-#after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:publication:symlink_all'
-after 'deploy:symlink', 'deploy:copy_db_config'
+after 'deploy:symlink', 'deploy:copy_db_config', 'deploy:fix_paperclip_permissions', 'deploy:publication:symlink_all'
+#after 'deploy:symlink', 'deploy:copy_db_config'
 after 'deploy', 'deploy:cleanup', 'deploy:re_index'
 after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
