@@ -10,9 +10,9 @@
     <ul class="catalogs group">
       <li>
         <img src="/images/catalogs/TransmissionCover.jpg" alt="Transmission Products Catalog, Volume 8">
-        <h2>Transmission Products Catalog, Volume 8<br>
+        <h4>Transmission Products Catalog, Volume 8<br>
         Catalog: <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_volume_8, @catalog_request.catalogs_hash.include?(@catalogs.ts_volume_8) %>
-        &nbsp;CD: <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_volume_8_cd, @catalog_request.catalogs_hash.include?(@catalogs.ts_volume_8_cd) %></h2>
+        &nbsp;CD: <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.ts_volume_8_cd, @catalog_request.catalogs_hash.include?(@catalogs.ts_volume_8_cd) %></h4>
         <div class="extra">
           <p>For up-to-date  listing use the <%= link_to 'Part and Application Finder', product_line_parts_path('transmission') %></p>
         </div>
@@ -20,7 +20,7 @@
 
       <li>
         <img src="/images/catalogs/TCCover.jpg" alt="Torque Converter Parts Catalog, Volume 6">
-        <h2>Torque Converter Parts Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.torque_converter_catalog, @catalog_request.catalogs_hash.include?(@catalogs.torque_converter_catalog) %></h2>
+        <h4>Torque Converter Parts Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.torque_converter_catalog, @catalog_request.catalogs_hash.include?(@catalogs.torque_converter_catalog) %></h4>
 
         <div class="extra">
           <p>For up-to-date listing use the <%= link_to 'Part and Application Finder', product_line_parts_path('torque-converter') %></p>
@@ -29,7 +29,7 @@
 
       <li>
         <img src="/images/catalogs/PTSCover.png" alt="Power Train Savers Products Catalog">
-        <h2>Power Train Savers Products Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.pts_catalog, @catalog_request.catalogs_hash.include?(@catalogs.pts_catalog) %></h2>
+        <h4>Power Train Savers Products Catalog <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.pts_catalog, @catalog_request.catalogs_hash.include?(@catalogs.pts_catalog) %></h4>
 
         <div class="extra">
           <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('power-train-savers') %></p>
@@ -38,7 +38,7 @@
 
       <li>
 		<%= link_to image_tag('catalogs/DrivelineCover.jpg', :alt => 'Driveline Catalog Vol. 3'), '/downloads/catalogs/sonnax-Driveline-Catalog-Vol3.pdf' %>
-		<h2><%= link_to 'Driveline Catalog Vol. 3', ('/downloads/catalogs/sonnax-Driveline-Catalog-Vol3.pdf'), :class => 'pdf' %> <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.driveline_catalog, @catalog_request.catalogs_hash.include?(@catalogs.driveline_catalog) %></h2>
+		<h4><%= link_to 'Driveline Catalog Vol. 3', ('/downloads/catalogs/sonnax-Driveline-Catalog-Vol3.pdf'), :class => 'pdf' %> <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.driveline_catalog, @catalog_request.catalogs_hash.include?(@catalogs.driveline_catalog) %></h4>
 
         <div class="extra">
           <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('driveline') %></p>
@@ -47,8 +47,8 @@
 
       <li>
 		<%= link_to image_tag('catalogs/HarleyDavidsonCover.gif', :alt => 'Harley-Davidson<sup>&reg;</sup> Replacement Bearings Catalog'), '/downloads/catalogs/sonnax-Harley-Davidson-Replacement-Bearings-Catalog.pdf' %>
-		<h2><%= link_to 'Harley-Davidson<sup>&reg;</sup> Replacement Bearings Catalog', ('/downloads/catalogs/sonnax-Harley-Davidson-Replacement-Bearings-Catalog.pdf'), :class => 'pdf' %>
-		<%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.hd_catalog, @catalog_request.catalogs_hash.include?(@catalogs.hd_catalog) %></h2>
+		<h4><%= link_to 'Harley-Davidson<sup>&reg;</sup> Replacement Bearings Catalog', ('/downloads/catalogs/sonnax-Harley-Davidson-Replacement-Bearings-Catalog.pdf'), :class => 'pdf' %>
+		<%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.hd_catalog, @catalog_request.catalogs_hash.include?(@catalogs.hd_catalog) %></h4>
 
         <div class="extra">
           <p>For up-to-date part information see the <%= link_to 'Parts Listing', product_line_parts_path('harley-davidson') %></p>
@@ -57,7 +57,7 @@
 
       <li>
         <img src="/images/catalogs/ValveBodyTraining.jpg" alt="Valve Body Training DVD">
-        <h2>Valve Body Training DVD <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.valve_body_training, @catalog_request.catalogs_hash.include?(@catalogs.valve_body_training) %></h2>
+        <h4>Valve Body Training DVD <%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.valve_body_training, @catalog_request.catalogs_hash.include?(@catalogs.valve_body_training) %></h4>
       </li>
 
       <li>
@@ -69,7 +69,7 @@
 
       <li>
         <a href="/downloads/catalogs/sonnax-trans-report_v1n2.pdf"><img src="/images/catalogs/TransmissionReport.gif" alt="Transmission Report"></a>
-        <h2>Transmission Report<%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_report, @catalog_request.catalogs_hash.include?(@catalogs.transmission_report) %></h2>
+        <h4>Transmission Report<%= check_box_tag "catalog_request[catalogs_hash][]", @catalogs.transmission_report, @catalog_request.catalogs_hash.include?(@catalogs.transmission_report) %></h4>
         <div class="extra">
           <p><%= link_to 'Download ', '/downloads/catalogs/sonnax-trans-report_v1n2.pdf', :class => 'pdf' %> the latest Transmission Report (4.27MB PDF)</p>
         </div>
