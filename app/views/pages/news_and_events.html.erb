@@ -1,13 +1,15 @@
 <div id="news-and-events">
 	<div id="col-1">
   <h1>Sonnax News</h1>
-		<a href="/catalog-request/new"><img alt="Transmission Report" class="Rphoto" src="/images/catalogs/transreportv2n1.gif"></a>
+	  	<%= link_to image_tag('news-and-events/TD-Top-10-Product-2011red.gif', :class => 'Rphoto', :alt => 'Sonnax 2011 Top Ten Winner'), news_3_7_11_path %>
+		<h3>Sonnax Products Named Tops for 2011 <em class="date">3/7/11</em></h3>
+		<p>Thank you to the readers of <em>Transmission Digest</em> for voting four Sonnax parts Top Ten Shop Products of 2011! Our winners were the 4R70W valve body retaining plate, Chrysler RFE line pressure booster kits, 46/47 RH/RE 2nd gear super hold servo and our dual seal billet accumulator piston kit. Entries were featured in the October 2010 magazine issue, with the winners announced in March 2011. Many will be on display at <a href="http://www.showpowerexpo.com/">Showpower Expo 2011</a>, March 17-19 in Indianapolis, Ind. <%= link_to 'Learn More&hellip;', news_3_7_11_path %></p>
+		<%= link_to image_tag('catalogs/transreportv2n1.gif', :class => 'Rphoto', :alt => 'Transmission Report'),  new_catalog_request_path %>
 		<h3>February <em>Transmission Report</em> Newsletter <em class="date">2/25/11</em></h3>
 		<p>In the latest edition of the Sonnax <em>Transmission Report</em>, we take a behind-the-scenes look at our groundbreaking new line pressure booster kits, expanded and enhanced Powerglide parts and a whole family of fixes for Aisin AW-TR60SN units. This quarterly newsletter is mailed to rebuilders throughout the U.S. <%= link_to 'Click here', new_catalog_request_path %> to sign up for the newsletter or read the latest edition online.
 
 	    <h3>Free Valve Body Diagnostic &amp; Reaming Seminars <em class="date">2/18/11</em></h3>
-		
-        <p><a href="/roadshow" class="eventname"><img alt="Sonnax Roadshow Seminars" src="images/road-show/RoadshowLogo.gif" class="Lphoto"></a>Sonnax technical experts are hitting the road with a series of seminars on the same diagnostic and reaming techniques trusted by the industry's top transmission specialists and rebuilders. Come find out how it's all done! <a href="roadshow/">Learn More&hellip;</a></p>
+		<p><%= link_to image_tag('road-show/RoadshowLogo.gif', :class => 'Lphoto', :alt => 'Sonnax Roadshow Seminars'),  '/roadshow' %>Sonnax technical experts are hitting the road with a series of seminars on the same diagnostic and reaming techniques trusted by the industry's top transmission specialists and rebuilders. Come find out how it's all done! <%= link_to 'Learn More&hellip;', '/roadshow' %></p>
 
 	    <h3>Choice Tech Seminar <em class="date">2/11/11</em></h3>
         <p>Bob Warnke, Sonnax V.P. of technical development, will join ATSG President Wayne Colonna at the 2011 Choice Tech seminar on May 7 in Bristol, England. Their seminar will cover ZF6HP26 units, Aisin AW TR-60SN (VW-09D) units, Mercedes 722.8 CVT and 722.9 units and hybrid safety procedures, among other topics. Visit the <a href="http://www.automaticchoice.com/" target="_new">Automatic Choice website</a> for more information.</p>
@@ -34,23 +36,45 @@
 	<h1>Events</h1>
   <p class="event">Sonnax looks forward to meeting with attendees, learning more about current rebuilding challenges and discussing Sonnax's newest transmission products at these events.</p>
   <ul>
+  
+    <li class="enventlist"><a href="http://www.atsg.com/seminar.php" class="eventname">ATSG Seminar</a><br>
+    March 12, 2011<br>
+    New York, NY</li>
 
-    <li class="enventlist"><a href="http://www.ntea.com/worktruckshow/" class="eventname">The Work Truck Show</a><br>
-    March 8-10, 2011<br>
-    Indianapolis, Indiana<br>
-    Booth #725</li>
- 
-    <li class="enventlist"><a href="http://www.messefrankfurt.com.tr/index.php?page=155" class="eventname">Automechanika Istanbul
-</a><br>
+    <li class="enventlist"><a href="http://members.atra.com/events/event_details.asp?id=132421 " class="eventname">ATRA Technical Seminar</a><br>
+    March 12, 2011<br>
+    Boston, MA</li>
+  
+    <li class="enventlist"><a href="http://members.atra.com/events/event_details.asp?id=132446 " class="eventname">ATRA Technical Seminar</a><br>
+    March 19, 2011<br>
+    Phoenix, AZ</li>
+  
+    <li class="enventlist"><a href="http://www.atsg.com/seminar.php" class="eventname">ATSG Seminar</a><br>
+    March 26, 2011<br>
+    Chicago, IL</li>
+
+    <li class="enventlist"><a href="http://www.atsg.com/seminar.php" class="eventname">ATSG Seminar</a><br>
+    April 2, 2011<br>
+    Baltimore, MD</li>
+
+    <li class="enventlist"><a href="http://www.atsg.com/seminar.php" class="eventname">ATSG Seminar</a><br>
+    April 2, 2011<br>
+    Shreveport, LA</li>
+
+    <li class="enventlist"><a href="http://www.messefrankfurt.com.tr/index.php?page=155" class="eventname">Automechanika Istanbul</a><br>
     April 7 - 10, 2011<br>
     Istanbul, Turkey</li>
   
+    <li class="enventlist"><a href="http://www.atsg.com/seminar.php" class="eventname">ATSG Seminar</a><br>
+    April 9, 2011<br>
+    Philadelphia, PA</li>
+
     <li class="enventlist"><a href="http://www.automaticchoice.com/" class="eventname">Choice Tech Seminar 2011</a><br>
     May 7, 2011<br>
     Bristol, England</li>
  
  
-    <li class="enventlist"><a href="/roadshow" class="eventname"><img alt="Sonnax Roadshow Seminars" src="images/road-show/RoadshowLogo.gif"></a><br>
+    <li class="enventlist"><%= link_to image_tag('road-show/RoadshowLogo.gif', :class => 'Lphoto', :alt => 'Sonnax Roadshow Seminars'),  '/roadshow' %><br>
     <a href="http://www.automaticchoice.com/" class="eventname">Free Valve Body Diagnostic &amp; Reaming Seminars</a><br>
 	March 17, 2011<br>
     April 1, 2011<br>
