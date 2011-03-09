@@ -58,6 +58,7 @@ ActionController::Routing::Routes.draw do |map|
     page.news_and_events '/news-and-events', :action => 'news_and_events'
     page.warranty '/warranty', :action => 'warranty'
     page.news_and_events '/news-and-events', :action => 'news_and_events'
+    page.news_3_7_11 '/news_3_7_11', :action => 'news_3_7_11'
     page.news_11_10_10 '/news_11_10_10', :action => 'news_11_10_10'
     page.news_1_3_11 '/news_1_3_11', :action => 'news_1_3_11'
     page.news_5_10_10 '/news_5_10_10', :action => 'news_5_10_10'
