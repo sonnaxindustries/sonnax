@@ -1,4 +1,9 @@
-Making a change to readme for Lila
+Priority One:
+1. Remove paperclip plugin from parts and assets, and create script to put images back in place. This way we can continue to work with images as the previous site did - with the filesystem
+2. VBFix file will be replaced with the new VB Fix file once that process is complete.
+3. Add focus() call to quick search
+4. Add table to map new parts to old parts, then in the part search (single) and part detail page it will check the redirector first
+CheckPartRedirector.for_part(part_name) - this will simply check against part_redirects (id, old_part_id, new_part_id) table and if the part number matches an old part, redirect to the new part (URL)? Or, render the page with the new part intercepted with a note that the part was a previous Product Line Part. If @part.redirected? then show_message else continue end
 
 EXTERNAL NOTES:
 - Publication importer needs to use old product line IDS with _model_record
