@@ -134,6 +134,13 @@ class PartsController < ApplicationController
   def show
     begin
       @part = @product_line.parts.find(params[:id])
+
+      if @part.redirect?
+        redirect_path = product_line_part_path(@product_line.url_friendly, @part.redirect.part)
+        redirect_to(redirect_path)
+        return
+      end
+
       template_file = "parts/show_by_product_line/%s" % [@product_line.url_friendly.underscore]
       render template_file
     rescue ActiveRecord::RecordNotFound

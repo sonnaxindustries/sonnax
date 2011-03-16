@@ -4,6 +4,17 @@ class Part < ActiveRecord::Base
   belongs_to :product_line
   
   has_many :line_items, :dependent => :destroy
+
+  has_one :redirect, :class_name => 'PartRedirect', :foreign_key => 'old_part_id'
+  has_one :redirected, :class_name => 'PartRedirect'
+
+  def redirect?
+    !self.redirect.blank?
+  end
+
+  def redirected?
+    !self.redirected.blank?
+  end
   
   has_many :part_attributes, :dependent => :destroy
   

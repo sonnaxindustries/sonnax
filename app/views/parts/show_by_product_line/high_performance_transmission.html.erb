@@ -16,6 +16,12 @@
       <div class="meta">
         <div class="part-number"><strong>Part Number:</strong> <%= @part.part_number %></div>
 
+        <% if @part.redirected? %>
+          <div class="redirect">
+            <p><strong>This part was redirected</strong></p>
+          </div>
+        <% end %>
+
         <div class="description">
           <p><%= @part.description %></p>
           <p><%= @part.notes %></p>
