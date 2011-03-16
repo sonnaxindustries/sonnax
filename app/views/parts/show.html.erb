@@ -4,7 +4,7 @@
   <div id="col-1">
     <div class="description">
       <% if @part.primary_photo? %>
-        <%= image_tag @part.primary_photo.photo.asset.url(:medium) %>
+        <%= image_tag @part.primary_photo_src %>
       <% end %>
       <%= @part.description %>
     </div>

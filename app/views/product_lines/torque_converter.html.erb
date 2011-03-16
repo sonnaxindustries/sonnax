@@ -20,7 +20,7 @@
       <% @product_line.featured_parts.each do |part| %>
       <div class="part">
         <% if part.primary_photo? %>
-          <p><%= image_tag part.primary_photo.photo.asset.url(:medium) %></p>
+          <p><%= image_tag part.primary_photo_src %></p>
         <% end %>
         <p><%= link_to part.item, product_line_part_path(@product_line.url_friendly, part) %></p>
         <p><strong>Part Number:</strong> <%= part.part_number %></p>
