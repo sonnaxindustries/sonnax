@@ -450,8 +450,24 @@ class Part < ActiveRecord::Base
   def before_save
     self.part_type_id = PartType.default.id unless self.part_type_id?
   end
-  
+
+  def primary_photo_path
+    path = File.join(Rails.root, 'public', 'system', 'new-part-images')
+    full_file = File.join(path, self.photo)
+    full_file
+  end
+
+  def primary_photo_src
+    path = File.join('', 'system', 'new-part-images')
+    full_src = File.join(path, self.photo)
+    full_src
+  end
+
   def primary_photo
+    File.open(self.primary_photo_path) if self.primary_photo?
+  end
+  
+  def primary_photo_old
     #self.part_assets.photos.first
     self.part_assets.photos.last
   end
@@ -460,8 +476,13 @@ class Part < ActiveRecord::Base
     asset = Asset.create(:asset => val)
     self.part_assets.photos.build(:asset => asset)
   end
-  
+
   def primary_photo?
+    return false unless self.photo?
+    File.exists?(self.primary_photo_path)
+  end
+  
+  def primary_photo_old?
     !self.primary_photo.blank? && self.primary_photo.photo?
   end
 end
