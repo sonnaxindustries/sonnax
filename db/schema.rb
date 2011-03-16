@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110316154032) do
+ActiveRecord::Schema.define(:version => 20110316165334) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -212,6 +212,13 @@ ActiveRecord::Schema.define(:version => 20110316154032) do
 
   add_index "part_attributes", ["part_attribute_type_id"], :name => "index_part_attributes_on_part_attribute_type_id"
   add_index "part_attributes", ["part_id"], :name => "index_part_attributes_on_part_id"
+
+  create_table "part_redirects", :force => true do |t|
+    t.integer  "old_part_id", :null => false
+    t.integer  "part_id",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "part_types", :force => true do |t|
     t.string   "name",         :null => false
