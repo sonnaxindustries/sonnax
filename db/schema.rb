@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101202202057) do
+ActiveRecord::Schema.define(:version => 20110316154032) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name",    :null => false
@@ -242,6 +242,11 @@ ActiveRecord::Schema.define(:version => 20101202202057) do
     t.boolean  "is_featured",     :default => false
     t.boolean  "is_new_item",     :default => false
     t.boolean  "delta",           :default => true,  :null => false
+    t.string   "photo"
+    t.string   "announcement"
+    t.string   "instructions"
+    t.string   "tech"
+    t.string   "vbfix"
   end
 
   add_index "parts", ["is_featured"], :name => "index_parts_on_is_featured"
