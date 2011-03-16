@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
-  #include ExceptionNotification::Notifiable
-  #include ExceptionNotification::ConsiderLocal
   helper :all
-  protect_from_forgery :secret => 'a19f3cb7872b8ea775172c6dc0c055beef263d71085ce962671a957aa7fa7a7df156f97f375eb9d87b85ccaf3c774db552f071b6f0e325e4d46e0b7bdebb367f'
+  protect_from_forgery
 
   filter_parameter_logging :password, :password_confirmation
-  
+
   before_filter :find_cart
   before_filter :retrieve_current_controller_info
   before_filter :retrieve_product_line_nav
