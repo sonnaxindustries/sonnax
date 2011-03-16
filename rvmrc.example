@@ -1,0 +1,2 @@
+rvm --create --passenger use ruby-1.8.6-p383@sonnax > /dev/null
+#rvm use system
