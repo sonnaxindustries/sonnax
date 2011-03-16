@@ -5,6 +5,9 @@ if($.browser.msie) {
 }
 
 $(document).ready(function() {
+  //Focus on quick search
+  $('div#quick-search input[type="text"]').focus();
+
   $("a[rel*=fancybox]").click(function(e) {
     var $elem = $(this);
     var imageSource = $elem.attr('href');
