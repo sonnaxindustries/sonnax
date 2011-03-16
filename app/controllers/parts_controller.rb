@@ -136,7 +136,8 @@ class PartsController < ApplicationController
       @part = @product_line.parts.find(params[:id])
 
       if @part.redirect?
-        redirect_path = product_line_part_path(@product_line.url_friendly, @part.redirect.part)
+        new_part = @part.redirect.part
+        redirect_path = product_line_part_path(new_part.product_line.url_friendly, new_part.part)
         redirect_to(redirect_path)
         return
       end
