@@ -1,6 +1,5 @@
 class Admin::Part < Part
   class NoSearchResults < StandardError; end
-  attr_accessor :primary_photo_src
 
   has_many :part_assets, :class_name => 'Admin::PartAsset', :dependent => :destroy
   has_many :assets, :through => :part_assets
@@ -52,10 +51,6 @@ class Admin::Part < Part
 
       self.paginate(options)
     end
-  end
-
-  def primary_photo_src=(val)
-    @primary_photo_src = val
   end
 
   def after_save
