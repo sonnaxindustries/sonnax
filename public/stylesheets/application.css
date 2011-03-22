@@ -501,23 +501,19 @@ span.pdf-size {
 }
 
 div#news-and-events ul.article-list,
+div#news ul.article-list,
 div#news-and-events ul.seminar-list, {
-
   margin-bottom: 10px;
-
   list-style-type:disc;
-
 }
 
-div#news-and-events ul.article-list li {
-
+div#news-and-events ul.article-list li,
+div#news ul.article-list li {
   margin-left: 15px;
-
   list-style-type:disc;
-
-  line-height:normal;
-
+  line-height:1.5;
 }
+
 
 div#news-and-events ul.seminar-list li {
 
