@@ -18,10 +18,6 @@ class Part < ActiveRecord::Base
   
   has_many :part_attributes, :dependent => :destroy
   
-  has_many :part_assets, :dependent => :destroy
-  has_many :assets, :through => :part_assets
-  
-  
   has_many :unit_components, :dependent => :destroy
   has_many :units, :through => :unit_components
   has_many :ordered_units, :through => :unit_components, :order => 'name ASC', :source => :unit
@@ -432,26 +428,6 @@ class Part < ActiveRecord::Base
     else
       self.unit_components.first.code_on_reference_figure
     end
-  end
-  
-  def create_tech_file(asset)
-    asset = Asset.create :asset => asset
-    self.part_assets.create(:part_asset_type_id => 4, :asset => asset)
-  end
-  
-  def create_vbfix(asset)
-    asset = Asset.create :asset => asset
-    self.part_assets.create(:part_asset_type_id => 5, :asset => asset)
-  end
-  
-  def create_instructions(asset)
-    asset = Asset.create :asset => asset
-    self.part_assets.create(:part_asset_type_id => 3, :asset => asset)
-  end
-  
-  def create_announcement(asset)
-    asset = Asset.create :asset => asset
-    self.part_assets.create(:part_asset_type_id => 2, :asset => asset)
   end
   
   def make?
