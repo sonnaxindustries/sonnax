@@ -462,6 +462,72 @@ class Part < ActiveRecord::Base
     self.part_type_id = PartType.default.id unless self.part_type_id?
   end
 
+  def pdf_path_for(type)
+    type_path = "new-%s-pdfs" % [type.to_s]
+    path = File.join(Rails.root, 'public', 'system', type_path)
+    full_file = File.join(path, self.send(type))
+    full_file
+  end
+
+  def pdf_src_for(type)
+    type_path = "new-%s-pdfs" % [type.to_s]
+    path = File.join('', 'system', type_path)
+    full_src = File.join(path, self.send(type))
+    full_src
+  end
+
+  def resources?
+    self.instructions_src? || self.announcement_src? || self.tech_src? || self.vbfix_src?
+  end
+
+  def instructions_path
+    pdf_path_for(:instructions)
+  end
+
+  def instructions_src
+    pdf_src_for(:instructions)
+  end
+
+  def instructions_src?
+    self.instructions? && File.exists?(instructions_path)
+  end
+
+  def announcement_path
+    pdf_path_for(:announcement)
+  end
+
+  def announcement_src
+    pdf_src_for(:announcement)
+  end
+
+  def announcement_src?
+    self.announcement? && File.exists?(self.announcement_path)
+  end
+
+  def tech_path
+    pdf_path_for(:tech)
+  end
+
+  def tech_src
+    pdf_src_for(:tech)
+  end
+
+  def tech_src?
+    self.tech? && File.exists?(self.tech_path)
+  end
+
+  def vbfix_path
+    pdf_path_for(:vbfix)
+  end
+
+  def vbfix_src
+    pdf_src_for(:vbfix)
+  end
+
+  def vbfix_src?
+    self.vbfix? && File.exists?(self.vbfix_path)
+  end
+
   def primary_photo_path
     path = File.join(Rails.root, 'public', 'system', 'new-part-images')
     full_file = File.join(path, self.photo)
@@ -477,23 +543,9 @@ class Part < ActiveRecord::Base
   def primary_photo
     File.open(self.primary_photo_path) if self.primary_photo?
   end
-  
-  def primary_photo_old
-    #self.part_assets.photos.first
-    self.part_assets.photos.last
-  end
-
-  def primary_photo_src=(val)
-    asset = Asset.create(:asset => val)
-    self.part_assets.photos.build(:asset => asset)
-  end
 
   def primary_photo?
     return false unless self.photo?
     File.exists?(self.primary_photo_path)
-  end
-  
-  def primary_photo_old?
-    !self.primary_photo.blank? && self.primary_photo.photo?
   end
 end

@@ -45,14 +45,8 @@
       
       
     </div>
-    <div class="resources">
-      <h2>Resources</h2>
-      <% if @part.part_assets.resources.any? %>
-        <% @part.part_assets.resources.each do |pa| %>
-        <li><%= link_to pa.part_asset_type.name, pa.asset.asset.url %> <span class="filesize">(<%= number_to_human_size(pa.asset.asset_file_size) %> PDF)</span></li>
-        <% end %>
-      <% end %>
-    </div>
+
+    <%= render :partial => 'parts/part_resources', :locals => { :part => @part } %>
 
     <div class="more-information">
       <h2>More Information</h2>

@@ -64,19 +64,48 @@
     <%= f.label :weight, 'Weight' %>
     <%= f.text_field :weight, :size => 5 %>
   </div>
+<fieldset>
+  <legend>Asset Information</legend>
 
-  <div class="text photo">
-    <%= f.error_message_on :photo %>
-    <%= f.label :photo, 'Photo File Name' %>
-    <%= f.text_field :photo, :size => 20 %>
-  </div>
-  
   <% if @part.primary_photo? %>
     <p><strong>Current Photo of the Part</strong></p>
     <div class="avatar" id="<%= dom_id(@part, :primary_photo) %>">
       <%= image_tag @part.primary_photo_src, :class => 'photo' %>
     </div>
   <% end %>
+
+  <div class="text photo">
+    <%= f.error_message_on :photo %>
+    <%= f.label :photo, 'Photo File Name' %>
+    <%= f.text_field :photo, :size => 20 %>
+  </div>
+
+  <div class="text announcement">
+    <%= f.error_message_on :announcement %>
+    <%= f.label :announcement, 'Announcement File Name' %>
+    <%= f.text_field :announcement, :size => 20 %>
+  </div>
+
+  <div class="text instructions">
+    <%= f.error_message_on :instructions %>
+    <%= f.label :instructions, 'Instructions File Name' %>
+    <%= f.text_field :instructions, :size => 20 %>
+  </div>
+
+  <div class="text tech">
+    <%= f.error_message_on :tech %>
+    <%= f.label :tech, 'Tech File Name' %>
+    <%= f.text_field :tech, :size => 20 %>
+  </div>
+
+  <div class="text vbfix">
+    <%= f.error_message_on :vbfix %>
+    <%= f.label :vbfix, 'VBFix File Name' %>
+    <%= f.text_field :vbfix, :size => 20 %>
+  </div>
+
+
+</fieldset>
   
 <fieldset>
   <legend>Reference Code Information</legend>
