@@ -3384,6 +3384,9 @@ div#part div#col-2 div.resources h2 {
   margin-top: 0;
 
 }
+div.resources ul {
+  list-style: none;
+}
 
 div#part div.details div.photo {
 

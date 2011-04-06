@@ -1,20 +1,22 @@
 <% if part.resources? %>
 <div class="resources">
-  <h2>PDF Resources</h2>
-  <% if part.announcement_src? %>
-    <li><%= link_to 'Part Summary', part.announcement_src %></li>
-  <% end %>
+  <h2>Resources</h2>
+  <ul>
+    <% if part.announcement_src? %>
+      <li><%= link_to 'Part Summary', part.announcement_src, :class => 'pdf' %></li>
+    <% end %>
 
-  <% if part.instructions_src? %>
-    <li><%= link_to 'Instructions', part.instructions_src %></li>
-  <% end %>
+    <% if part.instructions_src? %>
+      <li><%= link_to 'Instructions', part.instructions_src %></li>
+    <% end %>
 
-  <% if part.vbfix_src? %>
-    <li><%= link_to 'VB-FIX', part.vbfix_src %></li>
-  <% end %>
+    <% if part.vbfix_src? %>
+      <li><%= link_to 'VB-FIX', part.vbfix_src %></li>
+    <% end %>
 
-  <% if part.tech_src? %>
-    <li><%= link_to 'Tech', part.tech_src %></li>
-  <% end %>
+    <% if part.tech_src? %>
+      <li><%= link_to 'Tech', part.tech_src %></li>
+    <% end %>
+  </ul>
 </div>
 <% end %>
