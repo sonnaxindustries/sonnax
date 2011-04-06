@@ -7,15 +7,15 @@
     <% end %>
 
     <% if part.instructions_src? %>
-      <li><%= link_to 'Instructions', part.instructions_src %></li>
+      <li><%= link_to 'Instructions', part.instructions_src, :class => 'pdf' %></li>
     <% end %>
 
     <% if part.vbfix_src? %>
-      <li><%= link_to 'VB-FIX', part.vbfix_src %></li>
+      <li><%= link_to 'VB-FIX', part.vbfix_src, :class => 'pdf' %></li>
     <% end %>
 
     <% if part.tech_src? %>
-      <li><%= link_to 'Tech', part.tech_src %></li>
+      <li><%= link_to 'Tech', part.tech_src, :class => 'pdf' %></li>
     <% end %>
   </ul>
 </div>
