@@ -1,503 +1,303 @@
 /* -----------------------------
-
 Blue (Navigation, Text): 00548e
-
 Gray (hover): 888888
-
 Orange (hover): cc9933
-
 ----------------------------- */
-
 body {
-
   font: normal 16px/1.8 "Helvetica Neue",Helvetica,sans-serif;
-
   text-align: center;
-
   color: #000;
-
 }
 
 p {
-
   line-height: 1.5;
-
   margin-bottom: 10px;
-
 }
 
 strong {
-
   font-weight: bold;
-
 }
 
 img.Rphoto {
-
   float: right;
-
   padding-left: 10px;
-
   padding-right: 5px;
-
 }
 
 img.Lphoto {
-
   float: left;
-
   padding-left: 5px;
-
   padding-right: 10px;
-
 }
 
 #disclaimer {
-
   width: 800px;
-
   margin: 0 auto;
-
   color: #888;
-
   font-size: 11px;
-
   text-align: left;
-
   font-weight: bold;
-
   margin-top: 10px;
-
   line-height: 1.3;
-
 }
 
 #container {
-
   width: 800px;
-
   text-align: left;
-
   margin: 0 auto;
-
   border: 1px solid #00548e;
-
   margin-top: 8px;
-
   font-size: 12px;
-
 }
 
 #extra {
-
   float: left;
-
   width: 100%;
-
   font-size: 12px;
-
   color: #fff;
-
   background-color: #00548e;
-
   border-top: 1px solid #000000;
-
 }
 
 #extra p {
-
   line-height: 1.7;
-
   padding: 7px 10px 0 10px;
-
 }
 
   #extra p.addr {
-
     float: left;
-
   }
 
   #extra p.communication {
-
     float: right;
-
   }
 
   #extra p a {
-
     color: #fff;
-
   }
 
 #wrapper {
-
   float: left;
-
   width: 100%;
-
 }
 
 #wrapper-inner {
-
   padding: 15px 15px 30px 17px;
-
   float: left;
-
   width: 95%;
-
 }
 
 #masthead h1 a {
-
   background: url('/images/header.jpg') 100% 0 no-repeat;
-
   display: block;
-
   height: 120px;
-
   text-indent: -9999px;
-
 }
 
 #masthead ul ul {
-
   height: auto;
-
 }
 
 #masthead ul {
-
   border-top: 1px solid #000000;
-
   border-bottom: 1px solid #000000;
-
   width: 100%;
-
   background-color: #00548e;
-
   float: left;
-
   height: 36px;
-
   padding: 0;
-
   margin: 0;
-
   list-style: none;
-
 }
 
 #masthead ul li.home,
-
 #masthead ul li.home a,
-
 #masthead ul li.product-lines,
-
 #masthead ul li.product-lines a,
-
 #masthead ul li.search,
-
 #masthead ul li.search a,
-
 #masthead ul li.news-and-events,
-
 #masthead ul li.news-and-events a,
-
 #masthead ul li.techincal-library,
-
 #masthead ul li.technical-library a {
-
   width: 132px;
-
   text-align: center;
-
 }
 
 #masthead ul li.about-us,
-
 #masthead ul li.about-us a {
-
   width: 135px;
-
   text-align: center;
-
   border-right: none;
-
 }
 
 #masthead ul li {
-
   border-right: 1px solid #000;
-
 }
 
 #masthead ul li a {
-
   font-size: 12px;
-
   line-height: 3;
-
   height: 36px;
-
   display: block;
-
   color: #fff;
-
   text-decoration: none;
-
 }
 
 #masthead ul li a:hover {
-
   background: #888888;
-
 }
 
 #masthead ul li {
-
   margin: 0;
-
   padding: 0;
-
   float: left;
-
 }
 
 #masthead ul li ul li a {
-
   line-height: 2.2;
-
   height: 24px;
-
   padding-left: 10px;
-
 }
 
 #masthead ul li ul li {
-
   text-align: left;
-
   border-bottom: 1px solid #000;
-
   border-left: 1px solid #000;
-
 }
 
 #masthead ul li.product-lines ul {
-
   width: 242px;
-
 }
 
 #masthead ul li.product-lines ul a {
-
   text-align: left;
-
   width: 230px;
-
 }
 
 #masthead ul li.technical-library ul,
-
 #masthead ul li.about-us ul {
-
   width: 202px;
-
 }
 
 #masthead ul li.technical-library ul li.last,
-
 #masthead ul li.product-lines ul li.last,
-
 #masthead ul li.about-us ul li.last {
-
   border-bottom: none;
-
 }
 
 #masthead ul li.technical-library ul a,
-
 #masthead ul li.about-us ul a {
-
   text-align: left;
-
   width: 190px;
-
 }
 
 #masthead ul li ul {
-
   position: absolute;
-
   left: -999em;
-
 }
 
 #masthead ul li:hover ul,
-
 #masthead ul li.sfhover ul {
-
   left: auto;
-
 }
 
 h1 {
-
   font-size: 22px;
   line-height: 1.2;
   padding-bottom: 5px;
-
 }
 
 sup {
-
   vertical-align: top;
-
   font-size: 9px;
-
 }
 
 ul.indented {
-
 	padding: 0 0 5px 20px;
-
 }
 
 body div.notice {
-
   font-weight: bold;
-
   line-height: 1;
-
   font-size: 14px;
-
   background: #eee;
-
   padding: 10px;
-
   border: 1px solid #ddd;
-
   margin: 15px 0;
-
 }
 
 body div.notice p {
-
   background: transparent url('/images/icons/tick.png') 0 50% no-repeat;
-
   padding-left: 20px;
-
 }
 
 div.note {
-
   clear: both;
-
   background: #eee;
-
   padding: 10px 15px;
-
   border: 1px solid #ddd;
-
   margin: 15px 0;
-
   width: 100%;
-
 }
 
 div#product-line div.note {
-
   width: 93%;
-
 }
 
 a.pdf {
-
   padding-left: 17px;
-
   background: transparent url('/images/icons/pdf-12x12.gif') 0 0 no-repeat;
-
 }
 
 a.quicktime {
-
   padding-left: 17px;
-
   background: transparent url('/images/icons/quicktime-12x12.jpg') 0 0 no-repeat;
-
 }
 
 a.wmv {
-
   padding-left: 17px;
-
   background: transparent url('/images/icons/wmv-12x12.gif') 0 0 no-repeat;
-
 }
 
 a.email {
-
   padding-left: 22px;
-
   background: transparent url('/images/icons/email.png') 0 0 no-repeat;
-
 }
 
 div.checkbox {
-
   margin: 5px 0;
-
 }
 
 div.checkbox input {
-
   float: left;
-
   margin-right: 5px;
-
 }
 
 span.filesize {
-
   font-size: 10px;
-
   color: #666;
-
 }
 
 .inactive,
-
 .even .inactive {
-
   color: #ddd;
-
   font-size: 10px;
-
   text-transform: uppercase;
-
 }
 
 .odd .inactive {
-
   color: #333;
-
 }
 
 span.required {
-
   color: #ff0000;
-
   font-weight: bold;
-
 }
 
 span.pdf-size {
-
   font-size: 11px;
-
   vertical-align: middle;
-
 }
 
 div#news-and-events ul.article-list,
@@ -514,664 +314,408 @@ div#news ul.article-list li {
   line-height:1.5;
 }
 
-
 div#news-and-events ul.seminar-list li {
-
   margin-left: 15px;
-
   list-style-type:disc;
-
   line-height:normal;
   font-weight: bold;
-
 }
 
 div#page {
-
   margin-right: 15px;
-
 }
 
 div#page h2 {
-
   font-size: 16px;
-
   margin-bottom: 6px;
-
 }
 
 a.new-item {
-
   background-color: #00548e;
-
   color: #fff;
-
   text-decoration: none;
-
   padding: 2px 5px;
-
 }
 
 /* -- =FORMS -- */
-
 form fieldset legend {
-
   position: absolute;
-
   left: -9999px;
-
 }
 
 form div.text label,
-
 form div.textarea label,
-
 form div.select label,
-
 form div.date label,
-
 form div.datetime label {
-
   display: block;
-
 }
 
 form div.text input,
-
 form div.textarea textarea {
-
   padding: 2px;
-
   font-weight: bold;
-
   color: #666;
-
 }
 
 /* -- =DISTRIBUTORS -- */
-
 /* -- =PRODUCTS TABLES -- */
 
 table.base {
-
   margin-bottom: 15px;
-
 }
 
-
-
 table.base thead th,
-
 #distributors table thead th {
-
   font-weight: bold;
-
   border-bottom: 2px solid #666;
-
   border-collapse: collapse;
-
 }
 
 table.base tbody td,
-
 #distributors table tbody td {
-
   line-height: 1.7;
-
   font-size: 12px;
-
   padding: 3px 2px;
-
   border-bottom: 1px solid #ddd;
-
 }
 
 /* -- =Static Product TABLES -- */
 
 table.static {
-
   margin-bottom: 15px;
-
 }
 
 div.power-train-savers table.static tbody td.number,
-
 div.ring-gears table.static tbody td.number {
-
 	text-align:right;
-
 	padding-right: 18px;
-
   border-right: 1px solid #666;
-
 }
 
 div.ring-gears table.static tbody td {
-
   border-right: 1px solid #666;
-
 }
 
 div.ring-gears table.static tbody td.end {
-
   border-right: 0;
-
 }
 
 div.ring-gears table.static tbody td.r-line {
-
   border-right: 1px solid #666;
-
 }
 
 div.power-train-savers table.static tbody td.series {
-
 	vertical-align:middle;
-
 	border-bottom: 2px solid #666;
-
 	border-right: 2px solid #666;
-
 }
 
 div.power-train-savers table.static tbody td.capacity {
-
 	vertical-align:bottom;
-
 	border-bottom: 1px solid #666;
-
 	border-left: 1px solid #666;
-
 }
 
 div.power-train-savers table.static tbody td.capacityBottom {
-
 	vertical-align:bottom;
-
 	border-bottom: 2px solid #666;
-
 	border-left: 1px solid #666;
-
 }
 
 div.power-train-savers table.static tbody td.mid {
-
 	vertical-align:bottom;
-
 	border-bottom: 1px solid #666;
-
 }
 
 div.power-train-savers table.static tbody td.midBottom {
-
 	vertical-align:bottom;
-
 	border-bottom: 2px solid #666;
-
 }
 
 div.ring-gears table.static thead th.number {
-
 	text-align:center;
-
 	padding-left 3px;
-
 	line-height: 1.2;
-
   border-right: 1px solid #666;
-
   vertical-align: bottom;
-
 }
 
 div.ring-gears table.static thead th {
-
 	padding-right: 12px;
-
 	line-height: 1.2;
-
   vertical-align: bottom;
-
   border-right: 1px solid #666;
-
 }
 
 div.power-train-savers table.static thead th.end {
-
 	padding-right: 12px;
-
 	line-height: 1.2;
-
   vertical-align: bottom;
-
   border-right: 0;
-
 }
 
 div.ring-gears table.static thead th.end {
-
 	border-right: 0px;
-
 }
 
 div.power-train-savers table.static thead th.col {
-
 	border-right: 2px solid #666;
-
 	vertical-align:bottom;
-
 }
 
 div.power-train-savers table.static thead th.colLarge {
-
 	vertical-align:bottom;
-
 }
 
 div.harley-davidson table.static tbody td.number,
-
 div.harley-davidson table.static thead th.number {
-
 	text-align:right;
-
 	padding-right: 12px;
-
 }
 
 div.harley-davidson table.static thead th {
-
 	padding-right: 12px;
-
 	vertical-align:bottom;
-
 }
 
 div.harley-davidson table.static thead th.sonnax-no,
-
 div.harley-davidson table.static thead th.oem-no {
-
 	width: 150px;
-
 }
 
 div.harley-davidson table.static thead th.title {
-
 	width: 300px;
-
 }
 
 div.harley-davidson table.static tbody tr.blue,
-
 div.driveline table.static tbody tr.blue,
-
 div.ring-gears table.static tbody tr.blue,
-
 div.power-train-savers table.static tbody tr.blue {
-
 	background-color: #cad6df;
-
 }
 
 div.harley-davidson table.static tbody td.last,
-
 div.ring-gears table.static tbody td.last {
-
 	border-bottom: 1px solid #666;
-
 }
 
 table.static thead th,
-
 #harley-davidson table thead th {
-
   font-weight: bold;
-
   padding: 0px 5px;
-
   border-bottom: 2px solid #666;
-
   border-collapse: collapse;
-
 }
 
 table.static tbody td,
-
 div.harley-davidson table.static tbody td {
-
   line-height: 1.2;
-
   font-size: 12px;
-
   padding: 3px 5px;
-
 }
 
 div.harley-davidson table.static tbody td.col {
-
   line-height: 1.7;
-
   font-size: 12px;
-
   padding: 0px 5px;
-
   border-right: 2px solid #666;
-
 }
 
 div.harley-davidson table.static tbody td.collast {
-
   line-height: 1.7;
-
   font-size: 12px;
-
   padding: 0px 5px;
-
   border-right: 2px solid #666;
-
-	border-bottom: 1px solid #666;
-
+  border-bottom: 1px solid #666;
 }
-
-
 
 div.harley-davidson table.static tbody td.description {
-
   line-height: 1.7;
-
   font-size: 12px;
-
   padding: 0px 5px;
-
   border-bottom: 1px solid #666;
-
   border-right: 2px solid #666;
-
 }
-
 
 
 /* -- =LINKS -- */
 
 a {
-
   color: #00548e;
-
-
-
 }
 
 /* -- =CLEARFIX -- */
 
 .group:after {
-
   content: ".";
-
   display: block;
-
   height: 0;
-
   clear: both;
-
   visibility: hidden;
-
 }
 
 div.options-wrapper {
-
   float: left;
-
   margin: 20px 0;
-
 }
 
 div.torque-converter div.options-wrapper,
-
 div.torque-converter div.options-wrapper div.separator,
-
 div.torque-converter div.options-wrapper div.search,
-
 div.torque-converter div.options-wrapper div.filter {
-
   float: none;
-
   width: auto;
-
 }
 
 div.filter {
-
   float: left;
-
   width: 300px;
-
 }
 
 div.separator {
-
   float: left;
-
   width: 50px;
-
 }
 
 div.search {
-
   float: left;
-
   width: 410px;
-
 }
 
 div.options-wrapper label {
-
   font-weight: bold;
-
   float: left;
-
 }
 
 div.filter label {
-
   width: 50px;
-
 }
 
 div.search label {
-
   width: 70px;
-
 }
 
 div.search #search-options {
-
   float: left;
-
 }
 
 div.search div.submit {
-
   float: left;
-
 }
 
 /* -- TECHNICAL LIBRARY --*/
 
 div.indicator {
-
   display: inline;
-
   margin-left: 5px;
-
 }
 
 div.technical-library-index ul {
-
   margin-left: 20px;
-
   margin-bottom: 10px;
-
 }
 
 div.technical-library-index ul a {
-
   color: #00548e;
-
   font-weight: bold;
-
   font-size: 14px;
-
 }
 
 div.publication-list label {
-
   font-weight: bold;
-
 }
 
 div.publication-list div#filter-options {
-
   width: 100%;
-
   padding: 15px 0 25px 0;
-
 }
 
 div.publication-list form {
-
   width: 100%;
-
 }
 
 div.publication-list form select {
-
   width: 200px;
-
 }
 
 div.publication-list form label {
-
   width: 15%;
-
   float: left;
-
 }
 
 div.publication-list div.make-units {
-
   float: left;
-
   width: 39%;
-
 }
 
 div.publication-list div.make-units .make-selector {
-
   padding-bottom: 10px;
-
 }
 
 div.publication-list div.subjects {
-
   float: left;
-
   width: 49%;
-
 }
 
 div.publication-list div.publications {
-
   clear: both;
-
 }
 
 div#product-line div.filter form div.submit,
-
 div.publication-list form div.submit {
-
   display: none;
-
 }
 
 div.publication-list table tr.even {
-
-
-
 }
 
 div.publication-list table tr.odd {
-
   background-color: #cad6df;
-
 }
 
 div.publication-list table {
-
   width: 100%;
-
   float: left;
-
   clear: both;
-
 }
 
 div.publication-list table a {
-
   color: #00548e;
-
 }
 
 div.publication-list table tbody a {
-
   text-decoration: none;
-
 }
 
 div.publication-list table tbody td {
-
   padding: 4px 5px;
-
 }
 
 div.publication-list table tbody td.article {
-
   padding-left: 5px;
-
 }
 
 div.publication-list table thead th.article,
-
 div.publication-list table tbody td.article {
-
   width: 60%;
-
 }
 
 div.publication-list table thead th.authors,
-
 div.publication-list table tbody td.authors {
-
   width: 20%;
-
 }
 
 div.publication-list table thead th.published-date,
-
 div.publication-list table tbody td.published-date {
-
   width: 19%;
-
 }
 
 div.publication-list table thead th {
-
   font-weight: bold;
-
   color: #00548e;
-
   font-size: 14px;
-
   border-bottom: 2px solid #ddd;
-
 }
 
 
@@ -1179,419 +723,258 @@ div.publication-list table thead th {
 /* =TECH LIBRARY ARTICLES*/
 
 table.article {
-
   margin-bottom: 15px;
-
   border:  #00548e 1px solid;
-
 }
 
 table.article thead th {
-
   vertical-align: bottom;
-
   border-bottom: solid 2px #666;
-
   padding: 0 10px 0 10px;
-
 }
 
 table.article tbody td {
-
   vertical-align: bottom;
-
   border-right: solid 1px #666;
-
   border-bottom: solid 1px #666;
-
   padding: 0 10px 0 10px;
 
 }
 
 div.publication-body td.articlefigure {
-
 	font-weight: bold;
-
 	text-align: right;
-
 	padding-right: 10px;
-
 	border: 1px;
-
 	vertical-align: bottom;
-
 }
 
 div.publication-body p.body {
-
 	padding-right: 5px;
-
 	line-height: 1.5;
-
 }
 
 div.publication-body table.static {
-
   margin-bottom: 15px;
-
 }
 
 div.publication-body p.partnumber {
-
 	font-weight: bold;
-
 }
 
 div.publication-body p.credits {
-
 	border-top: #00548e 1px solid;
-
 	padding: 5px;
-
 	margin-top: 20px;
-
 	line-height: 1.5;
-
 	font-style: italic;
-
 }
 
 div.publication-body p.note {
-
 	padding-right: 5px;
-
 	font-style: italic;
-
 	line-height: 1.5;
-
 }
 
 div.publication-body p.partnumber {
-
 	font-weight: bold;
-
 }
 
 div.publication-body p.title {
-
 	color: #00458e;
-
 	font-size: 16px;
-
 	font-weight: bold;
-
 }
 
 div.publication-body ul.articlelist {
-
 	list-style: disc;
-
 }
 
 div.publication-body ul.articlelist li {
-
 	list-style: disc;
-
 	margin-left: 30px;
-
 	margin-bottom: 5px;
-
 	line-height: 1.5;
-
 }
 
 div.publication-body ol.articleordlist {
-
 	list-style: decimal;
-
 }
 
 div.publication-body ol.articleordlist li {
-
 	list-style: decimal;
-
 	margin-left: 30px;
-
 	margin-bottom: 5px;
-
 	line-height: 1.5;
-
 }
 
 div.publication-body p.subtitle {
-
 	color: #00458e;
-
 	font-size: 14px;
-
 	font-weight: bold;
-
 }
 
 div.publication-body p.subtitle2 {
-
 	font-size: 14px;
-
 	font-weight: bold;
-
 }
 
 img.articleimageleft {
-
 	border: #00548e 1px solid;
-
 	padding: 0;
-
 	margin: 3px 10px 3px 0px;
-
 	float: left;
-
 }
 
 img.articleimage {
-
 	border: #00548e 1px solid;
-
 	padding: 0;
-
 	margin: 10px 0px 10px 0px;
-
 }
 
 img.articleimageright {
-
 	border: #00548e 1px solid;
-
 	padding: 0;
-
 	margin: 3px 10px 3px 15px;
-
 	float: right;
-
 }
-
 
 
 /* =TABLES */
 
 table.tablesorter thead tr .header {
-
 	background-image: url(/images/icons/bg.gif);
-
 	background-repeat: no-repeat;
-
 	background-position: 0 50%;
-
 	padding-left: 18px;
-
 	cursor: pointer;
-
 }
 
 table.tablesorter thead tr .headerSortUp {
-
 	background-image: url(/images/icons/asc.gif);
-
 }
 
 table.tablesorter thead tr .headerSortDown {
-
 	background-image: url(/images/icons/desc.gif);
-
 }
 
 /* =HOME */
 
 div#home div#parts h3 {
-
   font-weight: bold;
-
   color: #00548e;
-
   font-size: 14px;
-
 }
 
   div#home div#parts {
-
     margin-bottom: 10px;
-
   }
 
   div#home div#parts,
-
   div#home div#parts ul {
-
     float: left;
-
   }
 
   div#home div#parts ul li p.more {
-
     padding-top: 7px;
-
     text-align: left;
-
   }
 
   div#home div#parts ul li {
-
     margin-bottom: 31px;
-
   }
 
   div#home div#parts ul li img {
-
     float: left;
-
     margin-right: 15px;
-
     border: 1px solid #00548e;
-
   }
 
   div#home div#parts ul li h3 {
-
     width: 413px;
-
     float: right;
-
     margin: 0 0 7px 0;
-
     padding-top: 0;
-
     line-height: 1;
-
   }
 
   div#home div#parts ul li p {
-
     line-height: 1.3;
-
   }
 
 div#home div#intro {
-
   font-size: 15px;
-
   line-height: 1.3;
-
   margin-bottom: 30px;
-
 }
 
 div#home div#intro strong {
-
   font-weight: bold;
-
 }
 
 div#home div#col-1 {
-
   width: 580px;
-
   float: left;
-
 }
 
 div#home div#col-2 {
-
   width: 160px;
-
   float: right;
-
 }
 
   div#home div#col-2 div#insider-intro,
-
   div#home div#col-2 div#espanol {
-
     margin-bottom: 45px;
-
   }
 
   div#home div#col-2 div#insider-intro h3 {
-
   font-weight: bold;
-
   line-height: 1.0;
-
   padding-bottom: 8px;
-
   color: #00548e;
-
   font-size: 14px;
-
   }
 
   div#home div#col-2 div#insider-intro {
-
     text-align: center;
-
   }
 
   div#home div#col-2 div#insider-intro a {
-
     line-height: 1.2;
-
   }
 
   div#home div#col-2 div#insider-intro p {
-
     font-size: 12px;
-
     line-height: 1.2;
-
     color: #000;
-
   }
 
   div#home div#col-2 div#espanol h4 {
-
     font-size: 21px;
-
     line-height: 1.3;
-
     font-weight: bold;
-
     color: #00548e;
-
     text-align: center;
-
   }
 
   div#home div#col-2 div#sitemap h4 {
-
     font-size: 21px;
-
     line-height: 1.3;
-
     font-weight: bold;
-
     color: #00548e;
-
     text-align: center;
-
     text-transform: uppercase;
-
   }
 
 div#home div#col-3 {
-
   clear: both;
-
   float: left;
-
 }
 
 div#home div.iso-registered {
-
   font-size: 10px;
-
   font-weight: bold;
-
   color: #00548e;
-
   text-align: center;
 
 }
@@ -1599,1387 +982,894 @@ div#home div.iso-registered {
 /* =VALVEBODYLAYOUTS */
 
 a.app-guide {
-
   color: #ff0000;
-
   font-style: italic;
-
 }
 
 div#valve-body-layouts ul li ul {
-
   text-align: center;
-
 }
 
 div#valve-body-layouts ul li ul li {
-
   margin: 0;
-
   height: auto;
-
 }
 
 div#valve-body-layouts ul {
-
   float: left;
-
 }
 
 div#valve-body-layouts ul li a {
-
   font-weight: bold;
-
 }
 
 div#valve-body-layouts ul li {
-
   float: left;
-
   width: 250px;
-
   height: 200px;
-
   margin: 0 3px 30px 0;
-
 }
 
 div#valve-body-layouts ul li img {
-
   float: left;
-
 }
 
 div#valve-body-layouts a {
-
   clear: both;
-
 }
 
 /* =SOCIAL */
 
 div.social-media {
-
   float: left;
-
   width: 200px;
-
   margin: 0 auto;
-
   margin-bottom: 20px;
-
 }
 
 div.social-media div.twitter {
-
   float: left;
-
   width: 185px;
-
   line-height: 1;
-
   margin-right: 60px;
-
   margin-left: 132px;
 
 }
 
 div.social-media div.facebook {
-
   margin: left;
-
   width: 240px;
-
   line-height: 1;
-
 }
 
 div.social-media div.twitter img,
 div.social-media div.facebook img,
 div.social-media div.insider-intro img {
-
   margin: auto;
-
 }
 
 a.twitter,
-
 a.facebook {
-
   font-size: 16px;
-
   color: #00548e;
-
   font-weight: bold;
-
 }
 
 /* =SOLENOIDS */
 
 div#solenoids div#col-1 {
-
   width: 415px;
-
   float: left;
-
 }
 
 div#solenoids div#col-2 {
-
   float: right;
-
   width: 340px;
-
 }
 
 h3 {
-
   font-weight: bold;
-
   font-size: 14px;
-
 }
 
 h2,
 
 div#solenoids h2,
-
 div#solenoids h3,
-
 div#solenoids ol li strong {
-
   font-weight: bold;
-
   color: #00548e;
-
   line-height: 1.3;
   font-size:18px;
-
 }
 
 div#solenoids h2 {
-
   font-size: 16px;
-
 }
 
 div#solenoids h3 {
-
   font-size: 14px;
-
 }
 
 div#solenoids h3.byline {
-
   margin: 10px 0;
-
 }
 
 div#solenoids ol li strong {
-
   font-weight: bold;
-
 }
 
 div#solenoids p.note,
-
 div#solenoids div.contact {
-
   font-size: 10px;
-
   line-height: 1.2;
-
 }
 
 div#solenoids ol {
-
   margin: 10px 0 10px 30px;
-
   list-style-type: decimal;
-
 }
 
 div#solenoids ul {
-
   margin-top: 10px;
-
   margin-left: 15px;
-
 }
 
 div#solenoids ul li {
-
   line-height: 1.5;
-
   list-style: disc;
-
   margin: 0 0 10px 0;
-
 }
 
 div#cart form div.formError,
-
 div#catalog-request form div.formError,
-
 div#contact form div.formError,
-
 div#solenoids form div.formError {
-
   clear: both;
-
   font-weight: bold;
-
   color: #ff0000;
-
 }
 
 div#solenoids form div.formError {
-
   text-align: center;
-
 }
 
 div#solenoids div#return-form {
-
   margin-bottom: 40px;
-
 }
 
 div#contact form label,
-
 div#solenoids form label {
-
   width: 140px;
-
   clear: both;
-
   float: left;
-
   text-align: right;
-
   margin-right: 18px;
-
   margin-bottom: 6px;
-
 }
 
 div#contact form input,
-
 div#contact form textarea,
-
 div#solenoids form input {
-
   float: left;
-
 }
 
 div#contact form div.submit input,
-
 div#solenoids form fieldset.submit input {
-
   clear: both;
-
   margin-top: 15px;
-
   margin-left: 150px;
-
 }
 
 div#solenoids div#return-form {
-
   margin-top: 20px;
-
 }
 
 /* =SOLENOID THANKS */
 
 div#solenoid-thanks h2 {
-
   font-size: 16px;
-
   font-weight: bold;
-
   color: #000;
-
 }
 
 /* =HISTORY */
 
 div#history-and-mission ul {
-
   list-style: disc;
-
   margin-left: 20px;
-
 }
 
 div#history-and-mission ul li {
-
   line-height: 1.5;
-
   margin-bottom: 10px;
-
 }
 
 div#history-and-mission h2 {
-
   margin: 6px 0px;
-
   font-size: 16px;
-
 }
 
 div#history-and-mission p {
-
   margin-bottom: 10px;
-
 }
 
 div#history-and-mission div#col-1 {
-
   float: left;
-
   width: 390px;
-
 }
 
 div#history-and-mission div#col-2 {
-
   float: right;
-
   width: 365px;
-
 }
 
 /* =NEWSLETTER */
 
 div#subscribe-to-newsletter h2 {
-
   font-size: 16px;
-
   margin: 6px 0;
-
 }
 
 div#subscribe-to-newsletter div.cc-form {
-
   margin: 20px 0;
-
 }
 
 div#subscribe-to-newsletter div.cc-form label {
-
   float: left;
-
   margin-right: 5px;
-
 }
 
 div#subscribe-to-newsletter div.cc-form input {
-
   float: left;
-
   margin-right: 5px;
-
 }
 
 div#subscribe-to-newsletter div.cc-form div.submit {
-
   float: left;
-
 }
 
 /* =INSIDER */
 
 div#insider h2 {
-
   font-size: 16px;
-
   margin: 6px 0;
-
 }
 
 div#insider ul.benefits {
-
   list-style: disc;
-
   margin-bottom: 20px;
-
 }
 
 div.newsletter-signup,
-
 div.newsletter-subscribe {
-
   margin: 20px 0;
-
 }
 
 div.newsletter-signup img,
-
 div.newsletter-subscribe img {
-
   float: left;
-
   margin-right: 10px;
-
 }
 
 div.newsletter-signup a,
-
 div.newsletter-subscribe a {
-
   color: #00548e;
-
   font-weight: bold;
-
 }
 
 div#insider ul.benefits li {
-
   margin-left: 20px;
-
 }
 
 div#insider div#col-1 {
-
   float: left;
-
   width: 350px;
-
 }
 
 div#insider div#col-2 {
-
   float:right;
-
   width: 350px;
-
 }
 
 div#insider div#col-2 img {
-
   margin-bottom: 20px;
-
 }
 
 /* =DIRECTIONS */
 
 div#directions ul {
-
   list-style: disc;
-
 }
 
 div#directions strong {
-
   font-weight: bold;
-
 }
 
 div#directions h2 {
-
   margin: 6px 0;
-
   font-size: 16px;
-
 }
 
 div#directions div.map {
-
   text-align: left;
-
   padding-left: 20px;
-
 }
 
 div#directions ul li {
-
   margin-left: 20px;
-
 }
 
 /* =CONTACT */
 
 div#contact dt {
-
   font-size: 14px;
-
   font-weight: bold;
-
 }
 
 div#contact form {
-
   margin: 15px 0 0 0;
-
 }
 
 /* =CAREERS */
 
 div#career-opportunities h2 {
-
   font-size: 16px;
-
   margin: 6px 0;
-
 }
 
 div#career-opportunities img {
-
   margin-bottom: 15px;
-
 }
 
 /* =TASCFORCE */
-
 div#tasc-force div#col-1 p img {
-
   float: left;
-
   margin: 0 7px 7px 0;
-
 }
 
 div#tasc-force div#col-1 {
-
   float: left;
-
   width: 430px;
-
 }
 
 div#tasc-force div#col-2 {
-
   float: right;
-
   width: 325px;
-
 }
 
 div#tasc-force h2 {
-
   margin: 6px 0;
-
   font-size: 16px;
 
 }
 
 div.photo em.caption,
-
 div.photosm em.caption {
-
   line-height: 1.5;
-
   color: #00548e;
-
   font-size: 10px;
-
   font-style: italic;
-
 }
 
 div#tasc-force div.photo.half {
-
   padding-top: 20px;
-
 }
 
 div#tasc-force div.photo.half img {
-
   float: left;
-
   margin-right: 10px;
-
 }
 
 div#tasc-force div.photo.whole {
-
   width: 290px;
-
   margin-bottom: 20px;
-
 }
 
 div#tasc-force div.photo.whole img {
-
   float: left;
-
   width: 290px;
-
 }
 
 div#tasc-force div.photo.half em.caption {
-
   float: left;
-
   width: 150px;
-
 }
 
 div#tasc-force div.photo.whole em.caption {
-
   clear: both;
-
 }
 
 div.testimonies {
-
   margin-right: 15px;
-
 }
 
 div.testimonies blockquote {
-
   font-style: italic;
-
 }
 
 div.testimonies cite {
-
   color: #555;
-
 }
 
 div.testimonies ul {
-
   margin-top: 10px;
-
 }
 
 div.testimonies ul li {
-
   border-bottom: 1px solid #666;
-
   margin-bottom: 10px;
-
   padding-bottom: 10px;
-
 }
 
 div.testimonies ul li.last {
-
   border: none;
-
 }
 
 /* =FLAGS */
 
 ul.flags {
-
   float: left;
-
   margin-bottom: 10px;
 
 }
 
 ul.flags li {
-
   text-indent: -9999px;
-
   width: 74px;
-
   height: 47px;
-
   background-repeat: no-repeat;
-
   background-position: 0 0;
-
   border: 1px solid #000;
-
   margin: 6px 0 10px 10px;
-
   float: left;
-
 }
 
 li.argentina {
-
   background-image: url('/images/flags/argentina.gif');
-
 }
 
 li.australia {
-
   background-image: url('/images/flags/australia.gif');
-
 }
 
 li.barbados {
-
   background-image: url('/images/flags/barbados.gif');
-
 }
 
 li.belarus {
-
   background-image: url('/images/flags/belarus.gif');
-
 }
 
 li.belgium {
-
   background-image: url('/images/flags/belgium.gif');
-
 }
 
 li.brazil {
-
   background-image: url('/images/flags/brazil.gif');
-
 }
 
 li.bulgaria {
-
   background-image: url('/images/flags/bulgaria.gif');
-
 }
 
 li.canada {
-
   background-image: url('/images/flags/canada.gif');
-
 }
 
 li.chile {
-
   background-image: url('/images/flags/chile.gif');
-
 }
 
 li.china {
-
   background-image: url('/images/flags/china.gif');
-
 }
 
 li.columbia {
-
   background-image: url('/images/flags/columbia.gif');
-
 }
 
 li.costa-rica {
-
   background-image: url('/images/flags/costa_rica.gif');
-
 }
 
 li.czechoslovakia {
-
   background-image: url('/images/flags/czechoslovakia.gif');
-
 }
 
 li.denmark {
-
   background-image: url('/images/flags/denmark.gif');
-
 }
 
 li.el-salvador {
-
   background-image: url('/images/flags/el_salvador.gif');
-
 }
 
 li.finland {
-
   background-image: url('/images/flags/finland.gif');
-
 }
 
 li.france {
-
   background-image: url('/images/flags/france.gif');
-
 }
 
 li.germany {
-
   background-image: url('/images/flags/germany.gif');
-
 }
 
 li.guatemala {
-
   background-image: url('/images/flags/guatemala.gif');
-
 }
 
 li.hungary {
-
   background-image: url('/images/flags/hungary.gif');
-
 }
 
 li.iceland {
-
   background-image: url('/images/flags/iceland.gif');
-
 }
 
 li.israel {
-
   background-image: url('/images/flags/israel.gif');
-
 }
 
 li.jamaica {
-
   background-image: url('/images/flags/jamaica.gif');
-
 }
 
 li.japan {
-
   background-image: url('/images/flags/japan.gif');
-
 }
 
 li.kazakhstan {
-
   background-image: url('/images/flags/kazakhstan.gif');
-
 }
 
 li.kuwait {
-
   background-image: url('/images/flags/kuwait.gif');
-
 }
 
 li.latvia {
-
   background-image: url('/images/flags/latvia.gif');
-
 }
 
 li.lebanon {
-
   background-image: url('/images/flags/lebanon.gif');
-
 }
 
 li.lithuania {
-
   background-image: url('/images/flags/lithuania.gif');
-
 }
 
 li.malaysia {
-
   background-image: url('/images/flags/malaysia.gif');
-
 }
 
 li.mexico {
-
   background-image: url('/images/flags/mexico.gif');
-
 }
 
 li.netherlands {
-
   background-image: url('/images/flags/netherlands.gif');
-
 }
 
 li.new-zealand {
-
   background-image: url('/images/flags/new_zealand.gif');
-
 }
 
 li.norway {
-
   background-image: url('/images/flags/norway.gif');
-
 }
 
 li.peru {
-
   background-image: url('/images/flags/peru.gif');
-
 }
 
 li.poland {
-
   background-image: url('/images/flags/poland.gif');
-
 }
 
 li.puerto-rico {
-
   background-image: url('/images/flags/puerto_rico.gif');
-
 }
 
 li.russia {
-
   background-image: url('/images/flags/russia.gif');
-
 }
 
 li.saudi-arabia {
-
   background-image: url('/images/flags/saudiarabia.gif');
-
 }
 
 li.serbia-montenegro {
-
   background-image: url('/images/flags/serbia_montenegro.gif');
-
 }
 
 li.singapor {
-
   background-image: url('/images/flags/singapor.gif');
-
 }
 
 li.south-africa {
-
   background-image: url('/images/flags/south_africa.gif');
-
 }
 
 li.south-korea {
-
   background-image: url('/images/flags/southkorea.gif');
-
 }
 
 li.spain {
-
   background-image: url('/images/flags/spain.gif');
-
 }
 
 li.sweden {
-
   background-image: url('/images/flags/sweden.gif');
-
 }
 
 li.switzerland {
-
   background-image: url('/images/flags/switzerland.gif');
-
 }
 
 li.taiwan {
-
   background-image: url('/images/flags/taiwan.gif');
-
 }
 
 li.thailand {
-
   background-image: url('/images/flags/thailand.gif');
-
 }
 
 li.trinidad {
-
   background-image: url('/images/flags/trinidad.gif');
-
 }
 
 li.turkey {
-
   background-image: url('/images/flags/turkey.gif');
-
 }
 
 li.united-kingdom {
-
   background-image: url('/images/flags/uk.gif');
-
 }
 
 li.ukraine {
-
   background-image: url('/images/flags/ukraine.gif');
-
 }
 
 li.unitarab {
-
   background-image: url('/images/flags/unitarab.gif');
-
 }
 
 li.venezuela {
-
   background-image: url('/images/flags/venezuela.gif');
-
 }
 
 /* =PRODUCT LINE */
 
 div.featured img {
-
   border: 0px;
-
   padding: 1px;
-
   background-color: #ffffff;
-
 }
 
 div#product-line h1 {
-
   line-height: 1.5;
-
 }
 
 div#product-line h1 em {
-
   font-size: 0.6em;
-
   display: block;
-
   color: #666;
-
   font-style: normal;
-
 }
 
 div#product-line div.featured h2 {
-
   margin: 0 0 10px 0;
-
 }
 
 div#product-line div.description {
-
   line-height: 1.5;
-
   margin-bottom: 15px;
-
 }
 
 div#product-line div.valve-body-layouts {
-
   float: left;
-
   text-align: center;
-
   width: 350px;
-
 }
 
 div#product-line div.valve-body-layouts a {
-
   font-weight: bold;
-
   font-size: 14px;
-
 }
 
 div#product-line ul a {
-
   font-weight: bold;
-
 }
 
 div#product-line ul li.bullets {
-
   line-height: 1.0;
-
   list-style: disc;
-
   margin: 0 0 5px 25px;
-
 }
 
 div#product-line ul.bullets {
-
   line-height: 1.0;
-
   list-style: disc;
-
   margin: 0 0 10px 25px;
-
 }
 
-
-
 div#product-line h2 {
-
   font-size: 16px;
-
   margin: 10px 0 7px 0;
-
 }
 
 div#product-line h4 {
-
   font-size: 12px;
-
   margin: 10px 0 7px 0;
-
   color: #00548e;
-
 }
 
 div.allison div#col-1 {
-
   float: left;
-
   width: 365px;
-
 }
 
 div.allison div#col-2 {
-
   float: right;
-
   margin-right: 15px;
-
   width: 350px;
-
 }
 
 div.high-performance-transmission div#col-1 {
-
   float: left;
-
   width: 365px;
-
 }
 
 div.high-performance-transmission div#col-2 {
-
   float: right;
-
   margin-right: 15px;
-
   width: 350px;
-
 }
 
 div.transmission div#col-1 {
-
   float: left;
-
   width: 365px;
-
 }
 
 div.transmission div#col-2 {
-
   float: right;
-
   margin-right: 15px;
-
   width: 350px;
-
 }
 
 div.transmission div#col-1 div#cores{
-
   float: right;
-
   margin-bottom: 15px;
-
 }
 
 div.torque-converter div#col-1 {
-
   float: left;
-
   width: 365px;
-
 }
 
 div.torque-converter div#col-2 {
-
   float: right;
-
   margin-right: 15px;
-
   width: 350px;
-
 }
 
 /*= PL-RINGGEARS */
 
 div.ring-gears div#col-1 {
-
   float: left;
-
   width: 365px;
-
 }
 
 div.ring-gears div#col-2 {
-
   float: right;
-
   margin-right: 15px;
-
   width: 350px;
-
 }
 
 /*= PL-INTERNATIONAL */
 
 div.international div#col {
-
   float: left;
-
   width: 715px;
-
 }
 
 /*= PL-DRIVELINE */
 
 div.driveline div#col-1 {
-
   float: left;
-
   width: 400px;
-
 }
 
 div.driveline div#col-2 {
-
   float: right;
-
   margin-right: 15px;
-
   width: 325px;
-
 }
 
 /*= PL-POWERTRAINSAVERS */
 
 div.power-train-savers div.note {
-
   width: 100%;
-
 }
 
 div.power-train-savers div#col-1 {
-
   float: left;
-
   width: 390px;
-
   overflow: visible;
-
 }
 
 div.power-train-savers div#col-2 {
-
   float: right;
-
   margin-right: 15px;
-
   width: 325px;
-
 }
 
 /*= PL-HARLEYDAVIDSON */
 
 div.harley-davidson div#col-1 {
-
   float: left;
-
   width: 415px;
-
 }
 
 div.harley-davidson div#col-2 {
-
   float: right;
-
   margin-right: 15px;
-
   width: 300px;
-
 }
 
 div#harley-distributors h2 {
-
   font-size: 16px;
-
   margin: 6px 0;
-
 }
 
 div#harley-distributors table {
-
   width: 100%;
-
 }
 
 div#harley-distributors table td {
-
   width: 50%;
-
 }
 
 /* =TESTIMONIES */
 
 div#customer-testimonials h2 {
-
   font-size: 16px;
-
   margin: 6px 0;
-
 }
 
 div#customer-testimonials blockquote {
-
   margin: 0 20px 10px 20px;
-
 }
 
 div#customer-testimonials cite {
-
   color: #666;
-
   font-weight: bold;
-
 }
 
 div#customer-testimonials ul li {
-
   margin-bottom: 20px;
-
-
-
 }
 
 /* =NEWS-AND-EVENTS */
 
 div#news-and-events div#col-1 {
-
   width: 550px;
-
   float: left;
-
   padding-right: 15px;
-
   border-right: 1px solid #666;
-
+}
+div#news-and-events div#col-1 span.note{
+	font-size: 10px;
 }
 
-
 div#news-and-events div#col-2 {
-
   float: right;
-
   width: 180px;
-
   padding-right: 5px;
-
   padding-left: 5px;
-
 }
 
 div#news-and-events li.enventlist {
@@ -3049,97 +1939,60 @@ div#news-and-events table.roadshow td.FormRed {
 }
 
 div#news-and-events p.event {
-
   line-height: 1.2;
-
   font-size: 10px;
-
 }
 
 div#news-and-events a.eventname {
-
   line-height: 1.2;
-
   font-weight:bold;
-
 }
 
 div#news-and-events em.date,
-
 div#news em.date,
-
 div#news-archive {
-
   font-size: 10px;
-
   color: #666;
-
 }
 
 div#news-and-events img.Rphoto {
-
 	border: 0;
-
 	float: right;
-
 	padding-left: 10px;
-
 }
 
 div#news-and-events img.Lphoto {
-
 	border: 0;
-
 	float: left;
-
 	padding-right: 10px;
-
 }
 
 div#news-archive img.Rphoto {
-
 	border: 0;
-
 	float: right;
-
 	padding: 0 10px 0 10px;
-
 }
 
 div#news-archive img.Lphoto {
-
 	border: 0;
-
 	float: left;
-
 	padding: 0 10px 0 10px;
-
 }
 
 div#news-and-events ul,
-
 div#news-archive ul {
-
 	padding: 0 0 8px 8px;
-
 }
 
 div#news-and-events li,
-
 div#news-archive li {
-
 	line-height: 1.0;
-
 	padding: 0 0 3px 0;
-
 }
 
 div#news-and-events li.enventlist {
-
 	line-height: 1.3;
-
 	padding: 0 0 8px 0;
-
 }
 
 
@@ -3147,26 +2000,18 @@ div#news-and-events li.enventlist {
 /* =NEWS */
 
 div#news div#col-1 {
-
   width: 495px;
-
   float: left;
-
   padding-right: 15px;
-
 }
 
 div#news div#col-2 {
-
   float: right;
-
   width: 250px;
-
   padding-right: 10px;
-
   padding-left: 5px;
-
 }
+
 div#news div#col-text {
   width: 590px;
   float: left;
@@ -3181,20 +2026,12 @@ div#news div#col-img {
   padding-left: 5px;
 }
 
-
-
 div#news em.caption {
-
   color: #00548e;
-
   line-height: 1.5;
-
   font-size: 10px;
-
   font-style: italic;
-
   padding-right: 5px;
-
 }
 
 
@@ -3202,322 +2039,205 @@ div#news em.caption {
 /* =PUBLICATION GLOSSARY */
 
 div#publication-glossary dt {
-
   font-weight: bold;
-
   font-size: 14px;
-
   margin: 6px 0 0 0;
-
   color: #00548e;
-
 }
 
 /* =TECHNICAL LIBRARY */
 
 div#technical-library h2 {
-
   font-size: 16px;
-
   margin: 15px 0 0 0;
-
 }
 
 div#technical-library {
-
   margin-right: 15px;
-
 }
 
 div.reference-figure {
-
   margin-top: -180px;
-
   float: right;
-
   margin-right: 15px;
-
 }
 
 div.reference-figure img.reference-figure {
-
   float: left;
-
 }
 
 div.reference-figure a.view-full {
-
   float: left;
-
   clear: both;
-
 }
 
 div#technical-library div.note {
-
   width: 730px;
-
 }
 
 div#technical-library ul.publications {
-
   margin: 15px 0;
-
 }
 
 div#technical-library ul.publications li {
-
   font-weight: bold;
-
   margin-left: 10px;
-
   float: left;
-
   background: #00548e;
-
   border: 1px solid #666;
-
   width: 200px;
-
   text-align: center;
-
   font-size: 14px;
-
   letter-spacing: 1.3px;
-
 }
 
 div#technical-library ul.publications li a {
-
   display: block;
-
   padding: 8px 15px;
-
   color: #fff;
-
   text-decoration: none;
-
 }
 
 div#technical-library ul.publications li a:hover {
-
   color: #00548e;
-
   background: #ddd;
-
 }
 
 img.reference-figure {
-
   float: right;
-
 }
 
 div.dvd {
-
   margin: 15px 0;
-
   padding-left: 80px;
-
   background: transparent url('/images/icons/dvd.jpg') 0 15px no-repeat;
-
 }
 
 /* =HOW TO ORDER */
 
 div#how-to-order h2 {
-
   font-size: 16px;
-
   margin: 15px 0 0 0;
-
 }
 
 div#how-to-order ol li {
-
   margin-bottom: 15px;
-
 }
 
 /* =PAYMENT AND SHIPPING */
 
 div#payment-and-shipping h2 {
-
   font-size: 16px;
-
   margin: 15px 0 0 0;
-
 }
 
 div#payment-and-shipping ul {
-
   list-style: disc;
-
 }
 
 div#payment-and-shipping ul li {
-
   margin-left: 20px;
-
 }
 
 /* =PART */
 
 div#part h2 {
-
   font-size: 16px;
-
   margin: 10px 0 0 0;
-
 }
 
 div#part div#col-2 div.meta,
-
 div#part div#col-2 div.make-unit {
-
   margin-bottom: 10px;
-
 }
 
 div#part div#col-2 div.resources h2 {
-
   margin-top: 0;
-
 }
 div.resources ul {
   list-style: none;
 }
 
 div#part div.details div.photo {
-
   padding: 1px;
-
 }
 
 div#part div.details div.description {
-
   margin-top: 10px;
-
 }
 
 div.parts,
-
 div#no-parts {
-
   clear: both;
-
   1height: 300px;
-
   margin-top: 30px;
-
   margin-right: 15px;
-
   1overflow: auto;
-
   1border: 1px solid #000;
-
 }
 
 div#no-parts {
-
   font-size: 18px;
-
   text-align: center;
-
 }
 
 div#no-parts p {
-
   margin-top: 150px;
-
 }
 
 table.parts th {
-
   font-weight: bold;
-
 }
 
 table.parts thead th,
-
 table.parts tbody td {
-
   border-bottom: 1px solid #cccccc;
-
 }
 
 table.parts tbody td {
-
   padding: 2px 0;
-
 }
 
 /* =TORQUE CONVERTER PARTS */
 
 div.torque-converter table.parts th.reference-number,
-
 div.torque-converter table.parts td.reference-number {
-
   width: 70px;
-
   padding-left: 4px;
-
   line-height: 1.0;
-
 }
 
 div.torque-converter table.parts th.item {
-
   padding-left: 8px;
-
   width: 167px;
-
 }
 
 div.torque-converter table.parts td.item {
-
   padding-left: 8px;
-
   font-weight: bold;
-
   line-height: 1.0;
-
 }
 
 div.torque-converter table.parts td.description,
-
 div.torque-converter table.parts td.make,
-
 div.torque-converter table.parts td.part-number {
-
   padding-left: 8px;
-
   line-height: 1.0;
-
-	}
+}
 
 div.torque-converter table.parts th.description {
-
   padding-left: 8px;
-
   width: 317px;
-
 }
 
 div.torque-converter table.parts th.part-number {
-
   width: 105px;
-
   padding-left: 8px;
-
 }
 
 div.torque-converter div.recent table.parts th.part-number,
-
 div.torque-converter div.recent table.parts td.part-number {
-
   padding-left: 8px;
-
 }
 
 
@@ -3525,121 +2245,74 @@ div.torque-converter div.recent table.parts td.part-number {
 /* =TRANSMISSION PARTS */
 
 div.transmission table.parts th.part-number,
-
 div.transmission table.parts td.part-number {
-
   width: 100px;
-
   padding-left: 4px;
-
   line-height: 1.0;
-
 }
 
 div.transmission table.parts th.notes {
-
   padding-left: 8px;
-
   width: 140px;
-
 }
 
 div.transmission table.parts td.make,
-
 div.transmission table.parts td.description {
-
   padding-left: 8px;
-
   line-height: 1.0;
-
 }
 
 div.transmission table.parts td.notes {
-
   padding-left: 8px;
-
   line-height: 1.0;
-
 }
 
 div.transmission table.parts th.make {
-
   padding-left: 8px;
-
   width: 110px;
-
 }
 
 div.transmission table.parts th.description {
-
   padding-left: 8px;
-
   width: 183px;
-
 }
-
-
 
 /* =HIGH PERFORMANCE TRANSMISSION PARTS */
 
 div.high-performance-transmission table.parts th.ref-code,
-
 div.high-performance-transmission table.parts td.ref-code {
-
   width: 85px;
-
   padding-left: 4px;
-
   line-height: 1.0;
-
 }
 
 div.high-performance-transmission table.parts td.notes,
-
 div.high-performance-transmission table.parts td.make,
-
 div.high-performance-transmission table.parts td.description {
-
   padding-left: 8px;
-
   line-height: 1.0;
-
 }
 
 div.high-performance-transmission table.parts th.notes,
-
 div.high-performance-transmission table.parts td.notes{
-
   width: 150px;
-
   padding-left: 8px;
-
 }
 
 div.high-performance-transmission table.parts th.make {
-
   padding-left: 8px;
-
   width: 70px;
-
 }
 
 div.high-performance-transmission table.parts th.description {
-
   padding-left: 8px;
-
   width: 113px;
-
 }
 
 div.high-performance-transmission table.parts th.part-number,
-
 div.high-performance-transmission table.parts td.part-number {
-
   padding-left: 8px;
-
   width: 95px;
-
 }
 
 
@@ -3647,51 +2320,32 @@ div.high-performance-transmission table.parts td.part-number {
 /* =ALLISON PARTS */
 
 div.allison table.parts th.type {
-
   padding-left: 8px;
-
   width: 110px;
-
 }
 
 div.allison table.parts th.oem-part-number {
-
   padding-left: 8px;
-
   width: 112px;
-
 }
 
 div.allison table.parts th.description {
-
   padding-left: 8px;
-
   width: 280px;
-
 }
 
 div.allison table.parts th.part-number {
-
   width: 110px;
-
   padding-left: 4px;
-
 }
 
 div.allison table.parts td.type,
-
 div.allison table.parts td.oem-part-number,
-
 div.allison table.parts td.description,
-
 div.allison table.parts td.part-number {
-
   width: 110px;
-
   padding-left: 4px;
-
   line-height: 1.0;
-
 }
 
 
@@ -3699,149 +2353,97 @@ div.allison table.parts td.part-number {
 /* =CATALOG REQUEST */
 
 div#catalog-request form ul {
-
   float: left;
-
   margin: 10px 0;
-
 }
 
 div#catalog-request form ul li {
-
   float: left;
-
   width: 175px;
-
   height: 280px;
-
   padding: 5px;
-
   padding: 5px 5px 10px 5px;
-
 }
 
 /* =QUICK SEARCH */
 
 div#quick-search div {
-
   margin-bottom: 15px;
-
 }
 
 div#quick-search h2 {
-
   font-size: 16px;
-
 }
 
 div#quick-search div ul li {
-
   background: transparent url('/images/icons/bullet_blue.png') 0 50% no-repeat;
-
   padding-left: 18px;
-
 }
 
 div#quick-search div.search-parts form div.submit input {
-
   float: left;
-
 }
 
 /* =NO SEARCH RESULTS */
 
 div#no-search-results h2 {
-
   font-size: 16px;
-
 }
 
 /* =CART */
 
 div#cart {
-
   margin-right: 15px;
-
 }
 
 div#cart h2 {
-
   font-size: 16px;
-
   margin: 10px 0 7px 0;
-
 }
 
 div#cart div.cart-options {
-
   width: 765px;
-
   float: right;
-
   margin-bottom: 10px;
-
 }
 
 div#cart div.cart-options ul {
-
   float: right;
-
 }
 
 div#cart div.cart-options li {
-
   float: left;
-
   margin-left: 4px;
-
   line-height: 1;
-
 }
 
 div#cart div.cart-options li a {
-
   text-transform: uppercase;
-
   text-decoration: none;
-
   display: block;
-
   padding: 4px 8px;
-
   border: 1px solid #133d8d;
-
 }
 
 div#cart div.cart-options li a:hover {
-
   background-color: #133d8d;
-
   color: #fff;
-
 }
 
 /* =SPEED ORDER */
 
 div#speed-order h2 {
-
   font-size: 16px;
-
   margin: 10px 0 7px 0;
-
 }
 
 div#speed-order strong {
-
   font-weight: bold;
-
   font-style:italic;
-
 }
 
 div#speed-order em {
-
   font-style:italic;
-
 }
 
 
@@ -3849,42 +2451,25 @@ div#speed-order em {
 /* =NEW PARTS */
 
 div#new-parts div.parts,
-
 div#new-parts div#no-parts {
-
   1height: 300px;
-
   margin-right: 15px;
-
   1overflow: auto;
-
   1border: 1px solid #000;
-
 }
 
 .print-view {
-
   background: transparent url('/images/icons/note_go.png') 0 0 no-repeat;
-
   padding-left: 20px;
-
   font-weight: bold;
-
   text-decoration: none;
-
   float: right;
-
   margin-right: 15px;
-
 }
 
 div.separator em {
-
   font-weight: bold;
-
   font-size: 1.2em;
-
   text-transform: uppercase;
-
 }
 
