@@ -111,7 +111,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :reference_figures, :as => 'reference-figures'
   map.resources :units
   map.resources :parts
-
+  
+  map.resources :publication_titles, :as => 'titles'
   map.resources :publication_categories, :as => 'publications', :except => [:index] do |ppub|
     ppub.resources :publication_titles, :as => 'titles'
     ppub.resources :publication_subcategories, :as => 'subcategories' do |scat|
