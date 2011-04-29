@@ -38,11 +38,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.search_reference_figures '/search/reference-figures/', :controller => 'reference_figures', :action => 'search'
     admin.search_publication_titles '/search/publication-titles/', :controller => 'publication_titles', :action => 'search'
   end
-  
-  map.prototypes_list '/prototypes', :controller => 'prototypes', :action => 'index'
-  map.prototype_detail '/prototype/:name', :controller => 'prototypes', :action => 'show'
-  map.prototype_validation '/prototype/validation/:part_number', :controller => 'prototypes', :action => 'validation'
-  
+
   map.resources :road_show, :as => 'roadshow'
 
   map.with_options(:controller => 'pages') do |page|
@@ -115,12 +111,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :reference_figures, :as => 'reference-figures'
   map.resources :units
   map.resources :parts
-  
-  map.resources :publication_keywords, :as => 'keywords'
-  map.resources :publication_authors, :as => 'authors'
-  map.resources :publication_titles, :as => 'titles'
-  map.resources :publication_subjects, :as => 'publication-subjects'
-  map.resources :publication_types, :as => 'publication-types'
+
   map.resources :publication_categories, :as => 'publications', :except => [:index] do |ppub|
     ppub.resources :publication_titles, :as => 'titles'
     ppub.resources :publication_subcategories, :as => 'subcategories' do |scat|
