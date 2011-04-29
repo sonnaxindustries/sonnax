@@ -34,7 +34,7 @@
         <tbody>
           <% @cart.parts.each do |part| %>
           <tr id="<%= dom_id(part.part, :line_item) %>">
-            <td><%= part.name %></td>
+            <td><%= part.part_number %></td>
             <td><%= part.item %></td>
             <td><%= part.description %></td>
             <td>
