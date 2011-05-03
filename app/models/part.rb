@@ -439,14 +439,16 @@ class Part < ActiveRecord::Base
   end
 
   def pdf_path_for(type)
-    type_path = "new-%s-pdfs" % [type.to_s]
+    #type_path = "new-%s-pdfs" % [type.to_s]
+    type_path = type.to_s
     path = File.join(Rails.root, 'public', 'system', type_path)
     full_file = File.join(path, self.send(type))
     full_file
   end
 
   def pdf_src_for(type)
-    type_path = "new-%s-pdfs" % [type.to_s]
+    #type_path = "new-%s-pdfs" % [type.to_s]
+    type_path = type.to_s
     path = File.join('', 'system', type_path)
     full_src = File.join(path, self.send(type))
     full_src

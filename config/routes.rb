@@ -163,10 +163,13 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/part_finder.php', :controller => 'part_finder', :action => 'redirect'
   map.connect '/part_summary.php', :controller => 'part_finder', :action => 'part_summary_redirect'
 
-  map.connect '/instructions/:filename.:format', :controller => 'assets', :action => 'show'
-  map.connect '/announcements/:filename.:format', :controller => 'assets', :action => 'show'
-  map.connect '/tech-articles/:filename.:format', :controller => 'publication_titles', :action => 'download'
-  map.connect '/test-exception', :controller => 'pages', :action => 'test_exception'
+  map.connect '/system/assets/:id/:size/:filename.:format', :controller => 'assets', :action => 'reverse_show'
+  map.connect '/system/pdfs/:id/:size/:filename.:format', :controller => 'assets', :action => 'reverse_show'
+
+  #map.connect '/instructions/:filename.:format', :controller => 'assets', :action => 'show'
+  #map.connect '/announcements/:filename.:format', :controller => 'assets', :action => 'show'
+  #map.connect '/tech-articles/:filename.:format', :controller => 'publication_titles', :action => 'download'
+  #map.connect '/test-exception', :controller => 'pages', :action => 'test_exception'
   #map.connect '*path' , :controller => 'redirects' , :action => 'check'
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'
