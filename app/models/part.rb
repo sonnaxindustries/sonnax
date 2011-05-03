@@ -505,13 +505,13 @@ class Part < ActiveRecord::Base
   end
 
   def primary_photo_path
-    path = File.join(Rails.root, 'public', 'system', 'new-part-images')
+    path = File.join(Rails.root, 'public', 'system', 'part-images')
     full_file = File.join(path, self.photo)
     full_file
   end
 
   def primary_photo_src
-    path = File.join('', 'system', 'new-part-images')
+    path = File.join('', 'system', 'part-images')
     full_src = File.join(path, self.photo)
     full_src
   end
