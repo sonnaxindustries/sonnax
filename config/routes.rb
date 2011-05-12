@@ -67,6 +67,7 @@ ActionController::Routing::Routes.draw do |map|
     page.news_12_1_09 '/news_12_1_09', :action => 'news_12_1_09'
     page.news_9_1_09 '/news_9_1_09', :action => 'news_9_1_09'
     page.news_3_17_11 '/news_3_17_11', :action => 'news_3_17_11'
+    page.news_5_10_11 '/news_5_10_11', :action => 'news_5_10_11'
     page.news_archive '/news_archive', :action => 'news_archive'
     page.news_archive '/news_archive', :action => 'news_archive'
     page.events_list '/events', :action => 'events'
