@@ -165,7 +165,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/part_summary.php', :controller => 'part_finder', :action => 'part_summary_redirect'
 
   map.connect '/system/assets/:id/:size/:filename.:format', :controller => 'assets', :action => 'reverse_show'
-  map.connect '/system/pdfs/:id/:size/:filename.:format', :controller => 'assets', :action => 'reverse_show'
+  #map.connect '/system/pdfs/:id/:size/:filename.:format', :controller => 'assets', :action => 'reverse_show'
 
   #map.connect '/instructions/:filename.:format', :controller => 'assets', :action => 'show'
   #map.connect '/announcements/:filename.:format', :controller => 'assets', :action => 'show'
